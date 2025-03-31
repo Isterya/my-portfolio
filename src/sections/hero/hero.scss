@@ -143,6 +143,9 @@
       left: 50%;
       transform: translateX(-50%);
       max-width: 597px;
+      user-select: none; // Запрещает выделение
+      pointer-events: none; // Отключает любые взаимодействия (клик, ховер)
+      -webkit-user-drag: none; // Запрещает перетаскивание
     }
   }
 
