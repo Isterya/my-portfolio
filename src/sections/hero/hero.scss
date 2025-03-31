@@ -1,0 +1,222 @@
+@import '../../styles/variables.scss';
+
+.hero {
+  min-height: 972px;
+  padding-top: 163px;
+  position: relative;
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &-quote {
+    position: absolute;
+    left: 0;
+    top: 348px;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+
+    &__img {
+      max-width: 36px;
+    }
+
+    &__text {
+      margin-top: 24px;
+      font-weight: 500;
+      font-size: 20px;
+      color: #344054;
+    }
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 913px;
+    position: relative;
+
+    &__subtitle {
+      position: relative;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.27px solid #171717;
+      border-radius: 38px;
+      padding: 7.5px 25px;
+      width: 104px;
+      height: 45px;
+      font-weight: 400;
+      font-size: 20px;
+      color: #171717;
+      margin-top: 19px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -25px;
+        top: -20px;
+        height: 28px;
+        width: 27px;
+        background: url('../../assets/icons/hero/decor-up.svg') no-repeat center /
+          contain;
+      }
+    }
+
+    &__main-title {
+      position: relative;
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 95px;
+      line-height: 96px;
+      text-align: center;
+      color: #171717;
+
+      span {
+        background: $main-color;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: -50px;
+        bottom: -50px;
+        height: 74px;
+        width: 71px;
+        background: url('../../assets/icons/hero/decor-down.svg') no-repeat
+          center / contain;
+      }
+    }
+  }
+
+  &-experience {
+    position: absolute;
+    right: 0;
+    top: 361px;
+    display: flex;
+    flex-direction: column;
+    min-width: 172px;
+    align-items: end;
+
+    & > div {
+      text-align: right;
+    }
+
+    &__img {
+      max-width: 160px;
+    }
+
+    &__years {
+      margin-top: 21px;
+      font-weight: 700;
+      font-size: 47px;
+      line-height: 47px;
+      color: #171717;
+    }
+
+    &__descr {
+      margin-top: 5px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 20px;
+      color: #171717;
+    }
+  }
+
+  &-character {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 811px;
+    height: 405px;
+    border-radius: 405px 405px 0 0;
+    background-color: $warm;
+
+    &__img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 597px;
+    }
+  }
+
+  &-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 46px;
+    border-radius: 50px;
+    padding: 10px;
+    width: 367px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+
+    transition: all 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: radial-gradient(circle, #ffffff 0%, #c9c9c9 100%);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: destination-out;
+      pointer-events: none;
+    }
+
+    &__link {
+      font-weight: 400;
+      font-size: 25px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      padding: 11px 26px;
+      border-radius: 60px;
+      white-space: nowrap;
+
+      img {
+        display: none;
+        max-width: 42px;
+        max-height: 42px;
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      &--active {
+        border: 0.5px solid #d0d5dd;
+        background: linear-gradient(90deg, #f8ba2b 0%, #ff7f00 70%);
+        width: 197px;
+        height: 62px;
+
+        img {
+          display: block;
+        }
+
+        &:hover img {
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
