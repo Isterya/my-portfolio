@@ -57,6 +57,12 @@
         padding: 20px 40px;
         background: rgba(255, 255, 255, 0.1);
       }
+
+      &.active {
+        border-radius: 60px;
+        padding: 20px 40px;
+        background: linear-gradient(180deg, #f8ba2b 0%, #ff7f00 70%);
+      }
     }
   }
 

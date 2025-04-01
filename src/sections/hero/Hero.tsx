@@ -14,7 +14,10 @@ const Hero = () => {
   );
 
   return (
-    <section className="hero">
+    <section
+      id="home"
+      className="hero"
+    >
       <div className="container">
         <div className="hero-wrapper">
           <div className="hero-quote">
