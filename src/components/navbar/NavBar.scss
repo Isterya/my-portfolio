@@ -31,8 +31,8 @@
     -webkit-mask-composite: destination-out;
     z-index: -1;
 
-    filter: blur(1px); // Делает эффект мягче
-    opacity: 0.8; // Немного уменьшает яркость
+    filter: blur(1px);
+    opacity: 0.8;
     transition: opacity 0.3s ease-in-out;
   }
 
@@ -48,9 +48,15 @@
     &__item {
       color: #fff;
       padding: 20px 40px;
-
       font-weight: 400;
       font-size: 20px;
+      transition: 0.2s all;
+
+      &:hover {
+        border-radius: 60px;
+        padding: 20px 40px;
+        background: rgba(255, 255, 255, 0.1);
+      }
     }
   }
 
