@@ -1,0 +1,66 @@
+.skill-card {
+  width: 416px;
+  height: 508px;
+  backdrop-filter: blur(15px);
+  position: relative;
+}
+
+.skill-card__header {
+  font-weight: 500;
+  font-size: 32px;
+  padding: 44px 37px 0 37px;
+  color: #fff;
+}
+
+.skill-card__divider {
+  border: 2px solid rgba(249, 250, 251, 0.3);
+  height: 0px;
+  margin: 23px 0 43px;
+}
+
+.skill-card__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Базовые стили для всех фонов */
+.skill-card__bg {
+  border-radius: 35px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Первый (задний) */
+.skill-card__bg--first {
+  width: 328px;
+  height: 329px;
+  background: #757575;
+  opacity: 0.5;
+  bottom: 44px;
+  z-index: 1;
+}
+
+/* Второй (средний) */
+.skill-card__bg--second {
+  width: 374px;
+  height: 329px;
+  background: #9e9d9d;
+  bottom: 22px;
+  z-index: 2;
+}
+
+/* Третий (верхний) */
+.skill-card__bg--third {
+  width: 416px;
+  height: 307px;
+  background: #d9d9d9;
+  padding: 24px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
