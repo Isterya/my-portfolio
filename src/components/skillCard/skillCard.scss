@@ -1,66 +1,98 @@
 .skill-card {
   width: 416px;
   height: 508px;
-  backdrop-filter: blur(15px);
-  position: relative;
-}
-
-.skill-card__header {
-  font-weight: 500;
-  font-size: 32px;
-  padding: 44px 37px 0 37px;
-  color: #fff;
-}
-
-.skill-card__divider {
+  backdrop-filter: blur(10px);
+  fill: rgba(104, 104, 104, 0.2);
   border: 2px solid rgba(249, 250, 251, 0.3);
-  height: 0px;
-  margin: 23px 0 43px;
-}
-
-.skill-card__wrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Базовые стили для всех фонов */
-.skill-card__bg {
-  border-radius: 35px;
-  position: absolute;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Первый (задний) */
-.skill-card__bg--first {
-  width: 328px;
-  height: 329px;
-  background: #757575;
-  opacity: 0.5;
-  bottom: 44px;
-  z-index: 1;
-}
-
-/* Второй (средний) */
-.skill-card__bg--second {
-  width: 374px;
-  height: 329px;
-  background: #9e9d9d;
-  bottom: 22px;
-  z-index: 2;
-}
-
-/* Третий (верхний) */
-.skill-card__bg--third {
-  width: 416px;
-  height: 307px;
-  background: #d9d9d9;
-  padding: 24px;
+  border-radius: 30px;
+  overflow: hidden;
   z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+
+  &__header {
+    padding: 44px 37px 0 37px;
+
+    h3 {
+      font-weight: 500;
+      font-size: 32px;
+      color: #fff;
+    }
+  }
+
+  &__divider {
+    border: 1px solid rgba(249, 250, 251, 0.3);
+    height: 0px;
+    margin: 23px 0 43px;
+  }
+
+  &__wrapper {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__bg {
+    border-radius: 30px;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+
+    &--first {
+      width: 328px;
+      height: 329px;
+      background: #757575;
+      opacity: 0.5;
+      bottom: 44px;
+      z-index: 1;
+    }
+
+    &--second {
+      width: 374px;
+      height: 329px;
+      background: #9e9d9d;
+      bottom: 22px;
+      z-index: 2;
+    }
+
+    &--third {
+      padding: 38px 41px 0 21px;
+      width: 416px;
+      height: 329px;
+      background: #d9d9d9;
+      bottom: 0;
+      z-index: 4;
+      display: flex;
+      text-align: center;
+
+      p {
+        font-weight: 300;
+        font-size: 18px;
+        text-align: center;
+        color: #344054;
+      }
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    bottom: 22px;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 57px;
+    width: 114px;
+    background: #1d2939;
+    height: 114px;
+  }
+
+  &__icon {
+    max-height: 65px;
+  }
 }

@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+
+.skills {
+  padding: 116px 0 9px 0;
+  height: 878px;
+  width: 100%;
+  border-radius: 50px;
+  background: url('../../assets/img/main-bg.jpg') no-repeat center / cover;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    &__title {
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 48px;
+      color: #fcfcfd;
+
+      span {
+        background: $main-color;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    &__descr {
+      width: 576px;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+  }
+}

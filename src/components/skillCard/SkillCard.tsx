@@ -19,6 +19,14 @@ const SkillCard: React.FC<SkillCardProps> = ({ title, icon, description }) => {
         <div className="skill-card__bg skill-card__bg--second"></div>
         <div className="skill-card__bg skill-card__bg--third">
           <p>{description}</p>
+
+          <div className="skill-card__circle">
+            <img
+              src={icon}
+              alt="Skill Icon"
+              className="skill-card__icon"
+            />
+          </div>
         </div>
       </div>
     </div>
