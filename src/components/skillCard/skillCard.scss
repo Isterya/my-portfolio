@@ -1,11 +1,8 @@
 .skill-card {
   width: 416px;
   height: 508px;
-  backdrop-filter: blur(10px);
-  fill: rgba(104, 104, 104, 0.2);
-  border: 2px solid rgba(249, 250, 251, 0.3);
+  background: url('../../assets/img/skills/card-rectangle.png');
   position: relative;
-  border-radius: 30px;
   overflow: hidden;
   z-index: 3;
 
@@ -86,10 +83,10 @@
     justify-content: center;
     align-items: center;
 
-    border-radius: 57px;
+    border-radius: 50%;
     width: 114px;
-    background: #1d2939;
     height: 114px;
+    background: #1d2939;
   }
 
   &__icon {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { skillsData } from '../../data/skillsData';
@@ -7,18 +7,46 @@ import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';
 
+const itemsPerSlide = 3;
+const intervalTime = 5000;
+
 const SkillsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
 
-  const itemsPerSlide = 3;
   const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index * itemsPerSlide);
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + itemsPerSlide >= skillsData.length
+        ? 0
+        : prevIndex + itemsPerSlide
+    );
+  }, []);
+
+  useEffect(() => {
+    autoSlideRef.current = setInterval(nextSlide, intervalTime);
+
+    return () => {
+      if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+    };
+  }, [nextSlide]);
+
+  const stopAutoSlide = () => {
+    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+  };
+
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    autoSlideRef.current = setInterval(nextSlide, intervalTime);
   };
 
   return (
-    <div className="skills-slider">
+    <div
+      className="skills-slider"
+      onMouseEnter={stopAutoSlide}
+      onMouseLeave={startAutoSlide}
+    >
       <div className="skills-slider__wrapper">
         <AnimatePresence mode="wait">
           <motion.div
@@ -27,13 +55,13 @@ const SkillsSlider = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
             {skillsData
               .slice(currentIndex, currentIndex + itemsPerSlide)
-              .map((skill, index) => (
+              .map((skill) => (
                 <SkillCard
-                  key={index}
+                  key={skill.id}
                   {...skill}
                 />
               ))}
@@ -48,7 +76,7 @@ const SkillsSlider = () => {
             className={`skills-slider__dot ${
               currentIndex === i * itemsPerSlide ? 'active' : ''
             }`}
-            onClick={() => goToSlide(i)}
+            onClick={() => setCurrentIndex(i * itemsPerSlide)}
           ></div>
         ))}
       </div>
