@@ -5,6 +5,8 @@
   height: 878px;
   width: 100%;
   border-radius: 50px;
+  position: relative;
+  overflow: hidden;
   background: url('../../assets/img/main-bg.jpg') no-repeat center / cover;
 
   &-header {
@@ -33,5 +35,27 @@
       letter-spacing: -0.01em;
       color: #fff;
     }
+  }
+
+  &__first-abstract,
+  &__second-abstract,
+  &__third-abstract {
+    position: absolute;
+    z-index: 0;
+  }
+
+  &__first-abstract {
+    left: -184px;
+    top: 50px;
+  }
+
+  &__second-abstract {
+    top: 71px;
+    left: 527px;
+  }
+
+  &__third-abstract {
+    bottom: -191px;
+    right: -387px;
   }
 }

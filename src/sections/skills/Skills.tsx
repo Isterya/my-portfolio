@@ -1,3 +1,7 @@
+import firstAbstract from '../../assets/img/skills/abstract-figure-1.png';
+import secondAbstract from '../../assets/img/skills/abstract-figure-2.png';
+import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
+
 import SkillsSlider from '../../components/skillsSlider/SkillsSlider';
 
 import './skills.scss';
@@ -22,6 +26,22 @@ const Skills = () => {
 
         <SkillsSlider />
       </div>
+
+      <img
+        className="skills__first-abstract"
+        src={firstAbstract}
+        alt="First abstract figure"
+      />
+      <img
+        className="skills__second-abstract"
+        src={secondAbstract}
+        alt="Second abstract figure"
+      />
+      <img
+        className="skills__third-abstract"
+        src={thirdAbstract}
+        alt="Third abstract figure"
+      />
     </section>
   );
 };
