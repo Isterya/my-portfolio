@@ -15,4 +15,18 @@
     display: flex;
     gap: 11px;
   }
+
+  &__dot {
+    border-radius: 21px;
+    width: 15px;
+    height: 15px;
+    background: #e4e7ec;
+    cursor: pointer;
+    transition: background 0.3s ease, width 0.3s ease;
+
+    &.active {
+      width: 60px;
+      background: linear-gradient(90deg, #f8ba2b 0%, #ff7f00 70%);
+    }
+  }
 }
