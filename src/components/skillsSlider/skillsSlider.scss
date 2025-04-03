@@ -1,12 +1,21 @@
+@import '../../styles/variables.scss';
+
 .skills-slider {
   margin-top: 101px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 
   &__wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+  }
+
+  &__inner {
+    display: flex;
     gap: 25px;
   }
 
@@ -26,7 +35,7 @@
 
     &.active {
       width: 60px;
-      background: linear-gradient(90deg, #f8ba2b 0%, #ff7f00 70%);
+      background: $main-color;
     }
   }
 }
