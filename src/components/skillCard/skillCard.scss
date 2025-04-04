@@ -1,97 +1,56 @@
 .skill-card {
   width: 416px;
   height: 508px;
-  background: url('../../assets/img/skills/card-rectangle.png');
-  fill: rgba(104, 104, 104, 0.2);
-  backdrop-filter: blur(15px);
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease;
   z-index: 3;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
   &__header {
-    padding: 44px 37px 0 37px;
-
     h3 {
-      font-weight: 500;
       font-size: 32px;
-      color: #fff;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 16px;
     }
   }
 
-  &__divider {
-    border: 1px solid rgba(249, 250, 251, 0.3);
-    height: 0px;
-    margin: 23px 0 43px;
+  &__description {
+    font-size: 18px;
+    font-weight: 300;
+    color: #e0e0e0;
+    line-height: 1.5;
   }
 
-  &__wrapper {
-    position: absolute;
-    bottom: -22px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__bg {
-    border-radius: 30px;
-    position: absolute;
-    transition: all 0.3s ease-in-out;
-
-    &--first {
-      width: 328px;
-      height: 329px;
-      background: #757575;
-      opacity: 0.5;
-      bottom: 44px;
-      z-index: 1;
-    }
-
-    &--second {
-      width: 374px;
-      height: 329px;
-      background: #9e9d9d;
-      bottom: 22px;
-      z-index: 2;
-    }
-
-    &--third {
-      padding: 38px 41px 0 21px;
-      width: 416px;
-      height: 329px;
-      background: #d9d9d9;
-      bottom: 0;
-      z-index: 4;
-      display: flex;
-      text-align: center;
-
-      p {
-        font-weight: 300;
-        font-size: 18px;
-        text-align: center;
-        color: #344054;
-      }
-    }
-  }
-
-  &__circle {
-    position: absolute;
-    bottom: 22px;
-    right: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  &__icon-wrapper {
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    width: 114px;
-    height: 114px;
-    background: #1d2939;
-  }
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    margin-top: auto;
 
-  &__icon {
-    max-height: 65px;
+    img {
+      max-width: 50%;
+      max-height: 50%;
+      object-fit: contain;
+    }
   }
 }
