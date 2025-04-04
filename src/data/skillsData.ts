@@ -16,14 +16,14 @@ import reduxIcon from '../assets/icons/skills/redux.svg';
 import tailwindIcon from '../assets/icons/skills/tailwind-css.svg';
 import figmaIcon from '../assets/icons/skills/figma.svg';
 
-export interface Skills {
+export interface SkillsData {
   id: string;
   title: string;
   icon: string;
   description: string;
 }
 
-export const skillsData: Skills[] = [
+export const skillsData: SkillsData[] = [
   {
     id: uuidv4(),
     title: 'HTML5',
