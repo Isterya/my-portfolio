@@ -14,7 +14,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ title, icon, description }) => {
       </div>
       <div className="skill-card__divider"></div>
 
-      <div className="skill-card__wrapper">
+      {/* <div className="skill-card__wrapper">
         <div className="skill-card__bg skill-card__bg--first"></div>
         <div className="skill-card__bg skill-card__bg--second"></div>
         <div className="skill-card__bg skill-card__bg--third">
@@ -28,7 +28,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ title, icon, description }) => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

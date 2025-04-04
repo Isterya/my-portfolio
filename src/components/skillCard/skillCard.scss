@@ -2,8 +2,9 @@
   width: 416px;
   height: 508px;
   background: url('../../assets/img/skills/card-rectangle.png');
+  fill: rgba(104, 104, 104, 0.2);
+  backdrop-filter: blur(15px);
   position: relative;
-  backdrop-filter: blur(5px);
   overflow: hidden;
   z-index: 3;
 

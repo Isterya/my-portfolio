@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/animations.scss';
 
 .skills {
   padding: 116px 0 9px 0;
@@ -42,20 +43,25 @@
   &__third-abstract {
     position: absolute;
     z-index: 0;
+    pointer-events: none;
   }
 
   &__first-abstract {
     left: -184px;
     top: 50px;
+    animation: rotateSlow 60s linear infinite;
   }
 
   &__second-abstract {
     top: 71px;
     left: 527px;
+    animation: floatUpDown 12s ease-in-out infinite;
   }
 
   &__third-abstract {
     bottom: -191px;
     right: -387px;
+    animation: rotateSlow 90s linear infinite,
+      floatUpDown 15s ease-in-out infinite;
   }
 }
