@@ -63,7 +63,7 @@ const Hero = () => {
 
           <div className="hero-links">
             <a
-              href="#"
+              href="#portfolio"
               className={`hero-links__link ${
                 activeLink === 'portfolio' ? 'hero-links__link--active' : ''
               }`}
@@ -76,7 +76,7 @@ const Hero = () => {
               />
             </a>
             <a
-              href="#"
+              href="#about"
               className={`hero-links__link ${
                 activeLink === 'about' ? 'hero-links__link--active' : ''
               }`}

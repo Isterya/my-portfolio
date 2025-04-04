@@ -1,0 +1,134 @@
+@import '../../styles/variables.scss';
+
+.experience {
+  padding: 85px 0 92px 0;
+
+  &-header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 64px;
+    line-height: 1;
+    color: #344054;
+
+    span {
+      background: $main-color;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__text {
+    text-align-last: left;
+    height: auto;
+
+    &-title {
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 35px;
+      color: #344054;
+    }
+
+    &-subtitle {
+      margin-top: 14px;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 24px;
+      color: #98a2b3;
+    }
+
+    &-descr {
+      margin-top: 14px;
+      font-weight: 500;
+      font-size: 20px;
+      color: #98a2b3;
+    }
+  }
+
+  &__grid {
+    margin-top: 85px;
+    display: grid;
+    grid-template-columns: 490px 1fr 490px;
+    position: relative;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+
+    &--left .experience__text {
+      margin-bottom: 102px;
+
+      &:last-child {
+        margin-top: 39px;
+      }
+    }
+
+    &--right .experience__text {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+.experience__timeline {
+  position: relative;
+  top: 25px;
+  width: 48px;
+  height: 620px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline-line-horizontal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #344054,
+    #344054 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  transform: translateX(-50%);
+}
+.timeline-point {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border: 2px dashed #1d2939;
+  border-radius: 48px;
+  background: white;
+  z-index: 1;
+
+  &.primary {
+    .timeline-point-inner {
+      background: $main-color;
+    }
+  }
+
+  &.dark {
+    .timeline-point-inner {
+      background-color: #1d2939;
+    }
+  }
+
+  &-inner {
+    width: 36px;
+    height: 36px;
+    background-color: $main-color;
+    border-radius: 50%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
