@@ -32,6 +32,48 @@ const dataRight = [
   },
   {
     title: 'Courses & Pet Projects',
+    descr: (
+      <>
+        Completed an extensive web development course focusing on{' '}
+        <a
+          href="https://udemy-certificate.s3.amazonaws.com/image/UC-3ca32cc1-d365-4db0-a2f5-e245893f9c74.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="experience__link"
+        >
+          JavaScript
+        </a>
+        ,{' '}
+        <a
+          href="https://udemy-certificate.s3.amazonaws.com/image/UC-00bc5d87-e2f1-448f-9126-ae957f694436.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="experience__link"
+        >
+          TypeScript
+        </a>
+        , and{' '}
+        <a
+          href="https://udemy-certificate.s3.amazonaws.com/image/UC-3ca32cc1-d365-4db0-a2f5-e245893f9c74.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="experience__link"
+        >
+          React
+        </a>
+        . Gained hands-on experience through numerous projects, solidifying my
+        expertise in{' '}
+        <a
+          href="https://udemy-certificate.s3.amazonaws.com/image/UC-6a2a853e-2363-4ace-93e0-2a3b0b386d0c.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="experience__link"
+        >
+          frontend
+        </a>{' '}
+        development.
+      </>
+    ),
   },
   {
     title: 'Front-End Developer',
