@@ -5,7 +5,7 @@ import './about.scss';
 const About = () => {
   return (
     <section
-      id="#about"
+      id="about"
       className="about"
     >
       <div className="container">
@@ -47,6 +47,7 @@ const About = () => {
             <a
               className="about-text__hire"
               href="#contact"
+              aria-label="Scroll to contact section"
             >
               Hire me
             </a>
