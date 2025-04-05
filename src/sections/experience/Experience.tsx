@@ -6,11 +6,11 @@ const circlePositions = [0, 180, 375, 620];
 
 const Experience = () => {
   return (
-    <div className="container">
-      <section
-        id="experience"
-        className="experience"
-      >
+    <section
+      id="experience"
+      className="experience"
+    >
+      <div className="container">
         <h2 className="experience-header">
           My <span>Experience</span>
         </h2>
@@ -53,8 +53,8 @@ const Experience = () => {
             ))}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
