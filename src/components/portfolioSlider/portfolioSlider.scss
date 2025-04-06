@@ -1,0 +1,11 @@
+.portfolio-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    margin-top: 48px;
+    display: flex;
+    gap: 24px;
+  }
+}
