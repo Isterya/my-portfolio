@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+.portfolio {
+  min-height: 826px;
+  padding: 97px 0;
+
+  &-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    h2 {
+      max-width: 643px;
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 96px;
+      text-align: center;
+      color: #344054;
+
+      span {
+        background: $main-color;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
