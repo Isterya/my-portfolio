@@ -1,0 +1,107 @@
+.portfolio-card {
+  position: relative;
+  width: 633px;
+  height: 371px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 105px;
+    color: #fffaf5;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+
+    .portfolio-card:hover & {
+      opacity: 0;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 613px;
+    height: 187px;
+    padding: 20px 24px;
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(25px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+
+    .portfolio-card:hover & {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
+  &__overlay-content {
+    display: flex;
+    flex-direction: column;
+
+    color: #fff;
+  }
+
+  &__overlay-title {
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 105px;
+    color: #fffaf5;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffead5;
+    line-height: 24px;
+    max-width: 565px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 64px;
+    height: 64px;
+    border: 1px solid #fd853a;
+    border-radius: 60px;
+    z-index: 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #fd853a;
+
+      .portfolio-card__icon-path {
+        fill: #fffaf5;
+      }
+    }
+
+    .portfolio-card__icon-path {
+      fill: #fd853a;
+      transition: fill 0.3s ease;
+    }
+  }
+}
