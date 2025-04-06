@@ -1,4 +1,3 @@
-import arrowRight from '../../assets/icons/arrow-right.svg';
 import './portfolioCard.scss';
 
 interface PortfolioCardProps {

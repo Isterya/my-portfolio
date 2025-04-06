@@ -1,3 +1,5 @@
+import PortfolioSlider from '../../components/portfolioSlider/PortfolioSlider';
+
 import './portfolio.scss';
 
 const Portfolio = () => {
@@ -12,6 +14,8 @@ const Portfolio = () => {
             Lets have a look at my <span>Portfolio</span>
           </h2>
         </div>
+
+        <PortfolioSlider />
       </div>
     </section>
   );
