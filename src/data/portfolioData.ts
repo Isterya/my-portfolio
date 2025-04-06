@@ -14,6 +14,7 @@ export interface PortfolioData {
   title: string;
   background: string;
   description: string;
+  link: string;
 }
 
 export const portfolioData: PortfolioData[] = [
@@ -22,14 +23,16 @@ export const portfolioData: PortfolioData[] = [
     title: 'Uber',
     background: firstBg,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+      'Landing page for a leading taxi service, focused on clean responsive design and cross-device compatibility. Built with Bootstrap grid and SASS, ensuring a pixel-perfect adaptive layout.',
+    link: 'https://uber.purrcode.ru/',
   },
   {
     id: uuidv4(),
     title: 'Diary',
     background: secondBg,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+      'SPA designed to present subject information in a clear and structured way. Uses Redux Toolkit for state management and includes an email subscription feature.',
+    link: 'https://diary.purrcode.ru/',
   },
 
   {
@@ -37,14 +40,16 @@ export const portfolioData: PortfolioData[] = [
     title: 'Art',
     background: thirdBg,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+      'Website with dynamic filters, animations, and typical UI/UX challenges — a real-world practice of building large layouts and solving front-end tasks.',
+    link: 'https://art.purrcode.ru/',
   },
   {
     id: uuidv4(),
     title: 'Marvel',
     background: fourthBg,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+      'Dynamic web app fetching content directly from Marvel API. Allows users to explore characters and comics — a solid case of working with third-party APIs and dynamic content rendering.',
+    link: 'https://marvel.purrcode.ru/',
   },
 
   {
@@ -52,13 +57,15 @@ export const portfolioData: PortfolioData[] = [
     title: 'Coffee Shop',
     background: fifthBg,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+      'React-based coffee shop website built entirely with class components. Focused on mastering component architecture and working with dynamic content.',
+    link: 'https://coffee.purrcode.ru/',
   },
   {
     id: uuidv4(),
     title: 'Irvas',
     background: sixthBg,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+      'Corporate-style responsive website with extra attention to design details and UX. Includes a custom-built dynamic calculator for real-time price estimation.',
+    link: 'https://irvas.purrcode.ru/',
   },
 ];

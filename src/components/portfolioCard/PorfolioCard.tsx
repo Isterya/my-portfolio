@@ -4,12 +4,14 @@ interface PortfolioCardProps {
   title: string;
   background: string;
   description: string;
+  link: string;
 }
 
 const PortfolioCard: React.FC<PortfolioCardProps> = ({
   title,
   background,
   description,
+  link,
 }) => {
   return (
     <div
@@ -26,7 +28,9 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
       </div>
 
       <a
-        href="#"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
         className="portfolio-card__icon"
       >
         <svg
