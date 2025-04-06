@@ -1,11 +1,82 @@
+@import '../../styles/variables.scss';
+
 .portfolio-slider {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      position: relative;
+      z-index: 3;
+      width: 24px;
+      height: 24px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      background: #344054;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    &--left {
+      left: -32px;
+    }
+
+    &--right {
+      right: -32px;
+    }
+  }
 
   &__wrapper {
     margin-top: 48px;
     display: flex;
     gap: 24px;
+  }
+
+  &__controls {
+    margin-top: 39px;
+    display: flex;
+    gap: 11px;
+  }
+
+  &__dot {
+    border-radius: 21px;
+    width: 15px;
+    height: 15px;
+    background: #e4e7ec;
+    cursor: pointer;
+    transition: background 0.3s ease, width 0.3s ease;
+
+    &.active {
+      width: 60px;
+      background: $main-color;
+    }
   }
 }

@@ -3,23 +3,60 @@ import { v4 as uuidv4 } from 'uuid';
 
 import PortfolioCard from '../portfolioCard/PorfolioCard';
 
+import arrowLeft from '../../assets/icons/arrow-left.svg';
+import arrowRight from '../../assets/icons/arrow-right.svg';
+
 import './portfolioSlider.scss';
 
-import uberBg from '../../assets/img/works/portf-work-1.jpg';
-import diaryBg from '../../assets/img/works/portf-work-2.jpg';
+import firstBg from '../../assets/img/works/portf-work-1.jpg';
+import secondBg from '../../assets/img/works/portf-work-2.jpg';
+import thirdBg from '../../assets/img/works/portf-work-3.jpg';
+import fourthBg from '../../assets/img/works/portf-work-4.jpg';
+import fifthBg from '../../assets/img/works/portf-work-5.jpg';
+import sixthBg from '../../assets/img/works/portf-work-6.jpg';
 
 const portfolioData = [
   {
     id: uuidv4(),
     title: 'Uber',
-    background: uberBg,
+    background: firstBg,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
   },
   {
     id: uuidv4(),
     title: 'Diary',
-    background: diaryBg,
+    background: secondBg,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+  },
+
+  {
+    id: uuidv4(),
+    title: 'Art',
+    background: thirdBg,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+  },
+  {
+    id: uuidv4(),
+    title: 'Marvel',
+    background: fourthBg,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+  },
+
+  {
+    id: uuidv4(),
+    title: 'Coffee Shop',
+    background: fifthBg,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
+  },
+  {
+    id: uuidv4(),
+    title: 'Irvas',
+    background: sixthBg,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.',
   },
@@ -39,6 +76,14 @@ const PortfolioSlider = () => {
       prevIndex + itemsPerSlide >= portfolioData.length
         ? 0
         : prevIndex + itemsPerSlide
+    );
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0
+        ? portfolioData.length - itemsPerSlide
+        : prevIndex - itemsPerSlide
     );
   }, []);
 
@@ -76,6 +121,28 @@ const PortfolioSlider = () => {
           ))}
       </div>
 
+      {/* Стрелки */}
+      <div
+        className="portfolio-slider__arrow portfolio-slider__arrow--left"
+        onClick={prevSlide}
+      >
+        <img
+          src={arrowLeft}
+          alt="prev"
+        />
+      </div>
+
+      <div
+        className="portfolio-slider__arrow portfolio-slider__arrow--right"
+        onClick={nextSlide}
+      >
+        <img
+          src={arrowRight}
+          alt="next"
+        />
+      </div>
+
+      {/* Точки */}
       <div className="portfolio-slider__controls">
         {Array.from({ length: totalSlides }).map((_, i) => (
           <div
