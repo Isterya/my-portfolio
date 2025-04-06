@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
-export interface ExpDataItem {
+export interface ExperienceDataItem {
   title: string;
   subtitle?: string;
   descr?: string | ReactNode;
 }
 
-export const dataLeft: ExpDataItem[] = [
+export const dataLeft: ExperienceDataItem[] = [
   {
     title: 'Full Secondary Education',
     subtitle: 'Kryvyi Rih, Ukraine (2015–2023)',
@@ -25,7 +25,7 @@ export const dataLeft: ExpDataItem[] = [
   },
 ];
 
-export const dataRight: ExpDataItem[] = [
+export const dataRight: ExperienceDataItem[] = [
   {
     title: 'Kryvyi Rih Lyceum No. 49',
     descr:

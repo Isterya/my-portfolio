@@ -1,4 +1,4 @@
-import { dataLeft, dataRight } from '../../data/expData';
+import { dataLeft, dataRight } from '../../data/experienceData';
 
 import './experience.scss';
 
