@@ -1,0 +1,87 @@
+@import '../../styles/variables.scss';
+
+.price {
+  width: 100%;
+  min-height: 863px;
+  padding: 116px 0 181px 0;
+  border-radius: 50px;
+  background: url('../../assets/img/main-bg.jpg') no-repeat center / cover;
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 700px;
+      text-align: center;
+      position: relative;
+    }
+
+    &__title {
+      position: relative;
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 72px;
+      color: #fcfcfd;
+
+      span {
+        background: $main-color;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -25px;
+        top: 0;
+        width: 27px;
+        height: 28px;
+        background: url('../../assets/icons/price/decor.svg') no-repeat center /
+          contain;
+      }
+    }
+
+    &__descr {
+      position: relative;
+      margin-top: 14px;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      line-height: 30px;
+      color: #f9fafb;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -15px;
+        bottom: -20px;
+        width: 25px;
+        height: 25px;
+        background: url('../../assets/icons/price/left-star-decor.svg')
+          no-repeat center / contain;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -75px;
+        top: 20px;
+        width: 25px;
+        height: 25px;
+        background: url('../../assets/icons/price/right-star-decor.svg')
+          no-repeat center / contain;
+      }
+    }
+  }
+}
