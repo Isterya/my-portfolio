@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import PortfolioCard from '../portfolioCard/PorfolioCard';
-
 import { portfolioData } from '../../data/portfolioData';
 
 import arrowLeft from '../../assets/icons/arrow-left.svg';
@@ -17,7 +16,7 @@ const PortfolioSlider = () => {
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
+  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const totalSlides = Math.ceil(portfolioData.length / itemsPerSlide);
 
@@ -32,10 +31,10 @@ const PortfolioSlider = () => {
 
   const prevSlide = useCallback(() => {
     setDirection('prev');
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0
-        ? portfolioData.length - itemsPerSlide
-        : prevIndex - itemsPerSlide
+    setCurrentIndex(
+      (prevIndex) =>
+        (prevIndex - itemsPerSlide + portfolioData.length) %
+        portfolioData.length
     );
   }, []);
 
@@ -92,7 +91,7 @@ const PortfolioSlider = () => {
         </AnimatePresence>
       </div>
 
-      <div
+      <button
         className="portfolio-slider__arrow portfolio-slider__arrow--left"
         onClick={prevSlide}
       >
@@ -100,9 +99,9 @@ const PortfolioSlider = () => {
           src={arrowLeft}
           alt="prev"
         />
-      </div>
+      </button>
 
-      <div
+      <button
         className="portfolio-slider__arrow portfolio-slider__arrow--right"
         onClick={nextSlide}
       >
@@ -110,7 +109,7 @@ const PortfolioSlider = () => {
           src={arrowRight}
           alt="next"
         />
-      </div>
+      </button>
 
       <div className="portfolio-slider__controls">
         {Array.from({ length: totalSlides }).map((_, i) => (
