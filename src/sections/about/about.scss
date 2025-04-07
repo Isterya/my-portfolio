@@ -13,7 +13,6 @@
     justify-content: space-between;
   }
 
-  // TODO: make the character's image untouchable and immune to the user's actions
   &-character {
     margin-top: 126px;
     position: relative;
@@ -26,6 +25,9 @@
       height: 606px;
       position: absolute;
       bottom: 0;
+      user-select: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
     }
   }
 
