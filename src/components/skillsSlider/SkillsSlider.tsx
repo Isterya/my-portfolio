@@ -17,11 +17,7 @@ const SkillsSlider = () => {
   const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
 
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + itemsPerSlide >= skillsData.length
-        ? 0
-        : prevIndex + itemsPerSlide
-    );
+    setCurrentIndex((prev) => (prev + itemsPerSlide) % skillsData.length);
   }, []);
 
   useEffect(() => {
