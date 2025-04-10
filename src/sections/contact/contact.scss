@@ -1,0 +1,92 @@
+@import '../../styles/variables.scss';
+
+.contact {
+  padding: 101px 0;
+  min-height: 476px;
+  display: flex;
+  justify-content: center;
+
+  &-wrapper {
+    max-width: 750px;
+  }
+
+  &-header {
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 85px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #344054;
+
+    span {
+      background: $main-color;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &-email {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e4e7ec;
+    border-radius: 50px;
+    padding: 14px;
+    width: 832px;
+    height: 86px;
+
+    &__input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: #000;
+      padding-left: 50px;
+      background: transparent;
+
+      &::placeholder {
+        color: #98a2b3;
+      }
+    }
+
+    &__btn {
+      border: none;
+      border-radius: 60px;
+      padding: 20px 40px;
+      width: 126px;
+      height: 64px;
+      background-color: $main-color;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      width: 24px;
+      height: 24px;
+      background: url('../../assets/icons/email.svg') no-repeat center / contain;
+    }
+  }
+
+  &-agreement {
+    font-size: 14px;
+    color: #98a2b3;
+    text-align: center;
+    max-width: 500px;
+  }
+}

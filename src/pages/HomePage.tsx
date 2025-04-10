@@ -6,6 +6,7 @@ import Experience from '../sections/experience/Experience';
 import About from '../sections/about/About';
 import Portfolio from '../sections/portfolio/Portfolio';
 import Price from '../sections/price/Price';
+import Contact from '../sections/contact/Contact';
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
       <About />
       <Portfolio />
       <Price />
+      <Contact />
     </>
   );
 };
