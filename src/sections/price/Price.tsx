@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useCarousel } from '../../hooks/useCarousel';
 
 import PriceCard from '../../components/priceCard/PriceCard';
 import { priceData } from '../../data/priceData';
@@ -9,53 +10,8 @@ const Price = () => {
   const renderedData = [...priceData, ...priceData, ...priceData];
 
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const animationRef = useRef<number | null>(null);
-  const scrollPos = useRef<number>(0);
 
-  const SPEED = 1.5;
-  const currentSpeed = useRef<number>(SPEED);
-  const targetSpeed = useRef<number>(SPEED);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const handleMouseEnter = () => {
-      targetSpeed.current = 0;
-    };
-
-    const handleMouseLeave = () => {
-      targetSpeed.current = SPEED;
-    };
-
-    track.addEventListener('mouseenter', handleMouseEnter);
-    track.addEventListener('mouseleave', handleMouseLeave);
-
-    const animate = () => {
-      if (track) {
-        currentSpeed.current +=
-          (targetSpeed.current - currentSpeed.current) * 0.08;
-
-        scrollPos.current += currentSpeed.current;
-
-        if (scrollPos.current >= track.scrollWidth / 3) {
-          scrollPos.current = 0;
-        }
-
-        track.style.transform = `translateX(-${scrollPos.current}px)`;
-      }
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      track.removeEventListener('mouseenter', handleMouseEnter);
-      track.removeEventListener('mouseleave', handleMouseLeave);
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, []);
+  useCarousel(trackRef, 1.5);
 
   return (
     <section
