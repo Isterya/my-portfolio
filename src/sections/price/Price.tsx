@@ -6,10 +6,11 @@ import { priceData } from '../../data/priceData';
 import './price.scss';
 
 const Price = () => {
+  const renderedData = [...priceData, ...priceData, ...priceData];
+
   const trackRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const scrollPos = useRef<number>(0);
-  const isPaused = useRef(false);
 
   const SPEED = 1.5;
   const currentSpeed = useRef<number>(SPEED);
@@ -32,13 +33,12 @@ const Price = () => {
 
     const animate = () => {
       if (track) {
-        // Плавное приближение к целевой скорости
         currentSpeed.current +=
           (targetSpeed.current - currentSpeed.current) * 0.08;
 
         scrollPos.current += currentSpeed.current;
 
-        if (scrollPos.current >= track.scrollWidth / 2) {
+        if (scrollPos.current >= track.scrollWidth / 3) {
           scrollPos.current = 0;
         }
 
@@ -86,9 +86,9 @@ const Price = () => {
           className="price-carousel__track"
           ref={trackRef}
         >
-          {[...priceData, ...priceData].map((price, index) => (
+          {renderedData.map((price) => (
             <PriceCard
-              key={price.id + index}
+              key={price.id}
               {...price}
             />
           ))}
