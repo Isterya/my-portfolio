@@ -6,6 +6,7 @@
   padding: 116px 0 181px 0;
   border-radius: 50px;
   background: url('../../assets/img/main-bg.jpg') no-repeat center / cover;
+  overflow: hidden;
 
   &-wrapper {
     display: flex;
@@ -88,21 +89,12 @@
   &-carousel {
     margin-top: 96px;
     overflow: hidden;
-    width: 100%;
+    width: calc(784px * 6);
 
     &__track {
       display: flex;
       gap: 33px;
-      animation: scroll 40s linear infinite;
+      will-change: transform;
     }
-  }
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
   }
 }
