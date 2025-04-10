@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { skillsData } from '../../data/skillsData';
-
 import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';

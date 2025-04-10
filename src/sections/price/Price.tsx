@@ -4,6 +4,9 @@ import { useCarousel } from '../../hooks/useCarousel';
 import PriceCard from '../../components/priceCard/PriceCard';
 import { priceData } from '../../data/priceData';
 
+import firstAbstract from '../../assets/img/skills/abstract-figure-1.png';
+import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
+
 import './price.scss';
 
 const Price = () => {
@@ -50,6 +53,17 @@ const Price = () => {
           ))}
         </div>
       </div>
+
+      <img
+        className="price__first-abstract"
+        src={firstAbstract}
+        alt="First abstract figure"
+      />
+      <img
+        className="price__third-abstract"
+        src={thirdAbstract}
+        alt="Third abstract figure"
+      />
     </section>
   );
 };

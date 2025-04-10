@@ -1,8 +1,8 @@
+import SkillsSlider from '../../components/skillsSlider/SkillsSlider';
+
 import firstAbstract from '../../assets/img/skills/abstract-figure-1.png';
 import secondAbstract from '../../assets/img/skills/abstract-figure-2.png';
 import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
-
-import SkillsSlider from '../../components/skillsSlider/SkillsSlider';
 
 import './skills.scss';
 

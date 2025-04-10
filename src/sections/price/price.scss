@@ -1,6 +1,8 @@
 @import '../../styles/variables.scss';
+@import '../../styles/animations.scss';
 
 .price {
+  position: relative;
   width: 100%;
   min-height: 863px;
   padding: 116px 0 181px 0;
@@ -90,6 +92,8 @@
     margin-top: 96px;
     overflow: hidden;
     width: 100%;
+    z-index: 1;
+    position: relative;
 
     &__track {
       display: flex;
@@ -97,5 +101,25 @@
       will-change: transform;
       min-width: 200%;
     }
+  }
+
+  &__first-abstract,
+  &__third-abstract {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  &__first-abstract {
+    left: -184px;
+    top: 50px;
+    animation: rotateSlow 60s linear infinite;
+  }
+
+  &__third-abstract {
+    bottom: -191px;
+    right: -387px;
+    animation: rotateSlow 180s linear infinite;
   }
 }
