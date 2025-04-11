@@ -72,10 +72,12 @@
   }
 
   &__link {
-    background: $main-color;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ff7f00;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: darken(#ff7f00, 10%);
+    }
   }
 }
 
