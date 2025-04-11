@@ -17,7 +17,7 @@ const Contact = () => {
               <input
                 type="email"
                 className="contact-email__input"
-                placeholder="Enter your email"
+                placeholder="Enter Email Address"
                 required
               />
               <button
@@ -29,7 +29,16 @@ const Contact = () => {
             </form>
 
             <div className="contact-agreement">
-              By sending a request you agree with our terms of service
+              <label className="checkbox-container">
+                <input
+                  type="checkbox"
+                  required
+                />
+                <span className="checkmark" />
+                <span>
+                  I agree to the <a href="#">privacy policy</a>
+                </span>
+              </label>
             </div>
           </div>
         </div>
