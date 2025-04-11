@@ -51,7 +51,7 @@
       font-size: 20px;
       letter-spacing: -0.01em;
       color: #000;
-      padding-left: 50px;
+      padding-left: 95px;
       background: transparent;
 
       &::placeholder {
@@ -76,9 +76,23 @@
     &::before {
       content: '';
       position: absolute;
-      left: 30px;
-      width: 24px;
-      height: 24px;
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+      border-radius: 50px;
+      width: 64px;
+      height: 58px;
+      background: #ffead5;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 33px;
+      transform: translateY(-50%);
+      height: 23px;
+      width: 27px;
       background: url('../../assets/icons/email.svg') no-repeat center / contain;
     }
   }
