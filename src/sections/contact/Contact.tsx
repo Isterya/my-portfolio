@@ -9,6 +9,30 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!email || !agreed) {
+      setError('Please enter a valid email and accept the privacy policy');
+      return;
+    }
+
+    setError('');
+    setLoading(true);
+
+    try {
+      // TODO: implement the logic of sending and receiving data
+
+      setSuccess(true);
+      setEmail('');
+      setAgreed(false);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -20,8 +44,14 @@ const Contact = () => {
             Want to Сooperate? <span>Let’s Discuss</span>
           </h2>
 
-          <form className="contact-form">
-            <div className="contact-email">
+          <form
+            className="contact-form"
+            onSubmit={handleSubmit}
+            noValidate
+          >
+            <div
+              className={`contact-email ${error && !email ? 'invalid' : ''}`}
+            >
               <input
                 type="email"
                 className="contact-email__input"
