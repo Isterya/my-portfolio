@@ -1,66 +1,74 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-
 require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
-const CHAT_ID = process.env.CHAT_ID;
+// Env vars
+const { TELEGRAM_TOKEN, CHAT_ID, EMAIL_USER, EMAIL_PASS } = process.env;
 
+// Utils
 const sendToTelegram = async (email) => {
-  const text = `📨 A new request for cooperation!\n\n📧 Email: ${email}`;
-  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+  const message = `📨 A new request for cooperation!\n\n📧 Email: ${email}`;
+  const telegramAPI = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
 
   try {
-    await fetch(url, {
+    await fetch(telegramAPI, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text }),
+      body: JSON.stringify({ chat_id: CHAT_ID, text: message }),
     });
   } catch (err) {
-    console.error('Telegram sending error:', err);
+    console.error('❌ Telegram sending error:', err);
   }
 };
-
-app.post('/send-email', async (req, res) => {
-  const { email } = req.body;
-  try {
-    await sendToTelegram(email);
-    await sendEmailToUser(email);
-
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    console.log('❌ Sending error:', err);
-    return res.status(500).json({ success: false, error: 'Server error' });
-  }
-});
-
-app.listen(5000, () => {
-  console.log('✅ The server is up and running at http://localhost:5000');
-});
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
   },
 });
 
 const sendEmailToUser = async (email) => {
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: EMAIL_USER,
       to: email,
       subject: 'Thanks for your contact!',
       text: 'We received your email and will contact you soon.',
     });
   } catch (err) {
-    console.error('❌ Sending email error:', err);
+    console.error('❌ Email error:', err);
   }
 };
+
+// Routes
+app.post('/send-email', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ success: false, error: 'Email is required' });
+  }
+
+  try {
+    await sendToTelegram(email);
+    await sendEmailToUser(email);
+    res.status(200).json({ success: true });
+  } catch (err) {
+    console.log('❌ Sending error:', err);
+    res.status(500).json({ success: false, error: 'Server error' });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`✅ The server is up running at http://localhost:${PORT}`);
+});
