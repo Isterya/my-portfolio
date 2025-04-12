@@ -4,6 +4,7 @@ import './contact.scss';
 
 const Contact = () => {
   const [email, setEmail] = useState('');
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -41,6 +42,8 @@ const Contact = () => {
             <div className="contact-agreement">
               <label className="checkbox-container">
                 <input
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
                   type="checkbox"
                   required
                 />
