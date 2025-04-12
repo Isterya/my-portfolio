@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './contact.scss';
 
@@ -8,6 +8,8 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  const isInvalid = error && (!email || !agreed);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,6 +35,22 @@ const Contact = () => {
     }
   };
 
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
+
+  useEffect(() => {
+    if (email || agreed) {
+      setError('');
+    }
+  }, [email, agreed]);
+
   return (
     <section
       id="contact"
@@ -49,9 +67,7 @@ const Contact = () => {
             onSubmit={handleSubmit}
             noValidate
           >
-            <div
-              className={`contact-email ${error && !email ? 'invalid' : ''}`}
-            >
+            <div className={`contact-email ${isInvalid ? 'invalid' : ''}`}>
               <input
                 type="email"
                 className="contact-email__input"
