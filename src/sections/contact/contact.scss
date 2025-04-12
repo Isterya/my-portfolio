@@ -176,3 +176,20 @@
     }
   }
 }
+
+.contact-email.invalid {
+  border-color: red;
+}
+
+.form-message {
+  font-size: 14px;
+  margin-top: 5px;
+
+  &.error {
+    color: red;
+  }
+
+  &.success {
+    color: green;
+  }
+}
