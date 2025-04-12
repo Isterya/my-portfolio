@@ -12,8 +12,8 @@ const Contact = () => {
             Want to Сooperate? <span>Let’s Discuss</span>
           </h2>
 
-          <div className="contact-form">
-            <form className="contact-email">
+          <form className="contact-form">
+            <div className="contact-email">
               <input
                 type="email"
                 className="contact-email__input"
@@ -26,7 +26,7 @@ const Contact = () => {
               >
                 Send
               </button>
-            </form>
+            </div>
 
             <div className="contact-agreement">
               <label className="checkbox-container">
@@ -40,7 +40,7 @@ const Contact = () => {
                 </span>
               </label>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
