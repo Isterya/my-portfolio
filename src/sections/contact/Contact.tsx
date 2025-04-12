@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './contact.scss';
 
 const Contact = () => {
+  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -24,6 +25,8 @@ const Contact = () => {
                 type="email"
                 className="contact-email__input"
                 placeholder="Enter Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <button
