@@ -1,6 +1,12 @@
+import { useState } from 'react';
+
 import './contact.scss';
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
   return (
     <section
       id="contact"
@@ -21,10 +27,11 @@ const Contact = () => {
                 required
               />
               <button
+                disabled={loading}
                 type="submit"
                 className="contact-email__btn"
               >
-                Send
+                {loading ? 'Sending...' : 'Send'}
               </button>
             </div>
 
@@ -40,6 +47,13 @@ const Contact = () => {
                 </span>
               </label>
             </div>
+
+            {error && <p className="form-message error">{error}</p>}
+            {success && (
+              <p className="form-message success">
+                Thank you! We’ll be in touch soon.
+              </p>
+            )}
           </form>
         </div>
       </div>
