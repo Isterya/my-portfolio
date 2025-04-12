@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
-import { skillsData } from '../../data/skillsData';
+import { skillsRawData } from '../../data/skillsData';
 import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';
@@ -10,6 +11,13 @@ const itemsPerSlide = 3;
 const intervalTime = 5000;
 
 const SkillsSlider = () => {
+  const skillsData = useMemo(() => {
+    return skillsRawData.map((item) => ({
+      ...item,
+      id: uuidv4(),
+    }));
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
 

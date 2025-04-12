@@ -1,8 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { useCarousel } from '../../hooks/useCarousel';
 
 import PriceCard from '../../components/priceCard/PriceCard';
-import { priceData } from '../../data/priceData';
+import { priceRawData } from '../../data/priceData';
 
 import firstAbstract from '../../assets/img/skills/abstract-figure-1.png';
 import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
@@ -10,6 +12,13 @@ import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
 import './price.scss';
 
 const Price = () => {
+  const priceData = useMemo(() => {
+    return priceRawData.map((item) => ({
+      ...item,
+      id: uuidv4(),
+    }));
+  }, []);
+
   const renderedData = [...priceData, ...priceData, ...priceData];
 
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -45,9 +54,9 @@ const Price = () => {
           className="price-carousel__track"
           ref={trackRef}
         >
-          {renderedData.map((price) => (
+          {renderedData.map((price, i) => (
             <PriceCard
-              key={price.id}
+              key={`${price.id}-${i}`}
               {...price}
             />
           ))}

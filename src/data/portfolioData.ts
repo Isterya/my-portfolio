@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import firstBg from '../assets/img/works/portf-work-1.jpg';
 import secondBg from '../assets/img/works/portf-work-2.jpg';
 
@@ -10,16 +8,14 @@ import fifthBg from '../assets/img/works/portf-work-5.jpg';
 import sixthBg from '../assets/img/works/portf-work-6.jpg';
 
 export interface PortfolioData {
-  id: string;
   title: string;
   background: string;
   description: string;
   link: string;
 }
 
-export const portfolioData: PortfolioData[] = [
+export const portfolioRawData: PortfolioData[] = [
   {
-    id: uuidv4(),
     title: 'Uber',
     background: firstBg,
     description:
@@ -27,7 +23,6 @@ export const portfolioData: PortfolioData[] = [
     link: 'https://uber.purrcode.ru/',
   },
   {
-    id: uuidv4(),
     title: 'Diary',
     background: secondBg,
     description:
@@ -36,7 +31,6 @@ export const portfolioData: PortfolioData[] = [
   },
 
   {
-    id: uuidv4(),
     title: 'Art',
     background: thirdBg,
     description:
@@ -44,7 +38,6 @@ export const portfolioData: PortfolioData[] = [
     link: 'https://art.purrcode.ru/',
   },
   {
-    id: uuidv4(),
     title: 'Marvel',
     background: fourthBg,
     description:
@@ -53,7 +46,6 @@ export const portfolioData: PortfolioData[] = [
   },
 
   {
-    id: uuidv4(),
     title: 'Coffee Shop',
     background: fifthBg,
     description:
@@ -61,7 +53,6 @@ export const portfolioData: PortfolioData[] = [
     link: 'https://coffee.purrcode.ru/',
   },
   {
-    id: uuidv4(),
     title: 'Irvas',
     background: sixthBg,
     description:
