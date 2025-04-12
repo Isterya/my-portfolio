@@ -25,7 +25,7 @@ const SkillsSlider = () => {
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + itemsPerSlide) % skillsData.length);
-  }, []);
+  }, [skillsData]);
 
   useEffect(() => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);

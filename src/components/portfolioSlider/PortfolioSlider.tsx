@@ -35,7 +35,7 @@ const PortfolioSlider = () => {
         ? 0
         : prevIndex + itemsPerSlide
     );
-  }, []);
+  }, [portfolioData]);
 
   const prevSlide = useCallback(() => {
     setDirection('prev');
@@ -44,7 +44,7 @@ const PortfolioSlider = () => {
         (prevIndex - itemsPerSlide + portfolioData.length) %
         portfolioData.length
     );
-  }, []);
+  }, [portfolioData]);
 
   useEffect(() => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
