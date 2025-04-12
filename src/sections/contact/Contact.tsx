@@ -10,11 +10,12 @@ const Contact = () => {
   const [error, setError] = useState('');
 
   const isInvalid = error && (!email || !agreed);
+  const isValidEmail = /\S+@\S+\.\S+/.test(email);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!email || !agreed) {
+    if (!email || !agreed || !isValidEmail) {
       setError('Please enter a valid email and accept the privacy policy');
       return;
     }
