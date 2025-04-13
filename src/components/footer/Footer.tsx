@@ -15,7 +15,10 @@ const Footer = () => {
         <div className="footer-telegram">
           <h2 className="footer-telegram__header">Or let’s connect there</h2>
 
-          <a href="https://t.me/perfectn1ght">
+          <a
+            className="footer-telegram__link"
+            href="https://t.me/perfectn1ght"
+          >
             My Telegram
             <img
               src={ArrowUp}
@@ -24,7 +27,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="divider"></div>
+        <div className="footer-divider"></div>
 
         <div className="footer-wrapper">
           <div className="footer-social">
@@ -32,7 +35,7 @@ const Footer = () => {
               <a href="#home">
                 <img
                   src={logo}
-                  alt="logo"
+                  alt="isterya logo"
                 />
               </a>
               <h3>isterya</h3>
@@ -78,7 +81,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-nav">
+          <nav className="footer-nav">
             <h4 className="footer-title">Navigation</h4>
 
             <ul className="footer-nav__list">
@@ -98,23 +101,25 @@ const Footer = () => {
                 <a href="#price">Price</a>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          <div className="footer-contact">
+          <address className="footer-contact">
             <h4 className="footer-title">Contact</h4>
 
             <ul className="footer-contact__list">
               <li className="footer-contact__item">
-                <a href="#">+48 784372194</a>
+                <a href="tel:+48784372194">+48 784372194</a>
               </li>
               <li className="footer-contact__item">
-                <a href="#">by.connectme@gmail.com</a>
+                <a href="mailto:by.connectme@gmail.com">
+                  by.connectme@gmail.com
+                </a>
               </li>
               <li className="footer-contact__item">
                 <a href="#">purrcode.ru</a>
               </li>
             </ul>
-          </div>
+          </address>
 
           <div className="footer-email">
             <h4 className="footer-title">Get the latest information</h4>
@@ -123,7 +128,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="divider"></div>
+        <div className="footer-divider"></div>
       </div>
     </footer>
   );
