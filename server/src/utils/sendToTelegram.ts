@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
-const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
-const CHAT_ID = process.env.CHAT_ID;
-
 export const sendToTelegram = async (email: string): Promise<void> => {
+  const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+  const CHAT_ID = process.env.CHAT_ID;
+
   if (!TELEGRAM_TOKEN || !CHAT_ID) {
     throw new Error('Telegram credentials not set');
   }
