@@ -15,10 +15,18 @@ export interface contactInfo {
 }
 
 export const socialLinks: SocialLinks[] = [
-  { icon: facebookIcon, alt: 'facebook', href: '#' },
-  { icon: telegramIcon, alt: 'telegram', href: '#' },
-  { icon: instagramIcon, alt: 'instagram', href: '#' },
-  { icon: githubIcon, alt: 'github', href: '#' },
+  {
+    icon: facebookIcon,
+    alt: 'facebook',
+    href: 'https://www.facebook.com/bohdan.one.bro',
+  },
+  { icon: telegramIcon, alt: 'telegram', href: 'https://t.me/perfectn1ght' },
+  {
+    icon: instagramIcon,
+    alt: 'instagram',
+    href: 'https://www.instagram.com/dad.isterya/',
+  },
+  { icon: githubIcon, alt: 'github', href: 'https://github.com/Isterya' },
 ];
 
 export const navLinks: string[] = [
@@ -32,5 +40,5 @@ export const navLinks: string[] = [
 export const contactInfo: contactInfo[] = [
   { text: '+48 784372194', href: 'tel:+48784372194' },
   { text: 'by.connectme@gmail.com', href: 'mailto:by.connectme@gmail.com' },
-  { text: 'purrcode.ru', href: '#' },
+  { text: 'purrcode.ru', href: 'https://purrcode.ru/' },
 ];

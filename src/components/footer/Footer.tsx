@@ -14,6 +14,8 @@ const Footer = () => {
           <a
             className="footer-telegram__link"
             href="https://t.me/perfectn1ght"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             My Telegram
             <img
@@ -27,16 +29,15 @@ const Footer = () => {
 
         <div className="footer-wrapper">
           <div className="footer-social">
-            <div className="footer__logo">
+            <div className="footer-social__logo">
               <a href="#home">
                 <img
                   src={logo}
                   alt="isterya logo"
                 />
               </a>
-              <h3>isterya</h3>
             </div>
-            <p className="footer__descr">
+            <p className="footer-social__descr">
               My social networks are always open for cooperation.
             </p>
 
@@ -46,7 +47,11 @@ const Footer = () => {
                   key={alt}
                   className="footer-social__item"
                 >
-                  <a href={href}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={icon}
                       alt={`Link to ${alt}`}
@@ -71,7 +76,7 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <address className="footer-contact">
+          <div className="footer-contact">
             <h4 className="footer-title">Contact</h4>
             <ul className="footer-contact__list">
               {contactInfo.map(({ text, href }) => (
@@ -83,7 +88,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </address>
+          </div>
 
           <div className="footer-email">
             <h4 className="footer-title">Get the latest information</h4>
