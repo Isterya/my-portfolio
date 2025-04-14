@@ -127,6 +127,17 @@
     }
   }
 
+  &-note {
+    max-width: 325px;
+
+    &__text {
+      margin-top: 28px;
+      font-weight: 400;
+      font-size: 16px;
+      color: #fcfcfd;
+    }
+  }
+
   &-rights {
     display: flex;
     justify-content: space-between;

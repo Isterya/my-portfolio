@@ -90,9 +90,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-email">
-            <h4 className="footer-title">Get the latest information</h4>
-            {/* TODO: make the email form */}
+          <div className="footer-note">
+            <h4 className="footer-title">You made it.</h4>
+            <p className="footer-note__text">
+              Not everyone does. If something resonated — you know where to find
+              me.
+            </p>
           </div>
         </div>
 
