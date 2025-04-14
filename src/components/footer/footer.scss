@@ -18,6 +18,7 @@
       color: #fcfcfd;
     }
 
+    // TODO: improve display and add hover effect
     &__link {
       border-radius: 60px;
       padding: 16px 26px;
@@ -122,6 +123,24 @@
 
       &:hover {
         color: #fd853a;
+      }
+    }
+  }
+
+  &-rights {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-weight: 400;
+      font-size: 18px;
+      color: #fff;
+
+      a {
+        transition: color 0.3s ease;
+        &:hover {
+          color: #fd853a;
+        }
       }
     }
   }

@@ -4,6 +4,8 @@ import logo from '../../assets/icons/logo.svg';
 
 import './navBar.scss';
 
+// TODO: make the menu interactively fixed when scrolling the page
+
 const SECTIONS = [
   'home',
   'skills',

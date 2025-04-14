@@ -1,3 +1,5 @@
+// TODO: implement the User terms page
+
 const UserTerms = () => {
   return <></>;
 };

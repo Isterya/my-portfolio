@@ -97,6 +97,26 @@ const Footer = () => {
         </div>
 
         <div className="footer-divider" />
+
+        <div className="footer-rights">
+          <p>Copyright© 2025 Isterya. All Rights Reserved.</p>
+
+          <p>
+            <a
+              href="#"
+              target="_blank"
+            >
+              User Terms & Conditions
+            </a>{' '}
+            |{' '}
+            <a
+              href="#"
+              target="_blank"
+            >
+              Privacy Policy
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
