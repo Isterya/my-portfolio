@@ -1,21 +1,16 @@
+import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
 
-import HomePage from '../pages/HomePage';
-import PrivacyPolicy from '../pages/privacyPolicy/PrivacyPolicy';
-import UserTerms from '../pages/userTerms/UserTerms';
+const HomePage = lazy(() => import('../pages/HomePage'));
+const PrivacyPolicyPage = lazy(
+  () => import('../pages/privacyPolicy/PrivacyPolicy')
+);
+const UserTermsPage = lazy(() => import('../pages/userTerms/UserTerms'));
+const Page404 = lazy(() => import('../pages/page404/Page404'));
 
 export const routes: RouteObject[] = [
-  {
-    path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/privacy-policy',
-    element: <PrivacyPolicy />,
-  },
-  {
-    path: '/user-terms',
-    element: <UserTerms />,
-  },
-  { path: '*', element: <h1>404 — Not Found</h1> },
+  { path: '/', element: <HomePage /> },
+  { path: '/privacy-policy', element: <PrivacyPolicyPage /> },
+  { path: '/user-terms', element: <UserTermsPage /> },
+  { path: '*', element: <Page404 /> },
 ];
