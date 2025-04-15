@@ -1,32 +1,15 @@
-import { BrowserRouter, useLocation, useRoutes } from 'react-router-dom';
-import { useEffect } from 'react';
-import { routes } from './routes';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
-
-function AppContent() {
-  const routing = useRoutes(routes);
-
-  return (
-    <>
-      <ScrollToTop />
-      {routing}
-    </>
-  );
-}
+import { BrowserRouter } from 'react-router-dom';
+import { Suspense } from 'react';
+import ScrollToTop from './components/common/ScrollToTop';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <ScrollToTop />
+      <Suspense fallback={<div>Loading...</div>}>
+        <AppRoutes />
+      </Suspense>
     </BrowserRouter>
   );
 }
