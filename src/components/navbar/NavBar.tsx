@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-
 import logo from '../../assets/icons/logo.svg';
 
 import './navBar.scss';
-
-// TODO: make the menu interactively fixed when scrolling the page
 
 const SECTIONS = [
   'home',
@@ -18,9 +15,13 @@ type Section = (typeof SECTIONS)[number];
 
 const NavBar = () => {
   const [activeSection, setActiveSection] = useState<Section>('home');
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+
       const sections = document.querySelectorAll<HTMLElement>('section');
       let currentSection: Section = 'home';
 
@@ -29,7 +30,7 @@ const NavBar = () => {
         const sectionId = section.getAttribute('id') as Section | null;
 
         if (
-          window.scrollY >= sectionTop &&
+          scrollY >= sectionTop &&
           sectionId &&
           SECTIONS.includes(sectionId)
         ) {
@@ -45,7 +46,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
       <ul className="navbar-list navbar-list--left">
         {SECTIONS.slice(0, 3).map((section) => (
           <li
