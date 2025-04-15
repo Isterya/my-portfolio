@@ -18,25 +18,33 @@
       color: #fcfcfd;
     }
 
-    // TODO: improve display and add hover effect
     &__link {
       border-radius: 60px;
       padding: 16px 26px;
       background: $main-color;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      transform: translateY(0);
 
       font-weight: 500;
       font-size: 25px;
       color: #fff;
+      text-decoration: none;
 
-      &:hover img {
-        transform: rotate(45deg);
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+        img {
+          transform: rotate(45deg) scale(1.1);
+        }
       }
 
       img {
-        max-width: 38px;
+        max-width: 32px;
         transition: transform 0.3s ease;
       }
     }
