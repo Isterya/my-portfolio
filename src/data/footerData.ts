@@ -38,7 +38,6 @@ export const navLinks: string[] = [
 ];
 
 export const contactInfo: ContactInfo[] = [
-  { text: '+48 784372194', href: 'tel:+48784372194' },
   { text: 'by.connectme@gmail.com', href: 'mailto:by.connectme@gmail.com' },
   { text: 'purrcode.ru', href: 'https://purrcode.ru/' },
 ];
