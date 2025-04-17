@@ -1,4 +1,5 @@
 import TableOfContents from '../../components/tableOfContents/TableOfContents';
+import { privacyPolicySections } from '../../data/tocData';
 
 import './privacyPolicyPage.scss';
 
@@ -9,7 +10,7 @@ const PrivacyPolicyPage = () => {
         <h1>Privacy Policy</h1>
         <h2>Last updated: April 17, 2025</h2>
 
-        <TableOfContents />
+        <TableOfContents sections={privacyPolicySections} />
 
         <p>
           This Privacy Policy explains how your personal data is collected,
