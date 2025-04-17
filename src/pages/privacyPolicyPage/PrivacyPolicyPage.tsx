@@ -2,7 +2,7 @@ import './privacyPolicyPage.scss';
 
 const PrivacyPolicyPage = () => {
   return (
-    <section className="policy">
+    <main className="policy">
       <div className="policy-container">
         <h1>Privacy Policy</h1>
         <h2>Last updated: April 17, 2025</h2>
@@ -15,7 +15,7 @@ const PrivacyPolicyPage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            http://www.isterya.dev
+            www.isterya.dev
           </a>{' '}
           or interact with Isterya | Web Developer — an individual offering web
           development services (such as landing pages, e-commerce sites, and
@@ -33,7 +33,6 @@ const PrivacyPolicyPage = () => {
           company), based in Poland, providing freelance and contract-based web
           development services.
         </p>
-
         <p>
           Contact:{' '}
           <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
@@ -44,7 +43,6 @@ const PrivacyPolicyPage = () => {
           Depending on how you interact with the site, I may collect the
           following:
         </p>
-
         <ul>
           <li>Email address (if you contact me)</li>
           <li>Usage data (via cookies and analytics tools)</li>
@@ -52,19 +50,16 @@ const PrivacyPolicyPage = () => {
             Project-related info (if you request a quote or discuss a service)
           </li>
         </ul>
-
         <p>I do not require account creation or store passwords.</p>
 
         <h3>How I Use Your Data</h3>
         <p>I use your data only when necessary:</p>
-
         <ul>
           <li>To respond to inquiries or provide services</li>
           <li>To manage quotes or freelance agreements</li>
           <li>To improve the website experience (analytics)</li>
           <li>To comply with legal obligations</li>
         </ul>
-
         <p>I do not sell or rent your data. Ever.</p>
 
         <h3>Cookies and Analytics</h3>
@@ -72,7 +67,6 @@ const PrivacyPolicyPage = () => {
           This website uses basic cookies and analytics tools (like Google
           Analytics) to understand traffic and improve user experience.
         </p>
-
         <p>You can control cookie preferences in your browser settings.</p>
 
         <h3>Data Sharing</h3>
@@ -81,7 +75,6 @@ const PrivacyPolicyPage = () => {
           email providers or analytics platforms), solely to operate the
           service.
         </p>
-
         <p>I do not share your data for marketing or profiling purposes.</p>
 
         <h3>Legal Basis (GDPR Compliance)</h3>
@@ -89,7 +82,6 @@ const PrivacyPolicyPage = () => {
           If you're located in the European Economic Area (EEA), I process your
           data under these legal bases:
         </p>
-
         <ul>
           <li>Your consent (e.g. submitting a contact form)</li>
           <li>Performance of a contract (e.g. service request)</li>
@@ -98,14 +90,12 @@ const PrivacyPolicyPage = () => {
 
         <h3>Your Rights</h3>
         <p>You have the right to:</p>
-
         <ul>
           <li>Access, update, or delete your personal data</li>
           <li>Withdraw consent</li>
           <li>Object to processing</li>
           <li>Lodge a complaint with a data protection authority</li>
         </ul>
-
         <p>
           To exercise your rights, email{' '}
           <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
@@ -113,7 +103,6 @@ const PrivacyPolicyPage = () => {
 
         <h3>Data Retention</h3>
         <p>I keep your data only as long as needed for:</p>
-
         <ul>
           <li>Providing services or communication</li>
           <li>Complying with legal obligations (e.g. tax reporting)</li>
@@ -150,7 +139,7 @@ const PrivacyPolicyPage = () => {
           <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
         </p>
       </div>
-    </section>
+    </main>
   );
 };
 
