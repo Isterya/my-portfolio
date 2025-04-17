@@ -106,16 +106,21 @@ const Footer = ({ simplified }: FooterProps) => {
             </ul>
           </div>
 
-          {!simplified && (
-            <>
-              <div className="footer-note">
-                <h4 className="footer-title">You made it.</h4>
-                <p className="footer-note__text">
-                  Not everyone does. If something resonated — you know where to
-                  find me.
-                </p>
-              </div>
-            </>
+          {!simplified ? (
+            <div className="footer-note">
+              <h4 className="footer-title">You made it.</h4>
+              <p className="footer-note__text">
+                Not everyone does. If something resonated — you know where to
+                find me.
+              </p>
+            </div>
+          ) : (
+            <div className="footer-note">
+              <h4 className="footer-title">Stay in touch</h4>
+              <p className="footer-note__text">
+                For questions or cooperation, feel free to contact me.
+              </p>
+            </div>
           )}
         </div>
 

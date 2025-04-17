@@ -1,5 +1,4 @@
 import NavBar from '../components/navBar/NavBar';
-import Footer from '../components/footer/Footer';
 
 import Hero from '../sections/hero/Hero';
 import Skills from '../sections/skills/Skills';
