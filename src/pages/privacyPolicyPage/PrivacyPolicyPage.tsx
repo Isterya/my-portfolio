@@ -4,7 +4,7 @@ import './privacyPolicyPage.scss';
 
 const PrivacyPolicyPage = () => {
   return (
-    <main className="policy">
+    <div className="policy">
       <div className="policy-container">
         <h1>Privacy Policy</h1>
         <h2>Last updated: April 17, 2025</h2>
@@ -143,7 +143,7 @@ const PrivacyPolicyPage = () => {
           <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
         </p>
       </div>
-    </main>
+    </div>
   );
 };
 
