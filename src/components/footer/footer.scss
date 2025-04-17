@@ -97,6 +97,7 @@
 
   &-nav {
     &__list {
+      list-style-type: none;
       margin-top: 28px;
       display: flex;
       flex-direction: column;
@@ -117,6 +118,7 @@
 
   &-contact {
     &__list {
+      list-style-type: none;
       margin-top: 28px;
       display: flex;
       flex-direction: column;
