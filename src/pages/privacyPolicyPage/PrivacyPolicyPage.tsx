@@ -115,8 +115,9 @@ const PrivacyPolicyPage = () => {
 
         <h3 id="security">Security</h3>
         <p>
-          I take reasonable technical and organizational steps to protect your
-          data. However, no online method is 100% secure.
+          I implement industry-standard security measures to safeguard your
+          data; however, please note that no online transmission or storage
+          method is entirely secure.
         </p>
 
         <h3 id="children">Children’s Privacy</h3>

@@ -39,5 +39,5 @@ export const navLinks: string[] = [
 
 export const contactInfo: ContactInfo[] = [
   { text: 'by.connectme@gmail.com', href: 'mailto:by.connectme@gmail.com' },
-  { text: 'purrcode.ru', href: 'https://purrcode.ru/' },
+  { text: 'www.isterya.dev', href: 'http://www.isterya.dev' },
 ];
