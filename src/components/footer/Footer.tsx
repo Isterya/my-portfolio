@@ -7,27 +7,37 @@ import logo from '../../assets/icons/full-logo.svg';
 
 import './footer.scss';
 
-const Footer = () => {
+type FooterProps = {
+  simplified: boolean;
+};
+
+const Footer = ({ simplified }: FooterProps) => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-telegram">
-          <h2 className="footer-telegram__header">Or let’s connect there</h2>
-          <a
-            className="footer-telegram__link"
-            href="https://t.me/perfectn1ght"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            My Telegram
-            <img
-              src={ArrowUp}
-              alt="Arrow for the link"
-            />
-          </a>
-        </div>
+        {!simplified && (
+          <>
+            <div className="footer-telegram">
+              <h2 className="footer-telegram__header">
+                Or let’s connect there
+              </h2>
+              <a
+                className="footer-telegram__link"
+                href="https://t.me/perfectn1ght"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                My Telegram
+                <img
+                  src={ArrowUp}
+                  alt="Arrow for the link"
+                />
+              </a>
+            </div>
 
-        <div className="footer-divider" />
+            <div className="footer-divider" />
+          </>
+        )}
 
         <div className="footer-wrapper">
           <div className="footer-social">
@@ -64,19 +74,23 @@ const Footer = () => {
             </ul>
           </div>
 
-          <nav className="footer-nav">
-            <h4 className="footer-title">Navigation</h4>
-            <ul className="footer-nav__list">
-              {navLinks.map((link) => (
-                <li
-                  key={link}
-                  className="footer-nav__item"
-                >
-                  <a href={`#${link.toLowerCase()}`}>{link}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {!simplified && (
+            <>
+              <nav className="footer-nav">
+                <h4 className="footer-title">Navigation</h4>
+                <ul className="footer-nav__list">
+                  {navLinks.map((link) => (
+                    <li
+                      key={link}
+                      className="footer-nav__item"
+                    >
+                      <a href={`#${link.toLowerCase()}`}>{link}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </>
+          )}
 
           <div className="footer-contact">
             <h4 className="footer-title">Contact</h4>
@@ -92,13 +106,17 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-note">
-            <h4 className="footer-title">You made it.</h4>
-            <p className="footer-note__text">
-              Not everyone does. If something resonated — you know where to find
-              me.
-            </p>
-          </div>
+          {!simplified && (
+            <>
+              <div className="footer-note">
+                <h4 className="footer-title">You made it.</h4>
+                <p className="footer-note__text">
+                  Not everyone does. If something resonated — you know where to
+                  find me.
+                </p>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="footer-divider" />

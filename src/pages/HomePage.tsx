@@ -21,8 +21,6 @@ const HomePage = () => {
       <Portfolio />
       <Price />
       <Contact />
-
-      <Footer />
     </>
   );
 };
