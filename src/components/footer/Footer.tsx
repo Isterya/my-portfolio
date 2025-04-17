@@ -1,3 +1,5 @@
+import { Link, NavLink } from 'react-router-dom';
+
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
 
 import ArrowUp from '../../assets/icons/hero/arrow-up.svg';
@@ -30,12 +32,12 @@ const Footer = () => {
         <div className="footer-wrapper">
           <div className="footer-social">
             <div className="footer-social__logo">
-              <a href="#home">
+              <Link to="/">
                 <img
                   src={logo}
                   alt="isterya logo"
                 />
-              </a>
+              </Link>
             </div>
             <p className="footer-social__descr">
               My social networks are always open for cooperation.
@@ -105,19 +107,8 @@ const Footer = () => {
           <p>Copyright© 2025 Isterya. All Rights Reserved.</p>
 
           <p>
-            <a
-              href="#"
-              target="_blank"
-            >
-              User Terms & Conditions
-            </a>{' '}
-            |{' '}
-            <a
-              href="#"
-              target="_blank"
-            >
-              Privacy Policy
-            </a>
+            <NavLink to="/user-terms">User Terms & Conditions</NavLink> |{' '}
+            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
           </p>
         </div>
       </div>

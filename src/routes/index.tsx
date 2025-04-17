@@ -3,9 +3,11 @@ import { RouteObject } from 'react-router-dom';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const PrivacyPolicyPage = lazy(
-  () => import('../pages/privacyPolicy/PrivacyPolicy')
+  () => import('../pages/privacyPolicyPage/PrivacyPolicyPage')
 );
-const UserTermsPage = lazy(() => import('../pages/userTerms/UserTerms'));
+const UserTermsPage = lazy(
+  () => import('../pages/userTermsPage/UserTermsPage')
+);
 const Page404 = lazy(() => import('../pages/page404/Page404'));
 
 export const routes: RouteObject[] = [

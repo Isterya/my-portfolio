@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './contact.scss';
 
@@ -102,7 +103,8 @@ const Contact = () => {
                 />
                 <span className="checkmark" />
                 <span>
-                  I agree to the <a href="#">privacy policy</a>
+                  I agree to the{' '}
+                  <Link to="/privacy-policy">privacy policy</Link>
                 </span>
               </label>
             </div>
