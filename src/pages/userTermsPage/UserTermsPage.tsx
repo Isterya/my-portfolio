@@ -1,6 +1,6 @@
 // TODO: implement the User terms page
 
-const UserTerms = () => {
+const UserTermsPage = () => {
   return (
     <>
       <h1>Its a User terms page</h1>
@@ -8,4 +8,4 @@ const UserTerms = () => {
   );
 };
 
-export default UserTerms;
+export default UserTermsPage;
