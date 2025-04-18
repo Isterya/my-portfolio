@@ -1,3 +1,6 @@
+import SEO from '../components/SEO';
+import { seoHome } from '../data/seoData';
+
 import NavBar from '../components/navBar/NavBar';
 
 import Hero from '../sections/hero/Hero';
@@ -11,6 +14,8 @@ import Contact from '../sections/contact/Contact';
 const HomePage = () => {
   return (
     <>
+      <SEO {...seoHome} />
+
       <NavBar />
 
       <Hero />
