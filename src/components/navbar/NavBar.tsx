@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/icons/logo.svg';
 
 import './navBar.scss';
@@ -14,20 +13,27 @@ const SECTIONS = [
 ] as const;
 type Section = (typeof SECTIONS)[number];
 
+const SCROLL_THRESHOLD = 50;
+const SECTION_OFFSET = 100;
+
 const NavBar = () => {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const sectionsRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
+    sectionsRef.current = Array.from(
+      document.querySelectorAll<HTMLElement>('section')
+    );
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 50);
+      setIsScrolled(scrollY > SCROLL_THRESHOLD);
 
-      const sections = document.querySelectorAll<HTMLElement>('section');
       let currentSection: Section = 'home';
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
+      sectionsRef.current.forEach((section) => {
+        const sectionTop = section.offsetTop - SECTION_OFFSET;
         const sectionId = section.getAttribute('id') as Section | null;
 
         if (
