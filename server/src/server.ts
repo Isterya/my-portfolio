@@ -1,7 +1,12 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import rateLimit from 'express-rate-limit';
+import { z } from 'zod';
+
 import { sendToTelegram } from './utils/sendToTelegram';
 import { sendEmailToUser } from './utils/sendEmailToUser';
 
@@ -11,24 +16,59 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
+app.use(helmet());
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.post('/send-email', async (req: Request, res: Response) => {
-  const { email } = req.body as { email: string };
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  message: 'Too many requests, please try again later.',
+});
+app.use('/send-email', limiter);
 
-  const isValidEmail = /\S+@\S+\.\S+/.test(email);
-  if (!email || !isValidEmail) {
-    return res.status(400).json({ success: false, error: 'Invalid email' });
-  }
+const emailSchema = z.object({
+  email: z.string().email(),
+});
 
-  try {
-    await sendToTelegram(email);
-    await sendEmailToUser(email);
-    res.status(200).json({ success: true });
-  } catch (err) {
-    console.error('❌ Error sending:', err);
-    res.status(500).json({ success: false, error: 'Server error' });
-  }
+const asyncHandler =
+  (fn: Function) => (req: Request, res: Response, next: NextFunction) =>
+    Promise.resolve(fn(req, res, next)).catch(next);
+
+app.post(
+  '/send-email',
+  asyncHandler(async (req: Request, res: Response) => {
+    const parsed = emailSchema.safeParse(req.body);
+
+    if (!parsed.success) {
+      return res
+        .status(400)
+        .json({ success: false, error: 'Invalid email format' });
+    }
+
+    const { email } = parsed.data;
+
+    const results = await Promise.allSettled([
+      sendToTelegram(email),
+      sendEmailToUser(email),
+    ]);
+
+    const allOk = results.every((r) => r.status === 'fulfilled');
+
+    if (allOk) {
+      res.status(200).json({ success: true });
+    } else {
+      console.log('❌ At least one task failed:', results);
+      res
+        .status(500)
+        .json({ success: false, error: 'Partial failute in sending' });
+    }
+  })
+);
+
+app.use((err: Error, req: Request, res: Response) => {
+  console.log('❌ Unexpected error', err);
+  res.status(500).json({ success: false, error: 'Server error' });
 });
 
 app.listen(PORT, () => {
