@@ -50,13 +50,13 @@ const NavBar = () => {
     <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
       <ul className="navbar-list navbar-list--left">
         {SECTIONS.slice(0, 3).map((section) => (
-          <li
-            key={section}
-            className={`navbar-list__item ${
-              activeSection === section ? 'active' : ''
-            }`}
-          >
-            <a href={`#${section}`}>
+          <li key={section}>
+            <a
+              className={`navbar-list__item ${
+                activeSection === section ? 'active' : ''
+              }`}
+              href={`#${section}`}
+            >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </a>
           </li>
@@ -74,13 +74,13 @@ const NavBar = () => {
 
       <ul className="navbar-list navbar-list--right">
         {SECTIONS.slice(3, 6).map((section) => (
-          <li
-            key={section}
-            className={`navbar-list__item ${
-              activeSection === section ? 'active' : ''
-            }`}
-          >
-            <a href={`#${section}`}>
+          <li key={section}>
+            <a
+              className={`navbar-list__item ${
+                activeSection === section ? 'active' : ''
+              }`}
+              href={`#${section}`}
+            >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </a>
           </li>
