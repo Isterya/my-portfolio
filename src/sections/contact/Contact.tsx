@@ -21,23 +21,29 @@ const Contact = () => {
       return;
     }
 
+    if (success) return;
+
     setError('');
     setLoading(true);
 
     try {
-      await fetch('http://localhost:5000/send-email', {
+      const res = await fetch('http://localhost:5000/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
 
       setSuccess(true);
       setEmail('');
       setAgreed(false);
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }

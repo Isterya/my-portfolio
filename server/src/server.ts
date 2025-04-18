@@ -55,18 +55,25 @@ app.post(
 
     const allOk = results.every((r) => r.status === 'fulfilled');
 
-    if (allOk) {
-      res.status(200).json({ success: true });
-    } else {
-      console.log('❌ At least one task failed:', results);
-      res
-        .status(500)
-        .json({ success: false, error: 'Partial failute in sending' });
+    if (!allOk) {
+      const failed = results
+        .map((r, i) =>
+          r.status === 'rejected' ? (i === 0 ? 'Telegram' : 'Email') : null
+        )
+        .filter(Boolean);
+
+      console.log(`❌ Failed: ${failed.join(', ')}`, results);
+      return res.status(500).json({
+        success: false,
+        error: `Error sending to: ${failed.join(', ')}`,
+      });
     }
+
+    res.status(200).json({ success: true, message: 'Email sent successfully' });
   })
 );
 
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log('❌ Unexpected error', err);
   res.status(500).json({ success: false, error: 'Server error' });
 });
