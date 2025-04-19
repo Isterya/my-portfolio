@@ -1,6 +1,4 @@
-import type { Config } from 'stylelint';
-
-const config: Config = {
+const config = {
   extends: ['stylelint-config-standard-scss', 'stylelint-prettier/recommended'],
   plugins: ['stylelint-scss'],
   rules: {
@@ -12,12 +10,8 @@ const config: Config = {
     'selector-class-pattern': null,
 
     'no-empty-source': null,
-
-    'declaration-block-trailing-semicolon': 'always',
-    'block-no-empty': true,
-    'color-no-invalid-hex': true,
   },
-  ignoreFiles: ['**/*.ts', '**/*.tsx', '**/*.js'],
+  ignoreFiles: ['**/*.ts', '**/*.tsx'],
 };
 
 export default config;

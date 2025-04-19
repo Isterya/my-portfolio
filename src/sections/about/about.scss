@@ -43,7 +43,6 @@
       span {
         background: $main-color;
         background-clip: text;
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
@@ -91,7 +90,6 @@
       padding: 25px 43px;
       width: 214px;
       height: 99px;
-
       font-weight: 600;
       font-size: 32px;
       line-height: 48px;
