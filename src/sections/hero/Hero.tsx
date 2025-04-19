@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+import { getYearsOfExperience } from '../../utils/getYearOfExperience';
+
 import quote from '../../assets/icons/hero/quote.svg';
 import stars from '../../assets/icons/hero/stars.svg';
 import arrowUp from '../../assets/icons/hero/arrow-up.svg';
@@ -13,6 +15,8 @@ const Hero = () => {
   const [activeLink, setActiveLink] = useState<'portfolio' | 'about'>(
     'portfolio'
   );
+
+  const years = getYearsOfExperience();
 
   return (
     <section
@@ -65,7 +69,7 @@ const Hero = () => {
             />
 
             <div>
-              <div className="hero-experience__years">2 Years</div>
+              <div className="hero-experience__years">{years} Years</div>
               <div className="hero-experience__descr">Experience</div>
             </div>
           </motion.div>

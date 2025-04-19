@@ -1,8 +1,12 @@
+import { getYearsOfExperience } from '../../utils/getYearOfExperience';
+
 import character from '../../assets/img/about/about-character.png';
 
 import './about.scss';
 
 const About = () => {
+  const years = getYearsOfExperience();
+
   return (
     <section
       id="about"
@@ -39,7 +43,7 @@ const About = () => {
                 <p>Projects Completed</p>
               </div>
               <div className="about-text__stats-experience">
-                <h3>2+ Years</h3>
+                <h3>{years}+ Years</h3>
                 <p>Proven Experience</p>
               </div>
             </div>
