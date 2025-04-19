@@ -28,6 +28,7 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
       import: importPlugin,
       react: reactPlugin,
+      prettier: require('eslint-plugin-prettier'),
     },
     settings: {
       react: {
@@ -54,23 +55,13 @@ export default tseslint.config(
       'react/jsx-uses-vars': 'error',
 
       // Vite-specific optimization
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
       // Import sorting & hygiene
       'import/order': [
         'warn',
         {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
           pathGroups: [
             {
               pattern: '@/**',
@@ -84,6 +75,9 @@ export default tseslint.config(
       ],
       'import/no-unresolved': 'off',
       'import/no-duplicates': 'warn',
+
+      // Prettier
+      'prettier/prettier': 'warn',
     },
-  }
+  },
 );
