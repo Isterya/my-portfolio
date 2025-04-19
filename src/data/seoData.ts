@@ -34,5 +34,4 @@ export const seo404: SeoData = {
   description:
     'The page you’re looking for isn’t here. It might have been moved, renamed, or never existed. Let’s bring you back to something awesome.',
   url: 'https://isterya.dev',
-  image: 'https://isterya.dev/assets/img/preview-home.jpg',
 };

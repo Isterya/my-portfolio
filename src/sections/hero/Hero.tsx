@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 import quote from '../../assets/icons/hero/quote.svg';
 import stars from '../../assets/icons/hero/stars.svg';
@@ -20,7 +21,12 @@ const Hero = () => {
     >
       <div className="container">
         <div className="hero-wrapper">
-          <div className="hero-quote">
+          <motion.div
+            className="hero-quote"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <img
               className="hero-quote__img"
               src={quote}
@@ -30,17 +36,28 @@ const Hero = () => {
             <p className="hero-quote__text">
               Relentless ambition, resilience, and reliability—this is who I am.
             </p>
-          </div>
+          </motion.div>
 
           <div className="hero-header">
             <div className="hero-header__subtitle">Hello!</div>
 
-            <h1 className="hero-header__main-title">
-              I’m <span>Bohdan</span>, <br /> Web Developer
-            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="hero-header__main-title">
+                I’m <span>Bohdan</span>, <br /> Web Developer
+              </h1>
+            </motion.div>
           </div>
 
-          <div className="hero-experience">
+          <motion.div
+            className="hero-experience"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <img
               className="hero-experience__img"
               src={stars}
@@ -51,7 +68,7 @@ const Hero = () => {
               <div className="hero-experience__years">2 Years</div>
               <div className="hero-experience__descr">Experience</div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="hero-character">
@@ -62,7 +79,11 @@ const Hero = () => {
           />
 
           <div className="hero-links">
-            <a
+            <motion.a
+              whileHover={{
+                scale: 1.03,
+                transition: { type: 'spring', stiffness: 300 },
+              }}
               href="#portfolio"
               className={`hero-links__link ${
                 activeLink === 'portfolio' ? 'hero-links__link--active' : ''
@@ -74,8 +95,13 @@ const Hero = () => {
                 src={arrowUp}
                 alt="Arrow up"
               />
-            </a>
-            <a
+            </motion.a>
+
+            <motion.a
+              whileHover={{
+                scale: 1.03,
+                transition: { type: 'spring', stiffness: 300 },
+              }}
               href="#about"
               className={`hero-links__link ${
                 activeLink === 'about' ? 'hero-links__link--active' : ''
@@ -85,9 +111,9 @@ const Hero = () => {
               About me
               <img
                 src={arrowUp}
-                alt="Arrow up"
+                alt="Go to About"
               />
-            </a>
+            </motion.a>
           </div>
         </div>
       </div>
