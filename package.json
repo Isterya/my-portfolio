@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "prepare": "husky install",
+    "lint": "eslint . --ext .ts,.tsx && stylelint \"**/*.{scss,css}\"",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix && stylelint \"**/*.{scss,css}\" --fix",
+    "format": "prettier --write .",
+    "prepare": "husky",
     "preview": "vite preview"
   },
   "eslint": {
@@ -15,7 +17,6 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix",
       "prettier --write"
     ],
     "*.{scss,css}": [
@@ -40,6 +41,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.1.2",
+    "eslint-flat-config-utils": "^2.0.1",
     "eslint-import-resolver-typescript": "^4.3.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.6",
@@ -50,6 +52,7 @@
     "husky": "^9.1.7",
     "jiti": "^2.4.2",
     "lint-staged": "^15.5.1",
+    "postcss-scss": "^4.0.9",
     "prettier": "^3.5.3",
     "sass": "^1.86.0",
     "stylelint": "^16.18.0",

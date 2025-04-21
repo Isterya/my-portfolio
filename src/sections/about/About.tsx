@@ -1,5 +1,4 @@
 import { getYearsOfExperience } from '../../utils/getYearOfExperience';
-
 import character from '../../assets/img/about/about-character.png';
 
 import './about.scss';

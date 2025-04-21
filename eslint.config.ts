@@ -1,83 +1,43 @@
-import js from '@eslint/js';
-import globals from 'globals';
+// eslint.config.ts
+import * as js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import importPlugin from 'eslint-plugin-import';
-import reactPlugin from 'eslint-plugin-react';
+import * as react from 'eslint-plugin-react';
+import * as reactHooks from 'eslint-plugin-react-hooks';
+import * as prettier from 'eslint-config-prettier';
 
-export default tseslint.config(
+export default [
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    ignores: ['dist', 'build', '**/*.d.ts'],
-  },
-  {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        NodeJS: true,
-      },
+      parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.json',
+        ecmaFeatures: {
+          jsx: true,
+        },
+        project: './tsconfig.eslint.json',
       },
     },
     plugins: {
+      react,
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      import: importPlugin,
-      react: reactPlugin,
-      prettier: require('eslint-plugin-prettier'),
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/jsx-uses-vars': 'warn',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
     settings: {
       react: {
         version: 'detect',
       },
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.json',
-        },
-      },
-    },
-    rules: {
-      // JS & TS defaults
-      ...js.configs.recommended.rules,
-      ...tseslint.configs.recommended[0].rules,
-
-      // React Hooks
-      ...reactHooks.configs.recommended.rules,
-
-      // React
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
-      'react/jsx-uses-react': 'off',
-      'react/jsx-uses-vars': 'error',
-
-      // Vite-specific optimization
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-
-      // Import sorting & hygiene
-      'import/order': [
-        'warn',
-        {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-          pathGroups: [
-            {
-              pattern: '@/**',
-              group: 'internal',
-              position: 'after',
-            },
-          ],
-          pathGroupsExcludedImportTypes: ['builtin'],
-          'newlines-between': 'always',
-        },
-      ],
-      'import/no-unresolved': 'off',
-      'import/no-duplicates': 'warn',
-
-      // Prettier
-      'prettier/prettier': 'warn',
     },
   },
-);
+  prettier,
+];
