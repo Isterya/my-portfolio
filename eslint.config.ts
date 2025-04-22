@@ -1,4 +1,3 @@
-// eslint.config.ts
 import * as js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import * as react from 'eslint-plugin-react';

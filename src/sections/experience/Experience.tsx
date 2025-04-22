@@ -6,10 +6,7 @@ const circlePositions = [0, 180, 375, 620];
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="experience"
-    >
+    <section id="experience" className="experience">
       <div className="container">
         <h2 className="experience-header">
           My <span>Experience</span>
@@ -18,10 +15,7 @@ const Experience = () => {
         <div className="experience__grid">
           <div className="experience__column experience__column--left">
             {dataLeft.map((item, index) => (
-              <div
-                className="experience__text"
-                key={index}
-              >
+              <div className="experience__text" key={index}>
                 <div className="experience__text-title">{item.title}</div>
                 <div className="experience__text-subtitle">{item.subtitle}</div>
               </div>
@@ -43,10 +37,7 @@ const Experience = () => {
 
           <div className="experience__column experience__column--right">
             {dataRight.map((item, index) => (
-              <div
-                className="experience__text"
-                key={index}
-              >
+              <div className="experience__text" key={index}>
                 <div className="experience__text-title">{item.title}</div>
                 <div className="experience__text-descr">{item.descr}</div>
               </div>
