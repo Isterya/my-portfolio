@@ -1,3 +1,5 @@
+const { pattern } = require('framer-motion/client');
+
 module.exports = {
   customSyntax: 'postcss-scss',
   plugins: ['stylelint-scss', 'stylelint-order'],
@@ -10,5 +12,6 @@ module.exports = {
     'selector-no-vendor-prefix': null,
     'declaration-block-no-duplicate-properties': null,
     'no-descending-specificity': null,
+    'keyframes-name-pattern': null,
   },
 };

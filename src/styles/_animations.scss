@@ -2,9 +2,11 @@
   0% {
     transform: rotate(0deg) scale(1);
   }
+
   50% {
     transform: rotate(180deg) scale(1.05);
   }
+
   100% {
     transform: rotate(360deg) scale(1);
   }
@@ -15,6 +17,7 @@
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-15px);
   }
@@ -24,10 +27,26 @@
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
+
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
   }
 }
