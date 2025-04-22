@@ -160,6 +160,10 @@
     background: linear-gradient(135deg, rgb(255 255 255 / 15%) 0%, rgb(255 255 255 / 5%) 100%);
     transition: all 0.3s ease;
 
+    &:hover {
+      box-shadow: 0 10px 50px rgb(255 165 0 / 20%);
+    }
+
     &::before {
       content: '';
       position: absolute;

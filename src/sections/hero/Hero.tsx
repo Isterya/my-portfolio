@@ -17,7 +17,7 @@ const Hero = () => {
   const years = getYearsOfExperience();
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero" role="region" aria-label="Hero section">
       <div className="container">
         <div className="hero-wrapper">
           <motion.div
@@ -25,8 +25,14 @@ const Hero = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            role="note"
+            aria-label="Motivational quote"
           >
-            <img className="hero-quote__img" src={quote} alt="Quote decoration" />
+            <img
+              className="hero-quote__img"
+              src={quote}
+              alt="Quote decoration in the form of quotation marks"
+            />
 
             <p className="hero-quote__text">
               Relentless ambition, resilience, and reliability—this is who I am.
@@ -41,7 +47,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="hero-header__main-title">
+              <h1 className="hero-header__main-title" aria-label="I’m Bohdan, Web Developer">
                 I’m <span>Bohdan</span>, <br /> Web Developer
               </h1>
             </motion.div>
@@ -52,8 +58,10 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            role="note"
+            aria-label="Experience rating"
           >
-            <img className="hero-experience__img" src={stars} alt="Experience rating stars" />
+            <img className="hero-experience__img" src={stars} alt="5-star experience rating" />
 
             <div>
               <div className="hero-experience__years">{years} Years</div>
@@ -63,7 +71,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-character">
-          <img className="hero-character__img" src={character} alt="Character" />
+          <motion.img className="hero-character__img" src={character} alt="A mascot character" />
 
           <div className="hero-links">
             <motion.a
@@ -78,7 +86,7 @@ const Hero = () => {
               onMouseEnter={() => setActiveLink('portfolio')}
             >
               Portfolio
-              <img src={arrowUp} alt="Arrow up" />
+              <img src={arrowUp} alt="Go to Portfolio" />
             </motion.a>
 
             <motion.a
