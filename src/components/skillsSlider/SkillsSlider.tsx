@@ -19,7 +19,7 @@ const SkillsSlider = () => {
   }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
+  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
 
@@ -44,12 +44,15 @@ const SkillsSlider = () => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
   };
 
+  const visibleSkills = useMemo(() => {
+    const end = currentIndex + itemsPerSlide;
+    return end <= skillsData.length
+      ? skillsData.slice(currentIndex, end)
+      : [...skillsData.slice(currentIndex), ...skillsData.slice(0, end - skillsData.length)];
+  }, [currentIndex, skillsData]);
+
   return (
-    <div
-      className="skills-slider"
-      onMouseEnter={stopAutoSlide}
-      onMouseLeave={startAutoSlide}
-    >
+    <div className="skills-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
       <div className="skills-slider__wrapper">
         <AnimatePresence mode="wait">
           <motion.div
@@ -60,14 +63,9 @@ const SkillsSlider = () => {
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
-            {skillsData
-              .slice(currentIndex, currentIndex + itemsPerSlide)
-              .map((skill) => (
-                <SkillCard
-                  key={skill.id}
-                  {...skill}
-                />
-              ))}
+            {visibleSkills.map((skill) => (
+              <SkillCard key={skill.id} {...skill} />
+            ))}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -76,9 +74,7 @@ const SkillsSlider = () => {
         {Array.from({ length: totalSlides }).map((_, i) => (
           <div
             key={i}
-            className={`skills-slider__dot ${
-              currentIndex === i * itemsPerSlide ? 'active' : ''
-            }`}
+            className={`skills-slider__dot ${currentIndex === i * itemsPerSlide ? 'active' : ''}`}
             onClick={() => setCurrentIndex(i * itemsPerSlide)}
           ></div>
         ))}
