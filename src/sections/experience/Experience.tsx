@@ -26,7 +26,12 @@ const pointVariant = {
 
 const Experience = () => {
   return (
-    <section id="experience" className="experience">
+    <section
+      id="experience"
+      className="experience"
+      role="region"
+      aria-label="My experience section"
+    >
       <div className="container">
         <h2 className="experience-header">
           My <span>Experience</span>
