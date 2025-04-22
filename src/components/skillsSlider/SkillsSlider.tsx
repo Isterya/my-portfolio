@@ -73,7 +73,10 @@ const SkillsSlider = () => {
       <div className="skills-slider__controls">
         {Array.from({ length: totalSlides }).map((_, i) => (
           <div
-            key={i}
+            role="button"
+            aria-label={`Go to slide ${i + 1}`}
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
             className={`skills-slider__dot ${currentIndex === i * itemsPerSlide ? 'active' : ''}`}
             onClick={() => setCurrentIndex(i * itemsPerSlide)}
           ></div>

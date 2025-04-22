@@ -4,6 +4,7 @@ module.exports = {
   extends: ['stylelint-config-standard-scss'],
   rules: {
     'order/properties-order': null,
+    'selector-class-pattern': null,
     'property-no-vendor-prefix': null,
     'value-no-vendor-prefix': null,
     'selector-no-vendor-prefix': null,
