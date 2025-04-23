@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 
 export const useCarousel = (
   ref: React.RefObject<HTMLDivElement | null>,
-  speed: number = 1.5
+  speed: number = 1.5,
+  disableAnimation: boolean = false,
 ) => {
   const animationRef = useRef<number | null>(null);
   const scrollPos = useRef<number>(0);
@@ -11,7 +12,7 @@ export const useCarousel = (
 
   useEffect(() => {
     const track = ref.current;
-    if (!track) return;
+    if (!track || disableAnimation) return;
 
     const handleMouseEnter = () => {
       targetSpeed.current = 0;
@@ -26,8 +27,7 @@ export const useCarousel = (
 
     const animate = () => {
       if (track) {
-        currentSpeed.current +=
-          (targetSpeed.current - currentSpeed.current) * 0.08;
+        currentSpeed.current += (targetSpeed.current - currentSpeed.current) * 0.08;
         scrollPos.current += currentSpeed.current;
 
         if (scrollPos.current >= track.scrollWidth / 3) {
@@ -47,5 +47,5 @@ export const useCarousel = (
       track.removeEventListener('mouseleave', handleMouseLeave);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [ref, speed]);
+  }, [ref, speed, disableAnimation]);
 };
