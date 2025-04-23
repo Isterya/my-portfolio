@@ -18,9 +18,7 @@ const Footer = ({ simplified }: FooterProps) => {
         {!simplified && (
           <>
             <div className="footer-telegram">
-              <h2 className="footer-telegram__header">
-                Or let’s connect there
-              </h2>
+              <h2 className="footer-telegram__header">Or let’s connect there</h2>
               <a
                 className="footer-telegram__link"
                 href="https://t.me/perfectn1ght"
@@ -28,10 +26,7 @@ const Footer = ({ simplified }: FooterProps) => {
                 rel="noopener noreferrer"
               >
                 My Telegram
-                <img
-                  src={ArrowUp}
-                  alt="Arrow for the link"
-                />
+                <img src={ArrowUp} alt="Arrow for the link" />
               </a>
             </div>
 
@@ -43,10 +38,7 @@ const Footer = ({ simplified }: FooterProps) => {
           <div className="footer-social">
             <div className="footer-social__logo">
               <Link to="/">
-                <img
-                  src={logo}
-                  alt="isterya logo"
-                />
+                <img src={logo} alt="isterya logo" />
               </Link>
             </div>
             <p className="footer-social__descr">
@@ -55,19 +47,9 @@ const Footer = ({ simplified }: FooterProps) => {
 
             <ul className="footer-social__links">
               {socialLinks.map(({ icon, alt, href }) => (
-                <li
-                  key={alt}
-                  className="footer-social__item"
-                >
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={icon}
-                      alt={`Link to ${alt}`}
-                    />
+                <li key={alt} className="footer-social__item">
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    <img src={icon} alt={`Link to ${alt}`} />
                   </a>
                 </li>
               ))}
@@ -80,10 +62,7 @@ const Footer = ({ simplified }: FooterProps) => {
                 <h4 className="footer-title">Navigation</h4>
                 <ul className="footer-nav__list">
                   {navLinks.map((link) => (
-                    <li
-                      key={link}
-                      className="footer-nav__item"
-                    >
+                    <li key={link} className="footer-nav__item">
                       <a href={`#${link.toLowerCase()}`}>{link}</a>
                     </li>
                   ))}
@@ -96,22 +75,30 @@ const Footer = ({ simplified }: FooterProps) => {
             <h4 className="footer-title">Contact</h4>
             <ul className="footer-contact__list">
               {contactInfo.map(({ text, href }) => (
-                <li
-                  key={href}
-                  className="footer-contact__item"
-                >
+                <li key={href} className="footer-contact__item">
                   <a href={href}>{text}</a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {!simplified ? (
+          <div className="footer-lang">
+            <h4 className="footer-title">Language</h4>
+            <div className="footer-lang__select">
+              <span>Choose your language</span>
+              <div className="footer-lang__options">
+                <button>EN</button>
+                <button>RU</button>
+                <button>PL</button>
+              </div>
+            </div>
+          </div>
+
+          {/* {!simplified ? (
             <div className="footer-note">
               <h4 className="footer-title">You made it.</h4>
               <p className="footer-note__text">
-                Not everyone does. If something resonated — you know where to
-                find me.
+                Not everyone does. If something resonated — you know where to find me.
               </p>
             </div>
           ) : (
@@ -121,7 +108,7 @@ const Footer = ({ simplified }: FooterProps) => {
                 For questions or cooperation, feel free to contact me.
               </p>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="footer-divider" />
