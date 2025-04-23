@@ -36,18 +36,21 @@ const PortfolioSlider = () => {
     );
   }, [totalItems]);
 
+  const stopAutoSlide = useCallback(() => {
+    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+  }, []);
+
+  const startAutoSlide = useCallback(() => {
+    stopAutoSlide();
+
+    autoSlideRef.current = setInterval(nextSlide, intervalTime);
+  }, [nextSlide, stopAutoSlide]);
+
   useEffect(() => {
     startAutoSlide();
+
     return stopAutoSlide;
-  }, [nextSlide]);
-
-  const stopAutoSlide = () => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-  };
-
-  const startAutoSlide = () => {
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-  };
+  }, [startAutoSlide, stopAutoSlide]);
 
   return (
     <div className="portfolio-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
