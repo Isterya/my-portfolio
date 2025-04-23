@@ -77,6 +77,7 @@ const SkillsSlider = () => {
             aria-label={`Go to slide ${i + 1}`}
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
+            key={i}
             className={`skills-slider__dot ${currentIndex === i * itemsPerSlide ? 'active' : ''}`}
             onClick={() => setCurrentIndex(i * itemsPerSlide)}
           ></div>

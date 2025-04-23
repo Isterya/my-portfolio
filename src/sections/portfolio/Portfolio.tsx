@@ -4,10 +4,7 @@ import './portfolio.scss';
 
 const Portfolio = () => {
   return (
-    <section
-      id="portfolio"
-      className="portfolio"
-    >
+    <section id="portfolio" className="portfolio" role="region" aria-label="Portfolio section">
       <div className="container">
         <div className="portfolio-header">
           <h2>

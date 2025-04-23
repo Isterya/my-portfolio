@@ -21,6 +21,8 @@ const PortfolioSlider = () => {
     }));
   }, []);
 
+  const totalItems = portfolioData.length;
+
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,27 +33,20 @@ const PortfolioSlider = () => {
   const nextSlide = useCallback(() => {
     setDirection('next');
     setCurrentIndex((prevIndex) =>
-      prevIndex + itemsPerSlide >= portfolioData.length
-        ? 0
-        : prevIndex + itemsPerSlide
+      prevIndex + itemsPerSlide >= portfolioData.length ? 0 : prevIndex + itemsPerSlide,
     );
-  }, [portfolioData]);
+  }, [totalItems]);
 
   const prevSlide = useCallback(() => {
     setDirection('prev');
     setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - itemsPerSlide + portfolioData.length) %
-        portfolioData.length
+      (prevIndex) => (prevIndex - itemsPerSlide + portfolioData.length) % portfolioData.length,
     );
-  }, [portfolioData]);
+  }, [totalItems]);
 
   useEffect(() => {
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-
-    return () => {
-      if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-    };
+    startAutoSlide();
+    return stopAutoSlide;
   }, [nextSlide]);
 
   const stopAutoSlide = () => {
@@ -59,16 +54,11 @@ const PortfolioSlider = () => {
   };
 
   const startAutoSlide = () => {
-    stopAutoSlide();
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
   };
 
   return (
-    <div
-      className="portfolio-slider"
-      onMouseEnter={stopAutoSlide}
-      onMouseLeave={startAutoSlide}
-    >
+    <div className="portfolio-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
       <div className="portfolio-slider__wrapper">
         <AnimatePresence mode="wait">
           <motion.div
@@ -87,14 +77,9 @@ const PortfolioSlider = () => {
             }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            {portfolioData
-              .slice(currentIndex, currentIndex + itemsPerSlide)
-              .map((card) => (
-                <PortfolioCard
-                  key={card.id}
-                  {...card}
-                />
-              ))}
+            {portfolioData.slice(currentIndex, currentIndex + itemsPerSlide).map((card) => (
+              <PortfolioCard key={card.id} {...card} />
+            ))}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -102,21 +87,17 @@ const PortfolioSlider = () => {
       <button
         className="portfolio-slider__arrow portfolio-slider__arrow--left"
         onClick={prevSlide}
+        aria-label="Previous slide"
       >
-        <img
-          src={arrowLeft}
-          alt="prev"
-        />
+        <img src={arrowLeft} alt="prev" />
       </button>
 
       <button
         className="portfolio-slider__arrow portfolio-slider__arrow--right"
         onClick={nextSlide}
+        aria-label="Next slide"
       >
-        <img
-          src={arrowRight}
-          alt="next"
-        />
+        <img src={arrowRight} alt="next" />
       </button>
 
       <div className="portfolio-slider__controls">
@@ -124,7 +105,7 @@ const PortfolioSlider = () => {
           <div
             key={i}
             className={`portfolio-slider__dot ${
-              currentIndex === i * itemsPerSlide ? 'active' : ''
+              Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
             }`}
             onClick={() => setCurrentIndex(i * itemsPerSlide)}
           ></div>
