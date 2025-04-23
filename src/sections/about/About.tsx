@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+
 import { getYearsOfExperience } from '../../utils/getYearOfExperience';
+
 import character from '../../assets/img/about/about-character.png';
 
 import './about.scss';
@@ -69,7 +71,6 @@ const About = () => {
               className="about-text__hire"
               href="#contact"
               aria-label="Scroll to contact section"
-              variants={fadeInUp}
             >
               Hire me
             </motion.a>
