@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
+import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 
 import ArrowUp from '../../assets/icons/hero/arrow-up.svg';
 import logo from '../../assets/icons/full-logo.svg';
@@ -84,31 +85,8 @@ const Footer = ({ simplified }: FooterProps) => {
 
           <div className="footer-lang">
             <h4 className="footer-title">Language</h4>
-            <div className="footer-lang__select">
-              <span>Choose your language</span>
-              <div className="footer-lang__options">
-                <button>EN</button>
-                <button>RU</button>
-                <button>PL</button>
-              </div>
-            </div>
+            <LanguageSwitcher />
           </div>
-
-          {/* {!simplified ? (
-            <div className="footer-note">
-              <h4 className="footer-title">You made it.</h4>
-              <p className="footer-note__text">
-                Not everyone does. If something resonated — you know where to find me.
-              </p>
-            </div>
-          ) : (
-            <div className="footer-note">
-              <h4 className="footer-title">Stay in touch</h4>
-              <p className="footer-note__text">
-                For questions or cooperation, feel free to contact me.
-              </p>
-            </div>
-          )} */}
         </div>
 
         <div className="footer-divider" />

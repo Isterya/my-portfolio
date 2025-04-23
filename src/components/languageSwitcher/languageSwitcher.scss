@@ -1,0 +1,74 @@
+.lang-switcher {
+  position: relative;
+  font-family: inherit;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 18px;
+    min-height: 42px;
+    background: rgb(255 255 255 / 6%);
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 14px;
+    color: #fcfcfd;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow:
+      inset 0 0 0 0 rgb(255 255 255 / 0%),
+      0 2px 6px rgb(0 0 0 / 20%);
+    transition:
+      background 0.25s ease,
+      border 0.25s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background: rgb(255 255 255 / 10%);
+      border: 1px solid rgb(255 255 255 / 30%);
+      transform: translateY(-1px);
+    }
+
+    img {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.3s ease;
+      opacity: 0.9;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 10;
+    padding: 8px;
+    width: 100%;
+    min-width: 100px;
+    background: rgb(255 255 255 / 5%);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 15%);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item {
+    background: transparent;
+    color: #fcfcfd;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgb(255 255 255 / 12%);
+    }
+  }
+}
