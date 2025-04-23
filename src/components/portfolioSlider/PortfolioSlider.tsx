@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useMemo, useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import PortfolioCard from '../portfolioCard/PorfolioCard';
@@ -13,14 +13,13 @@ const itemsPerSlide = 2;
 const intervalTime = 5000;
 
 const PortfolioSlider = () => {
-  const totalItems = portfolioData.length;
+  const totalItems = useMemo(() => portfolioData.length, []);
+  const totalSlides = Math.ceil(totalItems / itemsPerSlide);
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const totalSlides = Math.ceil(portfolioData.length / itemsPerSlide);
 
   const nextSlide = useCallback(() => {
     setDirection('next');

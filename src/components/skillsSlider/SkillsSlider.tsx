@@ -10,14 +10,33 @@ const itemsPerSlide = 3;
 const intervalTime = 5000;
 
 const SkillsSlider = () => {
+  const totalItems = useMemo(() => skillsData.length, []);
+  const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
-
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + itemsPerSlide) % skillsData.length);
-  }, [skillsData]);
+  }, [totalItems]);
+
+  const stopAutoSlide = useCallback(() => {
+    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+  }, []);
+
+  const startAutoSlide = useCallback(() => {
+    stopAutoSlide();
+
+    autoSlideRef.current = setInterval(nextSlide, intervalTime);
+  }, [nextSlide, stopAutoSlide]);
+
+  const visibleSkills = useMemo(() => {
+    const end = currentIndex + itemsPerSlide;
+
+    return end <= skillsData.length
+      ? skillsData.slice(currentIndex, end)
+      : [...skillsData.slice(currentIndex), ...skillsData.slice(0, end - skillsData.length)];
+  }, [currentIndex, skillsData]);
 
   useEffect(() => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
@@ -25,23 +44,7 @@ const SkillsSlider = () => {
     return () => {
       if (autoSlideRef.current) clearInterval(autoSlideRef.current);
     };
-  }, [nextSlide]);
-
-  const stopAutoSlide = () => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-  };
-
-  const startAutoSlide = () => {
-    stopAutoSlide();
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-  };
-
-  const visibleSkills = useMemo(() => {
-    const end = currentIndex + itemsPerSlide;
-    return end <= skillsData.length
-      ? skillsData.slice(currentIndex, end)
-      : [...skillsData.slice(currentIndex), ...skillsData.slice(0, end - skillsData.length)];
-  }, [currentIndex, skillsData]);
+  }, [startAutoSlide, stopAutoSlide]);
 
   return (
     <div className="skills-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
@@ -70,7 +73,9 @@ const SkillsSlider = () => {
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
             key={i}
-            className={`skills-slider__dot ${currentIndex === i * itemsPerSlide ? 'active' : ''}`}
+            className={`skills-slider__dot ${
+              Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
+            }`}
             onClick={() => setCurrentIndex(i * itemsPerSlide)}
           ></div>
         ))}
