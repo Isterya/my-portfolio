@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { v4 as uuidv4 } from 'uuid';
 
 import PortfolioCard from '../portfolioCard/PorfolioCard';
-import { portfolioRawData } from '../../data/portfolioData';
+import { portfolioData } from '../../data/portfolioData';
 
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
@@ -14,13 +13,6 @@ const itemsPerSlide = 2;
 const intervalTime = 5000;
 
 const PortfolioSlider = () => {
-  const portfolioData = useMemo(() => {
-    return portfolioRawData.map((item) => ({
-      ...item,
-      id: uuidv4(),
-    }));
-  }, []);
-
   const totalItems = portfolioData.length;
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
