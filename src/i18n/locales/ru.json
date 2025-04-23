@@ -1,7 +1,11 @@
 {
   "hello": "Привет!",
-  "web-developer": "Я Богдан, Веб-Разработчик",
+  "introStart": "Я",
+  "introName": "Богдан",
+  "introEnd": "Веб-Разработчик",
   "quote": "Непоколебимые амбиции, стойкость и надежность - вот кто я.",
-  "years": "2 года",
-  "experience": "Опыта"
+  "years": "Года",
+  "experience": "Опыта",
+  "heroLinkPortfolio": "Портфолио",
+  "heroLinkAbout": "Обо мне"
 }

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -12,6 +14,8 @@ import character from '../../assets/img/hero/hero-character.png';
 import './hero.scss';
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   const [activeLink, setActiveLink] = useState<'portfolio' | 'about'>('portfolio');
 
   const years = getYearsOfExperience();
@@ -34,13 +38,11 @@ const Hero = () => {
               alt="Quote decoration in the form of quotation marks"
             />
 
-            <p className="hero-quote__text">
-              Relentless ambition, resilience, and reliability—this is who I am.
-            </p>
+            <p className="hero-quote__text">{t('quote')}</p>
           </motion.div>
 
           <div className="hero-header">
-            <div className="hero-header__subtitle">Hello!</div>
+            <div className="hero-header__subtitle">{t('hello')}</div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -48,7 +50,7 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="hero-header__main-title" aria-label="I’m Bohdan, Web Developer">
-                I’m <span>Bohdan</span>, <br /> Web Developer
+                {t('introStart')} <span>{t('introName')}</span>, <br /> {t('introEnd')}
               </h1>
             </motion.div>
           </div>
@@ -64,8 +66,10 @@ const Hero = () => {
             <img className="hero-experience__img" src={stars} alt="5-star experience rating" />
 
             <div>
-              <div className="hero-experience__years">{years} Years</div>
-              <div className="hero-experience__descr">Experience</div>
+              <div className="hero-experience__years">
+                {years} {t('years')}
+              </div>
+              <div className="hero-experience__descr">{t('experience')}</div>
             </div>
           </motion.div>
         </div>
@@ -85,7 +89,7 @@ const Hero = () => {
               }`}
               onMouseEnter={() => setActiveLink('portfolio')}
             >
-              Portfolio
+              {t('heroLinkPortfolio')}
               <img src={arrowUp} alt="Go to Portfolio" />
             </motion.a>
 
@@ -100,7 +104,7 @@ const Hero = () => {
               }`}
               onMouseEnter={() => setActiveLink('about')}
             >
-              About me
+              {t('heroLinkAbout')}
               <img src={arrowUp} alt="Go to About" />
             </motion.a>
           </div>

@@ -1,7 +1,11 @@
 {
   "hello": "Hello!",
-  "web-developer": "I’m Bohdan, Web Developer",
+  "introStart": "I’m",
+  "introName": "Bohdan",
+  "introEnd": "Web Developer",
   "quote": "Relentless ambition, resilience, and reliability—this is who I am.",
-  "years": "2 Years",
-  "experience": "Experience"
+  "years": "Years",
+  "experience": "Experience",
+  "heroLinkPortfolio": "Portfolio",
+  "heroLinkAbout": "About me"
 }
