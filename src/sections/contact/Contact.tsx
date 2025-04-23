@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { sendEmail } from '../../services/sendEmail';
+
 import './contact.scss';
 
 const Contact = () => {
@@ -27,17 +29,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong');
-      }
+      sendEmail(email);
 
       setSuccess(true);
       setEmail('');
@@ -103,8 +95,12 @@ const Contact = () => {
               </label>
             </div>
 
-            {error && <p className="form-message error">{error}</p>}
-            {success && <p className="form-message success">Thank you! We’ll be in touch soon.</p>}
+            <div aria-live="polite">
+              {error && <p className="form-message error">{error}</p>}
+              {success && (
+                <p className="form-message success">Thank you! We’ll be in touch soon.</p>
+              )}
+            </div>
           </form>
         </div>
       </div>
