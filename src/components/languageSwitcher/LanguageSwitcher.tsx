@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import i18n from '../../i18n';
 
 import chevron from '../../assets/icons/chevron.svg';
 
@@ -14,6 +15,8 @@ const LanguageSwitcher = () => {
   const toggleDropdown = () => setIsOpen(!isOpen);
   const handleSelect = (lang: string) => {
     setSelectedLang(lang);
+
+    i18n.changeLanguage(lang === 'Русский' ? 'ru' : lang === 'Polski' ? 'pl' : 'en');
     setIsOpen(false);
   };
 
