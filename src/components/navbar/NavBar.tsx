@@ -1,16 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import logo from '../../assets/icons/logo.svg';
 
 import './navBar.scss';
 
-const SECTIONS = [
-  'home',
-  'skills',
-  'experience',
-  'portfolio',
-  'price',
-  'contact',
-] as const;
+const SECTIONS = ['home', 'skills', 'experience', 'portfolio', 'price', 'contact'] as const;
 type Section = (typeof SECTIONS)[number];
 
 const SCROLL_THRESHOLD = 50;
@@ -20,11 +15,10 @@ const NavBar = () => {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const sectionsRef = useRef<HTMLElement[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    sectionsRef.current = Array.from(
-      document.querySelectorAll<HTMLElement>('section')
-    );
+    sectionsRef.current = Array.from(document.querySelectorAll<HTMLElement>('section'));
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -36,11 +30,7 @@ const NavBar = () => {
         const sectionTop = section.offsetTop - SECTION_OFFSET;
         const sectionId = section.getAttribute('id') as Section | null;
 
-        if (
-          scrollY >= sectionTop &&
-          sectionId &&
-          SECTIONS.includes(sectionId)
-        ) {
+        if (scrollY >= sectionTop && sectionId && SECTIONS.includes(sectionId)) {
           currentSection = sectionId;
         }
       });
@@ -58,12 +48,10 @@ const NavBar = () => {
         {SECTIONS.slice(0, 3).map((section) => (
           <li key={section}>
             <a
-              className={`navbar-list__item ${
-                activeSection === section ? 'active' : ''
-              }`}
+              className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
               href={`#${section}`}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {t(`navBar.${section}`)}
             </a>
           </li>
         ))}
@@ -71,10 +59,7 @@ const NavBar = () => {
 
       <div className="navbar-logo">
         <a href="#home">
-          <img
-            src={logo}
-            alt="Logotype"
-          />
+          <img src={logo} alt="Logotype" />
         </a>
       </div>
 
@@ -82,12 +67,10 @@ const NavBar = () => {
         {SECTIONS.slice(3, 6).map((section) => (
           <li key={section}>
             <a
-              className={`navbar-list__item ${
-                activeSection === section ? 'active' : ''
-              }`}
+              className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
               href={`#${section}`}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {t(`navBar.${section}`)}
             </a>
           </li>
         ))}

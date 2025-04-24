@@ -38,11 +38,11 @@ const Hero = () => {
               alt="Quote decoration in the form of quotation marks"
             />
 
-            <p className="hero-quote__text">{t('quote')}</p>
+            <p className="hero-quote__text">{t('hero.quote')}</p>
           </motion.div>
 
           <div className="hero-header">
-            <div className="hero-header__subtitle">{t('hello')}</div>
+            <div className="hero-header__subtitle">{t('hero.hello')}</div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,8 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="hero-header__main-title" aria-label="I’m Bohdan, Web Developer">
-                {t('introStart')} <span>{t('introName')}</span>, <br /> {t('introEnd')}
+                {t('hero.introStart')} <span>{t('hero.introName')}</span>, <br />{' '}
+                {t('hero.introEnd')}
               </h1>
             </motion.div>
           </div>
@@ -67,7 +68,7 @@ const Hero = () => {
 
             <div>
               <div className="hero-experience__years">
-                {years} {t('years')}
+                {years} {t('hero.years')}
               </div>
               <div className="hero-experience__descr">{t('experience')}</div>
             </div>
@@ -89,7 +90,7 @@ const Hero = () => {
               }`}
               onMouseEnter={() => setActiveLink('portfolio')}
             >
-              {t('heroLinkPortfolio')}
+              {t('hero.linkPortfolio')}
               <img src={arrowUp} alt="Go to Portfolio" />
             </motion.a>
 
@@ -104,7 +105,7 @@ const Hero = () => {
               }`}
               onMouseEnter={() => setActiveLink('about')}
             >
-              {t('heroLinkAbout')}
+              {t('hero.linkAbout')}
               <img src={arrowUp} alt="Go to About" />
             </motion.a>
           </div>

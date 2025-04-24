@@ -1,11 +1,21 @@
 {
-  "hello": "Hello!",
-  "introStart": "I’m",
-  "introName": "Bohdan",
-  "introEnd": "Web Developer",
-  "quote": "Relentless ambition, resilience, and reliability—this is who I am.",
-  "years": "Years",
-  "experience": "Experience",
-  "heroLinkPortfolio": "Portfolio",
-  "heroLinkAbout": "About me"
+  "hero": {
+    "hello": "Hello!",
+    "introStart": "I’m",
+    "introName": "Bohdan",
+    "introEnd": "Web Developer",
+    "quote": "Relentless ambition, resilience, and reliability—this is who I am.",
+    "years": "Years",
+    "experience": "Experience",
+    "linkPortfolio": "Portfolio",
+    "linkAbout": "About me"
+  },
+  "navBar": {
+    "home": "Home",
+    "skills": "Skills",
+    "experience": "Experience",
+    "portfolio": "Portfolio",
+    "price": "Price",
+    "contact": "Contact"
+  }
 }

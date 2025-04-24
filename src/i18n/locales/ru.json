@@ -1,11 +1,21 @@
 {
-  "hello": "Привет!",
-  "introStart": "Я",
-  "introName": "Богдан",
-  "introEnd": "Веб-разработчик",
-  "quote": "Амбиции, стойкость, надёжность — три качества, которые определяют меня.",
-  "years": "Года",
-  "experience": "Опыта",
-  "heroLinkPortfolio": "Портфолио",
-  "heroLinkAbout": "Обо мне"
+  "hero": {
+    "hello": "Привет!",
+    "introStart": "Я",
+    "introName": "Богдан",
+    "introEnd": "Веб-разработчик",
+    "quote": "Амбиции, стойкость, надёжность — три качества, которые определяют меня.",
+    "years": "Года",
+    "experience": "Опыта",
+    "linkPortfolio": "Портфолио",
+    "linkAbout": "Обо мне"
+  },
+  "navBar": {
+    "home": "Главная",
+    "skills": "Навыки",
+    "experience": "Опыт",
+    "portfolio": "Портфолио",
+    "price": "Цены",
+    "contact": "Контакты"
+  }
 }

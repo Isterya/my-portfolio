@@ -1,11 +1,21 @@
 {
-  "hello": "Cześć!",
-  "introStart": "Jestem",
-  "introName": "Bohdan",
-  "introEnd": "Web Developer",
-  "quote": "Niezłomna ambicja, odporność i niezawodność — to jestem ja.",
-  "years": "Lata",
-  "experience": "Doświadczenia",
-  "heroLinkPortfolio": "Portfolio",
-  "heroLinkAbout": "O mnie"
+  "hero": {
+    "hello": "Cześć!",
+    "introStart": "Jestem",
+    "introName": "Bohdan",
+    "introEnd": "Web Developer",
+    "quote": "Niezłomna ambicja, odporność i niezawodność — to jestem ja.",
+    "years": "Lata",
+    "experience": "Doświadczenia",
+    "linkPortfolio": "Portfolio",
+    "linkAbout": "O mnie"
+  },
+  "navBar": {
+    "home": "Start",
+    "skills": "Umiejętności",
+    "experience": "Doświadczenie",
+    "portfolio": "Portfolio",
+    "price": "Cennik",
+    "contact": "Kontakt"
+  }
 }
