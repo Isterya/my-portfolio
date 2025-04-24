@@ -64,5 +64,50 @@
     "figma": {
       "description": "Od pomysłu po perfekcyjne wykonanie. Figma ułatwia współpracę i projektowanie UI/UX, które dobrze przekłada się na kod."
     }
+  },
+
+  "experience": {
+    "title": {
+      "before": "Moje",
+      "highlight": "Doświadczenie"
+    },
+
+    "dataLeft": {
+      "education": {
+        "title": "Pełne wykształcenie średnie",
+        "subtitle": "Krzywy Róg, Ukraina (2015–2023)"
+      },
+      "college": {
+        "title": "Technikum Cosinus",
+        "subtitle": "Łódź, Polska (obecnie w trakcie nauki)"
+      },
+      "specialization": {
+        "title": "Web Development",
+        "subtitle": "Udemy (listopad 2023 – marzec 2025)"
+      },
+      "work": {
+        "title": "Doświadczenie zawodowe",
+        "subtitle": "Projekty freelance i autorskie (2023 – obecnie)"
+      }
+    },
+
+    "dataRight": {
+      "lyceum": {
+        "title": "Kryvyi Rih Lyceum nr 49",
+        "descr": "Ukończone z wyróżnieniem — rozwinięte umiejętności analityczne oraz solidne podstawy z matematyki i informatyki."
+      },
+      "technician": {
+        "title": "Technik programista",
+        "descr": "Poszerzam wiedzę z zakresu tworzenia oprogramowania, architektury systemów oraz nowoczesnych technologii webowych."
+      },
+      "courses": {
+        "title": "Kursy & Pet Projecty",
+        "descr": "Zrealizowany kompleksowy kursy web developmentu, obejmujący <link1>JavaScript</link1>, <link2>TypeScript</link2> i <link3>React</link3>. Praktyczne umiejętności rozwijane dzięki licznym projektom w zakresie <link4>frontend</link4>-u."
+      },
+      "frontend": {
+        "title": "Front-End Developer",
+        "descr": "Tworzyłem aplikacje webowe i strony docelowe, skupiając się na responsywnym designie i wysokiej wydajności."
+      }
+    }
   }
 }
