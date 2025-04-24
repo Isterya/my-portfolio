@@ -87,13 +87,26 @@
       margin-top: 35px;
       border: 1px solid #151515;
       border-radius: 32px;
-      padding: 25px 43px;
-      width: 214px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 30px;
+      min-width: 220px;
+      max-width: 320px;
       font-weight: 600;
       font-size: 32px;
       line-height: 48px;
+      text-align: center;
       color: #151515;
       transition: all 0.3s ease;
+
+      html[data-lang='pl'] & {
+        font-size: 28px;
+      }
+
+      html[data-lang='ru'] & {
+        font-size: 30px;
+      }
 
       &:hover {
         background: #151515;

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { motion } from 'framer-motion';
 
 import { getYearsOfExperience } from '../../utils/getYearOfExperience';
@@ -21,6 +23,8 @@ const fadeInUp = {
 };
 
 const About = () => {
+  const { t } = useTranslation();
+
   const years = getYearsOfExperience();
 
   return (
@@ -45,35 +49,29 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.h2 className="about-text__header" variants={fadeInUp}>
-              Why <span>Hire me</span>?
+              {t('about.title.before')} <span>{t('about.title.highlight')}</span>?
             </motion.h2>
 
             <motion.p className="about-text__descr" variants={fadeInUp}>
-              At 18, I’ve already gained over two years of experience crafting dynamic web
-              applications, mastering modern frontend technologies, and building a deep
-              understanding of software architecture and development principles. My expertise goes
-              beyond writing clean, efficient code—I bring analytical thinking, creative
-              problem-solving, and a keen eye for UI/UX to every project I work on.
+              {t('about.description')}
             </motion.p>
 
             <motion.div className="about-text__stats" variants={fadeInUp}>
               <div className="about-text__stats-projects">
                 <h3>30+</h3>
-                <p>Projects Completed</p>
+                <p>{t('about.projects')}</p>
               </div>
               <div className="about-text__stats-experience">
-                <h3>{years}+ Years</h3>
-                <p>Proven Experience</p>
+                <h3>
+                  {years}+ {t('about.years')}
+                </h3>
+                <p>{t('about.experience')}</p>
               </div>
             </motion.div>
 
-            <motion.a
-              className="about-text__hire"
-              href="#contact"
-              aria-label="Scroll to contact section"
-            >
-              Hire me
-            </motion.a>
+            <a className="about-text__hire" href="#contact" aria-label="Scroll to contact section">
+              {t('about.hire')}
+            </a>
           </motion.div>
         </div>
       </div>

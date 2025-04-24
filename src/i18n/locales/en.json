@@ -111,5 +111,19 @@
         "descr": "Developed web applications and landing pages, with focus on responsive and performant design."
       }
     }
+  },
+
+  "about": {
+    "title": {
+      "before": "Why",
+      "highlight": "Hire me"
+    },
+
+    "description": "At 18, I’ve already gained over two years of experience crafting dynamic web applications, mastering modern frontend technologies, and building a deep understanding of software architecture and development principles. My expertise goes problem-solving, and a keen eye for UI/UX to every project I work on.",
+
+    "projects": "Projects Completed",
+    "years": "Years",
+    "experience": "Proven Experience",
+    "hire": "Hire me"
   }
 }

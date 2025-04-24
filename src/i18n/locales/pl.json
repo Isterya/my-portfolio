@@ -7,6 +7,7 @@
     "price": "Cennik",
     "contact": "Kontakt"
   },
+
   "hero": {
     "hello": "Cześć!",
     "introStart": "Jestem",
@@ -18,6 +19,7 @@
     "linkPortfolio": "Portfolio",
     "linkAbout": "O mnie"
   },
+
   "skills": {
     "title": {
       "before": "Moje",
@@ -109,5 +111,17 @@
         "descr": "Tworzyłem aplikacje webowe i strony docelowe, skupiając się na responsywnym designie i wysokiej wydajności."
       }
     }
+  },
+
+  "about": {
+    "title": {
+      "before": "Dlaczego warto",
+      "highlight": "mnie zatrudnić"
+    },
+    "description": "W wieku 18 lat mam już ponad dwa lata doświadczenia w tworzeniu dynamicznych aplikacji internetowych, znajomości nowoczesnych technologii frontendowych oraz głębokim zrozumieniu architektury oprogramowania. Do każdego projektu wnoszę nie tylko wiedzę techniczną i umiejętność rozwiązywania problemów, ale także wyjątkowe wyczucie UI/UX.",
+    "projects": "Zrealizowane projekty",
+    "years": "Lata",
+    "experience": "Udokumentowane doświadczenie",
+    "hire": "Zatrudnij mnie"
   }
 }
