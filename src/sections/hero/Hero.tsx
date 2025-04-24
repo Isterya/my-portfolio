@@ -70,7 +70,7 @@ const Hero = () => {
               <div className="hero-experience__years">
                 {years} {t('hero.years')}
               </div>
-              <div className="hero-experience__descr">{t('experience')}</div>
+              <div className="hero-experience__descr">{t('hero.experience')}</div>
             </div>
           </motion.div>
         </div>
