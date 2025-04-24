@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import i18n from '../../i18n';
 
@@ -19,6 +19,10 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(lang === 'Русский' ? 'ru' : lang === 'Polski' ? 'pl' : 'en');
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-lang', i18n.language);
+  }, [i18n.language]);
 
   return (
     <div className="lang-switcher">
