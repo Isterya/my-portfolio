@@ -198,7 +198,7 @@
       position: relative;
       z-index: 2;
       transition: all 0.3s ease;
-      padding: 11px 26px;
+      padding: 11px 16px;
       border-radius: 60px;
       white-space: nowrap;
 
@@ -213,7 +213,7 @@
       &--active {
         border: 0.5px solid #d0d5dd;
         background: linear-gradient(90deg, #f8ba2b 0%, #ff7f00 70%);
-        width: 197px;
+        width: 210px;
         height: 62px;
 
         img {
