@@ -14,10 +14,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ title, icon, description }) => {
       </div>
       <p className="skill-card__description">{description}</p>
       <div className="skill-card__icon-wrapper">
-        <img
-          src={icon}
-          alt={`${title} icon`}
-        />
+        <img src={icon} alt={`${title} icon`} />
       </div>
     </div>
   );

@@ -1,4 +1,12 @@
 {
+  "navBar": {
+    "home": "Start",
+    "skills": "Umiejętności",
+    "experience": "Doświadczenie",
+    "portfolio": "Portfolio",
+    "price": "Cennik",
+    "contact": "Kontakt"
+  },
   "hero": {
     "hello": "Cześć!",
     "introStart": "Jestem",
@@ -10,12 +18,51 @@
     "linkPortfolio": "Portfolio",
     "linkAbout": "O mnie"
   },
-  "navBar": {
-    "home": "Start",
-    "skills": "Umiejętności",
-    "experience": "Doświadczenie",
-    "portfolio": "Portfolio",
-    "price": "Cennik",
-    "contact": "Kontakt"
+  "skills": {
+    "title": {
+      "before": "Moje",
+      "highlight": "Umiejętności"
+    },
+    "description": "W tej sekcji opowiem o kluczowych umiejętnościach i technologiach, których używam w swojej pracy. Stanowią one fundament moich projektów i pozwalają tworzyć wysokiej jakości rozwiązania.",
+
+    "html": {
+      "description": "Szkielet każdej strony. HTML5 zapewnia solidną, przyjazną SEO strukturę — niezawodną bazę nowoczesnych aplikacji webowych."
+    },
+    "css": {
+      "description": "To więcej niż tylko stylizacja — CSS3 to sztuka wizualnej narracji. Tworzę responsywne i eleganckie interfejsy, które przyciągają uwagę."
+    },
+    "javascript": {
+      "description": "Silnik interaktywności. JavaScript ożywia aplikacje, oferując animacje, dynamiczne elementy i płynne doświadczenia użytkownika."
+    },
+
+    "typescript": {
+      "description": "Nowy standard w skalowalnym kodzie. TypeScript dodaje typowanie do JavaScriptu, co zwiększa niezawodność i porządek w dużych projektach."
+    },
+    "jquery": {
+      "description": "Biblioteka z historią. Ułatwia manipulację DOM i zdarzeniami. Korzystam z jQuery tam, gdzie przynosi realną wartość."
+    },
+    "sass": {
+      "description": "Efektywność i przejrzystość. Dzięki preprocesorom piszę bardziej uporządkowane style, używając zmiennych, zagnieżdżeń i mixinów."
+    },
+
+    "bootstrap": {
+      "description": "Rozbudowany zestaw UI. Bootstrap przyspiesza rozwój dzięki gotowym komponentom i systemowi siatek. Stosuję go, gdy wymaga tego projekt."
+    },
+    "git": {
+      "description": "Fundament współpracy. Git pozwala mi zarządzać kodem, cofać zmiany i działać zespołowo bez zakłóceń."
+    },
+    "react": {
+      "description": "Nowoczesna biblioteka do tworzenia szybkich i skalowalnych interfejsów. Z Reactem buduję intuicyjne i dopracowane doświadczenia."
+    },
+
+    "redux": {
+      "description": "Pewne zarządzanie stanem. Stosuję Redux, RTK i RTK Query, aby zapewnić przejrzystą i przewidywalną architekturę aplikacji."
+    },
+    "tailwind": {
+      "description": "Stylowanie oparte na klasach narzędziowych. Tailwind pozwala szybko prototypować, tworząc czysty i elastyczny kod."
+    },
+    "figma": {
+      "description": "Od pomysłu po perfekcyjne wykonanie. Figma ułatwia współpracę i projektowanie UI/UX, które dobrze przekłada się na kod."
+    }
   }
 }

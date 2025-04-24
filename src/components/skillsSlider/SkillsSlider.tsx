@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -10,6 +12,8 @@ const itemsPerSlide = 3;
 const intervalTime = 5000;
 
 const SkillsSlider = () => {
+  const { t } = useTranslation();
+
   const totalItems = useMemo(() => skillsData.length, []);
   const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
 
@@ -59,7 +63,12 @@ const SkillsSlider = () => {
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
             {visibleSkills.map((skill) => (
-              <SkillCard key={skill.id} {...skill} />
+              <SkillCard
+                key={skill.id}
+                title={skill.title}
+                icon={skill.icon}
+                description={t(skill.description)}
+              />
             ))}
           </motion.div>
         </AnimatePresence>
