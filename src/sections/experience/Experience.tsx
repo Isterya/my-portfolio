@@ -1,7 +1,7 @@
+import { useTranslation, Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 import { dataLeft, dataRight } from '../../data/experienceData';
-
 import './experience.scss';
 
 const circlePositions = [0, 180, 375, 620];
@@ -25,6 +25,8 @@ const pointVariant = {
 };
 
 const Experience = () => {
+  const { t } = useTranslation();
+
   return (
     <section
       id="experience"
@@ -34,7 +36,7 @@ const Experience = () => {
     >
       <div className="container">
         <h2 className="experience-header">
-          My <span>Experience</span>
+          {t('experience.title.before')} <span>{t('experience.title.highlight')}</span>
         </h2>
 
         <div className="experience__grid">
@@ -48,8 +50,12 @@ const Experience = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="experience__text-title">{item.title}</div>
-                <div className="experience__text-subtitle">{item.subtitle}</div>
+                <div className="experience__text-title">
+                  {t(`experience.dataLeft.${item.key}.title`)}
+                </div>
+                <div className="experience__text-subtitle">
+                  {t(`experience.dataLeft.${item.key}.subtitle`)}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -90,8 +96,52 @@ const Experience = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="experience__text-title">{item.title}</div>
-                <div className="experience__text-descr">{item.descr}</div>
+                <div className="experience__text-title">
+                  {t(`experience.dataRight.${item.key}.title`)}
+                </div>
+                <div className="experience__text-descr">
+                  {item.hasJSX ? (
+                    <Trans
+                      i18nKey={`experience.dataRight.${item.key}.descr`}
+                      components={{
+                        link1: (
+                          <a
+                            href="https://udemy-certificate.s3.amazonaws.com/image/UC-3ca32cc1-d365-4db0-a2f5-e245893f9c74.jpg"
+                            className="experience__link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
+                        ),
+                        link2: (
+                          <a
+                            href="https://udemy-certificate.s3.amazonaws.com/image/UC-00bc5d87-e2f1-448f-9126-ae957f694436.jpg"
+                            className="experience__link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
+                        ),
+                        link3: (
+                          <a
+                            href="https://udemy-certificate.s3.amazonaws.com/image/UC-3ca32cc1-d365-4db0-a2f5-e245893f9c74.jpg"
+                            className="experience__link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
+                        ),
+                        link4: (
+                          <a
+                            href="https://udemy-certificate.s3.amazonaws.com/image/UC-6a2a853e-2363-4ace-93e0-2a3b0b386d0c.jpg"
+                            className="experience__link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
+                        ),
+                      }}
+                    />
+                  ) : (
+                    t(`experience.dataRight.${item.key}.descr`)
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>

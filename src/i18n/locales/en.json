@@ -66,5 +66,50 @@
     "figma": {
       "description": "From concept to pixel-perfect execution. Figma enables seamless collaboration and precision in UI/UX design, ensuring smooth transitions from wireframes to final interfaces."
     }
+  },
+
+  "experience": {
+    "title": {
+      "before": "My",
+      "highlight": "Experience"
+    },
+
+    "dataLeft": {
+      "education": {
+        "title": "Full Secondary Education",
+        "subtitle": "Kryvyi Rih, Ukraine (2015–2023)"
+      },
+      "college": {
+        "title": "Cosinus Technical College",
+        "subtitle": "Łódź, Poland (Current Student)"
+      },
+      "specialization": {
+        "title": "Web Development Specialization",
+        "subtitle": "Udemy (Nov 2023 - March 2025)"
+      },
+      "work": {
+        "title": "Work Experience",
+        "subtitle": "Freelance & Independent Projects (2023 – Present)"
+      }
+    },
+
+    "dataRight": {
+      "lyceum": {
+        "title": "Kryvyi Rih Lyceum No. 49",
+        "descr": "Graduated with excellent results, demonstrating strong analytical skills and a solid foundation in mathematics and computer science."
+      },
+      "technician": {
+        "title": "Programming Technician",
+        "descr": "Currently in my second year, deepening my knowledge of software development, system architecture, and modern web technologies."
+      },
+      "courses": {
+        "title": "Courses & Pet Projects",
+        "descr": "Completed an extensive web development course focusing on <link1>JavaScript</link1>, <link2>TypeScript</link2>, and <link3>React</link3>. Gained hands-on experience through numerous projects, solidifying my expertise in <link4>frontend</link4> development."
+      },
+      "frontend": {
+        "title": "Front-End Developer",
+        "descr": "Developed web applications and landing pages, with focus on responsive and performant design."
+      }
+    }
   }
 }
