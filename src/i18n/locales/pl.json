@@ -1,11 +1,11 @@
 {
-  "hello": "Witam!",
+  "hello": "Cześć!",
   "introStart": "Jestem",
   "introName": "Bohdan",
   "introEnd": "Web Developer",
-  "quote": "Niezłomna ambicja, odporność i niezawodność - oto kim jestem.",
+  "quote": "Niezłomna ambicja, odporność i niezawodność — to jestem ja.",
   "years": "Lata",
-  "experience": "Doświadczenie",
+  "experience": "Doświadczenia",
   "heroLinkPortfolio": "Portfolio",
   "heroLinkAbout": "O mnie"
 }

@@ -42,13 +42,15 @@
       background: rgb(255 255 255 / 10%);
       border: 1.27px solid #171717;
       border-radius: 38px;
-      padding: 7.5px 25px;
       width: 104px;
       height: 45px;
       font-weight: 400;
       font-size: 20px;
       color: #171717;
       margin-top: 19px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &::after {
         content: '';
