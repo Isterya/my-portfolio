@@ -151,5 +151,14 @@
     "irvas": {
       "description": "Corporate-style responsive website with extra attention to design details and UX. Includes a custom-built dynamic calculator for real-time price estimation."
     }
+  },
+
+  "price": {
+    "title": {
+      "before": "My",
+      "highlight": "Price"
+    },
+
+    "description": "Whether you need a sleek landing page, a powerful web application, or a full-scale eCommerce platform, I deliver modern, high-performance websites built with cutting-edge technologies. Choose a service that fits your goals, and let’s create something exceptional together."
   }
 }

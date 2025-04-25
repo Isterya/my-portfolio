@@ -149,5 +149,14 @@
     "irvas": {
       "description": "Responsywna strona korporacyjna z naciskiem na szczegóły projektowe i doświadczenie użytkownika. Zawiera niestandardowy kalkulator do szacowania cen w czasie rzeczywistym."
     }
+  },
+
+  "price": {
+    "title": {
+      "before": "Moje",
+      "highlight": "Ceny"
+    },
+
+    "description": "Potrzebujesz eleganckiego landing page'a, zaawansowanej aplikacji webowej lub pełnej platformy eCommerce? Tworzę nowoczesne, wydajne strony internetowe oparte na najnowszych technologiach. Wybierz usługę dopasowaną do swoich celów i stwórzmy razem coś wyjątkowego."
   }
 }

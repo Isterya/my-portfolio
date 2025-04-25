@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useRef } from 'react';
 
 import { useCarousel } from '../../hooks/useCarousel';
@@ -11,6 +13,8 @@ import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
 import './price.scss';
 
 const Price = () => {
+  const { t } = useTranslation();
+
   const renderedData = [...priceData, ...priceData, ...priceData];
 
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -27,14 +31,9 @@ const Price = () => {
           <div className="price-header">
             <div className="price-header__content">
               <h2 className="price-header__title">
-                My <span>Price</span>
+                {t('price.title.before')} <span>{t('price.title.highlight')}</span>
               </h2>
-              <p className="price-header__descr">
-                Whether you need a sleek landing page, a powerful web application, or a full-scale
-                eCommerce platform, I deliver modern, high-performance websites built with
-                cutting-edge technologies. Choose a service that fits your goals, and let’s create
-                something exceptional together.
-              </p>
+              <p className="price-header__descr">{t('price.description')}</p>
             </div>
           </div>
         </div>
