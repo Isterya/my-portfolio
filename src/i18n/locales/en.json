@@ -125,5 +125,31 @@
     "years": "Years",
     "experience": "Proven Experience",
     "hire": "Hire me"
+  },
+
+  "portfolio": {
+    "title": {
+      "before": "Lets have a look at my",
+      "highlight": "Portfolio"
+    },
+
+    "uber": {
+      "description": "Landing page for a leading taxi service, focused on clean responsive design and cross-device compatibility. Built with Bootstrap grid and SASS, ensuring a pixel-perfect adaptive layout."
+    },
+    "diary": {
+      "description": "SPA designed to present subject information in a clear and structured way. Uses Redux Toolkit for state management and includes an email subscription feature."
+    },
+    "art": {
+      "description": "Website with dynamic filters, animations, and typical UI/UX challenges — a real-world practice of building large layouts and solving front-end tasks."
+    },
+    "marvel": {
+      "description": "Dynamic web app fetching content directly from Marvel API. Allows users to explore characters and comics — a solid case of working with third-party APIs and dynamic content rendering."
+    },
+    "coffee": {
+      "description": "React-based coffee shop website built entirely with class components. Focused on mastering component architecture and working with dynamic content."
+    },
+    "irvas": {
+      "description": "Corporate-style responsive website with extra attention to design details and UX. Includes a custom-built dynamic calculator for real-time price estimation."
+    }
   }
 }

@@ -22,50 +22,44 @@ export const portfolioData: PortfolioData[] = [
     id: uuidv4(),
     title: 'Uber',
     background: firstBg,
-    description:
-      'Landing page for a leading taxi service, focused on clean responsive design and cross-device compatibility. Built with Bootstrap grid and SASS, ensuring a pixel-perfect adaptive layout.',
-    link: 'https://uber.purrcode.ru/',
+    description: 'portfolio.uber.description',
+    link: 'https://uber.isterya.dev/',
   },
   {
     id: uuidv4(),
     title: 'Diary',
     background: secondBg,
-    description:
-      'SPA designed to present subject information in a clear and structured way. Uses Redux Toolkit for state management and includes an email subscription feature.',
-    link: 'https://diary.purrcode.ru/',
+    description: 'portfolio.diary.description',
+    link: 'https://diary.isterya.dev/',
   },
 
   {
     id: uuidv4(),
     title: 'Art',
     background: thirdBg,
-    description:
-      'Website with dynamic filters, animations, and typical UI/UX challenges — a real-world practice of building large layouts and solving front-end tasks.',
-    link: 'https://art.purrcode.ru/',
+    description: 'portfolio.art.description',
+    link: 'https://art.isterya.dev/',
   },
   {
     id: uuidv4(),
     title: 'Marvel',
     background: fourthBg,
-    description:
-      'Dynamic web app fetching content directly from Marvel API. Allows users to explore characters and comics — a solid case of working with third-party APIs and dynamic content rendering.',
-    link: 'https://marvel.purrcode.ru/',
+    description: 'portfolio.marvel.description',
+    link: 'https://marvel.isterya.dev/',
   },
 
   {
     id: uuidv4(),
     title: 'Coffee Shop',
     background: fifthBg,
-    description:
-      'React-based coffee shop website built entirely with class components. Focused on mastering component architecture and working with dynamic content.',
-    link: 'https://coffee.purrcode.ru/',
+    description: 'portfolio.coffee.description',
+    link: 'https://coffee.isterya.dev/',
   },
   {
     id: uuidv4(),
     title: 'Irvas',
     background: sixthBg,
-    description:
-      'Corporate-style responsive website with extra attention to design details and UX. Includes a custom-built dynamic calculator for real-time price estimation.',
-    link: 'https://irvas.purrcode.ru/',
+    description: 'portfolio.irvas.description',
+    link: 'https://irvas.isterya.dev/',
   },
 ];

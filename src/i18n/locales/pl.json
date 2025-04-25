@@ -123,5 +123,31 @@
     "years": "Lata",
     "experience": "Udokumentowane doświadczenie",
     "hire": "Zatrudnij mnie"
+  },
+
+  "portfolio": {
+    "title": {
+      "before": "Przyjrzyjmy się mojemu",
+      "highlight": "Portfolio"
+    },
+
+    "uber": {
+      "description": "Strona docelowa dla wiodącej usługi taksówkarskiej, skoncentrowana na czystym, responsywnym designie. Zbudowana z wykorzystaniem siatki Bootstrap i SASS, z doskonałą adaptacją."
+    },
+    "diary": {
+      "description": "Aplikacja jednostronicowa zaprojektowana do przejrzystej prezentacji informacji o przedmiotach. Wykorzystuje Redux Toolkit do zarządzania stanem i zawiera funkcję subskrypcji mailowej."
+    },
+    "art": {
+      "description": "Strona z dynamicznymi filtrami, animacjami i typowymi wyzwaniami UI/UX — praktyczny przykład budowy rozbudowanych układów i rozwiązywania zadań front-endowych."
+    },
+    "marvel": {
+      "description": "Dynamiczna aplikacja internetowa pobierająca dane bezpośrednio z Marvel API. Pozwala użytkownikom przeglądać postacie i komiksy — doskonały przykład pracy z zewnętrznymi API."
+    },
+    "coffee": {
+      "description": "Strona kawiarni oparta na React, w pełni zbudowana z komponentów klasowych. Skupiona na architekturze komponentów i pracy z dynamiczną treścią."
+    },
+    "irvas": {
+      "description": "Responsywna strona korporacyjna z naciskiem na szczegóły projektowe i doświadczenie użytkownika. Zawiera niestandardowy kalkulator do szacowania cen w czasie rzeczywistym."
+    }
   }
 }

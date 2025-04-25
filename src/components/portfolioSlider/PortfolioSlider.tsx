@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useMemo, useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -13,6 +15,8 @@ const itemsPerSlide = 2;
 const intervalTime = 5000;
 
 const PortfolioSlider = () => {
+  const { t } = useTranslation();
+
   const totalItems = useMemo(() => portfolioData.length, []);
   const totalSlides = Math.ceil(totalItems / itemsPerSlide);
 
@@ -72,7 +76,13 @@ const PortfolioSlider = () => {
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
             {portfolioData.slice(currentIndex, currentIndex + itemsPerSlide).map((card) => (
-              <PortfolioCard key={card.id} {...card} />
+              <PortfolioCard
+                key={card.id}
+                title={card.title}
+                background={card.background}
+                description={t(card.description)}
+                link={card.link}
+              />
             ))}
           </motion.div>
         </AnimatePresence>
