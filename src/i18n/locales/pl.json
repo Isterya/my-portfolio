@@ -284,6 +284,7 @@
 
     "intro": {
       "start": "Witamy na stronie Isterya | Web Developer. Korzystając z tej strony internetowej (",
+      "site": "www.isterya.dev",
       "end": "), akceptujesz poniższe warunki. Jeśli nie zgadzasz się z jakąkolwiek częścią, prosimy nie korzystać ze strony."
     },
 
@@ -321,5 +322,89 @@
 
     "contactTitle": "Kontakt",
     "contactText": "W przypadku pytań skontaktuj się ze mną pod adresem:"
+  },
+
+  "privacy": {
+    "title": "Polityka Prywatności",
+    "lastUpdated": "Ostatnia aktualizacja: 17 kwietnia 2025",
+
+    "intro1": {
+      "start": "Niniejsza Polityka Prywatności wyjaśnia, w jaki sposób Twoje dane osobowe są zbierane, wykorzystywane i chronione podczas odwiedzania strony ",
+      "site": "www.isterya.dev",
+      "end": " lub kontaktu z Isterya | Web Developer — osobą świadczącą usługi tworzenia stron internetowych (takie jak landing page, sklepy internetowe oraz rozwiązania na zamówienie)."
+    },
+    "intro2": "Korzystając z tej strony lub kontaktując się ze mną, akceptujesz niniejszą Politykę Prywatności.",
+
+    "whoTitle": "Kim Jestem",
+    "whoText1": "Isterya | Web Developer to działalność prowadzona przez osobę fizyczną (niezarejestrowaną firmę) z siedzibą w Polsce, świadczącą usługi programowania stron internetowych na zasadzie freelancingu lub kontraktów.",
+    "whoText2": "Kontakt:",
+
+    "dataTitle": "Jakie Dane Osobowe Zbieram",
+    "dataText1": "W zależności od sposobu interakcji ze stroną mogę zbierać następujące dane:",
+    "dataList": {
+      "email": "Adres e-mail (jeśli się ze mną skontaktujesz)",
+      "usage": "Dane dotyczące użytkowania (za pomocą plików cookies i narzędzi analitycznych)",
+      "project": "Informacje związane z projektem (jeśli poprosisz o wycenę lub omówisz usługę)"
+    },
+    "dataText2": "Nie wymagane jest tworzenie konta ani przechowywanie haseł.",
+
+    "usageTitle": "Jak Wykorzystuję Twoje Dane",
+    "usageText1": "Twoje dane wykorzystuję wyłącznie, gdy jest to konieczne:",
+    "usageList": {
+      "respond": "Aby odpowiedzieć na zapytania lub świadczyć usługi",
+      "manage": "Aby zarządzać wycenami lub umowami freelancerskimi",
+      "improve": "Aby ulepszać działanie strony (analiza danych)",
+      "legal": "Aby spełnić obowiązki prawne"
+    },
+    "usageText2": "Nigdy nie sprzedaję ani nie wynajmuję Twoich danych.",
+
+    "cookiesTitle": "Pliki Cookies i Analityka",
+    "cookiesText1": "Ta strona używa podstawowych plików cookies i narzędzi analitycznych (np. Google Analytics), aby analizować ruch i ulepszać doświadczenie użytkownika.",
+    "cookiesText2": "Możesz kontrolować preferencje dotyczące cookies w ustawieniach przeglądarki.",
+
+    "sharingTitle": "Udostępnianie Danych",
+    "sharingText1": "Twoje dane mogą być udostępniane wyłącznie zaufanym narzędziom stron trzecich (np. dostawcom usług e-mail lub platformom analitycznym), tylko w celu świadczenia usług.",
+    "sharingText2": "Nie udostępniam Twoich danych do celów marketingowych ani profilowania.",
+
+    "legalTitle": "Podstawa Prawna (Zgodność z RODO)",
+    "legalText1": "Jeśli znajdujesz się na terenie Europejskiego Obszaru Gospodarczego (EOG), przetwarzam Twoje dane na następujących podstawach prawnych:",
+    "legalList": {
+      "consent": "Twoja zgoda (np. przesłanie formularza kontaktowego)",
+      "contract": "Wykonanie umowy (np. zamówienie usługi)",
+      "obligations": "Zobowiązania prawne (np. wystawienie faktury)"
+    },
+
+    "rightsTitle": "Twoje Prawa",
+    "rightsText1": "Masz prawo do:",
+    "rightsList": {
+      "access": "Dostępu, aktualizacji lub usunięcia swoich danych osobowych",
+      "withdraw": "Wycofania zgody",
+      "object": "Sprzeciwu wobec przetwarzania",
+      "complaint": "Złożenia skargi do organu ochrony danych"
+    },
+    "rightsText2": "Aby skorzystać ze swoich praw, napisz na adres e-mail:",
+
+    "retentionTitle": "Okres Przechowywania Danych",
+    "retentionText1": "Przechowuję Twoje dane tylko przez czas niezbędny do:",
+    "retentionList": {
+      "services": "Świadczenia usług lub komunikacji",
+      "legal": "Spełniania obowiązków prawnych (np. rozliczenia podatkowe)"
+    },
+
+    "securityTitle": "Bezpieczeństwo",
+    "securityText": "Stosuję standardowe środki bezpieczeństwa w celu ochrony Twoich danych, jednak pamiętaj, że żadna metoda przesyłania lub przechowywania danych w Internecie nie jest całkowicie bezpieczna.",
+
+    "childrenTitle": "Prywatność Dzieci",
+    "childrenText": "Ta strona nie jest przeznaczona dla dzieci poniżej 13 roku życia. Nie zbieram świadomie danych osobowych od osób poniżej 13 lat.",
+
+    "linksTitle": "Linki do Innych Stron",
+    "linksText": "Ta strona może zawierać linki do innych witryn. Nie odpowiadam za ich politykę prywatności. Zapoznaj się z ich zasadami osobno.",
+
+    "changesTitle": "Zmiany w Polityce",
+    "changesText": "Polityka Prywatności może być od czasu do czasu aktualizowana. Najnowsza wersja zawsze będzie dostępna na tej stronie z datą aktualizacji na górze.",
+
+    "contactTitle": "Kontakt",
+    "contactText1": "Jeśli masz pytania lub prośby, skontaktuj się:",
+    "contactText2": "E-mail:"
   }
 }

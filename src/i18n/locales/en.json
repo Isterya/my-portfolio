@@ -286,6 +286,7 @@
 
     "intro": {
       "start": "Welcome to Isterya | Web Developer. By using this website (",
+      "site": "www.isterya.dev",
       "end": "), you agree to the following terms and conditions. If you do not agree with any part, please do not use the website."
     },
 
@@ -323,5 +324,89 @@
 
     "contactTitle": "Contact",
     "contactText": "If you have any questions, contact me at:"
+  },
+
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: April 17, 2025",
+
+    "intro1": {
+      "start": "This Privacy Policy explains how your personal data is collected, used, and protected when you visit ",
+      "site": "www.isterya.dev",
+      "end": " or interact with Isterya | Web Developer — an individual offering web development services (such as landing pages, e-commerce sites, and custom solutions)."
+    },
+    "intro2": "By using this website or contacting me via provided channels, you agree to this Privacy Policy.",
+
+    "whoTitle": "Who I Am",
+    "whoText1": "Isterya | Web Developer is operated by an individual (not a registered company), based in Poland, providing freelance and contract-based web development services.",
+    "whoText2": "Contact:",
+
+    "dataTitle": "What Personal Data I Collect",
+    "dataText1": "Depending on how you interact with the site, I may collect the following:",
+    "dataList": {
+      "email": "Email address (if you contact me)",
+      "usage": "Usage data (via cookies and analytics tools)",
+      "project": "Project-related info (if you request a quote or discuss a service)"
+    },
+    "dataText2": "I do not require account creation or store passwords.",
+
+    "usageTitle": "How I Use Your Data",
+    "usageText1": "I use your data only when necessary:",
+    "usageList": {
+      "respond": "To respond to inquiries or provide services",
+      "manage": "To manage quotes or freelance agreements",
+      "improve": "To improve the website experience (analytics)",
+      "legal": "To comply with legal obligations"
+    },
+    "usageText2": "I do not sell or rent your data. Ever.",
+
+    "cookiesTitle": "Cookies and Analytics",
+    "cookiesText1": "This website uses basic cookies and analytics tools (like Google Analytics) to understand traffic and improve user experience.",
+    "cookiesText2": "You can control cookie preferences in your browser settings.",
+
+    "sharingTitle": "Data Sharing",
+    "sharingText1": "Your data may be shared only with trusted third-party tools (e.g. email providers or analytics platforms), solely to operate the service.",
+    "sharingText2": "I do not share your data for marketing or profiling purposes.",
+
+    "legalTitle": "Legal Basis (GDPR Compliance)",
+    "legalText1": "If you're located in the European Economic Area (EEA), I process your data under these legal bases:",
+    "legalList": {
+      "consent": "Your consent (e.g. submitting a contact form)",
+      "contract": "Performance of a contract (e.g. service request)",
+      "obligations": "Legal obligations (e.g. invoicing)"
+    },
+
+    "rightsTitle": "Your Rights",
+    "rightsText1": "You have the right to:",
+    "rightsList": {
+      "access": "Access, update, or delete your personal data",
+      "withdraw": "Withdraw consent",
+      "object": "Object to processing",
+      "complaint": "Lodge a complaint with a data protection authority"
+    },
+    "rightsText2": "To exercise your rights, email",
+
+    "retentionTitle": "Data Retention",
+    "retentionText1": "I keep your data only as long as needed for:",
+    "retentionList": {
+      "services": "Providing services or communication",
+      "legal": "Complying with legal obligations (e.g. tax reporting)"
+    },
+
+    "securityTitle": "Security",
+    "securityText": "I implement industry-standard security measures to safeguard your data; however, please note that no online transmission or storage method is entirely secure.",
+
+    "childrenTitle": "Children’s Privacy",
+    "childrenText": "This website is not intended for children under 13. I do not knowingly collect personal data from anyone under 13.",
+
+    "linksTitle": "Links to Other Websites",
+    "linksText": "This site may link to other websites. I’m not responsible for their privacy practices. Check their privacy policies individually.",
+
+    "changesTitle": "Changes to This Policy",
+    "changesText": "I may update this Privacy Policy from time to time. The latest version will always be available on this page with the updated date at the top.",
+
+    "contactTitle": "Contact",
+    "contactText1": "If you have any questions or requests, reach out:",
+    "contactText2": "Email:"
   }
 }

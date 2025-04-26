@@ -26,7 +26,7 @@ const UserTermsPage = () => {
           <p>
             {t('terms.intro.start')}
             <a href="http://www.isterya.dev" target="_blank" rel="noopener noreferrer">
-              http://www.isterya.dev
+              {t('terms.intro.site')}
             </a>
             {t('terms.intro.end')}
           </p>

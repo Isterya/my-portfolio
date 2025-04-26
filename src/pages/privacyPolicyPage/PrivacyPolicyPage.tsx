@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import SEO from '@/components/SEO';
 import { seoPolicy } from '@/data/seoData';
 
@@ -7,132 +8,107 @@ import { privacyPolicySections } from '@/data/tocData';
 import './privacyPolicyPage.scss';
 
 const PrivacyPolicyPage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SEO {...seoPolicy} />
 
       <div className="policy">
         <div className="policy-container">
-          <h1>Privacy Policy</h1>
-          <h2>Last updated: April 17, 2025</h2>
+          <h1>{t('privacy.title')}</h1>
+          <h2>{t('privacy.lastUpdated')}</h2>
 
           <TableOfContents sections={privacyPolicySections} />
 
           <p>
-            This Privacy Policy explains how your personal data is collected, used, and protected
-            when you visit{' '}
+            {t('privacy.intro1.start')}
             <a href="http://www.isterya.dev" target="_blank" rel="noopener noreferrer">
-              www.isterya.dev
-            </a>{' '}
-            or interact with Isterya | Web Developer — an individual offering web development
-            services (such as landing pages, e-commerce sites, and custom solutions).
+              {t('privacy.intro1.site')}
+            </a>
+            {t('privacy.intro1.end')}
           </p>
 
-          <p>
-            By using this website or contacting me via provided channels, you agree to this Privacy
-            Policy.
-          </p>
+          <p>{t('privacy.intro2')}</p>
 
-          <h3 id="who">Who I Am</h3>
+          <h3 id="who">{t('privacy.whoTitle')}</h3>
+          <p>{t('privacy.whoText1')}</p>
           <p>
-            Isterya | Web Developer is operated by an individual (not a registered company), based
-            in Poland, providing freelance and contract-based web development services.
-          </p>
-          <p>
-            Contact: <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
-          </p>
-
-          <h3 id="data">What Personal Data I Collect</h3>
-          <p>Depending on how you interact with the site, I may collect the following:</p>
-          <ul>
-            <li>Email address (if you contact me)</li>
-            <li>Usage data (via cookies and analytics tools)</li>
-            <li>Project-related info (if you request a quote or discuss a service)</li>
-          </ul>
-          <p>I do not require account creation or store passwords.</p>
-
-          <h3 id="usage">How I Use Your Data</h3>
-          <p>I use your data only when necessary:</p>
-          <ul>
-            <li>To respond to inquiries or provide services</li>
-            <li>To manage quotes or freelance agreements</li>
-            <li>To improve the website experience (analytics)</li>
-            <li>To comply with legal obligations</li>
-          </ul>
-          <p>I do not sell or rent your data. Ever.</p>
-
-          <h3 id="cookies">Cookies and Analytics</h3>
-          <p>
-            This website uses basic cookies and analytics tools (like Google Analytics) to
-            understand traffic and improve user experience.
-          </p>
-          <p>You can control cookie preferences in your browser settings.</p>
-
-          <h3 id="sharing">Data Sharing</h3>
-          <p>
-            Your data may be shared only with trusted third-party tools (e.g. email providers or
-            analytics platforms), solely to operate the service.
-          </p>
-          <p>I do not share your data for marketing or profiling purposes.</p>
-
-          <h3 id="legal">Legal Basis (GDPR Compliance)</h3>
-          <p>
-            If you're located in the European Economic Area (EEA), I process your data under these
-            legal bases:
-          </p>
-          <ul>
-            <li>Your consent (e.g. submitting a contact form)</li>
-            <li>Performance of a contract (e.g. service request)</li>
-            <li>Legal obligations (e.g. invoicing)</li>
-          </ul>
-
-          <h3 id="rights">Your Rights</h3>
-          <p>You have the right to:</p>
-          <ul>
-            <li>Access, update, or delete your personal data</li>
-            <li>Withdraw consent</li>
-            <li>Object to processing</li>
-            <li>Lodge a complaint with a data protection authority</li>
-          </ul>
-          <p>
-            To exercise your rights, email{' '}
+            {t('privacy.whoText2')}{' '}
             <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
           </p>
 
-          <h3 id="retention">Data Retention</h3>
-          <p>I keep your data only as long as needed for:</p>
+          <h3 id="data">{t('privacy.dataTitle')}</h3>
+          <p>{t('privacy.dataText1')}</p>
           <ul>
-            <li>Providing services or communication</li>
-            <li>Complying with legal obligations (e.g. tax reporting)</li>
+            <li>{t('privacy.dataList.email')}</li>
+            <li>{t('privacy.dataList.usage')}</li>
+            <li>{t('privacy.dataList.project')}</li>
+          </ul>
+          <p>{t('privacy.dataText2')}</p>
+
+          <h3 id="usage">{t('privacy.usageTitle')}</h3>
+          <p>{t('privacy.usageText1')}</p>
+          <ul>
+            <li>{t('privacy.usageList.respond')}</li>
+            <li>{t('privacy.usageList.manage')}</li>
+            <li>{t('privacy.usageList.improve')}</li>
+            <li>{t('privacy.usageList.legal')}</li>
+          </ul>
+          <p>{t('privacy.usageText2')}</p>
+
+          <h3 id="cookies">{t('privacy.cookiesTitle')}</h3>
+          <p>{t('privacy.cookiesText1')}</p>
+          <p>{t('privacy.cookiesText2')}</p>
+
+          <h3 id="sharing">{t('privacy.sharingTitle')}</h3>
+          <p>{t('privacy.sharingText1')}</p>
+          <p>{t('privacy.sharingText2')}</p>
+
+          <h3 id="legal">{t('privacy.legalTitle')}</h3>
+          <p>{t('privacy.legalText1')}</p>
+          <ul>
+            <li>{t('privacy.legalList.consent')}</li>
+            <li>{t('privacy.legalList.contract')}</li>
+            <li>{t('privacy.legalList.obligations')}</li>
           </ul>
 
-          <h3 id="security">Security</h3>
+          <h3 id="rights">{t('privacy.rightsTitle')}</h3>
+          <p>{t('privacy.rightsText1')}</p>
+          <ul>
+            <li>{t('privacy.rightsList.access')}</li>
+            <li>{t('privacy.rightsList.withdraw')}</li>
+            <li>{t('privacy.rightsList.object')}</li>
+            <li>{t('privacy.rightsList.complaint')}</li>
+          </ul>
           <p>
-            I implement industry-standard security measures to safeguard your data; however, please
-            note that no online transmission or storage method is entirely secure.
+            {t('privacy.rightsText2')}{' '}
+            <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
           </p>
 
-          <h3 id="children">Children’s Privacy</h3>
-          <p>
-            This website is not intended for children under 13. I do not knowingly collect personal
-            data from anyone under 13.
-          </p>
+          <h3 id="retention">{t('privacy.retentionTitle')}</h3>
+          <p>{t('privacy.retentionText1')}</p>
+          <ul>
+            <li>{t('privacy.retentionList.services')}</li>
+            <li>{t('privacy.retentionList.legal')}</li>
+          </ul>
 
-          <h3 id="links">Links to Other Websites</h3>
-          <p>
-            This site may link to other websites. I’m not responsible for their privacy practices.
-            Check their privacy policies individually.
-          </p>
+          <h3 id="security">{t('privacy.securityTitle')}</h3>
+          <p>{t('privacy.securityText')}</p>
 
-          <h3 id="changes">Changes to This Policy</h3>
-          <p>
-            I may update this Privacy Policy from time to time. The latest version will always be
-            available on this page with the updated date at the top.
-          </p>
+          <h3 id="children">{t('privacy.childrenTitle')}</h3>
+          <p>{t('privacy.childrenText')}</p>
 
-          <h3 id="contact">Contact</h3>
-          <p>If you have any questions or requests, reach out:</p>
+          <h3 id="links">{t('privacy.linksTitle')}</h3>
+          <p>{t('privacy.linksText')}</p>
+
+          <h3 id="changes">{t('privacy.changesTitle')}</h3>
+          <p>{t('privacy.changesText')}</p>
+
+          <h3 id="contact">{t('privacy.contactTitle')}</h3>
+          <p>{t('privacy.contactText1')}</p>
           <p>
+            {t('privacy.contactText2')}{' '}
             <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
           </p>
         </div>
