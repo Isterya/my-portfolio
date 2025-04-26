@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import i18n from '../../i18n';
 
 import chevron from '../../assets/icons/chevron.svg';
@@ -22,6 +23,9 @@ const LanguageSwitcher = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-lang', i18n.language);
+    setSelectedLang(
+      i18n.language === 'ru' ? 'Русский' : i18n.language === 'pl' ? 'Polski' : 'English',
+    );
   }, [i18n.language]);
 
   return (
