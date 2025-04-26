@@ -245,6 +245,39 @@
     "privacyPolicy": "Polityka prywatności"
   },
 
+  "tableOfContents": {
+    "title": "Na tej stronie",
+
+    "privacyPolicy": {
+      "who": "Kim jestem",
+      "data": "Jakie dane osobowe zbieram",
+      "usage": "Jak wykorzystuję Twoje dane",
+      "cookies": "Pliki cookie i analityka",
+      "sharing": "Udostępnianie danych",
+      "legal": "Podstawa prawna (RODO)",
+      "rights": "Twoje prawa",
+      "retention": "Okres przechowywania danych",
+      "security": "Bezpieczeństwo",
+      "children": "Prywatność dzieci",
+      "links": "Linki do innych stron",
+      "changes": "Zmiany w tej polityce",
+      "contact": "Kontakt"
+    },
+
+    "terms": {
+      "about": "O tej stronie",
+      "services": "Usługi i komunikacja",
+      "intellectual": "Własność intelektualna",
+      "limitations": "Ograniczenia użytkowania",
+      "thirdParty": "Linki stron trzecich",
+      "disclaimer": "Zrzeczenie się odpowiedzialności",
+      "age": "Wymagania wiekowe",
+      "privacy": "Prywatność",
+      "changes": "Zmiany w regulaminie",
+      "contact": "Kontakt"
+    }
+  },
+
   "terms": {
     "title": "Warunki użytkowania",
     "lastUpdated": "Ostatnia aktualizacja: 17 kwietnia 2025",

@@ -247,6 +247,39 @@
     "privacyPolicy": "Privacy Policy"
   },
 
+  "tableOfContents": {
+    "title": "On this page",
+
+    "privacyPolicy": {
+      "who": "Who I Am",
+      "data": "What Personal Data I Collect",
+      "usage": "How I Use Your Data",
+      "cookies": "Cookies and Analytics",
+      "sharing": "Data Sharing",
+      "legal": "Legal Basis (GDPR)",
+      "rights": "Your Rights",
+      "retention": "Data Retention",
+      "security": "Security",
+      "children": "Children’s Privacy",
+      "links": "Links to Other Sites",
+      "changes": "Changes to This Policy",
+      "contact": "Contact"
+    },
+
+    "terms": {
+      "about": "About This Website",
+      "services": "Services and Communication",
+      "intellectual": "Intellectual Property",
+      "limitations": "Limitations of Use",
+      "thirdParty": "Third-Party Links",
+      "disclaimer": "Disclaimer of Liability",
+      "age": "Age Requirement",
+      "privacy": "Privacy",
+      "changes": "Changes to These Terms",
+      "contact": "Contact"
+    }
+  },
+
   "terms": {
     "title": "Terms and Conditions",
     "lastUpdated": "Last updated: April 17, 2025",
