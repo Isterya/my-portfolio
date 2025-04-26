@@ -249,7 +249,10 @@
     "title": "Warunki użytkowania",
     "lastUpdated": "Ostatnia aktualizacja: 17 kwietnia 2025",
 
-    "intro": "Witamy na stronie Isterya | Web Developer. Korzystając z tej strony internetowej (http://www.isterya.dev), akceptujesz poniższe warunki. Jeśli nie zgadzasz się z jakąkolwiek częścią, prosimy nie korzystać ze strony.",
+    "intro": {
+      "start": "Witamy na stronie Isterya | Web Developer. Korzystając z tej strony internetowej (",
+      "end": "), akceptujesz poniższe warunki. Jeśli nie zgadzasz się z jakąkolwiek częścią, prosimy nie korzystać ze strony."
+    },
 
     "aboutTitle": "O tej stronie",
     "aboutText": "To jest osobista strona portfolio prowadzona przez niezależnego freelancera, programistę stron internetowych z siedzibą w Polsce. Strona ma na celu zaprezentowanie pracy, opisanie oferowanych usług i umożliwienie kontaktu.",
@@ -274,13 +277,16 @@
     "ageText": "Musisz mieć co najmniej 18 lat, aby korzystać z tej strony lub kontaktować się ze mną w sprawie usług.",
 
     "privacyTitle": "Prywatność",
-    "privacyText": "Korzystanie z tej strony podlega również Polityce Prywatności, która wyjaśnia, jak przetwarzam dane osobowe.",
+    "privacyText": {
+      "start": "Korzystanie z tej strony podlega również",
+      "link": "Polityce Prywatności",
+      "end": ", która wyjaśnia, jak przetwarzam dane osobowe."
+    },
 
     "changesTitle": "Zmiany w Regulaminie",
     "changesText": "Warunki mogą być od czasu do czasu aktualizowane. Znaczące zmiany będą odnotowane na tej stronie. Dalsze korzystanie z serwisu oznacza akceptację zmian.",
 
     "contactTitle": "Kontakt",
-    "contactText1": "W przypadku pytań skontaktuj się ze mną pod adresem:",
-    "contactText2": "by.connectme@gmail.com"
+    "contactText": "W przypadku pytań skontaktuj się ze mną pod adresem:"
   }
 }
