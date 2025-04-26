@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+
 import { useTranslation } from 'react-i18next';
+import { useLastUpdated } from '@/hooks/useLastUpdated';
 
 import SEO from '@/components/SEO';
 import { seoTerms } from '@/data/seoData';
-
 import TableOfContents from '@/components/tableOfContents/TableOfContents';
 import { termsSections } from '@/data/tocData';
 
@@ -12,6 +13,8 @@ import './userTermsPage.scss';
 const UserTermsPage = () => {
   const { t } = useTranslation();
 
+  const updatedDate = useLastUpdated('termsOfUse');
+
   return (
     <>
       <SEO {...seoTerms} />
@@ -19,7 +22,7 @@ const UserTermsPage = () => {
       <div className="terms">
         <div className="terms-container">
           <h1>{t('terms.title')}</h1>
-          <h2>{t('terms.lastUpdated')}</h2>
+          <h2>{t('terms.lastUpdated', { date: updatedDate })}</h2>
 
           <TableOfContents sections={termsSections} />
 

@@ -280,7 +280,7 @@
 
   "terms": {
     "title": "Warunki użytkowania",
-    "lastUpdated": "Ostatnia aktualizacja: 17 kwietnia 2025",
+    "lastUpdated": "Ostatnia aktualizacja: {{date}}",
 
     "intro": {
       "start": "Witamy na stronie Isterya | Web Developer. Korzystając z tej strony internetowej (",
@@ -326,7 +326,7 @@
 
   "privacy": {
     "title": "Polityka Prywatności",
-    "lastUpdated": "Ostatnia aktualizacja: 17 kwietnia 2025",
+    "lastUpdated": "Ostatnia aktualizacja: {{date}}",
 
     "intro1": {
       "start": "Niniejsza Polityka Prywatności wyjaśnia, w jaki sposób Twoje dane osobowe są zbierane, wykorzystywane i chronione podczas odwiedzania strony ",

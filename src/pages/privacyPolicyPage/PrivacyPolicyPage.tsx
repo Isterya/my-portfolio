@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import SEO from '@/components/SEO';
-import { seoPolicy } from '@/data/seoData';
+import { useLastUpdated } from '@/hooks/useLastUpdated';
 
-import TableOfContents from '@/components/tableOfContents/TableOfContents';
 import { privacyPolicySections } from '@/data/tocData';
+import { seoPolicy } from '@/data/seoData';
+import SEO from '@/components/SEO';
+import TableOfContents from '@/components/tableOfContents/TableOfContents';
 
 import './privacyPolicyPage.scss';
 
 const PrivacyPolicyPage = () => {
   const { t } = useTranslation();
+
+  const updatedDate = useLastUpdated('privacyPolicy');
 
   return (
     <>
@@ -17,7 +20,7 @@ const PrivacyPolicyPage = () => {
       <div className="policy">
         <div className="policy-container">
           <h1>{t('privacy.title')}</h1>
-          <h2>{t('privacy.lastUpdated')}</h2>
+          <h2>{t('privacy.lastUpdated', { date: updatedDate })}</h2>
 
           <TableOfContents sections={privacyPolicySections} />
 
