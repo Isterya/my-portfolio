@@ -159,6 +159,12 @@
 
     "description": "Potrzebujesz eleganckiego landing page'a, zaawansowanej aplikacji webowej lub pełnej platformy eCommerce? Tworzę nowoczesne, wydajne strony internetowe oparte na najnowszych technologiach. Wybierz usługę dopasowaną do swoich celów i stwórzmy razem coś wyjątkowego.",
 
+    "from": "od",
+    "negotiable": {
+      "before": "cena",
+      "after": "do negocjacji"
+    },
+
     "priceCards": {
       "landing": "Jednostronicowa strona internetowa, która skutecznie prezentuje Twoją usługę lub produkt. Idealna dla startupów i freelancerów.",
       "info": "Nowoczesna platforma dla bloga, portfolio lub serwisu informacyjnego. Doskonała do publikowania treści.",

@@ -11,7 +11,7 @@ export interface PriceData {
   id: string;
   title: string;
   icon: string;
-  price: number | 'negotiable';
+  price: number | string;
   description: string;
 }
 
@@ -55,7 +55,7 @@ export const priceData: PriceData[] = [
     id: uuidv4(),
     title: 'Custom Project',
     icon: customIcon,
-    price: 'negotiable',
+    price: 'price.negotiable',
     description: 'price.priceCards.custom',
   },
 ];
