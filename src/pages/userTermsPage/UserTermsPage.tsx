@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import SEO from '../../components/SEO';
-import { seoTerms } from '../../data/seoData';
+import SEO from '@/components/SEO';
+import { seoTerms } from '@/data/seoData';
 
-import TableOfContents from '../../components/tableOfContents/TableOfContents';
-import { termsSections } from '../../data/tocData';
+import TableOfContents from '@/components/tableOfContents/TableOfContents';
+import { termsSections } from '@/data/tocData';
 
 import './userTermsPage.scss';
 

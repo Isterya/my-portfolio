@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import PortfolioSlider from '../../components/portfolioSlider/PortfolioSlider';
+import PortfolioSlider from '@/components/portfolioSlider/PortfolioSlider';
 
 import './portfolio.scss';
 

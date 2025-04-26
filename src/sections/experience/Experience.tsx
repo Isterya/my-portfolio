@@ -1,7 +1,7 @@
 import { useTranslation, Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-import { dataLeft, dataRight } from '../../data/experienceData';
+import { dataLeft, dataRight } from '@/data/experienceData';
 import './experience.scss';
 
 const circlePositions = [0, 180, 375, 620];

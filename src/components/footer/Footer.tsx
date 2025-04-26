@@ -5,8 +5,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 
-import ArrowUp from '../../assets/icons/hero/arrow-up.svg';
-import logo from '../../assets/icons/full-logo.svg';
+import ArrowUp from '@/assets/icons/hero/arrow-up.svg';
+import logo from '@/assets/icons/full-logo.svg';
 
 import './footer.scss';
 

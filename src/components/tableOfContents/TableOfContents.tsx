@@ -1,14 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
+import { tocSection } from '@/types/tocSection';
+
 import './tableOfContents.scss';
 
-type Section = {
-  id: string;
-  title: string;
-};
-
 type TableOfContentsProps = {
-  sections: Section[];
+  sections: tocSection[];
 };
 
 const TableOfContents = ({ sections }: TableOfContentsProps) => {

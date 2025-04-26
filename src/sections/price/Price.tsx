@@ -2,13 +2,13 @@ import { useTranslation } from 'react-i18next';
 
 import { useRef } from 'react';
 
-import { useCarousel } from '../../hooks/useCarousel';
+import { useCarousel } from '@/hooks/useCarousel';
 
-import PriceCard from '../../components/priceCard/PriceCard';
-import { priceData } from '../../data/priceData';
+import PriceCard from '@/components/priceCard/PriceCard';
+import { priceData } from '@/data/priceData';
 
-import firstAbstract from '../../assets/img/skills/abstract-figure-1.png';
-import thirdAbstract from '../../assets/img/skills/abstract-figure-3.png';
+import firstAbstract from '@/assets/img/skills/abstract-figure-1.png';
+import thirdAbstract from '@/assets/img/skills/abstract-figure-3.png';
 
 import './price.scss';
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import logo from '../../assets/icons/logo.svg';
+import logo from '@/assets/icons/logo.svg';
 
 import './navBar.scss';
 

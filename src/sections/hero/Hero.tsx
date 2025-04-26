@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { getYearsOfExperience } from '../../utils/getYearOfExperience';
+import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 
-import quote from '../../assets/icons/hero/quote.svg';
-import stars from '../../assets/icons/hero/stars.svg';
-import arrowUp from '../../assets/icons/hero/arrow-up.svg';
+import quote from '@/assets/icons/hero/quote.svg';
+import stars from '@/assets/icons/hero/stars.svg';
+import arrowUp from '@/assets/icons/hero/arrow-up.svg';
 
-import character from '../../assets/img/hero/hero-character.png';
+import character from '@/assets/img/hero/hero-character.png';
 
 import './hero.scss';
 

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { skillsData } from '../../data/skillsData';
+import { skillsData } from '@/data/skillsData';
 import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';

@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 
 import { motion } from 'framer-motion';
 
-import { getYearsOfExperience } from '../../utils/getYearOfExperience';
+import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 
-import character from '../../assets/img/about/about-character.png';
+import character from '@/assets/img/about/about-character.png';
 
 import './about.scss';
 

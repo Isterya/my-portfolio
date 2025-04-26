@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import i18n from '../../i18n';
+import i18n from '@/i18n';
 
-import chevron from '../../assets/icons/chevron.svg';
+import chevron from '@/assets/icons/chevron.svg';
 
 import './languageSwitcher.scss';
 

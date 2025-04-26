@@ -4,10 +4,10 @@ import { useMemo, useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import PortfolioCard from '../portfolioCard/PorfolioCard';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '@/data/portfolioData';
 
-import arrowLeft from '../../assets/icons/arrow-left.svg';
-import arrowRight from '../../assets/icons/arrow-right.svg';
+import arrowLeft from '@/assets/icons/arrow-left.svg';
+import arrowRight from '@/assets/icons/arrow-right.svg';
 
 import './portfolioSlider.scss';
 
