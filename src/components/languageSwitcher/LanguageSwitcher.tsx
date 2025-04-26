@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
 import i18n from '../../i18n';
 
 import chevron from '../../assets/icons/chevron.svg';
 
 import './languageSwitcher.scss';
 
-const languages = ['English', 'Русский', 'Polski'];
+type Language = 'English' | 'Русский' | 'Polski';
+
+const languages: Language[] = ['English', 'Русский', 'Polski'];
 
 const LanguageSwitcher = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState('English');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedLang, setSelectedLang] = useState<Language>('English');
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
-  const handleSelect = (lang: string) => {
+  const toggleDropdown = () => setIsOpen((prev) => !prev);
+
+  const handleSelect = (lang: Language) => {
     setSelectedLang(lang);
 
     i18n.changeLanguage(lang === 'Русский' ? 'ru' : lang === 'Polski' ? 'pl' : 'en');
@@ -26,7 +28,7 @@ const LanguageSwitcher = () => {
     setSelectedLang(
       i18n.language === 'ru' ? 'Русский' : i18n.language === 'pl' ? 'Polski' : 'English',
     );
-  }, [i18n.language]);
+  }, []);
 
   return (
     <div className="lang-switcher">
