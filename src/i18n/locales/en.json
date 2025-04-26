@@ -231,6 +231,14 @@
       "lang": "Language"
     },
 
+    "navigation": {
+      "home": "Home",
+      "skills": "Skills",
+      "experience": "Experience",
+      "portfolio": "Portfolio",
+      "price": "Price"
+    },
+
     "rights": "Copyright© 2025 Isterya. All Rights Reserved.",
     "userTerms": "User Terms & Conditions",
     "privacyPolicy": "Privacy Policy"

@@ -30,11 +30,11 @@ export const socialLinks: SocialLinks[] = [
 ];
 
 export const navLinks: string[] = [
-  'Home',
-  'Skills',
-  'Experience',
-  'Portfolio',
-  'Price',
+  'footer.navigation.home',
+  'footer.navigation.skills',
+  'footer.navigation.experience',
+  'footer.navigation.portfolio',
+  'footer.navigation.price',
 ];
 
 export const contactInfo: ContactInfo[] = [

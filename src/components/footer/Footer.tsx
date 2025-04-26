@@ -66,7 +66,7 @@ const Footer = ({ simplified }: FooterProps) => {
                 <ul className="footer-nav__list">
                   {navLinks.map((link) => (
                     <li key={link} className="footer-nav__item">
-                      <a href={`#${link.toLowerCase()}`}>{link}</a>
+                      <a href={`#${link.toLowerCase()}`}>{t(link)}</a>
                     </li>
                   ))}
                 </ul>

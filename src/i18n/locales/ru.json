@@ -229,6 +229,14 @@
       "lang": "Язык"
     },
 
+    "navigation": {
+      "home": "Главная",
+      "skills": "Навыки",
+      "experience": "Опыт",
+      "portfolio": "Портфолио",
+      "price": "Цены"
+    },
+
     "rights": "Copyright© 2025 Isterya. Все права защищены.",
     "userTerms": "Условия использования",
     "privacyPolicy": "Политика конфиденциальности"
