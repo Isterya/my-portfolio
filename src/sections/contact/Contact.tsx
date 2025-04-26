@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +8,8 @@ import { sendEmail } from '../../services/sendEmail';
 import './contact.scss';
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,7 +23,7 @@ const Contact = () => {
     e.preventDefault();
 
     if (!email || !agreed || !isValidEmail) {
-      setError('Please enter a valid email and accept the privacy policy');
+      setError(t('contact.error.validation'));
       return;
     }
 
@@ -35,7 +39,7 @@ const Contact = () => {
       setEmail('');
       setAgreed(false);
     } catch (err: any) {
-      setError(err.message || 'Something went wrong. Please try again.');
+      setError(err.message || t('contact.error.smthWrong'));
     } finally {
       setLoading(false);
     }
@@ -62,7 +66,7 @@ const Contact = () => {
       <div className="container">
         <div className="contact-wrapper">
           <h2 className="contact-header">
-            Want to Сooperate? <span>Let’s Discuss</span>
+            {t('contact.title.before')} <span>{t('contact.title.highlight')}</span>
           </h2>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
@@ -70,13 +74,13 @@ const Contact = () => {
               <input
                 type="email"
                 className="contact-email__input"
-                placeholder="Enter Email Address"
+                placeholder={t('contact.placeholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <button disabled={loading} type="submit" className="contact-email__btn">
-                {loading ? 'Sending...' : 'Send'}
+                {loading ? t('contact.loading') : t('contact.sendBtn')}
               </button>
             </div>
 
@@ -90,16 +94,15 @@ const Contact = () => {
                 />
                 <span className="checkmark" />
                 <span>
-                  I agree to the <Link to="/privacy-policy">privacy policy</Link>
+                  {t('contact.privacyPolicy.before')}{' '}
+                  <Link to="/privacy-policy">{t('contact.privacyPolicy.after')}</Link>
                 </span>
               </label>
             </div>
 
             <div aria-live="polite">
               {error && <p className="form-message error">{error}</p>}
-              {success && (
-                <p className="form-message success">Thank you! We’ll be in touch soon.</p>
-              )}
+              {success && <p className="form-message success">{t('contact.success')}</p>}
             </div>
           </form>
         </div>

@@ -191,5 +191,27 @@
         "description": "Projekt szyty na miarę — unikalny design i funkcje dopasowane do Twoich celów i oczekiwań."
       }
     }
+  },
+
+  "contact": {
+    "title": {
+      "before": "Chcesz współpracować?",
+      "highlight": "Porozmawiajmy"
+    },
+
+    "success": "Dziękuję! Skontaktujemy się wkrótce.",
+    "error": {
+      "validation": "Wprowadź poprawny adres e-mail i zaakceptuj politykę prywatności",
+      "smthWrong": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+
+    "placeholder": "Wprowadź adres e-mail",
+    "loading": "Wysyłanie...",
+    "sendBtn": "Wyślij",
+
+    "privacyPolicy": {
+      "before": " Akceptuję",
+      "after": "politykę prywatności"
+    }
   }
 }

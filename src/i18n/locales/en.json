@@ -193,5 +193,27 @@
         "description": "A fully bespoke solution — from design to functionality — created to match your exact needs and ambitions."
       }
     }
+  },
+
+  "contact": {
+    "title": {
+      "before": "Want to Сooperate?",
+      "highlight": "Let’s Discuss"
+    },
+
+    "success": "Thank you! We’ll be in touch soon.",
+    "error": {
+      "validation": "Please enter a valid email and accept the privacy policy",
+      "smthWrong": "Something went wrong. Please try again."
+    },
+
+    "placeholder": "Enter Email Address",
+    "loading": "Sending...",
+    "sendBtn": "Send",
+
+    "privacyPolicy": {
+      "before": " I agree to the",
+      "after": "privacy policy"
+    }
   }
 }
