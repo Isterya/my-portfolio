@@ -215,5 +215,24 @@
       "before": " I agree to the",
       "after": "privacy policy"
     }
+  },
+
+  "footer": {
+    "telegram": {
+      "connect": "Or let’s connect there",
+      "link": "My Telegram"
+    },
+
+    "social": "My social networks are always open for cooperation.",
+
+    "titles": {
+      "nav": "Navigation",
+      "contact": "Contact",
+      "lang": "Language"
+    },
+
+    "rights": "Copyright© 2025 Isterya. All Rights Reserved.",
+    "userTerms": "User Terms & Conditions",
+    "privacyPolicy": "Privacy Policy"
   }
 }

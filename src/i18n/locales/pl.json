@@ -213,5 +213,24 @@
       "before": " Akceptuję",
       "after": "politykę prywatności"
     }
+  },
+
+  "footer": {
+    "telegram": {
+      "connect": "Albo skontaktujmy się tam",
+      "link": "Mój Telegram"
+    },
+
+    "social": "Moje sieci społecznościowe są zawsze otwarte na współpracę.",
+
+    "titles": {
+      "nav": "Nawigacja",
+      "contact": "Kontakt",
+      "lang": "Język"
+    },
+
+    "rights": "Copyright© 2025 Isterya. Wszelkie prawa zastrzeżone.",
+    "userTerms": "Warunki użytkowania",
+    "privacyPolicy": "Polityka prywatności"
   }
 }

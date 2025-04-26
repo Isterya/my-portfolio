@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Link, NavLink } from 'react-router-dom';
 
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
@@ -13,20 +15,22 @@ type FooterProps = {
 };
 
 const Footer = ({ simplified }: FooterProps) => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
         {!simplified && (
           <>
             <div className="footer-telegram">
-              <h2 className="footer-telegram__header">Or let’s connect there</h2>
+              <h2 className="footer-telegram__header">{t('footer.telegram.connect')}</h2>
               <a
                 className="footer-telegram__link"
                 href="https://t.me/perfectn1ght"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                My Telegram
+                {t('footer.telegram.link')}
                 <img src={ArrowUp} alt="Arrow for the link" />
               </a>
             </div>
@@ -42,9 +46,7 @@ const Footer = ({ simplified }: FooterProps) => {
                 <img src={logo} alt="isterya logo" />
               </Link>
             </div>
-            <p className="footer-social__descr">
-              My social networks are always open for cooperation.
-            </p>
+            <p className="footer-social__descr">{t('footer.social')}</p>
 
             <ul className="footer-social__links">
               {socialLinks.map(({ icon, alt, href }) => (
@@ -60,7 +62,7 @@ const Footer = ({ simplified }: FooterProps) => {
           {!simplified && (
             <>
               <nav className="footer-nav">
-                <h4 className="footer-title">Navigation</h4>
+                <h4 className="footer-title">{t('footer.titles.nav')}</h4>
                 <ul className="footer-nav__list">
                   {navLinks.map((link) => (
                     <li key={link} className="footer-nav__item">
@@ -73,7 +75,7 @@ const Footer = ({ simplified }: FooterProps) => {
           )}
 
           <div className="footer-contact">
-            <h4 className="footer-title">Contact</h4>
+            <h4 className="footer-title">{t('footer.titles.contact')}</h4>
             <ul className="footer-contact__list">
               {contactInfo.map(({ text, href }) => (
                 <li key={href} className="footer-contact__item">
@@ -84,7 +86,7 @@ const Footer = ({ simplified }: FooterProps) => {
           </div>
 
           <div className="footer-lang">
-            <h4 className="footer-title">Language</h4>
+            <h4 className="footer-title">{t('footer.titles.lang')}</h4>
             <LanguageSwitcher />
           </div>
         </div>
@@ -92,11 +94,11 @@ const Footer = ({ simplified }: FooterProps) => {
         <div className="footer-divider" />
 
         <div className="footer-rights">
-          <p>Copyright© 2025 Isterya. All Rights Reserved.</p>
+          <p>{t('footer.rights')}</p>
 
           <p>
-            <NavLink to="/user-terms">User Terms & Conditions</NavLink> |{' '}
-            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+            <NavLink to="/user-terms">{t('footer.userTerms')}</NavLink> |{' '}
+            <NavLink to="/privacy-policy">{t('footer.privacyPolicy')}</NavLink>
           </p>
         </div>
       </div>
