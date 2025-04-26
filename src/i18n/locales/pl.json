@@ -243,5 +243,44 @@
     },
     "userTerms": "Warunki użytkowania",
     "privacyPolicy": "Polityka prywatności"
+  },
+
+  "terms": {
+    "title": "Warunki użytkowania",
+    "lastUpdated": "Ostatnia aktualizacja: 17 kwietnia 2025",
+
+    "intro": "Witamy na stronie Isterya | Web Developer. Korzystając z tej strony internetowej (http://www.isterya.dev), akceptujesz poniższe warunki. Jeśli nie zgadzasz się z jakąkolwiek częścią, prosimy nie korzystać ze strony.",
+
+    "aboutTitle": "O tej stronie",
+    "aboutText": "To jest osobista strona portfolio prowadzona przez niezależnego freelancera, programistę stron internetowych z siedzibą w Polsce. Strona ma na celu zaprezentowanie pracy, opisanie oferowanych usług i umożliwienie kontaktu.",
+
+    "servicesTitle": "Usługi i Komunikacja",
+    "servicesText1": "Ta strona nie oferuje produktów do bezpośredniej sprzedaży. Wszelkie usługi (takie jak tworzenie stron docelowych, e-commerce lub rozwiązania na zamówienie) są omawiane indywidualnie drogą mailową po nawiązaniu kontaktu przez użytkownika.",
+    "servicesText2": "Przesyłając swój e-mail przez formularz kontaktowy, zgadzasz się na kontakt w celach związanych z usługami.",
+
+    "intellectualTitle": "Własność Intelektualna",
+    "intellectualText": "Wszystkie treści na tej stronie (tekst, kod, obrazy, branding) należą do Isterya | Web Developer, o ile nie wskazano inaczej. Zabrania się kopiowania, powielania lub ponownego wykorzystywania jakiejkolwiek części bez pisemnej zgody.",
+
+    "limitationsTitle": "Ograniczenia Użytkowania",
+    "limitationsText": "Zgadzasz się nie nadużywać strony, nie podejmować prób nieautoryzowanego dostępu ani działań zakłócających lub szkodzących stronie lub jej użytkownikom.",
+
+    "thirdPartyTitle": "Linki do Stron Trzecich",
+    "thirdPartyText": "Strona może zawierać linki do stron internetowych osób trzecich. Nie ponoszę odpowiedzialności za ich treści, polityki prywatności ani warunki użytkowania. Korzystasz z nich na własne ryzyko.",
+
+    "disclaimerTitle": "Wyłączenie Odpowiedzialności",
+    "disclaimerText": "Strona jest udostępniana „tak jak jest”. Dokładam wszelkich starań, aby była funkcjonalna i dokładna, ale nie gwarantuję działania bez błędów ani nieprzerwanego dostępu. Nie ponoszę odpowiedzialności za jakiekolwiek straty lub szkody związane z korzystaniem z tej strony.",
+
+    "ageTitle": "Wymóg Wiekowy",
+    "ageText": "Musisz mieć co najmniej 18 lat, aby korzystać z tej strony lub kontaktować się ze mną w sprawie usług.",
+
+    "privacyTitle": "Prywatność",
+    "privacyText": "Korzystanie z tej strony podlega również Polityce Prywatności, która wyjaśnia, jak przetwarzam dane osobowe.",
+
+    "changesTitle": "Zmiany w Regulaminie",
+    "changesText": "Warunki mogą być od czasu do czasu aktualizowane. Znaczące zmiany będą odnotowane na tej stronie. Dalsze korzystanie z serwisu oznacza akceptację zmian.",
+
+    "contactTitle": "Kontakt",
+    "contactText1": "W przypadku pytań skontaktuj się ze mną pod adresem:",
+    "contactText2": "by.connectme@gmail.com"
   }
 }

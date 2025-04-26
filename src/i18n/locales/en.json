@@ -245,5 +245,50 @@
     },
     "userTerms": "User Terms & Conditions",
     "privacyPolicy": "Privacy Policy"
+  },
+
+  "terms": {
+    "title": "Terms and Conditions",
+    "lastUpdated": "Last updated: April 17, 2025",
+
+    "intro": {
+      "start": "Welcome to Isterya | Web Developer. By using this website (",
+      "end": "), you agree to the following terms and conditions. If you do not agree with any part, please do not use the website."
+    },
+
+    "aboutTitle": "About This Website",
+    "aboutText": "This is a personal portfolio site operated by an individual freelance web developer based in Poland. The site is designed to showcase work, outline offered services, and provide a way to get in touch.",
+
+    "servicesTitle": "Services and Communication",
+    "servicesText1": "This website does not offer products for direct sale. Any services (such as landing page development, e-commerce, or custom solutions) are discussed individually via email after a user initiates contact.",
+    "servicesText2": "By submitting your email through the contact form, you agree to be contacted for service-related communication.",
+
+    "intellectualTitle": "Intellectual Property",
+    "intellectualText": "All content on this website (text, code, images, branding) belongs to Isterya | Web Developer unless otherwise stated. Do not copy, reproduce, or reuse any part of it without written permission.",
+
+    "limitationsTitle": "Limitations of Use",
+    "limitationsText": "You agree not to misuse the site, attempt unauthorized access, or engage in activities that disrupt or harm the website or its visitors.",
+
+    "thirdPartyTitle": "Third-Party Links",
+    "thirdPartyText": "This site may contain links to third-party websites. I’m not responsible for their content, privacy practices, or terms. Use them at your own discretion.",
+
+    "disclaimerTitle": "Disclaimer of Liability",
+    "disclaimerText": "The site is provided \"as is.\" I do my best to keep it functional and accurate, but I do not guarantee error-free operation or uninterrupted access. I am not liable for any losses or damages related to your use of the site.",
+
+    "ageTitle": "Age Requirement",
+    "ageText": "You must be at least 18 years old to use this site or contact me about services.",
+
+    "privacyTitle": "Privacy",
+    "privacyText": {
+      "start": "Your use of this site is also governed by the",
+      "link": "Privacy Policy",
+      "end": ", which explains how I handle personal data."
+    },
+
+    "changesTitle": "Changes to These Terms",
+    "changesText": "These terms may be updated occasionally. Significant changes will be noted on this page. Continued use of the website means you accept any revisions.",
+
+    "contactTitle": "Contact",
+    "contactText": "If you have any questions, contact me at:"
   }
 }
