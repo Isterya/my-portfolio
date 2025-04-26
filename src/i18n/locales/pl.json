@@ -237,7 +237,10 @@
       "price": "Cennik"
     },
 
-    "rights": "Copyright© 2025 Isterya. Wszelkie prawa zastrzeżone.",
+    "rights": {
+      "copyright": "Copyright©",
+      "name": "Isterya. Wszelkie prawa zastrzeżone."
+    },
     "userTerms": "Warunki użytkowania",
     "privacyPolicy": "Polityka prywatności"
   }

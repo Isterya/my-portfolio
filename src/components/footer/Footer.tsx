@@ -17,6 +17,8 @@ type FooterProps = {
 const Footer = ({ simplified }: FooterProps) => {
   const { t } = useTranslation();
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -94,7 +96,9 @@ const Footer = ({ simplified }: FooterProps) => {
         <div className="footer-divider" />
 
         <div className="footer-rights">
-          <p>{t('footer.rights')}</p>
+          <p>
+            {t('footer.rights.copyright')} {currentYear} {t('footer.rights.name')}
+          </p>
 
           <p>
             <NavLink to="/user-terms">{t('footer.userTerms')}</NavLink> |{' '}
