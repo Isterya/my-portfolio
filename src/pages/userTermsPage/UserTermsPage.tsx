@@ -44,7 +44,7 @@ const UserTermsPage = () => {
           <h3 id="limitations">{t('terms.limitationsTitle')}</h3>
           <p>{t('terms.limitationsText')}</p>
 
-          <h3 id="third-party">{t('terms.thirdPartyTitle')}</h3>
+          <h3 id="thirdParty">{t('terms.thirdPartyTitle')}</h3>
           <p>{t('terms.thirdPartyText')}</p>
 
           <h3 id="disclaimer">{t('terms.disclaimerTitle')}</h3>
