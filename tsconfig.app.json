@@ -25,7 +25,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"]
+    }
   },
   "include": ["src"]
 }
