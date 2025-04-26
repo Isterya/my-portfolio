@@ -159,6 +159,17 @@
       "highlight": "Price"
     },
 
-    "description": "Whether you need a sleek landing page, a powerful web application, or a full-scale eCommerce platform, I deliver modern, high-performance websites built with cutting-edge technologies. Choose a service that fits your goals, and let’s create something exceptional together."
+    "description": "Whether you need a sleek landing page, a powerful web application, or a full-scale eCommerce platform, I deliver modern, high-performance websites built with cutting-edge technologies. Choose a service that fits your goals, and let’s create something exceptional together.",
+
+    "negotiable": "negotiable",
+
+    "priceCards": {
+      "landing": "A single-page website for showcasing services or products. Ideal for startups, individual specialists, and small businesses.",
+      "info": "A website for blogs, portfolios, or news platforms. A great solution for delivering content to your audience.",
+      "ecommerce": "A full-featured online sales tool with payment system integration, a product catalog, filters, and a shopping cart.",
+      "webapp": "A powerful browser-based app with interactive logic, tailored UX, and responsive design using cutting-edge technologies.",
+      "corporate": "A scalable business site with advanced features like CRM integration, booking systems, or real-time analytics.",
+      "custom": "A fully bespoke solution — from design to functionality — created to match your exact needs and ambitions."
+    }
   }
 }

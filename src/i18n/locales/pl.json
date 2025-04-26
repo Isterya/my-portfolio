@@ -157,6 +157,15 @@
       "highlight": "Ceny"
     },
 
-    "description": "Potrzebujesz eleganckiego landing page'a, zaawansowanej aplikacji webowej lub pełnej platformy eCommerce? Tworzę nowoczesne, wydajne strony internetowe oparte na najnowszych technologiach. Wybierz usługę dopasowaną do swoich celów i stwórzmy razem coś wyjątkowego."
+    "description": "Potrzebujesz eleganckiego landing page'a, zaawansowanej aplikacji webowej lub pełnej platformy eCommerce? Tworzę nowoczesne, wydajne strony internetowe oparte na najnowszych technologiach. Wybierz usługę dopasowaną do swoich celów i stwórzmy razem coś wyjątkowego.",
+
+    "priceCards": {
+      "landing": "Jednostronicowa strona internetowa, która skutecznie prezentuje Twoją usługę lub produkt. Idealna dla startupów i freelancerów.",
+      "info": "Nowoczesna platforma dla bloga, portfolio lub serwisu informacyjnego. Doskonała do publikowania treści.",
+      "ecommerce": "Kompletny sklep online z płatnościami, katalogiem produktów, filtrami i intuicyjnym koszykiem.",
+      "webapp": "Zaawansowana aplikacja przeglądarkowa z interaktywną logiką i nowoczesnym interfejsem. Technologia w służbie UX.",
+      "corporate": "Rozbudowana strona firmowa z integracją CRM, systemami rezerwacji i analizą danych w czasie rzeczywistym.",
+      "custom": "Projekt szyty na miarę — unikalny design i funkcje dopasowane do Twoich celów i oczekiwań."
+    }
   }
 }

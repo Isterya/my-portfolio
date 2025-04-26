@@ -21,47 +21,41 @@ export const priceData: PriceData[] = [
     title: 'Landing Page',
     icon: landingIcon,
     price: 75,
-    description:
-      'A single-page website for showcasing services or products. Ideal for startups, individual specialists, and small businesses.',
+    description: 'price.priceCards.landing',
   },
   {
     id: uuidv4(),
     title: 'Informational Website',
     icon: infoIcon,
     price: 90,
-    description:
-      'A website for blogs, portfolios, or news platforms. A great solution for delivering content to your audience.',
+    description: 'price.priceCards.info',
   },
   {
     id: uuidv4(),
     title: 'E-commerce Website',
     icon: commerceIcon,
     price: 120,
-    description:
-      'A full-featured online sales tool with payment system integration, a product catalog, filters, and a shopping cart.',
+    description: 'price.priceCards.ecommerce',
   },
   {
     id: uuidv4(),
     title: 'Web Application',
     icon: webAppIcon,
     price: 150,
-    description:
-      'A browser-based application with interactive features. Built with modern technologies to enhance user experience.',
+    description: 'price.priceCards.webapp',
   },
   {
     id: uuidv4(),
     title: 'Corporate Website',
     icon: corporateIcon,
     price: 100,
-    description:
-      'A business-oriented website with scalable features, such as internal CRM, booking forms, or analytics integration.',
+    description: 'price.priceCards.corporate',
   },
   {
     id: uuidv4(),
     title: 'Custom Project',
     icon: customIcon,
     price: 'negotiable',
-    description:
-      'A tailor-made website with a unique design and functionality to meet your specific needs and preferences.',
+    description: 'price.priceCards.custom',
   },
 ];

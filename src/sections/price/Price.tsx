@@ -42,7 +42,13 @@ const Price = () => {
       <div className={`price-carousel${isTouchDevice ? ' touch' : ''}`}>
         <div className="price-carousel__track" ref={trackRef}>
           {renderedData.map((price, i) => (
-            <PriceCard key={`${price.id}-${i}`} {...price} />
+            <PriceCard
+              key={`${price.id}-${i}`}
+              title={price.title}
+              icon={price.icon}
+              price={price.price}
+              description={t(price.description)}
+            />
           ))}
         </div>
       </div>
