@@ -168,12 +168,30 @@
     },
 
     "priceCards": {
-      "landing": "A single-page website for showcasing services or products. Ideal for startups, individual specialists, and small businesses.",
-      "info": "A website for blogs, portfolios, or news platforms. A great solution for delivering content to your audience.",
-      "ecommerce": "A full-featured online sales tool with payment system integration, a product catalog, filters, and a shopping cart.",
-      "webapp": "A powerful browser-based app with interactive logic, tailored UX, and responsive design using cutting-edge technologies.",
-      "corporate": "A scalable business site with advanced features like CRM integration, booking systems, or real-time analytics.",
-      "custom": "A fully bespoke solution — from design to functionality — created to match your exact needs and ambitions."
+      "landing": {
+        "title": "Landing Page",
+        "description": "A single-page website for showcasing services or products. Ideal for startups, individual specialists, and small businesses."
+      },
+      "info": {
+        "title": "Informational Website",
+        "description": "A website for blogs, portfolios, or news platforms. A great solution for delivering content to your audience."
+      },
+      "ecommerce": {
+        "title": "E-commerce Website",
+        "description": "A full-featured online sales tool with payment system integration, a product catalog, filters, and a shopping cart."
+      },
+      "webapp": {
+        "title": "Web Application",
+        "description": "A powerful browser-based app with interactive logic, tailored UX, and responsive design using cutting-edge technologies."
+      },
+      "corporate": {
+        "title": "Corporate Website",
+        "description": "A scalable business site with advanced features like CRM integration, booking systems, or real-time analytics."
+      },
+      "custom": {
+        "title": "Custom Project",
+        "description": "A fully bespoke solution — from design to functionality — created to match your exact needs and ambitions."
+      }
     }
   }
 }

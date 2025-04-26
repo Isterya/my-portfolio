@@ -44,7 +44,7 @@ const Price = () => {
           {renderedData.map((price, i) => (
             <PriceCard
               key={`${price.id}-${i}`}
-              title={price.title}
+              title={t(price.title)}
               icon={price.icon}
               price={price.price}
               description={t(price.description)}

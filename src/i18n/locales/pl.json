@@ -166,12 +166,30 @@
     },
 
     "priceCards": {
-      "landing": "Jednostronicowa strona internetowa, która skutecznie prezentuje Twoją usługę lub produkt. Idealna dla startupów i freelancerów.",
-      "info": "Nowoczesna platforma dla bloga, portfolio lub serwisu informacyjnego. Doskonała do publikowania treści.",
-      "ecommerce": "Kompletny sklep online z płatnościami, katalogiem produktów, filtrami i intuicyjnym koszykiem.",
-      "webapp": "Zaawansowana aplikacja przeglądarkowa z interaktywną logiką i nowoczesnym interfejsem. Technologia w służbie UX.",
-      "corporate": "Rozbudowana strona firmowa z integracją CRM, systemami rezerwacji i analizą danych w czasie rzeczywistym.",
-      "custom": "Projekt szyty na miarę — unikalny design i funkcje dopasowane do Twoich celów i oczekiwań."
+      "landing": {
+        "title": "Strona docelowa",
+        "description": "Jednostronicowa strona internetowa, która skutecznie prezentuje Twoją usługę lub produkt. Idealna dla startupów i freelancerów."
+      },
+      "info": {
+        "title": "Strona informacyjna",
+        "description": "Nowoczesna platforma dla bloga, portfolio lub serwisu informacyjnego. Doskonała do publikowania treści."
+      },
+      "ecommerce": {
+        "title": "Sklep internetowy",
+        "description": "Kompletny sklep online z płatnościami, katalogiem produktów, filtrami i intuicyjnym koszykiem."
+      },
+      "webapp": {
+        "title": "Aplikacja webowa",
+        "description": "Zaawansowana aplikacja przeglądarkowa z interaktywną logiką i nowoczesnym interfejsem. Technologia w służbie UX."
+      },
+      "corporate": {
+        "title": "Strona korporacyjna",
+        "description": "Rozbudowana strona firmowa z integracją CRM, systemami rezerwacji i analizą danych w czasie rzeczywistym."
+      },
+      "custom": {
+        "title": "Projekt niestandardowy",
+        "description": "Projekt szyty na miarę — unikalny design i funkcje dopasowane do Twoich celów i oczekiwań."
+      }
     }
   }
 }
