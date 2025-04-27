@@ -47,6 +47,7 @@
     width: 100%;
     min-width: 100px;
     background: rgb(255 255 255 / 5%);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
     backdrop-filter: blur(8px);
     border-radius: 10px;
     border: 1px solid rgb(255 255 255 / 15%);
@@ -69,6 +70,10 @@
 
     &:hover {
       background: rgb(255 255 255 / 12%);
+    }
+
+    &.active {
+      color: #ff7f00;
     }
   }
 }

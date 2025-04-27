@@ -24,6 +24,17 @@ const LanguageSwitcher = () => {
   };
 
   useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest('.lang-switcher')) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
     const handleLanguageChanged = (lng: string) => {
       document.documentElement.setAttribute('data-lang', lng);
       setSelectedLang(lng === 'ru' ? 'Русский' : lng === 'pl' ? 'Polski' : 'English');
@@ -39,28 +50,45 @@ const LanguageSwitcher = () => {
   }, []);
   return (
     <div className="lang-switcher">
-      <button className="lang-switcher__toggle" onClick={toggleDropdown}>
+      <motion.button
+        className="lang-switcher__toggle"
+        onClick={toggleDropdown}
+        whileTap={{ scale: 0.95 }}
+      >
         <span>{selectedLang}</span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
           <img src={chevron} alt="chevron" />
         </motion.div>
-      </button>
+      </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.ul
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             className="lang-switcher__dropdown"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={{
+              hidden: { opacity: 0, y: -10 },
+              visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
+            }}
           >
             {languages.map((lang) => (
-              <li key={lang}>
-                <button className="lang-switcher__item" onClick={() => handleSelect(lang)}>
+              <motion.li
+                key={lang}
+                variants={{
+                  hidden: { opacity: 0, y: -5 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+              >
+                <button
+                  className={`lang-switcher__item ${selectedLang === lang ? 'active' : ''}`}
+                  onClick={() => handleSelect(lang)}
+                >
                   {lang}
                 </button>
-              </li>
+              </motion.li>
             ))}
           </motion.ul>
         )}
