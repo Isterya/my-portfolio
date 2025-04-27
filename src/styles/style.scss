@@ -10,6 +10,10 @@
 
 html[data-lang='ru'] {
   font-family: Inter, sans-serif;
+
+  .navbar-logo {
+    padding: 0 78px;
+  }
 }
 
 html[data-lang='en'] {
@@ -18,6 +22,14 @@ html[data-lang='en'] {
 
 html[data-lang='pl'] {
   font-family: Poppins, sans-serif;
+
+  .navbar-logo {
+    padding: 0 27px;
+  }
+
+  .navbar-list a.navbar-list__item {
+    font-size: 18px;
+  }
 }
 
 ul,

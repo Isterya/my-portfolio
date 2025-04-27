@@ -24,12 +24,19 @@ const LanguageSwitcher = () => {
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-lang', i18n.language);
-    setSelectedLang(
-      i18n.language === 'ru' ? 'Русский' : i18n.language === 'pl' ? 'Polski' : 'English',
-    );
-  }, []);
+    const handleLanguageChanged = (lng: string) => {
+      document.documentElement.setAttribute('data-lang', lng);
+      setSelectedLang(lng === 'ru' ? 'Русский' : lng === 'pl' ? 'Polski' : 'English');
+    };
 
+    i18n.on('languageChanged', handleLanguageChanged);
+
+    handleLanguageChanged(i18n.language);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged);
+    };
+  }, []);
   return (
     <div className="lang-switcher">
       <button className="lang-switcher__toggle" onClick={toggleDropdown}>
