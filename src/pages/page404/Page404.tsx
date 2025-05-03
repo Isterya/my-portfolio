@@ -4,7 +4,6 @@ import SEO from '../../components/SEO';
 import { seo404 } from '../../data/seoData';
 
 import errorImg from '../../assets/img/error/error-404.svg';
-import backHomeIcon from '@/assets/img/error/back-home.svg';
 
 import './page404.scss';
 
@@ -22,7 +21,32 @@ const Page404 = () => {
             <img className="page404-img" src={errorImg} alt="Boy with a magnifying glass" />
 
             <Link to={'/'} className="page404-back">
-              <img src={backHomeIcon} alt="Arrow left" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M7 18L7 6"
+                  stroke="currentColor"
+                  stroke-width="1.00088"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10.5 12L17 12"
+                  stroke="currentColor"
+                  stroke-width="1.00088"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M13 9C11.8284 10.1716 11.1716 10.8284 10 12L13 15"
+                  stroke="currentColor"
+                  stroke-width="1.00088"
+                  stroke-linejoin="round"
+                />
+              </svg>
               Go Home
             </Link>
           </div>
