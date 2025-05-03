@@ -1,88 +1,45 @@
 .page404 {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  color: #fff;
+  padding: 55px 0 123px;
 
-  &__bg {
-    position: absolute;
-    width: 200vw;
-    left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
-    z-index: 0;
-
-    &--top {
-      top: -40vh;
-      height: 900px;
-      background: linear-gradient(135deg, #263238, #1c262b);
-    }
-
-    &--bottom {
-      bottom: -40vh;
-      height: 768px;
-      background: linear-gradient(135deg, #37474f, #2c3a42);
-    }
-  }
-
-  &__content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4rem 0;
-    min-height: 100vh;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      text-align: center;
-      gap: 2rem;
-    }
-
-    h1 {
-      max-width: 672px;
-      font-weight: 600;
-      font-size: 56px;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-      color: #fff;
-    }
-
-    a {
-      max-width: 368px;
-      border-radius: 50px;
-      padding: 16px 64px;
-      background: #ff7f00;
-      transition: 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 127, 0, 0.3);
-
-      font-weight: 500;
-      font-size: 24px;
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
-
-      &:hover {
-        background: #fff;
-        color: #ff7f00;
-        box-shadow: 0 8px 20px rgba(255, 127, 0, 0.15);
-      }
-    }
-
-    &-img {
-      max-width: 600px;
-      width: 100%;
-      height: auto;
-      animation: float 6s ease-in-out infinite;
-      user-select: none;
-      pointer-events: none;
-      -webkit-user-drag: none;
-    }
-  }
-
-  &__text {
+  &-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    align-items: center;
+  }
+
+  &-header {
+    font-weight: 800;
+    font-size: 64px;
+    color: #000;
+    line-height: 96px;
+  }
+
+  &-subheader {
+    font-weight: 700;
+    font-size: 24px;
+    color: #000;
+    line-height: 36px;
+  }
+
+  &-img {
+    margin-top: 54px;
+    max-width: 505px;
+  }
+
+  &-back {
+    margin-top: 80px;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+    line-height: 36px;
+
+    img {
+      max-width: 36px;
+    }
   }
 }

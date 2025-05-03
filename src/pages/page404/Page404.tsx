@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import { seo404 } from '../../data/seoData';
 
-import errorImg from '../../assets/img/404-error.svg';
+import errorImg from '../../assets/img/error/error-404.svg';
+import backHomeIcon from '@/assets/img/error/back-home.svg';
 
 import './page404.scss';
 
@@ -14,25 +15,16 @@ const Page404 = () => {
 
       <div className="page404">
         <div className="container">
-          <div className="page404__bg page404__bg--top"></div>
-          <div className="page404__bg page404__bg--bottom"></div>
+          <div className="page404-wrapper">
+            <h1 className="page404-header">Oops!</h1>
+            <h2 className="page404-subheader">You are lost</h2>
 
-          <div className="page404__content">
-            <div className="page404__text">
-              <h1>Oops! Looks like this page doesn't exist.</h1>
-              <Link
-                to="/"
-                aria-label="Return to home page"
-              >
-                BACK TO HOME
-              </Link>
-            </div>
+            <img className="page404-img" src={errorImg} alt="Boy with a magnifying glass" />
 
-            <img
-              className="page404__content-img"
-              src={errorImg}
-              alt="404 error img"
-            />
+            <Link to={'/'} className="page404-back">
+              <img src={backHomeIcon} alt="Arrow left" />
+              Go Home
+            </Link>
           </div>
         </div>
       </div>
