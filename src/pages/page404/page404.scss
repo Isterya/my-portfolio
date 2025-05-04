@@ -1,67 +1,75 @@
 .page404 {
-  padding: 55px 0 123px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+  background-color: #fff;
+
+  .container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
   }
 
   &-header {
     font-weight: 800;
-    font-size: 64px;
+    font-size: 56px;
+    line-height: 1.2;
     color: #000;
-    line-height: 96px;
+    margin-bottom: 8px;
   }
 
   &-subheader {
-    font-weight: 700;
-    font-size: 24px;
-    color: #000;
-    line-height: 36px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  &-desc {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 400px;
   }
 
   &-img {
-    margin-top: 54px;
-    max-width: 505px;
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 48px;
+    filter: drop-shadow(0 10px 25px rgb(0 0 0 / 10%));
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
   }
 
   &-back {
-    margin-top: 80px;
-    width: 160px;
-    height: 36px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #000;
-    font-weight: 400;
-    font-size: 24px;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 500;
     color: #000;
-    line-height: 36px;
-    position: relative;
+    border-bottom: 2px solid #000;
     padding-bottom: 2px;
     transition: all 0.3s ease;
-
-    &:hover {
-      color: #ff7f00;
-
-      svg {
-        transform: translateX(5px);
-
-        path {
-          fill: #ff7f00;
-        }
-      }
-
-      &::after {
-        width: 100%;
-      }
-    }
+    position: relative;
 
     svg {
+      width: 28px;
+      height: 28px;
       transition: transform 0.3s ease;
-      min-width: 36px;
-      min-height: 36px;
 
       path {
         transition: fill 0.3s ease;
@@ -71,12 +79,28 @@
     &::after {
       content: '';
       position: absolute;
-      left: 0;
       bottom: -2px;
-      height: 2px;
-      background-color: #ff7f00;
+      left: 0;
       width: 0;
+      height: 2px;
+      background-color: #ffb61d;
       transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: #ffb61d;
+
+      svg {
+        transform: translateX(5px);
+
+        path {
+          fill: #ffb61d;
+        }
+      }
+
+      &::after {
+        width: 100%;
+      }
     }
   }
 }

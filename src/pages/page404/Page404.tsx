@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import SEO from '../../components/SEO';
 import { seo404 } from '../../data/seoData';
@@ -7,6 +8,30 @@ import errorImg from '../../assets/img/error/error-404.svg';
 
 import './page404.scss';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
+
+const float = {
+  animate: {
+    y: [0, -8, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
 const Page404 = () => {
   return (
     <>
@@ -14,42 +39,60 @@ const Page404 = () => {
 
       <div className="page404">
         <div className="container">
-          <div className="page404-wrapper">
-            <h1 className="page404-header">Oops!</h1>
-            <h2 className="page404-subheader">You are lost</h2>
+          <motion.div className="page404-wrapper" initial="hidden" animate="visible">
+            <motion.h1 className="page404-header" variants={fadeUp} custom={0}>
+              Oops!
+            </motion.h1>
 
-            <img className="page404-img" src={errorImg} alt="Boy with a magnifying glass" />
+            <motion.h2 className="page404-subheader" variants={fadeUp} custom={1}>
+              You are lost
+            </motion.h2>
 
-            <Link to={'/'} className="page404-back">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M7 18L7 6"
-                  stroke="currentColor"
-                  stroke-width="1.00088"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10.5 12L17 12"
-                  stroke="currentColor"
-                  stroke-width="1.00088"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M13 9C11.8284 10.1716 11.1716 10.8284 10 12L13 15"
-                  stroke="currentColor"
-                  stroke-width="1.00088"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Go Home
-            </Link>
-          </div>
+            <motion.p className="page404-desc" variants={fadeUp} custom={2}>
+              The page you are looking for doesn’t exist or has been moved.
+            </motion.p>
+
+            <motion.img
+              className="page404-img"
+              src={errorImg}
+              alt="Boy with a magnifying glass"
+              variants={float}
+              custom={3}
+              animate="animate"
+            />
+
+            <motion.div variants={fadeUp} custom={4}>
+              <Link to={'/'} className="page404-back">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M7 18L7 6"
+                    stroke="currentColor"
+                    stroke-width="1.00088"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.5 12L17 12"
+                    stroke="currentColor"
+                    stroke-width="1.00088"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 9C11.8284 10.1716 11.1716 10.8284 10 12L13 15"
+                    stroke="currentColor"
+                    stroke-width="1.00088"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Go Home
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </>
