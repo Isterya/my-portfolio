@@ -6,9 +6,15 @@
   background: #f2f4f7;
 
   &-wrapper {
-    padding: 63px 0 82px 81px;
+    padding: 63px 0 82px 41px;
     display: flex;
-    justify-content: space-between;
+    gap: 150px;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(xl) {
+      padding: 63px 0 82px;
+    }
   }
 
   &-character {
@@ -16,16 +22,29 @@
     position: relative;
     border-radius: 110px;
     background: $warm;
-    width: 409px;
     height: 474px;
+    width: 409px;
+    aspect-ratio: 1 / 1.15;
+    overflow: visible;
+
+    @include respond(xl) {
+      width: 337px;
+      height: 415px;
+    }
 
     &__img {
-      height: 606px;
       position: absolute;
       bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: auto;
+      max-height: 606px;
+      width: auto;
       user-select: none;
-      pointer-events: none;
-      -webkit-user-drag: none;
+
+      @include respond(xl) {
+        height: 500px;
+      }
     }
   }
 
@@ -34,11 +53,19 @@
     flex-direction: column;
     width: 696px;
 
+    @include respond(xl) {
+      width: 500px;
+    }
+
     &__header {
       font-weight: 600;
       font-size: 64px;
       line-height: 64px;
       color: #344054;
+
+      @include respond(xl) {
+        font-size: 56px;
+      }
 
       span {
         background: $main-color;
@@ -53,12 +80,21 @@
       font-size: 19px;
       line-height: 29px;
       color: #98a2b3;
+
+      @include respond(xl) {
+        margin-top: 25px;
+        font-size: 17px;
+      }
     }
 
     &__stats {
       display: flex;
       margin-top: 35px;
       gap: 10px;
+
+      @include respond(xl) {
+        margin-top: 25px;
+      }
 
       &-projects,
       &-experience {
@@ -99,6 +135,10 @@
       text-align: center;
       color: #151515;
       transition: all 0.3s ease;
+
+      @include respond(xl) {
+        margin-top: 25px;
+      }
 
       html[data-lang='pl'] & {
         font-size: 28px;
