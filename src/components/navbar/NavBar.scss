@@ -1,5 +1,3 @@
-// TODO: fix logo center positioning in different languages
-
 .navbar {
   border-radius: 50px;
   padding: 0 8px;
@@ -15,6 +13,25 @@
   z-index: 3;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease-in-out;
+
+  @include respond(xl) {
+    min-width: 100%;
+    padding: 0 16px;
+
+    .navbar-logo {
+      padding: 0 32px;
+    }
+
+    a.navbar-list__item {
+      font-size: 16px;
+      padding: 12px 24px;
+    }
+
+    &--scrolled a.navbar-list__item {
+      padding: 8px 20px;
+      font-size: 15px;
+    }
+  }
 
   &::before {
     content: '';
