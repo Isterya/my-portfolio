@@ -2,12 +2,20 @@
   padding: 120px 0;
   min-height: 1120px;
 
+  @include respond(xl) {
+    padding: 70px 0;
+  }
+
   &-header {
     text-align: center;
     font-weight: 600;
     font-size: 64px;
     line-height: 64px;
     color: #344054;
+
+    @include respond(xl) {
+      font-size: 56px;
+    }
 
     span {
       background: $main-color;
@@ -26,6 +34,10 @@
       font-size: 35px;
       line-height: 35px;
       color: #344054;
+
+      @include respond(xl) {
+        font-size: 30px;
+      }
     }
 
     &-subtitle {
@@ -42,6 +54,10 @@
       font-size: 20px;
       line-height: 30px;
       color: #98a2b3;
+
+      @include respond(xl) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -50,6 +66,10 @@
     display: grid;
     grid-template-columns: 490px 1fr 490px;
     position: relative;
+
+    @include respond(xl) {
+      grid-template-columns: 400px 1fr 400px;
+    }
   }
 
   &__column {
