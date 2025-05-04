@@ -3,6 +3,10 @@
   padding: 97px 0;
   overflow: hidden;
 
+  @include respond(xl) {
+    padding: 70px 0;
+  }
+
   &-header {
     width: 100%;
     display: flex;
@@ -15,6 +19,11 @@
       line-height: 96px;
       text-align: center;
       color: #344054;
+
+      @include respond(xl) {
+        font-size: 56px;
+        line-height: 70px;
+      }
 
       span {
         background: $main-color;
