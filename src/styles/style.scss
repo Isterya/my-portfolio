@@ -65,4 +65,8 @@ p {
 .container {
   max-width: 1300px;
   margin: 0 auto;
+
+  @include respond(xl) {
+    padding: 0 40px;
+  }
 }

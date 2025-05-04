@@ -8,7 +8,8 @@ $breakpoints: (
 );
 
 @mixin respond($breakpoint) {
-  @media (max-width: map.get($breakpoints, $breakpoint)) {
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
     @content;
   }
 }
