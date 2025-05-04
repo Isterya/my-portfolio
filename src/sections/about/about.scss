@@ -5,6 +5,12 @@
   min-height: 888px;
   background: #f2f4f7;
 
+  @include respond(xl) {
+    padding: 70px 0;
+    min-height: 700px;
+    border-radius: 35px;
+  }
+
   &-wrapper {
     padding: 63px 0 82px 41px;
     display: flex;
@@ -14,6 +20,7 @@
 
     @include respond(xl) {
       padding: 63px 0 82px;
+      gap: 80px;
     }
   }
 
@@ -54,7 +61,8 @@
     width: 696px;
 
     @include respond(xl) {
-      width: 500px;
+      width: 100%;
+      max-width: 480px;
     }
 
     &__header {
@@ -83,7 +91,7 @@
 
       @include respond(xl) {
         margin-top: 25px;
-        font-size: 17px;
+        font-size: 16px;
       }
     }
 
