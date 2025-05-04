@@ -14,6 +14,12 @@
   flex-direction: column;
   justify-content: space-between;
 
+  @include respond(xl) {
+    width: 360px;
+    height: 460px;
+    padding: 24px;
+  }
+
   &:hover {
     transform: translateY(-10px);
   }
@@ -24,6 +30,11 @@
       font-weight: 600;
       color: #fff;
       margin-bottom: 16px;
+
+      @include respond(xl) {
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
     }
   }
 
@@ -33,6 +44,10 @@
     color: #e0e0e0;
     line-height: 1.5;
     text-shadow: 0 0 4px rgb(0 0 0 / 50%);
+
+    @include respond(xl) {
+      font-size: 16px;
+    }
   }
 
   &__icon-wrapper {
@@ -46,6 +61,11 @@
     justify-content: center;
     align-self: flex-end;
     margin-top: auto;
+
+    @include respond(xl) {
+      width: 80px;
+      height: 80px;
+    }
 
     img {
       max-width: 50%;
