@@ -4,8 +4,17 @@
   display: flex;
   justify-content: center;
 
+  @include respond(xl) {
+    padding: 70px 0;
+    min-height: 400px;
+  }
+
   &-wrapper {
     max-width: 750px;
+
+    @include respond(xl) {
+      max-width: 600px;
+    }
   }
 
   &-header {
@@ -15,6 +24,11 @@
     letter-spacing: -0.01em;
     text-align: center;
     color: #344054;
+
+    @include respond(xl) {
+      font-size: 48px;
+      line-height: 64px;
+    }
 
     span {
       background: $main-color;
@@ -30,6 +44,10 @@
     flex-direction: column;
     align-items: end;
     gap: 10px;
+
+    @include respond(xl) {
+      margin-top: 30px;
+    }
   }
 
   &-email {
@@ -42,6 +60,12 @@
     width: 750px;
     height: 86px;
 
+    @include respond(xl) {
+      width: 100%;
+      max-width: 600px;
+      height: 72px;
+    }
+
     &__input {
       flex: 1;
       border: none;
@@ -52,6 +76,10 @@
       color: #000;
       padding-left: 95px;
       background: transparent;
+
+      @include respond(xl) {
+        font-size: 18px;
+      }
 
       &::placeholder {
         color: #98a2b3;
@@ -71,6 +99,11 @@
         background 0.3s ease,
         color 0.3s ease,
         border-color 0.3s ease;
+
+      @include respond(xl) {
+        font-size: 18px;
+        padding: 16px 32px;
+      }
 
       &:hover {
         background: #fff;
@@ -98,6 +131,11 @@
       width: 64px;
       height: 58px;
       background: #ffead5;
+
+      @include respond(xl) {
+        width: 50px;
+        height: 46px;
+      }
     }
 
     &::after {
@@ -109,6 +147,12 @@
       height: 23px;
       width: 27px;
       background: url('../../assets/icons/email.svg') no-repeat center / contain;
+
+      @include respond(xl) {
+        height: 20px;
+        width: 24px;
+        left: 28px;
+      }
     }
   }
 
@@ -119,6 +163,10 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+
+    @include respond(xl) {
+      font-size: 13px;
+    }
 
     .checkbox-container {
       display: flex;
@@ -147,6 +195,11 @@
         position: relative;
         transition: all 0.2s ease;
 
+        @include respond(xl) {
+          width: 16px;
+          height: 16px;
+        }
+
         &::after {
           content: '';
           position: absolute;
@@ -159,11 +212,20 @@
           transform: rotate(45deg);
           opacity: 0;
           transition: opacity 0.2s ease;
+
+          @include respond(xl) {
+            width: 5px;
+            height: 10px;
+          }
         }
       }
 
       span:last-child {
         font-size: 13px;
+
+        @include respond(xl) {
+          font-size: 12px;
+        }
 
         a {
           color: #ff7f00;
@@ -185,6 +247,10 @@
 .form-message {
   font-size: 14px;
   margin-top: 5px;
+
+  @include respond(xl) {
+    font-size: 13px;
+  }
 
   &.error {
     color: red;
