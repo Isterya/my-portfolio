@@ -12,7 +12,7 @@ import arrowRight from '@/assets/icons/arrow-right.svg';
 import './portfolioSlider.scss';
 
 const itemsPerSlide = 2;
-const intervalTime = 155000;
+const intervalTime = 5000;
 
 const PortfolioSlider = () => {
   const { t } = useTranslation();

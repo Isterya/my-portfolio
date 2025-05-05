@@ -60,7 +60,7 @@
       transform 0.3s ease;
 
     @include respond(xl) {
-      width: 460px;
+      width: 410px;
       height: 165px;
       padding: 0 18px 18px;
     }
@@ -100,9 +100,14 @@
     max-width: 565px;
 
     @include respond(xl) {
-      font-size: 14px;
+      font-size: 11px;
       line-height: 20px;
-      max-width: 440px;
+      max-width: 410px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
