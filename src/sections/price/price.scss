@@ -111,6 +111,7 @@
       display: flex;
       gap: 33px;
       will-change: transform;
+      flex-wrap: nowrap;
       min-width: 200%;
 
       @include respond(xl) {
