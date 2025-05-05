@@ -6,6 +6,11 @@
     padding: 70px 0;
   }
 
+  @include respond(lg) {
+    padding: 50px 0;
+    min-height: auto;
+  }
+
   &-header {
     text-align: center;
     font-weight: 600;
@@ -15,6 +20,11 @@
 
     @include respond(xl) {
       font-size: 56px;
+    }
+
+    @include respond(lg) {
+      font-size: 42px;
+      line-height: 48px;
     }
 
     span {
@@ -38,6 +48,11 @@
       @include respond(xl) {
         font-size: 30px;
       }
+
+      @include respond(lg) {
+        font-size: 26px;
+        line-height: 30px;
+      }
     }
 
     &-subtitle {
@@ -46,6 +61,11 @@
       font-size: 24px;
       line-height: 24px;
       color: #98a2b3;
+
+      @include respond(lg) {
+        font-size: 20px;
+        line-height: 24px;
+      }
     }
 
     &-descr {
@@ -58,6 +78,11 @@
       @include respond(xl) {
         font-size: 16px;
       }
+
+      @include respond(lg) {
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
   }
 
@@ -69,6 +94,12 @@
 
     @include respond(xl) {
       grid-template-columns: 400px 1fr 400px;
+    }
+
+    @include respond(lg) {
+      grid-template-columns: 1fr;
+      gap: 60px;
+      margin-top: 60px;
     }
   }
 
@@ -97,17 +128,22 @@
       color: #e17634;
     }
   }
-}
 
-.experience__timeline {
-  position: relative;
-  top: 25px;
-  width: 48px;
-  height: 620px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &__timeline {
+    position: relative;
+    top: 25px;
+    width: 48px;
+    height: 620px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(lg) {
+      height: 420px;
+      top: 0;
+    }
+  }
 }
 
 .timeline-line-horizontal {
