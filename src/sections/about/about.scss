@@ -65,6 +65,11 @@
       max-width: 480px;
     }
 
+    @include respond(lg) {
+      width: 100%;
+      max-width: 310px;
+    }
+
     &__header {
       font-weight: 600;
       font-size: 64px;
