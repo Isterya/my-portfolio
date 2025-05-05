@@ -28,6 +28,18 @@ html[data-lang='ru'] {
       top: 133px;
     }
   }
+
+  .experience__text-subtitle {
+    @include respond(xl) {
+      font-size: 21px;
+    }
+  }
+
+  .experience__text-title {
+    @include respond(xl) {
+      font-size: 29px;
+    }
+  }
 }
 
 html[data-lang='en'] {
