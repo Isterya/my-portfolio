@@ -48,4 +48,23 @@ export const useCarousel = (
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
   }, [ref, speed, disableAnimation]);
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.price-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => cards.forEach((card) => observer.unobserve(card));
+  }, []);
 };
