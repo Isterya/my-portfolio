@@ -22,6 +22,12 @@ html[data-lang='ru'] {
       padding: 0 24px;
     }
   }
+
+  .skills__second-abstract {
+    @include respond(xl) {
+      top: 133px;
+    }
+  }
 }
 
 html[data-lang='en'] {
@@ -44,6 +50,12 @@ html[data-lang='pl'] {
 
     @include respond(xl) {
       font-size: 16px;
+    }
+  }
+
+  .skills__second-abstract {
+    @include respond(xl) {
+      top: 133px;
     }
   }
 }
