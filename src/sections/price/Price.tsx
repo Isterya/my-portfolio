@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useRef } from 'react';
 
 import { useCarousel } from '@/hooks/useCarousel';
+import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 
 import PriceCard from '@/components/priceCard/PriceCard';
 import { priceData } from '@/data/priceData';
@@ -15,14 +16,13 @@ import './price.scss';
 const Price = () => {
   const { t } = useTranslation();
 
-  const renderedData = [...priceData, ...priceData, ...priceData];
-
   const trackRef = useRef<HTMLDivElement | null>(null);
 
-  const isTouchDevice =
-    typeof window !== 'undefined' && window.matchMedia('(max-width: 1024px)').matches;
+  const isTouchDevice = useIsTouchDevice(1024);
 
   useCarousel(trackRef, 1.5, isTouchDevice);
+
+  const renderedData = isTouchDevice ? [...priceData] : [...priceData, ...priceData, ...priceData];
 
   return (
     <section id="price" className="price">
