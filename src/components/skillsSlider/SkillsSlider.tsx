@@ -14,15 +14,32 @@ const intervalTime = 5000;
 const SkillsSlider = () => {
   const { t } = useTranslation();
 
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
   const totalItems = useMemo(() => skillsData.length, []);
-  const totalSlides = Math.ceil(skillsData.length / itemsPerSlide);
+  const totalSlides = useMemo(() => Math.ceil(skillsData.length / itemsPerSlide), [itemsPerSlide]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const updateItemsPerSlide = useCallback(() => {
+    const width = window.innerWidth;
+
+    if (width <= 1024) {
+      setItemsPerSlide(2); // lg
+    } else {
+      setItemsPerSlide(3); // default
+    }
+  }, []);
+
+  useEffect(() => {
+    updateItemsPerSlide();
+    window.addEventListener('resize', updateItemsPerSlide);
+    return () => window.removeEventListener('resize', updateItemsPerSlide);
+  }, [updateItemsPerSlide]);
+
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + itemsPerSlide) % skillsData.length);
-  }, [totalItems]);
+  }, [itemsPerSlide, skillsData.length]);
 
   const stopAutoSlide = useCallback(() => {
     if (autoSlideRef.current) clearInterval(autoSlideRef.current);
@@ -30,7 +47,6 @@ const SkillsSlider = () => {
 
   const startAutoSlide = useCallback(() => {
     stopAutoSlide();
-
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
   }, [nextSlide, stopAutoSlide]);
 
@@ -40,14 +56,11 @@ const SkillsSlider = () => {
     return end <= skillsData.length
       ? skillsData.slice(currentIndex, end)
       : [...skillsData.slice(currentIndex), ...skillsData.slice(0, end - skillsData.length)];
-  }, [currentIndex, skillsData]);
+  }, [currentIndex, itemsPerSlide]);
 
   useEffect(() => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
-
-    return () => {
-      if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-    };
+    return () => autoSlideRef.current && clearInterval(autoSlideRef.current);
   }, [startAutoSlide, stopAutoSlide]);
 
   return (
