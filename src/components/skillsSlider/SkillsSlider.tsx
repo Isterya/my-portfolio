@@ -8,14 +8,12 @@ import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';
 
-const itemsPerSlide = 3;
 const intervalTime = 5000;
 
 const SkillsSlider = () => {
   const { t } = useTranslation();
 
   const [itemsPerSlide, setItemsPerSlide] = useState(3);
-  const totalItems = useMemo(() => skillsData.length, []);
   const totalSlides = useMemo(() => Math.ceil(skillsData.length / itemsPerSlide), [itemsPerSlide]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,9 +23,9 @@ const SkillsSlider = () => {
     const width = window.innerWidth;
 
     if (width <= 1024) {
-      setItemsPerSlide(2); // lg
+      setItemsPerSlide(2);
     } else {
-      setItemsPerSlide(3); // default
+      setItemsPerSlide(3);
     }
   }, []);
 
