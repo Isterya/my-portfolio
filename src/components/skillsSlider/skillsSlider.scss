@@ -8,6 +8,10 @@
     margin-top: 75px;
   }
 
+  @include respond(lg) {
+    margin-top: 50px;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: center;
@@ -19,12 +23,21 @@
   &__inner {
     display: flex;
     gap: 25px;
+
+    @include respond(lg) {
+      gap: 20px;
+    }
   }
 
   &__controls {
     margin-top: 39px;
     display: flex;
     gap: 11px;
+
+    @include respond(lg) {
+      margin-top: 30px;
+      gap: 8px;
+    }
   }
 
   &__dot {
