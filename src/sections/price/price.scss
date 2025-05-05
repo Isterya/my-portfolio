@@ -9,6 +9,7 @@
 
   @include respond(xl) {
     padding: 96px 0;
+    border-radius: 35px;
   }
 
   &-wrapper {

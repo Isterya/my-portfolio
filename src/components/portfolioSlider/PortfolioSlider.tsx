@@ -86,23 +86,23 @@ const PortfolioSlider = () => {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        <button
+          className="portfolio-slider__arrow portfolio-slider__arrow--left"
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
+          <img src={arrowLeft} alt="prev" />
+        </button>
+
+        <button
+          className="portfolio-slider__arrow portfolio-slider__arrow--right"
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
+          <img src={arrowRight} alt="next" />
+        </button>
       </div>
-
-      <button
-        className="portfolio-slider__arrow portfolio-slider__arrow--left"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-      >
-        <img src={arrowLeft} alt="prev" />
-      </button>
-
-      <button
-        className="portfolio-slider__arrow portfolio-slider__arrow--right"
-        onClick={nextSlide}
-        aria-label="Next slide"
-      >
-        <img src={arrowRight} alt="next" />
-      </button>
 
       <div className="portfolio-slider__controls">
         {Array.from({ length: totalSlides }).map((_, i) => (

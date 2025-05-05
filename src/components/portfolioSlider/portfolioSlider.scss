@@ -61,6 +61,11 @@
 
   &__wrapper {
     margin-top: 48px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
   }
 
   &__inner {

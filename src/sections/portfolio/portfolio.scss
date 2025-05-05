@@ -4,6 +4,7 @@
   overflow: hidden;
 
   @include respond(xl) {
+    min-height: 700px;
     padding: 70px 0;
   }
 
