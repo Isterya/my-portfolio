@@ -58,8 +58,13 @@ const SkillsSlider = () => {
 
   useEffect(() => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
-    return () => autoSlideRef.current && clearInterval(autoSlideRef.current);
-  }, [startAutoSlide, stopAutoSlide]);
+
+    return () => {
+      if (autoSlideRef.current) {
+        clearInterval(autoSlideRef.current);
+      }
+    };
+  }, [nextSlide]);
 
   return (
     <div className="skills-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
