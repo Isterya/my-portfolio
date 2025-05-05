@@ -17,6 +17,10 @@ html[data-lang='ru'] {
 
   .navbar-logo {
     padding: 0 78px;
+
+    @include respond(xl) {
+      padding: 0 24px;
+    }
   }
 }
 
@@ -29,10 +33,18 @@ html[data-lang='pl'] {
 
   .navbar-logo {
     padding: 0 27px;
+
+    @include respond(xl) {
+      padding: 0 24px;
+    }
   }
 
   .navbar-list a.navbar-list__item {
     font-size: 18px;
+
+    @include respond(xl) {
+      font-size: 16px;
+    }
   }
 }
 
