@@ -3,7 +3,12 @@
   min-height: 1120px;
 
   @include respond(xl) {
+    min-height: auto;
     padding: 70px 0;
+  }
+
+  @include respond(lg) {
+    padding: 50px 0;
   }
 
   &-header {
@@ -15,6 +20,10 @@
 
     @include respond(xl) {
       font-size: 56px;
+    }
+
+    @include respond(lg) {
+      font-size: 50px;
     }
 
     span {
@@ -29,6 +38,15 @@
     text-align-last: left;
     height: auto;
 
+    @include respond(lg) {
+      padding-bottom: 24px;
+      border-bottom: 1px dashed #d0d5dd;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
     &-title {
       font-weight: 600;
       font-size: 35px;
@@ -37,6 +55,12 @@
 
       @include respond(xl) {
         font-size: 30px;
+      }
+
+      &--secondary {
+        font-size: 26px;
+        color: #475467;
+        font-weight: 500;
       }
     }
 
@@ -72,8 +96,10 @@
     }
 
     @include respond(lg) {
+      margin-top: 55px;
       display: flex;
       flex-direction: column;
+      gap: 32px;
     }
   }
 
@@ -169,19 +195,5 @@
     left: 50%;
     transform: translate(-50%, -50%);
     animation: pulse 2.4s ease-in-out infinite;
-  }
-}
-
-@include respond(lg) {
-  .experience__column--left,
-  .experience__column--right,
-  .experience__timeline {
-    display: none;
-  }
-
-  .experience__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
   }
 }

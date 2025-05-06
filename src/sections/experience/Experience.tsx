@@ -60,7 +60,11 @@ const Experience = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="experience__text-title">
+                <div
+                  className={`experience__text-title ${
+                    item.side === 'right' ? 'experience__text-title--secondary' : ''
+                  }`}
+                >
                   {t(`experience.data${item.side === 'left' ? 'Left' : 'Right'}.${item.key}.title`)}
                 </div>
 
