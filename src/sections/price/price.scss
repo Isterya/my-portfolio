@@ -15,7 +15,7 @@
   @include respond(lg) {
     padding: 76px 0;
     border-radius: 25px;
-    min-height: 720px;
+    min-height: 650px;
   }
 
   &-wrapper {
@@ -70,6 +70,11 @@
         width: 27px;
         height: 28px;
         background: url('../../assets/icons/price/decor.svg') no-repeat center / contain;
+
+        @include respond(lg) {
+          width: 20px;
+          height: 21px;
+        }
       }
     }
 
@@ -102,7 +107,7 @@
 
         @include respond(lg) {
           left: -10px;
-          bottom: -15px;
+          bottom: 10px;
           width: 18px;
           height: 18px;
         }
@@ -118,8 +123,8 @@
         background: url('../../assets/icons/price/right-star-decor.svg') no-repeat center / contain;
 
         @include respond(lg) {
-          right: -50px;
-          top: 16px;
+          right: -15px;
+          top: -20px;
           width: 18px;
           height: 18px;
         }
@@ -172,7 +177,7 @@
     @include respond(lg) {
       max-width: 300px;
       left: -120px;
-      top: 150px;
+      top: 170px;
     }
   }
 
