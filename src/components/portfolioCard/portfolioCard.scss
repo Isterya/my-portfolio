@@ -108,8 +108,8 @@
     }
 
     @include respond(lg) {
-      font-size: 70px;
-      line-height: 105px;
+      font-size: 60px;
+      line-height: 95px;
     }
   }
 
@@ -132,7 +132,7 @@
     }
 
     @include respond(lg) {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 24px;
       max-width: 565px;
     }

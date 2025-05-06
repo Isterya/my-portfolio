@@ -26,6 +26,11 @@
         line-height: 70px;
       }
 
+      @include respond(lg) {
+        font-size: 42px;
+        line-height: 48px;
+      }
+
       span {
         background: $main-color;
         background-clip: text;
