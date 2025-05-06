@@ -20,6 +20,11 @@
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.5s ease;
+    width: 85vw;
+    height: 190px;
+    padding: 18px;
+    gap: 16px;
+    border-radius: 18px;
 
     &.visible {
       opacity: 1;
@@ -35,10 +40,18 @@
   &__header {
     display: flex;
     gap: 12px;
+
+    @include respond(lg) {
+      gap: 10px;
+    }
   }
 
   &__icon {
     max-width: 55px;
+
+    @include respond(lg) {
+      max-width: 48px;
+    }
   }
 
   &__text {
@@ -51,6 +64,11 @@
     font-size: 23px;
     line-height: 35px;
     color: #fcfcfd;
+
+    @include respond(lg) {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 
   &__cost {
@@ -58,6 +76,11 @@
     font-size: 18px;
     line-height: 27px;
     color: #fcfcfd;
+
+    @include respond(lg) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &__descr {
@@ -67,5 +90,10 @@
     letter-spacing: -0.01em;
     color: #f9fafb;
     text-shadow: 0 0 4px rgb(0 0 0 / 50%);
+
+    @include respond(lg) {
+      font-size: 16px;
+      line-height: 26px;
+    }
   }
 }
