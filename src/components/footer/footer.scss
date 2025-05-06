@@ -1,7 +1,11 @@
 .footer {
-  max-height: 685px;
+  min-height: 685px;
   background-color: #272727;
   padding: 25px 0;
+
+  @include respond(lg) {
+    padding: 20px 0;
+  }
 
   &-telegram {
     height: 150px;
@@ -22,6 +26,11 @@
       @include respond(xl) {
         font-size: 48px;
         line-height: 72px;
+      }
+
+      @include respond(lg) {
+        font-size: 38px;
+        line-height: 54px;
       }
     }
 
@@ -46,6 +55,12 @@
         gap: 8px;
       }
 
+      @include respond(lg) {
+        font-size: 18px;
+        padding: 10px 18px;
+        gap: 10px;
+      }
+
       &:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 30px rgb(0 0 0 / 25%);
@@ -62,17 +77,28 @@
         @include respond(xl) {
           max-width: 24px;
         }
+
+        @include respond(lg) {
+          max-width: 20px;
+        }
       }
     }
   }
 
   &-wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    min-height: 258px;
+    gap: 40px;
 
     @include respond(xl) {
-      min-height: 220px;
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include respond(lg) {
+      flex-direction: column;
+      gap: 28px;
     }
   }
 
@@ -86,6 +112,10 @@
       gap: 28px;
     }
 
+    @include respond(lg) {
+      gap: 24px;
+    }
+
     &__logo {
       display: flex;
       align-items: center;
@@ -95,12 +125,20 @@
         height: 70px;
       }
 
+      @include respond(lg) {
+        height: 60px;
+      }
+
       a {
         img {
           max-width: 159px;
 
           @include respond(xl) {
             max-width: 130px;
+          }
+
+          @include respond(lg) {
+            max-width: 120px;
           }
         }
       }
@@ -114,12 +152,16 @@
       @include respond(xl) {
         font-size: 18px;
       }
+
+      @include respond(lg) {
+        font-size: 16.5px;
+      }
     }
 
     &__links {
       list-style-type: none;
       display: flex;
-      gap: 5px;
+      gap: 10px;
     }
 
     &__item {
@@ -130,6 +172,10 @@
         max-width: 20px;
       }
 
+      @include respond(lg) {
+        max-width: 16px;
+      }
+
       &:hover {
         transform: translateY(-2px);
       }
@@ -137,6 +183,10 @@
   }
 
   &-nav {
+    @include respond(lg) {
+      align-self: flex-start;
+    }
+
     &__list {
       list-style-type: none;
       margin-top: 28px;
@@ -153,6 +203,10 @@
 
       @include respond(xl) {
         font-size: 14px;
+      }
+
+      @include respond(lg) {
+        font-size: 13.5px;
       }
 
       &:hover {
@@ -162,6 +216,10 @@
   }
 
   &-contact {
+    @include respond(lg) {
+      align-self: flex-start;
+    }
+
     &__list {
       list-style-type: none;
       margin-top: 28px;
@@ -178,6 +236,10 @@
 
       @include respond(xl) {
         font-size: 14px;
+      }
+
+      @include respond(lg) {
+        font-size: 13.5px;
       }
 
       &:hover {
@@ -202,6 +264,11 @@
     display: flex;
     justify-content: space-between;
 
+    @include respond(lg) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
     p {
       font-weight: 400;
       font-size: 18px;
@@ -209,6 +276,11 @@
 
       @include respond(xl) {
         font-size: 16px;
+      }
+
+      @include respond(lg) {
+        font-size: 15px;
+        text-align: center;
       }
 
       a {
@@ -221,6 +293,11 @@
     }
   }
 
+  &-columns {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &-title {
     font-weight: 600;
     font-size: 20px;
@@ -228,6 +305,10 @@
 
     @include respond(xl) {
       font-size: 18px;
+    }
+
+    @include respond(lg) {
+      font-size: 16px;
     }
   }
 
@@ -237,5 +318,9 @@
     height: 2px;
     background: rgb(255 255 255 / 10%);
     border-radius: 5px;
+
+    @include respond(lg) {
+      margin: 35px 0;
+    }
   }
 }
