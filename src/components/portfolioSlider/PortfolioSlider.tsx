@@ -11,33 +11,53 @@ import arrowRight from '@/assets/icons/arrow-right.svg';
 
 import './portfolioSlider.scss';
 
-const itemsPerSlide = 2;
 const intervalTime = 5000;
 
 const PortfolioSlider = () => {
   const { t } = useTranslation();
 
-  const totalItems = useMemo(() => portfolioData.length, []);
-  const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+  const [itemsPerSlide, setItemsPerSlide] = useState(2);
+  const totalSlides = useMemo(
+    () => Math.ceil(portfolioData.length / itemsPerSlide),
+    [itemsPerSlide],
+  );
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const updateItemsPerSlide = useCallback(() => {
+    const width = window.innerWidth;
+
+    if (width <= 1024) {
+      setItemsPerSlide(1);
+    } else {
+      setItemsPerSlide(2);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateItemsPerSlide();
+
+    window.addEventListener('resize', updateItemsPerSlide);
+
+    return () => window.removeEventListener('resize', updateItemsPerSlide);
+  }, [updateItemsPerSlide]);
+
   const nextSlide = useCallback(() => {
     setDirection('next');
     setCurrentIndex((prevIndex) =>
       prevIndex + itemsPerSlide >= portfolioData.length ? 0 : prevIndex + itemsPerSlide,
     );
-  }, [totalItems]);
+  }, [itemsPerSlide, portfolioData.length]);
 
   const prevSlide = useCallback(() => {
     setDirection('prev');
     setCurrentIndex(
       (prevIndex) => (prevIndex - itemsPerSlide + portfolioData.length) % portfolioData.length,
     );
-  }, [totalItems]);
+  }, [itemsPerSlide, portfolioData.length]);
 
   const stopAutoSlide = useCallback(() => {
     if (autoSlideRef.current) clearInterval(autoSlideRef.current);

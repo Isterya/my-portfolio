@@ -31,7 +31,9 @@ const SkillsSlider = () => {
 
   useEffect(() => {
     updateItemsPerSlide();
+
     window.addEventListener('resize', updateItemsPerSlide);
+
     return () => window.removeEventListener('resize', updateItemsPerSlide);
   }, [updateItemsPerSlide]);
 
