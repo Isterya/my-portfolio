@@ -11,6 +11,12 @@
     border-radius: 35px;
   }
 
+  @include respond(lg) {
+    padding: 50px 0;
+    min-height: auto;
+    border-radius: 28px;
+  }
+
   &-wrapper {
     padding: 63px 0 82px 41px;
     display: flex;
@@ -21,6 +27,13 @@
     @include respond(xl) {
       padding: 63px 0 82px;
       gap: 80px;
+    }
+
+    @include respond(lg) {
+      flex-direction: column;
+      gap: 60px;
+      padding: 40px 20px;
+      text-align: center;
     }
   }
 
@@ -39,6 +52,12 @@
       height: 415px;
     }
 
+    @include respond(lg) {
+      margin-top: 0;
+      width: 280px;
+      height: auto;
+    }
+
     &__img {
       position: absolute;
       bottom: 0;
@@ -51,6 +70,10 @@
 
       @include respond(xl) {
         height: 500px;
+      }
+
+      @include respond(lg) {
+        max-height: 415px;
       }
     }
   }
@@ -66,8 +89,8 @@
     }
 
     @include respond(lg) {
-      width: 100%;
-      max-width: 310px;
+      max-width: 520px;
+      align-items: center;
     }
 
     &__header {
@@ -78,6 +101,11 @@
 
       @include respond(xl) {
         font-size: 56px;
+      }
+
+      @include respond(lg) {
+        font-size: 42px;
+        line-height: 48px;
       }
 
       span {
@@ -98,6 +126,12 @@
         margin-top: 25px;
         font-size: 16px;
       }
+
+      @include respond(lg) {
+        margin-top: 20px;
+        font-size: 15px;
+        line-height: 24px;
+      }
     }
 
     &__stats {
@@ -109,6 +143,12 @@
         margin-top: 25px;
       }
 
+      @include respond(lg) {
+        align-items: center;
+        gap: 25px;
+        margin-top: 20px;
+      }
+
       &-projects,
       &-experience {
         width: 343px;
@@ -116,11 +156,21 @@
         flex-direction: column;
         gap: 10px;
 
+        @include respond(lg) {
+          width: 100%;
+          max-width: 280px;
+        }
+
         h3 {
           font-weight: 500;
           font-size: 36px;
           line-height: 54px;
           color: #1d2939;
+
+          @include respond(lg) {
+            font-size: 30px;
+            line-height: 42px;
+          }
         }
 
         p {
@@ -128,6 +178,11 @@
           font-size: 20px;
           line-height: 30px;
           color: #667085;
+
+          @include respond(lg) {
+            font-size: 17px;
+            line-height: 26px;
+          }
         }
       }
     }
@@ -153,12 +208,19 @@
         margin-top: 25px;
       }
 
+      @include respond(lg) {
+        font-size: 24px;
+        line-height: 36px;
+        padding: 16px 24px;
+        margin-top: 25px;
+      }
+
       html[data-lang='pl'] & {
-        font-size: 28px;
+        font-size: 22px;
       }
 
       html[data-lang='ru'] & {
-        font-size: 30px;
+        font-size: 24px;
       }
 
       &:hover {
