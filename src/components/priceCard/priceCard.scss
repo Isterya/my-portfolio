@@ -40,6 +40,13 @@
     border-radius: 16px;
   }
 
+  @include respond(sm) {
+    width: 95vw;
+    padding: 12px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
   &:active {
     transform: scale(0.98);
     transition: transform 0.2s;
@@ -56,6 +63,10 @@
     @include respond(md) {
       gap: 8px;
     }
+
+    @include respond(sm) {
+      gap: 6px;
+    }
   }
 
   &__icon {
@@ -67,6 +78,10 @@
 
     @include respond(md) {
       max-width: 40px;
+    }
+
+    @include respond(sm) {
+      max-width: 32px;
     }
   }
 
@@ -90,6 +105,11 @@
       font-size: 18px;
       line-height: 28px;
     }
+
+    @include respond(sm) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &__cost {
@@ -106,6 +126,11 @@
     @include respond(md) {
       font-size: 14px;
       line-height: 22px;
+    }
+
+    @include respond(sm) {
+      font-size: 12px;
+      line-height: 18px;
     }
   }
 
@@ -125,6 +150,11 @@
     @include respond(md) {
       font-size: 14px;
       line-height: 22px;
+    }
+
+    @include respond(sm) {
+      font-size: 12px;
+      line-height: 18px;
     }
   }
 }
