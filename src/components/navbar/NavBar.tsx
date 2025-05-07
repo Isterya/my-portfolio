@@ -1,7 +1,9 @@
+import { motion, AnimatePresence } from 'framer-motion';
+
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+
 import logo from '@/assets/icons/logo.svg';
 
 import './navBar.scss';
@@ -68,19 +70,46 @@ const NavBar = () => {
       )}
 
       {/* Mobile Nav */}
-      {isMobile && (
-        <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}>
-          <ul>
-            {SECTIONS.map((section) => (
-              <li key={section}>
-                <a href={`#${section}`} onClick={() => setIsMenuOpen(false)}>
-                  {t(`navBar.${section}`)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobile && isMenuOpen && (
+          <motion.div
+            className="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.ul
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.05,
+                  },
+                },
+              }}
+            >
+              {SECTIONS.map((section, _) => (
+                <motion.li
+                  key={section}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                    exit: { opacity: 0, y: 10 },
+                  }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                >
+                  <a href={`#${section}`} onClick={() => setIsMenuOpen(false)}>
+                    {t(`navBar.${section}`)}
+                  </a>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Desktop Nav */}
       {!isMobile && (
