@@ -18,11 +18,21 @@
     align-items: center;
     justify-content: center;
 
+    @include respond(md) {
+      height: 50px;
+      width: 50px;
+    }
+
     img {
       position: relative;
       z-index: 3;
       width: 24px;
       height: 24px;
+
+      @include respond(md) {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     &::before {
@@ -33,6 +43,11 @@
       background: #fff;
       border-radius: 50%;
       z-index: 1;
+
+      @include respond(md) {
+        width: 58px;
+        height: 58px;
+      }
     }
 
     &::after {
@@ -44,6 +59,11 @@
       border-radius: 50%;
       z-index: 2;
       transition: background 0.3s ease;
+
+      @include respond(md) {
+        height: 50px;
+        width: 50px;
+      }
     }
 
     &:hover::after {
@@ -66,6 +86,10 @@
     justify-content: center;
     width: fit-content;
     max-width: 100%;
+
+    @include respond(md) {
+      margin-top: 35px;
+    }
   }
 
   &__inner {
@@ -77,6 +101,15 @@
     margin-top: 39px;
     display: flex;
     gap: 11px;
+
+    @include respond(lg) {
+      margin-top: 30px;
+      gap: 8px;
+    }
+
+    @include respond(md) {
+      margin-top: 21px;
+    }
   }
 
   &__dot {
