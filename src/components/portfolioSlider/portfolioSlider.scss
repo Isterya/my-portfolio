@@ -23,6 +23,11 @@
       width: 50px;
     }
 
+    @include respond(sm) {
+      height: 44px;
+      width: 44px;
+    }
+
     img {
       position: relative;
       z-index: 3;
@@ -32,6 +37,11 @@
       @include respond(md) {
         width: 20px;
         height: 20px;
+      }
+
+      @include respond(sm) {
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -48,6 +58,11 @@
         width: 58px;
         height: 58px;
       }
+
+      @include respond(sm) {
+        width: 52px;
+        height: 52px;
+      }
     }
 
     &::after {
@@ -63,6 +78,11 @@
       @include respond(md) {
         height: 50px;
         width: 50px;
+      }
+
+      @include respond(sm) {
+        height: 44px;
+        width: 44px;
       }
     }
 
@@ -89,6 +109,10 @@
 
     @include respond(md) {
       margin-top: 35px;
+    }
+
+    @include respond(sm) {
+      margin-top: 30px;
     }
   }
 
