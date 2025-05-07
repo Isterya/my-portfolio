@@ -4,7 +4,12 @@
   padding: 25px 0;
 
   @include respond(lg) {
+    min-height: auto;
     padding: 20px 0;
+  }
+
+  @include respond(md) {
+    padding: 16px 0;
   }
 
   &-telegram {
@@ -15,6 +20,13 @@
 
     @include respond(xl) {
       height: 120px;
+    }
+
+    @include respond(md) {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      gap: 16px;
     }
 
     &__header {
@@ -31,6 +43,11 @@
       @include respond(lg) {
         font-size: 38px;
         line-height: 54px;
+      }
+
+      @include respond(md) {
+        font-size: 28px;
+        line-height: 40px;
       }
     }
 
@@ -61,6 +78,12 @@
         gap: 10px;
       }
 
+      @include respond(md) {
+        font-size: 16px;
+        padding: 8px 16px;
+        gap: 8px;
+      }
+
       &:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 30px rgb(0 0 0 / 25%);
@@ -81,6 +104,10 @@
         @include respond(lg) {
           max-width: 20px;
         }
+
+        @include respond(md) {
+          max-width: 18px;
+        }
       }
     }
   }
@@ -100,6 +127,11 @@
       flex-direction: column;
       gap: 28px;
     }
+
+    @include respond(md) {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &-social {
@@ -116,6 +148,11 @@
       gap: 24px;
     }
 
+    @include respond(md) {
+      gap: 16px;
+      max-width: 100%;
+    }
+
     &__logo {
       display: flex;
       align-items: center;
@@ -129,6 +166,10 @@
         height: 60px;
       }
 
+      @include respond(md) {
+        height: 50px;
+      }
+
       a {
         img {
           max-width: 159px;
@@ -139,6 +180,10 @@
 
           @include respond(lg) {
             max-width: 120px;
+          }
+
+          @include respond(md) {
+            max-width: 100px;
           }
         }
       }
@@ -155,6 +200,10 @@
 
       @include respond(lg) {
         font-size: 16.5px;
+      }
+
+      @include respond(md) {
+        font-size: 14px;
       }
     }
 
@@ -176,6 +225,10 @@
         max-width: 16px;
       }
 
+      @include respond(md) {
+        max-width: 14px;
+      }
+
       &:hover {
         transform: translateY(-2px);
       }
@@ -187,12 +240,21 @@
       align-self: flex-start;
     }
 
+    @include respond(md) {
+      align-self: stretch;
+    }
+
     &__list {
       list-style-type: none;
       margin-top: 28px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      @include respond(md) {
+        margin-top: 20px;
+        gap: 14px;
+      }
     }
 
     &__item {
@@ -207,6 +269,10 @@
 
       @include respond(lg) {
         font-size: 13.5px;
+      }
+
+      @include respond(md) {
+        font-size: 12px;
       }
 
       &:hover {
@@ -220,12 +286,21 @@
       align-self: flex-start;
     }
 
+    @include respond(md) {
+      align-self: stretch;
+    }
+
     &__list {
       list-style-type: none;
       margin-top: 28px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      @include respond(md) {
+        margin-top: 20px;
+        gap: 14px;
+      }
     }
 
     &__item {
@@ -240,6 +315,10 @@
 
       @include respond(lg) {
         font-size: 13.5px;
+      }
+
+      @include respond(md) {
+        font-size: 12px;
       }
 
       &:hover {
@@ -258,6 +337,11 @@
     @include respond(xl) {
       min-width: 100px;
     }
+
+    @include respond(md) {
+      min-width: auto;
+      gap: 16px;
+    }
   }
 
   &-rights {
@@ -267,6 +351,11 @@
     @include respond(lg) {
       flex-direction: column;
       gap: 10px;
+    }
+
+    @include respond(md) {
+      flex-direction: column;
+      gap: 8px;
     }
 
     p {
@@ -281,6 +370,10 @@
       @include respond(lg) {
         font-size: 15px;
         text-align: center;
+      }
+
+      @include respond(md) {
+        font-size: 12px;
       }
 
       a {
@@ -310,6 +403,10 @@
     @include respond(lg) {
       font-size: 16px;
     }
+
+    @include respond(md) {
+      font-size: 14px;
+    }
   }
 
   &-divider {
@@ -321,6 +418,10 @@
 
     @include respond(lg) {
       margin: 35px 0;
+    }
+
+    @include respond(md) {
+      margin: 24px 0;
     }
   }
 }
