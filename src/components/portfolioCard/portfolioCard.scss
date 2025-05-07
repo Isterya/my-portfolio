@@ -18,6 +18,11 @@
     height: 371px;
   }
 
+  @include respond(md) {
+    width: 480px;
+    height: 330px;
+  }
+
   &:hover {
     transform: scale(1.02);
   }
@@ -41,6 +46,11 @@
     @include respond(lg) {
       font-size: 70px;
       line-height: 105px;
+    }
+
+    @include respond(md) {
+      font-size: 52px;
+      line-height: 78px;
     }
 
     .portfolio-card:hover & {
@@ -81,6 +91,11 @@
       padding: 0 24px 20px;
     }
 
+    @include respond(md) {
+      width: 445px;
+      height: 165px;
+    }
+
     .portfolio-card:hover & {
       opacity: 1;
       transform: translateY(0);
@@ -111,6 +126,11 @@
       font-size: 60px;
       line-height: 95px;
     }
+
+    @include respond(md) {
+      font-size: 52px;
+      line-height: 78px;
+    }
   }
 
   &__description {
@@ -135,6 +155,12 @@
       font-size: 13px;
       line-height: 24px;
       max-width: 565px;
+    }
+
+    @include respond(md) {
+      font-size: 11px;
+      line-height: 20px;
+      max-width: 410px;
     }
   }
 
@@ -165,6 +191,18 @@
     @include respond(lg) {
       width: 64px;
       height: 64px;
+    }
+
+    @include respond(md) {
+      width: 50px;
+      height: 50px;
+      top: 8px;
+      right: 8px;
+
+      svg {
+        width: 20px;
+        height: 18px;
+      }
     }
 
     &:hover {
