@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 import logo from '@/assets/icons/logo.svg';
 
 import './navBar.scss';
@@ -12,10 +13,20 @@ const SCROLL_THRESHOLD = 50;
 const SECTION_OFFSET = 100;
 
 const NavBar = () => {
+  const { t } = useTranslation();
+
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useIsTouchDevice(768);
+
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
   const sectionsRef = useRef<HTMLElement[]>([]);
-  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+  }, [isMenuOpen]);
 
   useEffect(() => {
     sectionsRef.current = Array.from(document.querySelectorAll<HTMLElement>('section'));
@@ -43,39 +54,68 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
-      <ul className="navbar-list navbar-list--left">
-        {SECTIONS.slice(0, 3).map((section) => (
-          <li key={section}>
-            <a
-              className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
-              href={`#${section}`}
-            >
-              {t(`navBar.${section}`)}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <>
+      {/* Burger btn */}
+      {isMobile && (
+        <button
+          className={`burger ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        />
+      )}
 
-      <div className="navbar-logo">
-        <a href="#home">
-          <img src={logo} alt="Logotype" />
-        </a>
-      </div>
+      {/* Mobile Nav */}
+      {isMobile && (
+        <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}>
+          <ul>
+            {SECTIONS.map((section) => (
+              <li key={section}>
+                <a href={`#${section}`} onClick={() => setIsMenuOpen(false)}>
+                  {t(`navBar.${section}`)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-      <ul className="navbar-list navbar-list--right">
-        {SECTIONS.slice(3, 6).map((section) => (
-          <li key={section}>
-            <a
-              className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
-              href={`#${section}`}
-            >
-              {t(`navBar.${section}`)}
+      {/* Desktop Nav */}
+      {!isMobile && (
+        <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+          <ul className="navbar-list navbar-list--left">
+            {SECTIONS.slice(0, 3).map((section) => (
+              <li key={section}>
+                <a
+                  className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
+                  href={`#${section}`}
+                >
+                  {t(`navBar.${section}`)}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="navbar-logo">
+            <a href="#home">
+              <img src={logo} alt="Logotype" />
             </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+          </div>
+
+          <ul className="navbar-list navbar-list--right">
+            {SECTIONS.slice(3).map((section) => (
+              <li key={section}>
+                <a
+                  className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
+                  href={`#${section}`}
+                >
+                  {t(`navBar.${section}`)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </>
   );
 };
 
