@@ -11,6 +11,10 @@
     padding: 50px 0;
   }
 
+  @include respond(md) {
+    padding: 40px 0;
+  }
+
   &-header {
     text-align: center;
     font-weight: 600;
@@ -24,6 +28,11 @@
 
     @include respond(lg) {
       font-size: 50px;
+    }
+
+    @include respond(md) {
+      font-size: 36px;
+      line-height: 40px;
     }
 
     span {
@@ -57,10 +66,19 @@
         font-size: 30px;
       }
 
+      @include respond(md) {
+        font-size: 24px;
+        line-height: 28px;
+      }
+
       &--secondary {
         font-size: 26px;
         color: #475467;
         font-weight: 500;
+
+        @include respond(md) {
+          font-size: 20px;
+        }
       }
     }
 
@@ -70,6 +88,11 @@
       font-size: 24px;
       line-height: 24px;
       color: #98a2b3;
+
+      @include respond(md) {
+        font-size: 18px;
+        line-height: 22px;
+      }
     }
 
     &-descr {
@@ -81,6 +104,11 @@
 
       @include respond(xl) {
         font-size: 16px;
+      }
+
+      @include respond(md) {
+        font-size: 14px;
+        line-height: 22px;
       }
     }
   }
@@ -101,6 +129,10 @@
       flex-direction: column;
       gap: 32px;
     }
+
+    @include respond(md) {
+      gap: 24px;
+    }
   }
 
   &__column {
@@ -113,10 +145,22 @@
       &:last-child {
         margin-top: 39px;
       }
+
+      @include respond(md) {
+        margin-bottom: 40px;
+
+        &:last-child {
+          margin-top: 20px;
+        }
+      }
     }
 
     &--right .experience__text {
       margin-bottom: 48px;
+
+      @include respond(md) {
+        margin-bottom: 32px;
+      }
     }
   }
 
