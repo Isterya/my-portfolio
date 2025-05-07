@@ -61,7 +61,10 @@ const NavBar = () => {
           className={`burger ${isMenuOpen ? 'open' : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
-        />
+        >
+          <span></span>
+          <span></span>
+        </button>
       )}
 
       {/* Mobile Nav */}
