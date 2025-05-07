@@ -19,6 +19,12 @@
     border-radius: 25px;
   }
 
+  @include respond(md) {
+    padding: 50px 0 9px;
+    min-height: 550px;
+    border-radius: 20px;
+  }
+
   &-header {
     display: flex;
     justify-content: space-between;
@@ -46,6 +52,11 @@
         line-height: 34px;
       }
 
+      @include respond(md) {
+        font-size: 24px;
+        line-height: 30px;
+      }
+
       span {
         background: $main-color;
         background-clip: text;
@@ -69,6 +80,10 @@
         width: 100%;
         font-size: 14px;
       }
+
+      @include respond(md) {
+        font-size: 13px;
+      }
     }
   }
 
@@ -79,7 +94,6 @@
     z-index: 0;
     pointer-events: none;
     user-select: none;
-    pointer-events: none;
     -webkit-user-drag: none;
   }
 
@@ -97,6 +111,11 @@
       max-width: 300px;
       left: -120px;
       top: 120px;
+    }
+
+    @include respond(md) {
+      max-width: 250px;
+      left: -100px;
     }
   }
 
@@ -116,6 +135,12 @@
       max-width: 130px;
       top: 5px;
     }
+
+    @include respond(md) {
+      left: 140px;
+      max-width: 110px;
+      top: 0;
+    }
   }
 
   &__third-abstract {
@@ -132,6 +157,12 @@
       max-width: 550px;
       right: -250px;
       bottom: -230px;
+    }
+
+    @include respond(md) {
+      max-width: 450px;
+      right: -200px;
+      bottom: -165px;
     }
   }
 }
