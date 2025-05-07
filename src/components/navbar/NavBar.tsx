@@ -27,8 +27,16 @@ const NavBar = () => {
   const sectionsRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    document.documentElement.style.overflow = isMenuOpen ? 'hidden' : 'auto';
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     sectionsRef.current = Array.from(document.querySelectorAll<HTMLElement>('section'));
