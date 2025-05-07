@@ -23,6 +23,11 @@
     height: 330px;
   }
 
+  @include respond(sm) {
+    width: 400px;
+    height: 250px;
+  }
+
   &:hover {
     transform: scale(1.02);
   }
@@ -49,8 +54,8 @@
     }
 
     @include respond(md) {
-      font-size: 52px;
-      line-height: 78px;
+      font-size: 47px;
+      line-height: 73px;
     }
 
     .portfolio-card:hover & {
@@ -96,6 +101,11 @@
       height: 165px;
     }
 
+    @include respond(sm) {
+      width: 360px;
+      height: 145px;
+    }
+
     .portfolio-card:hover & {
       opacity: 1;
       transform: translateY(0);
@@ -131,6 +141,11 @@
       font-size: 52px;
       line-height: 78px;
     }
+
+    @include respond(sm) {
+      font-size: 47px;
+      line-height: 73px;
+    }
   }
 
   &__description {
@@ -161,6 +176,12 @@
       font-size: 11px;
       line-height: 20px;
       max-width: 410px;
+    }
+
+    @include respond(sm) {
+      font-size: 10px;
+      line-height: 18px;
+      max-width: 400px;
     }
   }
 
@@ -203,6 +224,11 @@
         width: 20px;
         height: 18px;
       }
+    }
+
+    @include respond(sm) {
+      width: 44px;
+      height: 44px;
     }
 
     &:hover {
