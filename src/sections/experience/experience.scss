@@ -15,6 +15,11 @@
     padding: 40px 0;
   }
 
+  @include respond(sm) {
+    padding: 30px 0;
+    min-height: auto;
+  }
+
   &-header {
     text-align: center;
     font-weight: 600;
@@ -35,6 +40,11 @@
       line-height: 40px;
     }
 
+    @include respond(sm) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
     span {
       background: $main-color;
       background-clip: text;
@@ -49,7 +59,7 @@
 
     @include respond(lg) {
       padding-bottom: 24px;
-      border-bottom: 1px dashed #d0d5dd;
+      border-bottom: 1px solid #d0d5dd;
 
       &:last-child {
         border-bottom: none;
@@ -71,6 +81,11 @@
         line-height: 28px;
       }
 
+      @include respond(sm) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
       &--secondary {
         font-size: 26px;
         color: #475467;
@@ -78,6 +93,10 @@
 
         @include respond(md) {
           font-size: 20px;
+        }
+
+        @include respond(sm) {
+          font-size: 18px;
         }
       }
     }
@@ -92,6 +111,11 @@
       @include respond(md) {
         font-size: 18px;
         line-height: 22px;
+      }
+
+      @include respond(sm) {
+        font-size: 16px;
+        line-height: 20px;
       }
     }
 
@@ -109,6 +133,11 @@
       @include respond(md) {
         font-size: 14px;
         line-height: 22px;
+      }
+
+      @include respond(sm) {
+        font-size: 13px;
+        line-height: 20px;
       }
     }
   }
@@ -133,6 +162,10 @@
     @include respond(md) {
       gap: 24px;
     }
+
+    @include respond(sm) {
+      gap: 16px;
+    }
   }
 
   &__column {
@@ -144,14 +177,22 @@
 
       &:last-child {
         margin-top: 39px;
+
+        @include respond(md) {
+          margin-top: 20px;
+        }
+
+        @include respond(sm) {
+          margin-top: 12px;
+        }
       }
 
       @include respond(md) {
         margin-bottom: 40px;
+      }
 
-        &:last-child {
-          margin-top: 20px;
-        }
+      @include respond(sm) {
+        margin-bottom: 24px;
       }
     }
 
@@ -160,6 +201,10 @@
 
       @include respond(md) {
         margin-bottom: 32px;
+      }
+
+      @include respond(sm) {
+        margin-bottom: 20px;
       }
     }
   }
