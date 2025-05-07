@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
+import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { skillsData } from '@/data/skillsData';
@@ -19,26 +20,26 @@ const SkillsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const isTouchDevice = useIsTouchDevice(640);
+
   const updateItemsPerSlide = useCallback(() => {
     const width = window.innerWidth;
 
-    if (width <= 1024) {
+    if (width <= 640) {
+      setItemsPerSlide(1);
+    } else if (width <= 1024) {
       setItemsPerSlide(2);
     } else {
       setItemsPerSlide(3);
     }
   }, []);
 
-  useEffect(() => {
-    updateItemsPerSlide();
-
-    window.addEventListener('resize', updateItemsPerSlide);
-
-    return () => window.removeEventListener('resize', updateItemsPerSlide);
-  }, [updateItemsPerSlide]);
-
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + itemsPerSlide) % skillsData.length);
+  }, [itemsPerSlide, skillsData.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - itemsPerSlide + skillsData.length) % skillsData.length);
   }, [itemsPerSlide, skillsData.length]);
 
   const stopAutoSlide = useCallback(() => {
@@ -57,6 +58,14 @@ const SkillsSlider = () => {
       ? skillsData.slice(currentIndex, end)
       : [...skillsData.slice(currentIndex), ...skillsData.slice(0, end - skillsData.length)];
   }, [currentIndex, itemsPerSlide]);
+
+  useEffect(() => {
+    updateItemsPerSlide();
+
+    window.addEventListener('resize', updateItemsPerSlide);
+
+    return () => window.removeEventListener('resize', updateItemsPerSlide);
+  }, [updateItemsPerSlide]);
 
   useEffect(() => {
     autoSlideRef.current = setInterval(nextSlide, intervalTime);
@@ -79,6 +88,19 @@ const SkillsSlider = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
+            drag={isTouchDevice ? 'x' : false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragStart={stopAutoSlide}
+            onDragEnd={(_, info) => {
+              startAutoSlide();
+
+              if (info.offset.x < -50) {
+                nextSlide();
+              } else if (info.offset.x > 50) {
+                prevSlide();
+              }
+            }}
           >
             {visibleSkills.map((skill) => (
               <SkillCard
@@ -92,21 +114,23 @@ const SkillsSlider = () => {
         </AnimatePresence>
       </div>
 
-      <div className="skills-slider__controls">
-        {Array.from({ length: totalSlides }).map((_, i) => (
-          <div
-            role="button"
-            aria-label={`Go to slide ${i + 1}`}
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
-            key={i}
-            className={`skills-slider__dot ${
-              Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
-            }`}
-            onClick={() => setCurrentIndex(i * itemsPerSlide)}
-          ></div>
-        ))}
-      </div>
+      {!isTouchDevice && (
+        <div className="skills-slider__controls">
+          {Array.from({ length: totalSlides }).map((_, i) => (
+            <div
+              role="button"
+              aria-label={`Go to slide ${i + 1}`}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
+              key={i}
+              className={`skills-slider__dot ${
+                Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
+              }`}
+              onClick={() => setCurrentIndex(i * itemsPerSlide)}
+            ></div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
