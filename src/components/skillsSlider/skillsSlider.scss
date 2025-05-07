@@ -16,6 +16,10 @@
     margin-top: 35px;
   }
 
+  @include respond(sm) {
+    margin-top: 15px;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: center;
