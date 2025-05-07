@@ -8,6 +8,11 @@
     padding: 70px 0;
   }
 
+  @include respond(md) {
+    min-height: 660px;
+    padding: 50px 0;
+  }
+
   &-header {
     width: 100%;
     display: flex;
@@ -29,6 +34,11 @@
       @include respond(lg) {
         font-size: 42px;
         line-height: 48px;
+      }
+
+      @include respond(md) {
+        font-size: 36px;
+        line-height: 42px;
       }
 
       span {
