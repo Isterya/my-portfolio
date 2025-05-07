@@ -26,6 +26,13 @@
     padding: 20px;
   }
 
+  @include respond(md) {
+    width: 240px;
+    height: 340px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
   &:hover {
     transform: translateY(-10px);
   }
@@ -46,6 +53,11 @@
         font-size: 24px;
         margin-bottom: 10px;
       }
+
+      @include respond(md) {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
     }
   }
 
@@ -62,6 +74,10 @@
 
     @include respond(lg) {
       font-size: 14px;
+    }
+
+    @include respond(md) {
+      font-size: 13px;
     }
   }
 
@@ -85,6 +101,11 @@
     @include respond(lg) {
       width: 70px;
       height: 70px;
+    }
+
+    @include respond(md) {
+      width: 60px;
+      height: 60px;
     }
 
     img {
