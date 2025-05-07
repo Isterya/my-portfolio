@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
+import { useMemo } from 'react';
+import { useSlider } from '@/hooks/useSlider';
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { skillsData } from '@/data/skillsData';
@@ -9,47 +11,32 @@ import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';
 
-const intervalTime = 5000;
-
 const SkillsSlider = () => {
   const { t } = useTranslation();
 
-  const [itemsPerSlide, setItemsPerSlide] = useState(3);
-  const totalSlides = useMemo(() => Math.ceil(skillsData.length / itemsPerSlide), [itemsPerSlide]);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
   const isTouchDevice = useIsTouchDevice(640);
 
-  const updateItemsPerSlide = useCallback(() => {
-    const width = window.innerWidth;
+  const {
+    itemsPerSlide,
+    currentIndex,
+    nextSlide,
+    prevSlide,
+    setCurrentIndex,
+    stopAutoSlide,
+    startAutoSlide,
+  } = useSlider({
+    dataLength: skillsData.length,
+    itemsPerSlideDefault: 3,
+    breakpoints: [
+      { max: 640, items: 1 },
+      { max: 1024, items: 2 },
+    ],
+  });
 
-    if (width <= 640) {
-      setItemsPerSlide(1);
-    } else if (width <= 1024) {
-      setItemsPerSlide(2);
-    } else {
-      setItemsPerSlide(3);
-    }
-  }, []);
-
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + itemsPerSlide) % skillsData.length);
-  }, [itemsPerSlide, skillsData.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - itemsPerSlide + skillsData.length) % skillsData.length);
-  }, [itemsPerSlide, skillsData.length]);
-
-  const stopAutoSlide = useCallback(() => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-  }, []);
-
-  const startAutoSlide = useCallback(() => {
-    stopAutoSlide();
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-  }, [nextSlide, stopAutoSlide]);
+  const totalSlides = useMemo(
+    () => Math.ceil(skillsData.length / itemsPerSlide),
+    [skillsData.length, itemsPerSlide],
+  );
 
   const visibleSkills = useMemo(() => {
     const end = currentIndex + itemsPerSlide;
@@ -58,24 +45,6 @@ const SkillsSlider = () => {
       ? skillsData.slice(currentIndex, end)
       : [...skillsData.slice(currentIndex), ...skillsData.slice(0, end - skillsData.length)];
   }, [currentIndex, itemsPerSlide]);
-
-  useEffect(() => {
-    updateItemsPerSlide();
-
-    window.addEventListener('resize', updateItemsPerSlide);
-
-    return () => window.removeEventListener('resize', updateItemsPerSlide);
-  }, [updateItemsPerSlide]);
-
-  useEffect(() => {
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-
-    return () => {
-      if (autoSlideRef.current) {
-        clearInterval(autoSlideRef.current);
-      }
-    };
-  }, [nextSlide]);
 
   return (
     <div className="skills-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>

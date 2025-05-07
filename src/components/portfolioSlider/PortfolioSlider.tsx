@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { useMemo, useCallback, useEffect, useState, useRef } from 'react';
+import { useSlider } from '@/hooks/useSlider';
+import { useMemo, useState } from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 
 import PortfolioCard from '../portfolioCard/PorfolioCard';
@@ -11,69 +13,39 @@ import arrowRight from '@/assets/icons/arrow-right.svg';
 
 import './portfolioSlider.scss';
 
-const intervalTime = 5000;
-
 const PortfolioSlider = () => {
   const { t } = useTranslation();
 
-  const [itemsPerSlide, setItemsPerSlide] = useState(2);
+  const {
+    itemsPerSlide,
+    currentIndex,
+    nextSlide,
+    prevSlide,
+    setCurrentIndex,
+    stopAutoSlide,
+    startAutoSlide,
+  } = useSlider({
+    dataLength: portfolioData.length,
+    itemsPerSlideDefault: 2,
+    breakpoints: [{ max: 1024, items: 1 }],
+  });
+
   const totalSlides = useMemo(
     () => Math.ceil(portfolioData.length / itemsPerSlide),
-    [itemsPerSlide],
+    [portfolioData.length, itemsPerSlide],
   );
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const updateItemsPerSlide = useCallback(() => {
-    const width = window.innerWidth;
-
-    if (width <= 1024) {
-      setItemsPerSlide(1);
-    } else {
-      setItemsPerSlide(2);
-    }
-  }, []);
-
-  useEffect(() => {
-    updateItemsPerSlide();
-
-    window.addEventListener('resize', updateItemsPerSlide);
-
-    return () => window.removeEventListener('resize', updateItemsPerSlide);
-  }, [updateItemsPerSlide]);
-
-  const nextSlide = useCallback(() => {
-    setDirection('next');
-    setCurrentIndex((prevIndex) =>
-      prevIndex + itemsPerSlide >= portfolioData.length ? 0 : prevIndex + itemsPerSlide,
-    );
-  }, [itemsPerSlide, portfolioData.length]);
-
-  const prevSlide = useCallback(() => {
+  const handlePrev = () => {
     setDirection('prev');
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - itemsPerSlide + portfolioData.length) % portfolioData.length,
-    );
-  }, [itemsPerSlide, portfolioData.length]);
+    prevSlide();
+  };
 
-  const stopAutoSlide = useCallback(() => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-  }, []);
-
-  const startAutoSlide = useCallback(() => {
-    stopAutoSlide();
-
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-  }, [nextSlide, stopAutoSlide]);
-
-  useEffect(() => {
-    startAutoSlide();
-
-    return stopAutoSlide;
-  }, [startAutoSlide, stopAutoSlide]);
+  const handleNext = () => {
+    setDirection('next');
+    nextSlide();
+  };
 
   return (
     <div className="portfolio-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
@@ -109,7 +81,7 @@ const PortfolioSlider = () => {
 
         <button
           className="portfolio-slider__arrow portfolio-slider__arrow--left"
-          onClick={prevSlide}
+          onClick={handlePrev}
           aria-label="Previous slide"
         >
           <img src={arrowLeft} alt="prev" />
@@ -117,7 +89,7 @@ const PortfolioSlider = () => {
 
         <button
           className="portfolio-slider__arrow portfolio-slider__arrow--right"
-          onClick={nextSlide}
+          onClick={handleNext}
           aria-label="Next slide"
         >
           <img src={arrowRight} alt="next" />
