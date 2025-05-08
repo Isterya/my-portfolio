@@ -8,4 +8,8 @@
     max-width: 159px;
     height: auto;
   }
+
+  @include respond(xl) {
+    display: none;
+  }
 }
