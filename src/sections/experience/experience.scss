@@ -17,7 +17,10 @@
 
   @include respond(sm) {
     padding: 30px 0;
-    min-height: auto;
+  }
+
+  @include respond(xs) {
+    padding: 20px 0;
   }
 
   &-header {
@@ -43,6 +46,11 @@
     @include respond(sm) {
       font-size: 28px;
       line-height: 32px;
+    }
+
+    @include respond(xs) {
+      font-size: 24px;
+      line-height: 28px;
     }
 
     span {
@@ -86,6 +94,11 @@
         line-height: 24px;
       }
 
+      @include respond(xs) {
+        font-size: 18px;
+        line-height: 22px;
+      }
+
       &--secondary {
         font-size: 26px;
         color: #475467;
@@ -97,6 +110,10 @@
 
         @include respond(sm) {
           font-size: 18px;
+        }
+
+        @include respond(xs) {
+          font-size: 16px;
         }
       }
     }
@@ -116,6 +133,11 @@
       @include respond(sm) {
         font-size: 16px;
         line-height: 20px;
+      }
+
+      @include respond(xs) {
+        font-size: 14px;
+        line-height: 18px;
       }
     }
 
@@ -138,6 +160,11 @@
       @include respond(sm) {
         font-size: 13px;
         line-height: 20px;
+      }
+
+      @include respond(xs) {
+        font-size: 12px;
+        line-height: 18px;
       }
     }
   }
@@ -166,6 +193,10 @@
     @include respond(sm) {
       gap: 16px;
     }
+
+    @include respond(xs) {
+      gap: 12px;
+    }
   }
 
   &__column {
@@ -185,6 +216,10 @@
         @include respond(sm) {
           margin-top: 12px;
         }
+
+        @include respond(xs) {
+          margin-top: 8px;
+        }
       }
 
       @include respond(md) {
@@ -193,6 +228,10 @@
 
       @include respond(sm) {
         margin-bottom: 24px;
+      }
+
+      @include respond(xs) {
+        margin-bottom: 16px;
       }
     }
 
@@ -205,6 +244,10 @@
 
       @include respond(sm) {
         margin-bottom: 20px;
+      }
+
+      @include respond(xs) {
+        margin-bottom: 12px;
       }
     }
   }
