@@ -24,11 +24,20 @@
     padding-top: 60px;
   }
 
+  @include respond(xs) {
+    min-height: 420px;
+    padding-top: 40px;
+  }
+
   &-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+
+    @include respond(xs) {
+      flex-direction: column;
+    }
   }
 
   &-quote {
@@ -59,6 +68,15 @@
       width: 160px;
     }
 
+    @include respond(xs) {
+      position: static;
+      max-width: 200px;
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     &__img {
       max-width: 36px;
 
@@ -76,6 +94,10 @@
 
       @include respond(sm) {
         max-width: 18px;
+      }
+
+      @include respond(xs) {
+        max-width: 16px;
       }
     }
 
@@ -103,6 +125,11 @@
       @include respond(sm) {
         margin-top: 10px;
         font-size: 11px;
+      }
+
+      @include respond(xs) {
+        margin-top: 8px;
+        font-size: 10px;
       }
     }
   }
@@ -151,6 +178,13 @@
         width: 65px;
         height: 28px;
         font-size: 12px;
+      }
+
+      @include respond(xs) {
+        width: 55px;
+        height: 24px;
+        font-size: 10px;
+        margin-top: 10px;
       }
 
       &::after {
@@ -216,6 +250,11 @@
       @include respond(sm) {
         font-size: 28px;
         line-height: 32px;
+      }
+
+      @include respond(xs) {
+        font-size: 22px;
+        line-height: 26px;
       }
 
       span {
@@ -288,6 +327,10 @@
     @include respond(sm) {
       top: 170px;
       min-width: 90px;
+    }
+
+    @include respond(xs) {
+      display: none;
     }
 
     & > div {
@@ -402,6 +445,11 @@
       height: 160px;
     }
 
+    @include respond(xs) {
+      width: 250px;
+      height: 120px;
+    }
+
     &__img {
       position: absolute;
       bottom: 0;
@@ -426,6 +474,10 @@
 
       @include respond(sm) {
         max-width: 250px;
+      }
+
+      @include respond(xs) {
+        max-width: 200px;
       }
     }
   }
@@ -469,6 +521,12 @@
       height: 45px;
       padding: 5px;
       bottom: 25px;
+    }
+
+    @include respond(xs) {
+      width: 180px;
+      height: 40px;
+      bottom: 20px;
     }
 
     &:hover {
@@ -526,6 +584,11 @@
         padding: 5px 8px;
       }
 
+      @include respond(xs) {
+        font-size: 12px;
+        padding: 4px 6px;
+      }
+
       img {
         display: none;
         max-width: 42px;
@@ -560,6 +623,11 @@
           height: 35px;
         }
 
+        @include respond(xs) {
+          width: 90px;
+          height: 30px;
+        }
+
         img {
           display: block;
 
@@ -581,6 +649,11 @@
           @include respond(sm) {
             max-width: 18px;
             max-height: 18px;
+          }
+
+          @include respond(xs) {
+            max-width: 16px;
+            max-height: 16px;
           }
         }
 
