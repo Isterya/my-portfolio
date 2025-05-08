@@ -20,6 +20,10 @@
     margin-top: 15px;
   }
 
+  @include respond(xs) {
+    margin-top: 10px;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: center;
