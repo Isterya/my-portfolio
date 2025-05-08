@@ -24,6 +24,36 @@
       border 0.25s ease,
       transform 0.2s ease;
 
+    @include respond(xl) {
+      padding: 8px 16px;
+      font-size: 14px;
+      gap: 12px;
+    }
+
+    @include respond(lg) {
+      padding: 7px 14px;
+      font-size: 13px;
+      gap: 10px;
+    }
+
+    @include respond(md) {
+      padding: 6px 12px;
+      font-size: 12px;
+      gap: 8px;
+    }
+
+    @include respond(sm) {
+      padding: 5px 10px;
+      font-size: 11px;
+      gap: 6px;
+    }
+
+    @include respond(xs) {
+      padding: 4px 8px;
+      font-size: 10px;
+      gap: 5px;
+    }
+
     &:hover {
       background: rgb(255 255 255 / 10%);
       border: 1px solid rgb(255 255 255 / 30%);
@@ -35,6 +65,26 @@
       height: 12px;
       transition: transform 0.3s ease;
       opacity: 0.9;
+
+      @include respond(lg) {
+        width: 11px;
+        height: 11px;
+      }
+
+      @include respond(md) {
+        width: 10px;
+        height: 10px;
+      }
+
+      @include respond(sm) {
+        width: 9px;
+        height: 9px;
+      }
+
+      @include respond(xs) {
+        width: 8px;
+        height: 8px;
+      }
     }
   }
 
@@ -55,6 +105,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include respond(md) {
+      min-width: 85px;
+      padding: 6px;
+    }
+
+    @include respond(sm) {
+      min-width: 70px;
+      padding: 5px;
+    }
+
+    @include respond(xs) {
+      min-width: 60px;
+      padding: 4px;
+    }
   }
 
   &__item {
@@ -67,6 +132,26 @@
     text-align: left;
     cursor: pointer;
     transition: background 0.2s ease;
+
+    @include respond(lg) {
+      font-size: 13px;
+      padding: 8px 16px;
+    }
+
+    @include respond(md) {
+      font-size: 12px;
+      padding: 7px 14px;
+    }
+
+    @include respond(sm) {
+      font-size: 11px;
+      padding: 6px 12px;
+    }
+
+    @include respond(xs) {
+      font-size: 10px;
+      padding: 5px 10px;
+    }
 
     &:hover {
       background: rgb(255 255 255 / 12%);
