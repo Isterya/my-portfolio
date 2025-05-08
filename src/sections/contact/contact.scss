@@ -19,6 +19,11 @@
     min-height: 320px;
   }
 
+  @include respond(sm) {
+    padding: 30px 0;
+    min-height: auto;
+  }
+
   &-wrapper {
     max-width: 750px;
 
@@ -32,6 +37,10 @@
 
     @include respond(md) {
       max-width: 348px;
+    }
+
+    @include respond(sm) {
+      max-width: 90vw;
     }
   }
 
@@ -56,6 +65,11 @@
     @include respond(md) {
       font-size: 28px;
       line-height: 40px;
+    }
+
+    @include respond(sm) {
+      font-size: 22px;
+      line-height: 32px;
     }
 
     span {
@@ -84,6 +98,11 @@
     @include respond(md) {
       margin-top: 20px;
       gap: 8px;
+    }
+
+    @include respond(sm) {
+      margin-top: 16px;
+      gap: 6px;
     }
   }
 
@@ -114,6 +133,11 @@
       padding: 10px;
     }
 
+    @include respond(sm) {
+      height: 48px;
+      padding: 8px;
+    }
+
     &__input {
       flex: 1;
       border: none;
@@ -137,6 +161,11 @@
       @include respond(md) {
         font-size: 14px;
         padding-left: 70px;
+      }
+
+      @include respond(sm) {
+        font-size: 12px;
+        padding-left: 50px;
       }
 
       &::placeholder {
@@ -171,6 +200,11 @@
       @include respond(md) {
         font-size: 14px;
         padding: 10px 20px;
+      }
+
+      @include respond(sm) {
+        font-size: 12px;
+        padding: 8px 16px;
       }
 
       &:hover {
@@ -214,6 +248,11 @@
         width: 36px;
         height: 32px;
       }
+
+      @include respond(sm) {
+        width: 28px;
+        height: 24px;
+      }
     }
 
     &::after {
@@ -243,6 +282,12 @@
         height: 16px;
         left: 20px;
       }
+
+      @include respond(sm) {
+        width: 14px;
+        height: 12px;
+        left: 21px;
+      }
     }
   }
 
@@ -267,6 +312,11 @@
       margin-top: 16px;
     }
 
+    @include respond(sm) {
+      font-size: 10px;
+      margin-top: 12px;
+    }
+
     .checkbox-container {
       display: flex;
       align-items: center;
@@ -277,6 +327,10 @@
 
       @include respond(md) {
         gap: 8px;
+      }
+
+      @include respond(sm) {
+        gap: 6px;
       }
 
       input {
@@ -358,6 +412,10 @@
           font-size: 10px;
         }
 
+        @include respond(sm) {
+          font-size: 9px;
+        }
+
         a {
           color: #ff7f00;
           transition: color 0.2s ease;
@@ -389,6 +447,10 @@
 
   @include respond(md) {
     font-size: 11px;
+  }
+
+  @include respond(sm) {
+    font-size: 10px;
   }
 
   &.error {
