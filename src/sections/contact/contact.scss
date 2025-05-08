@@ -24,6 +24,10 @@
     min-height: auto;
   }
 
+  @include respond(xs) {
+    padding: 20px 0;
+  }
+
   &-wrapper {
     max-width: 750px;
 
@@ -41,6 +45,10 @@
 
     @include respond(sm) {
       max-width: 90vw;
+    }
+
+    @include respond(xs) {
+      max-width: 85vw;
     }
   }
 
@@ -70,6 +78,11 @@
     @include respond(sm) {
       font-size: 22px;
       line-height: 32px;
+    }
+
+    @include respond(xs) {
+      font-size: 18px;
+      line-height: 26px;
     }
 
     span {
@@ -103,6 +116,11 @@
     @include respond(sm) {
       margin-top: 16px;
       gap: 6px;
+    }
+
+    @include respond(xs) {
+      margin-top: 12px;
+      gap: 4px;
     }
   }
 
@@ -138,6 +156,11 @@
       padding: 8px;
     }
 
+    @include respond(xs) {
+      height: 42px;
+      padding: 6px;
+    }
+
     &__input {
       flex: 1;
       border: none;
@@ -166,6 +189,11 @@
       @include respond(sm) {
         font-size: 12px;
         padding-left: 50px;
+      }
+
+      @include respond(xs) {
+        font-size: 10px;
+        padding-left: 40px;
       }
 
       &::placeholder {
@@ -205,6 +233,11 @@
       @include respond(sm) {
         font-size: 12px;
         padding: 8px 16px;
+      }
+
+      @include respond(xs) {
+        font-size: 10px;
+        padding: 6px 12px;
       }
 
       &:hover {
@@ -253,6 +286,11 @@
         width: 28px;
         height: 24px;
       }
+
+      @include respond(xs) {
+        width: 24px;
+        height: 20px;
+      }
     }
 
     &::after {
@@ -288,6 +326,11 @@
         height: 12px;
         left: 21px;
       }
+
+      @include respond(xs) {
+        width: 12px;
+        height: 10px;
+      }
     }
   }
 
@@ -317,6 +360,11 @@
       margin-top: 12px;
     }
 
+    @include respond(xs) {
+      font-size: 9px;
+      margin-top: 10px;
+    }
+
     .checkbox-container {
       display: flex;
       align-items: center;
@@ -331,6 +379,10 @@
 
       @include respond(sm) {
         gap: 6px;
+      }
+
+      @include respond(xs) {
+        gap: 4px;
       }
 
       input {
@@ -416,6 +468,10 @@
           font-size: 9px;
         }
 
+        @include respond(xs) {
+          font-size: 8px;
+        }
+
         a {
           color: #ff7f00;
           transition: color 0.2s ease;
@@ -451,6 +507,10 @@
 
   @include respond(sm) {
     font-size: 10px;
+  }
+
+  @include respond(xs) {
+    font-size: 9px;
   }
 
   &.error {
