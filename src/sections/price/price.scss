@@ -30,6 +30,12 @@
     border-radius: 15px;
   }
 
+  @include respond(xs) {
+    padding: 32px 0;
+    min-height: 350px;
+    border-radius: 10px;
+  }
+
   &-wrapper {
     display: flex;
     flex-direction: column;
@@ -77,6 +83,11 @@
         line-height: 36px;
       }
 
+      @include respond(xs) {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
       span {
         background: $main-color;
         background-clip: text;
@@ -108,6 +119,12 @@
           width: 12px;
           height: 12px;
           right: -10px;
+        }
+
+        @include respond(xs) {
+          width: 8px;
+          height: 8px;
+          right: -6px;
         }
       }
     }
@@ -141,6 +158,12 @@
         margin-top: 10px;
       }
 
+      @include respond(xs) {
+        font-size: 10px;
+        line-height: 16px;
+        margin-top: 8px;
+      }
+
       &::before {
         content: '';
         position: absolute;
@@ -169,6 +192,12 @@
           height: 10px;
           left: -6px;
           bottom: 0;
+        }
+
+        @include respond(xs) {
+          width: 8px;
+          height: 8px;
+          left: -4px;
         }
       }
 
@@ -201,6 +230,12 @@
           right: -8px;
           top: -8px;
         }
+
+        @include respond(xs) {
+          width: 8px;
+          height: 8px;
+          right: -6px;
+        }
       }
     }
   }
@@ -224,6 +259,10 @@
       margin-top: 24px;
     }
 
+    @include respond(xs) {
+      margin-top: 16px;
+    }
+
     &__track {
       display: flex;
       gap: 33px;
@@ -245,6 +284,12 @@
         gap: 12px;
         padding-left: 8px;
         padding-right: 8px;
+      }
+
+      @include respond(xs) {
+        gap: 8px;
+        padding-left: 6px;
+        padding-right: 6px;
       }
     }
   }
@@ -284,6 +329,12 @@
       left: -90px;
       top: 150px;
     }
+
+    @include respond(xs) {
+      max-width: 150px;
+      left: -65px;
+      top: -50px;
+    }
   }
 
   &__third-abstract {
@@ -312,6 +363,12 @@
       max-width: 350px;
       right: -120px;
       bottom: -140px;
+    }
+
+    @include respond(xs) {
+      max-width: 230px;
+      right: -105px;
+      bottom: -90px;
     }
   }
 }
@@ -371,6 +428,26 @@
       scroll-behavior: smooth;
       padding-left: 8px;
       padding-right: 8px;
+    }
+
+    &__track > * {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+    }
+  }
+}
+
+@include respond(xs) {
+  .price-carousel {
+    overflow-x: auto;
+
+    &__track {
+      gap: 8px;
+      width: max-content;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-left: 6px;
+      padding-right: 6px;
     }
 
     &__track > * {
