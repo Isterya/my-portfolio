@@ -1,10 +1,9 @@
 .footer {
-  min-height: 685px;
+  min-height: auto;
   background-color: #272727;
   padding: 25px 0;
 
   @include respond(lg) {
-    min-height: auto;
     padding: 20px 0;
   }
 
