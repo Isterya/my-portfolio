@@ -14,6 +14,11 @@ type Section = (typeof SECTIONS)[number];
 const SCROLL_THRESHOLD = 50;
 const SECTION_OFFSET = 100;
 
+const menuVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const NavBar = () => {
   const { t } = useTranslation();
 
@@ -121,39 +126,41 @@ const NavBar = () => {
 
       {/* Desktop Nav */}
       {!isMobile && (
-        <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
-          <ul className="navbar-list navbar-list--left">
-            {SECTIONS.slice(0, 3).map((section) => (
-              <li key={section}>
-                <a
-                  className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
-                  href={`#${section}`}
-                >
-                  {t(`navBar.${section}`)}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <motion.div initial="hidden" animate="visible" variants={menuVariants}>
+          <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+            <ul className="navbar-list navbar-list--left">
+              {SECTIONS.slice(0, 3).map((section) => (
+                <li key={section}>
+                  <a
+                    className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
+                    href={`#${section}`}
+                  >
+                    {t(`navBar.${section}`)}
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-          <div className="navbar-logo">
-            <a href="#home">
-              <img src={logo} alt="Logotype" />
-            </a>
-          </div>
+            <div className="navbar-logo">
+              <a href="#home">
+                <img src={logo} alt="Logotype" />
+              </a>
+            </div>
 
-          <ul className="navbar-list navbar-list--right">
-            {SECTIONS.slice(3).map((section) => (
-              <li key={section}>
-                <a
-                  className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
-                  href={`#${section}`}
-                >
-                  {t(`navBar.${section}`)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+            <ul className="navbar-list navbar-list--right">
+              {SECTIONS.slice(3).map((section) => (
+                <li key={section}>
+                  <a
+                    className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
+                    href={`#${section}`}
+                  >
+                    {t(`navBar.${section}`)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </motion.div>
       )}
     </>
   );
