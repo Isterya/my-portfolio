@@ -105,8 +105,21 @@ p {
 .container {
   max-width: 1300px;
   margin: 0 auto;
+  padding: 0 20px;
 
   @include respond(xl) {
     padding: 0 40px;
+  }
+
+  @include respond(md) {
+    padding: 0 30px;
+  }
+
+  @include respond(sm) {
+    padding: 0 20px;
+  }
+
+  @include respond(xs) {
+    padding: 0 15px;
   }
 }
