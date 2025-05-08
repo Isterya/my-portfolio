@@ -3,18 +3,51 @@
   background-color: #fff;
   color: #1d2939;
 
+  @include respond(lg) {
+    padding: 60px 0;
+  }
+
+  @include respond(md) {
+    padding: 40px 0;
+  }
+
+  @include respond(sm) {
+    padding: 30px 0;
+  }
+
+  @include respond(xs) {
+    padding: 20px 0;
+  }
+
   &-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     max-width: 850px;
     margin: 0 auto;
+    padding: 0 16px;
   }
 
   h1 {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 16px;
+
+    @include respond(lg) {
+      font-size: 36px;
+    }
+
+    @include respond(md) {
+      font-size: 32px;
+    }
+
+    @include respond(sm) {
+      font-size: 28px;
+    }
+
+    @include respond(xs) {
+      font-size: 24px;
+    }
   }
 
   h2 {
@@ -22,6 +55,20 @@
     font-weight: 400;
     margin-bottom: 32px;
     color: #555;
+
+    @include respond(md) {
+      font-size: 18px;
+    }
+
+    @include respond(sm) {
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    @include respond(xs) {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
   }
 
   h3 {
@@ -30,6 +77,24 @@
     font-size: 28px;
     font-weight: 600;
     line-height: 36px;
+
+    @include respond(md) {
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 40px;
+    }
+
+    @include respond(sm) {
+      font-size: 20px;
+      line-height: 28px;
+      margin-top: 32px;
+    }
+
+    @include respond(xs) {
+      font-size: 18px;
+      line-height: 24px;
+      margin-top: 28px;
+    }
   }
 
   p {
@@ -37,6 +102,21 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 28px;
+
+    @include respond(md) {
+      font-size: 15px;
+      line-height: 26px;
+    }
+
+    @include respond(sm) {
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    @include respond(xs) {
+      font-size: 13px;
+      line-height: 22px;
+    }
   }
 
   a {
@@ -51,6 +131,10 @@
   ul {
     padding-left: 20px;
     margin-bottom: 20px;
+
+    @include respond(xs) {
+      padding-left: 16px;
+    }
   }
 
   li {
@@ -58,5 +142,20 @@
     font-size: 16px;
     line-height: 26px;
     list-style: disc;
+
+    @include respond(md) {
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    @include respond(sm) {
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    @include respond(xs) {
+      font-size: 13px;
+      line-height: 20px;
+    }
   }
 }
