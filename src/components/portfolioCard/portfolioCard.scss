@@ -28,6 +28,11 @@
     height: 250px;
   }
 
+  @include respond(xs) {
+    width: 286px;
+    height: 260px;
+  }
+
   &:hover {
     transform: scale(1.02);
   }
@@ -49,13 +54,24 @@
     }
 
     @include respond(lg) {
-      font-size: 70px;
-      line-height: 105px;
+      font-size: 60px;
+      line-height: 95px;
     }
 
     @include respond(md) {
+      font-size: 52px;
+      line-height: 78px;
+    }
+
+    @include respond(sm) {
       font-size: 47px;
       line-height: 73px;
+    }
+
+    @include respond(xs) {
+      bottom: 10px;
+      font-size: 30px;
+      line-height: 42px;
     }
 
     .portfolio-card:hover & {
@@ -106,6 +122,12 @@
       height: 145px;
     }
 
+    @include respond(xs) {
+      width: 266px;
+      height: 120px;
+      padding: 0 16px 14px;
+    }
+
     .portfolio-card:hover & {
       opacity: 1;
       transform: translateY(0);
@@ -146,6 +168,11 @@
       font-size: 47px;
       line-height: 73px;
     }
+
+    @include respond(xs) {
+      font-size: 32px;
+      line-height: 46px;
+    }
   }
 
   &__description {
@@ -182,6 +209,10 @@
       font-size: 10px;
       line-height: 18px;
       max-width: 400px;
+    }
+
+    @include respond(xs) {
+      display: none;
     }
   }
 
@@ -231,6 +262,18 @@
       height: 44px;
     }
 
+    @include respond(xs) {
+      width: 36px;
+      height: 36px;
+      top: 6px;
+      right: 6px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
     &:hover {
       background: #fd853a;
 
@@ -242,6 +285,20 @@
     .portfolio-card__icon-path {
       fill: #fd853a;
       transition: fill 0.3s ease;
+    }
+  }
+}
+
+@include respond(xs) {
+  .portfolio-card:hover {
+    .portfolio-card__overlay {
+      opacity: 0 !important;
+      transform: translateY(20px) !important;
+      pointer-events: none !important;
+    }
+
+    .portfolio-card__title {
+      opacity: 1 !important;
     }
   }
 }
