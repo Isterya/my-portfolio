@@ -23,6 +23,32 @@ html[data-lang='ru'] {
     }
   }
 
+  .hero-links {
+    @include respond(md) {
+      width: 250px;
+      height: 55px;
+    }
+
+    @include respond(sm) {
+      width: 210px;
+    }
+
+    @include respond(xs) {
+      width: 190px;
+      height: 40px;
+    }
+
+    &__link--active {
+      width: 140px;
+      height: 45px;
+
+      @include respond(xs) {
+        width: 100px;
+        height: 30px;
+      }
+    }
+  }
+
   .skills__second-abstract {
     @include respond(xl) {
       top: 133px;
@@ -33,16 +59,68 @@ html[data-lang='ru'] {
     @include respond(xl) {
       font-size: 21px;
     }
+
+    @include respond(md) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @include respond(sm) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include respond(xs) {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 
   .experience__text-title {
     @include respond(xl) {
       font-size: 29px;
     }
+
+    @include respond(xl) {
+      font-size: 30px;
+    }
+
+    @include respond(md) {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    @include respond(sm) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @include respond(xs) {
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
 
   .contact-wrapper {
-    max-width: 440px;
+    @include respond(md) {
+      max-width: 440px;
+    }
+
+    @include respond(sm) {
+      max-width: 90vw;
+    }
+
+    @include respond(xs) {
+      max-width: 85vw;
+    }
+  }
+
+  .portfolio-card {
+    &__description {
+      @include respond(sm) {
+        font-size: 9px;
+      }
+    }
   }
 }
 
