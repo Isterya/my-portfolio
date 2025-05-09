@@ -165,7 +165,6 @@
   }
 }
 
-// TODO: adapt the burger component
 .burger {
   display: none;
   position: absolute;
@@ -181,6 +180,11 @@
 
   @include respond(md) {
     display: block;
+  }
+
+  @include respond(xs) {
+    width: 20px;
+    height: 20px;
   }
 
   span {
