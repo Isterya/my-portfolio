@@ -10,7 +10,7 @@ export const seoHome: SeoData = {
   description:
     'A thoughtfully crafted personal portfolio showcasing my expertise in web development, UI/UX design, and full-stack architecture. Discover projects, skills, and creative approaches brought to life through clean code and aesthetic design.',
   url: 'https://isterya.dev',
-  image: 'https://isterya.dev/assets/img/preview-home.jpg',
+  image: 'https://isterya.dev/assets/img/home-preview.jpg',
 };
 
 export const seoPolicy: SeoData = {
@@ -18,7 +18,7 @@ export const seoPolicy: SeoData = {
   description:
     'This Privacy Policy outlines how user data is collected, used, and protected within this portfolio site. Transparency and respect for your privacy are at the core of every interaction on this platform.',
   url: 'https://isterya.dev/privacy-policy',
-  image: 'https://isterya.dev/assets/img/preview-policy.jpg',
+  image: 'https://isterya.dev/assets/img/policy-preview.jpg',
 };
 
 export const seoTerms: SeoData = {
@@ -26,7 +26,7 @@ export const seoTerms: SeoData = {
   description:
     'These Terms & Conditions define the guidelines for using this portfolio website. Please review them to understand your rights and responsibilities while navigating or interacting with any content here.',
   url: 'https://isterya.dev/user-terms',
-  image: 'https://isterya.dev/assets/img/preview-terms.jpg',
+  image: 'https://isterya.dev/assets/img/terms-preview.jpg',
 };
 
 export const seo404: SeoData = {

@@ -77,20 +77,20 @@ const Page404 = () => {
                   <path
                     d="M7 18L7 6"
                     stroke="currentColor"
-                    stroke-width="1.00088"
-                    stroke-linejoin="round"
+                    strokeWidth="1.00088"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M10.5 12L17 12"
                     stroke="currentColor"
-                    stroke-width="1.00088"
-                    stroke-linejoin="round"
+                    strokeWidth="1.00088"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M13 9C11.8284 10.1716 11.1716 10.8284 10 12L13 15"
                     stroke="currentColor"
-                    stroke-width="1.00088"
-                    stroke-linejoin="round"
+                    strokeWidth="1.00088"
+                    strokeLinejoin="round"
                   />
                 </svg>
                 {t('error.home')}
