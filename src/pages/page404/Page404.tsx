@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -33,6 +35,8 @@ const float = {
 };
 
 const Page404 = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SEO {...seo404} />
@@ -41,15 +45,15 @@ const Page404 = () => {
         <div className="container">
           <motion.div className="page404-wrapper" initial="hidden" animate="visible">
             <motion.h1 className="page404-header" variants={fadeUp} custom={0}>
-              Oops!
+              {t('error.oops')}
             </motion.h1>
 
             <motion.h2 className="page404-subheader" variants={fadeUp} custom={1}>
-              You are lost
+              {t('error.lost')}
             </motion.h2>
 
             <motion.p className="page404-desc" variants={fadeUp} custom={2}>
-              The page you are looking for doesn’t exist or has been moved.
+              {t('error.description')}
             </motion.p>
 
             <motion.img
@@ -89,7 +93,7 @@ const Page404 = () => {
                     stroke-linejoin="round"
                   />
                 </svg>
-                Go Home
+                {t('error.home')}
               </Link>
             </motion.div>
           </motion.div>

@@ -408,5 +408,12 @@
     "contactTitle": "Contact",
     "contactText1": "If you have any questions or requests, reach out:",
     "contactText2": "Email:"
+  },
+
+  "error": {
+    "oops": "Oops!",
+    "lost": "You are lost",
+    "description": "The page you are looking for doesn’t exist or has been moved.",
+    "home": "Go Home"
   }
 }

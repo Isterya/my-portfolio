@@ -406,5 +406,12 @@
     "contactTitle": "Kontakt",
     "contactText1": "Jeśli masz pytania lub prośby, skontaktuj się:",
     "contactText2": "E-mail:"
+  },
+
+  "error": {
+    "oops": "Ups!",
+    "lost": "Zgubiłeś się",
+    "description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "home": "Strona główna"
   }
 }
