@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import SEO from '../../components/SEO';
-import { seo404 } from '../../data/seoData';
+import SEO from '@/components/SEO';
+import { seo404 } from '@/data/seoData';
 
-import errorImg from '../../assets/img/error/error-404.svg';
+import errorImg from '@/assets/img/error/error-404.svg';
 
 import './page404.scss';
 
