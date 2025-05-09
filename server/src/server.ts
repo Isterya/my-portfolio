@@ -32,7 +32,8 @@ const emailSchema = z.object({
 });
 
 const asyncHandler =
-  (fn: Function) => (req: Request, res: Response, next: NextFunction) =>
+  (fn: (req: Request, res: Response, next: NextFunction) => Promise<Response | undefined>) =>
+  (req: Request, res: Response, next: NextFunction) =>
     Promise.resolve(fn(req, res, next)).catch(next);
 
 app.post(
@@ -41,25 +42,18 @@ app.post(
     const parsed = emailSchema.safeParse(req.body);
 
     if (!parsed.success) {
-      return res
-        .status(400)
-        .json({ success: false, error: 'Invalid email format' });
+      return res.status(400).json({ success: false, error: 'Invalid email format' });
     }
 
     const { email } = parsed.data;
 
-    const results = await Promise.allSettled([
-      sendToTelegram(email),
-      sendEmailToUser(email),
-    ]);
+    const results = await Promise.allSettled([sendToTelegram(email), sendEmailToUser(email)]);
 
     const allOk = results.every((r) => r.status === 'fulfilled');
 
     if (!allOk) {
       const failed = results
-        .map((r, i) =>
-          r.status === 'rejected' ? (i === 0 ? 'Telegram' : 'Email') : null
-        )
+        .map((r, i) => (r.status === 'rejected' ? (i === 0 ? 'Telegram' : 'Email') : null))
         .filter(Boolean);
 
       console.log(`❌ Failed: ${failed.join(', ')}`, results);
@@ -70,10 +64,10 @@ app.post(
     }
 
     res.status(200).json({ success: true, message: 'Email sent successfully' });
-  })
+  }),
 );
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
   console.log('❌ Unexpected error', err);
   res.status(500).json({ success: false, error: 'Server error' });
 });

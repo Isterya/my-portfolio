@@ -33,10 +33,7 @@ const SkillsSlider = () => {
     ],
   });
 
-  const totalSlides = useMemo(
-    () => Math.ceil(skillsData.length / itemsPerSlide),
-    [skillsData.length, itemsPerSlide],
-  );
+  const totalSlides = useMemo(() => Math.ceil(skillsData.length / itemsPerSlide), [itemsPerSlide]);
 
   const visibleSkills = useMemo(() => {
     const end = currentIndex + itemsPerSlide;

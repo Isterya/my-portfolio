@@ -32,7 +32,7 @@ const PortfolioSlider = () => {
 
   const totalSlides = useMemo(
     () => Math.ceil(portfolioData.length / itemsPerSlide),
-    [portfolioData.length, itemsPerSlide],
+    [itemsPerSlide],
   );
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');

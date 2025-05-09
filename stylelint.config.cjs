@@ -1,5 +1,3 @@
-const { pattern } = require('framer-motion/client');
-
 module.exports = {
   customSyntax: 'postcss-scss',
   plugins: ['stylelint-scss', 'stylelint-order'],
