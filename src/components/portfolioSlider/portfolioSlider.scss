@@ -111,7 +111,11 @@
     }
 
     &--left {
-      left: -32px;
+      left: -45px;
+
+      @include respond(xl) {
+        left: -30px;
+      }
 
       @include respond(xs) {
         left: -20px;
@@ -119,7 +123,11 @@
     }
 
     &--right {
-      right: -32px;
+      right: -45px;
+
+      @include respond(xl) {
+        right: -30px;
+      }
 
       @include respond(xs) {
         right: -20px;
