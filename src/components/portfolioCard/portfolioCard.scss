@@ -8,6 +8,10 @@
   overflow: hidden;
   transition: transform 0.3s ease;
 
+  @include respond('2xl') {
+    width: 580px;
+  }
+
   @include respond(xl) {
     width: 450px;
     height: 300px;
@@ -100,6 +104,10 @@
       opacity 0.3s ease,
       transform 0.3s ease;
 
+    @include respond('2xl') {
+      width: 535px;
+    }
+
     @include respond(xl) {
       width: 410px;
       height: 165px;
@@ -181,6 +189,10 @@
     color: #ffead5;
     line-height: 24px;
     max-width: 565px;
+
+    @include respond('2xl') {
+      font-size: 14px;
+    }
 
     @include respond(xl) {
       font-size: 11px;

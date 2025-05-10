@@ -113,6 +113,10 @@
     &--left {
       left: -45px;
 
+      @include respond('2xl') {
+        left: -35px;
+      }
+
       @include respond(xl) {
         left: -30px;
       }
@@ -124,6 +128,10 @@
 
     &--right {
       right: -45px;
+
+      @include respond('2xl') {
+        right: -35px;
+      }
 
       @include respond(xl) {
         right: -30px;
