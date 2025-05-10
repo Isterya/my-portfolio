@@ -16,10 +16,14 @@ html[data-lang='ru'] {
   font-family: Inter, sans-serif;
 
   .navbar-logo {
-    padding: 0 78px;
+    padding: 0 50px;
 
     @include respond(xl) {
       padding: 0 24px;
+    }
+
+    @include respond(lg) {
+      padding: 0 16px;
     }
   }
 
