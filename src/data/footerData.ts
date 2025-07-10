@@ -2,6 +2,7 @@ import facebookIcon from '../assets/icons/socials/facebook-white.svg';
 import telegramIcon from '../assets/icons/socials/telegram-white.svg';
 import instagramIcon from '../assets/icons/socials/instagram-white.svg';
 import githubIcon from '../assets/icons/socials/github-white.svg';
+import linkedinIcon from '@/assets/icons/socials/linkedin-white.svg';
 
 export interface SocialLinks {
   icon: string;
@@ -27,6 +28,7 @@ export const socialLinks: SocialLinks[] = [
     href: 'https://www.instagram.com/dad.isterya/',
   },
   { icon: githubIcon, alt: 'github', href: 'https://github.com/Isterya' },
+  { icon: linkedinIcon, alt: 'linkedIn', href: 'https://www.linkedin.com/in/bohdan-yevsieiev/' },
 ];
 
 export const navLinks: string[] = [
