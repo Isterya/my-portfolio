@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
+import { getAge } from '@/utils/getAge';
 
 import character from '@/assets/img/about/about-character.png';
 
@@ -26,6 +27,7 @@ const About = () => {
   const { t } = useTranslation();
 
   const years = getYearsOfExperience();
+  const age = getAge(new Date('2007-09-06'));
 
   return (
     <section id="about" className="about" role="region" aria-label="About me section">
@@ -53,7 +55,7 @@ const About = () => {
             </motion.h2>
 
             <motion.p className="about-text__descr" variants={fadeInUp}>
-              {t('about.description')}
+              {t('about.description', { age })}
             </motion.p>
 
             <motion.div className="about-text__stats" variants={fadeInUp}>

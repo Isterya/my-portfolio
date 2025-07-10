@@ -119,7 +119,7 @@
       "highlight": "Hire me"
     },
 
-    "description": "At 18, I’ve already gained over two years of experience crafting dynamic web applications, mastering modern frontend technologies, and building a deep understanding of software architecture and development principles. My expertise goes problem-solving, and a keen eye for UI/UX to every project I work on.",
+    "description": "At {{age}}, I’ve already gained over two years of experience crafting dynamic web applications, mastering modern frontend technologies, and building a deep understanding of software architecture and development principles. My expertise goes problem-solving, and a keen eye for UI/UX to every project I work on.",
 
     "projects": "Projects Completed",
     "years": "Years",

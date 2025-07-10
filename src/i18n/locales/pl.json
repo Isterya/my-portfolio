@@ -118,7 +118,7 @@
       "before": "Dlaczego warto",
       "highlight": "mnie zatrudnić"
     },
-    "description": "W wieku 18 lat mam już ponad dwa lata doświadczenia w tworzeniu dynamicznych aplikacji internetowych, znajomości nowoczesnych technologii frontendowych oraz głębokim zrozumieniu architektury oprogramowania. Do każdego projektu wnoszę nie tylko wiedzę techniczną i umiejętność rozwiązywania problemów, ale także wyjątkowe wyczucie UI/UX.",
+    "description": "W wieku {{age}} lat mam już ponad dwa lata doświadczenia w tworzeniu dynamicznych aplikacji internetowych, znajomości nowoczesnych technologii frontendowych oraz głębokim zrozumieniu architektury oprogramowania. Do każdego projektu wnoszę nie tylko wiedzę techniczną i umiejętność rozwiązywania problemów, ale także wyjątkowe wyczucie UI/UX.",
     "projects": "Zrealizowane projekty",
     "years": "Lata",
     "experience": "Udokumentowane doświadczenie",
