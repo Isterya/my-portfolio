@@ -304,7 +304,7 @@
     }
 
     &__item {
-      max-width: 25px;
+      max-width: 20px;
       transition: transform 0.3s ease;
 
       @include respond(xl) {
@@ -328,7 +328,7 @@
       }
 
       a img {
-        max-width: 25px;
+        max-width: 20px;
 
         @include respond(xl) {
           max-width: 19px;
