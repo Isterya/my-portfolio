@@ -16,6 +16,14 @@ import reduxIcon from '../assets/icons/skills/redux.svg';
 import tailwindIcon from '../assets/icons/skills/tailwind-css.svg';
 import figmaIcon from '../assets/icons/skills/figma.svg';
 
+import nextIcon from '../assets/icons/skills/next.svg';
+import expressIcon from '../assets/icons/skills/express.svg';
+import postgresqlIcon from '../assets/icons/skills/postgresql.svg';
+
+import i18nextIcon from '../assets/icons/skills/i18next.svg';
+import rhfIcon from '../assets/icons/skills/rhf.svg';
+import graphqlIcon from '../assets/icons/skills/graphql.svg';
+
 export interface SkillsData {
   id: string;
   title: string;
@@ -95,5 +103,41 @@ export const skillsData: SkillsData[] = [
     title: 'Figma',
     icon: figmaIcon,
     description: 'skills.figma.description',
+  },
+  {
+    id: uuidv4(),
+    title: 'Next.js',
+    icon: nextIcon,
+    description: 'skills.next.description',
+  },
+  {
+    id: uuidv4(),
+    title: 'Express.js',
+    icon: expressIcon,
+    description: 'skills.express.description',
+  },
+  {
+    id: uuidv4(),
+    title: 'PostgreSQL',
+    icon: postgresqlIcon,
+    description: 'skills.postgresql.description',
+  },
+  {
+    id: uuidv4(),
+    title: 'i18next',
+    icon: i18nextIcon,
+    description: 'skills.i18next.description',
+  },
+  {
+    id: uuidv4(),
+    title: 'React Hook Form',
+    icon: rhfIcon,
+    description: 'skills.rhf.description',
+  },
+  {
+    id: uuidv4(),
+    title: 'GraphQL',
+    icon: graphqlIcon,
+    description: 'skills.graphql.description',
   },
 ];
