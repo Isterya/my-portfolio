@@ -65,6 +65,26 @@
     },
     "figma": {
       "description": "Od pomysłu po perfekcyjne wykonanie. Figma ułatwia współpracę i projektowanie UI/UX, które dobrze przekłada się na kod."
+    },
+
+    "next": {
+      "description": "Framework React do aplikacji gotowych do produkcji. Next.js zapewnia wysoką wydajność dzięki renderowaniu po stronie serwera, generowaniu statycznemu i inteligentnemu dzieleniu kodu — idealny dla nowoczesnych, zoptymalizowanych pod SEO produktów webowych."
+    },
+    "express": {
+      "description": "Minimalistyczny i elastyczny framework dla backendu Node.js. Express umożliwia szybkie tworzenie API, zachowując pełną kontrolę nad architekturą i wydajnością."
+    },
+    "postgresql": {
+      "description": "Najbardziej zaawansowana relacyjna baza danych open-source. PostgreSQL łączy niezawodność z nowoczesnymi funkcjami, zapewniając wyjątkową wydajność przy złożonych zapytaniach i integralność danych."
+    },
+
+    "i18next": {
+      "description": "Standard w dziedzinie internacjonalizacji. i18next przekształca aplikacje w produkty globalne, płynnie zarządzając wieloma językami i kulturami dzięki solidnym procesom tłumaczenia i dynamicznemu ładowaniu treści."
+    },
+    "rhf": {
+      "description": "Łatwe zarządzanie formularzami przy maksymalnej wydajności. React Hook Form minimalizuje ponowne renderowanie, zapewnia mocną walidację, intuicyjne API i doskonałe doświadczenie deweloperskie dla złożonych formularzy."
+    },
+    "graphql": {
+      "description": "Rewolucyjne podejście do projektowania API. GraphQL eliminuje nadmiarowe i brakujące dane, dostarczając klientowi dokładnie to, czego potrzebuje, za pomocą pojedynczego, potężnego i samodokumentującego się endpointu."
     }
   },
 
