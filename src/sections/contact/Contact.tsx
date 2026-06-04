@@ -33,7 +33,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      sendEmail(email);
+      await sendEmail(email);
 
       setSuccess(true);
       setEmail('');
