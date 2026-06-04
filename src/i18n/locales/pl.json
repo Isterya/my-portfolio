@@ -101,7 +101,7 @@
       },
       "college": {
         "title": "Technikum Cosinus",
-        "subtitle": "Łódź, Polska (obecnie w trakcie nauki)"
+        "subtitle": "Łódź, Polska • Profil zawodowy"
       },
       "specialization": {
         "title": "Web Development",
@@ -120,7 +120,7 @@
       },
       "technician": {
         "title": "Technik programista",
-        "descr": "Poszerzam wiedzę z zakresu tworzenia oprogramowania, architektury systemów oraz nowoczesnych technologii webowych."
+        "descr": "Podbudowa teoretyczna i praktyczna z zakresu inżynierii oprogramowania, architektury systemów oraz zaawansowanych technologii webowych."
       },
       "courses": {
         "title": "Kursy & Pet Projecty",
