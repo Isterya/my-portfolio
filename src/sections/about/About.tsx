@@ -60,7 +60,7 @@ const About = () => {
 
             <motion.div className="about-text__stats" variants={fadeInUp}>
               <div className="about-text__stats-projects">
-                <h3>30+</h3>
+                <h3>8+</h3>
                 <p>{t('about.projects')}</p>
               </div>
               <div className="about-text__stats-experience">
