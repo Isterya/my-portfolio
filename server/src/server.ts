@@ -69,7 +69,7 @@ app.post(
   }),
 );
 
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log('❌ Unexpected error', err);
   res.status(500).json({ success: false, error: 'Server error' });
 });
