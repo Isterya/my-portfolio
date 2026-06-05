@@ -1,22 +1,10 @@
-import nodemailer from 'nodemailer';
-
-export const sendEmailToUser = async (email: string): Promise<void> => {
+const sendEmailToUser = async (email: string): Promise<void> => {
   const EMAIL_USER = process.env.EMAIL_USER;
-  const EMAIL_PASS = process.env.EMAIL_PASS;
+  const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
-  if (!EMAIL_USER || !EMAIL_PASS) {
-    throw new Error('Email credentials are missing in .env');
+  if (!EMAIL_USER || !BREVO_API_KEY) {
+    throw new Error('Email credentials or API key are missing in .env');
   }
-
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: EMAIL_USER,
-      pass: EMAIL_PASS,
-    },
-  });
 
   const html = `
   <div style="font-family: Arial, sans-serif; background: #f4f4f4; padding: 40px;">
@@ -41,15 +29,32 @@ export const sendEmailToUser = async (email: string): Promise<void> => {
 `;
 
   try {
-    await transporter.sendMail({
-      from: EMAIL_USER,
-      to: email,
-      subject: 'Thank you for reaching out!',
-      text: 'Thank you for your message! I’ll contact you soon.',
-      html,
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'api-key': BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: {
+          name: 'Bohdan Yevsieiev',
+          email: EMAIL_USER,
+        },
+        to: [{ email }],
+        subject: 'Thank you for reaching out!',
+        textContent: 'Thank you for your message! I’ll contact you soon.',
+        htmlContent: html,
+      }),
     });
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      throw new Error(`Brevo API error: ${errorData}`);
+    }
   } catch (err) {
     console.error('❌ Email error:', err);
     throw err;
   }
 };
+export default sendEmailToUser;

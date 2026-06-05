@@ -8,7 +8,7 @@ import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 
 import { sendToTelegram } from './utils/sendToTelegram';
-import { sendEmailToUser } from './utils/sendEmailToUser';
+import sendEmailToUser from './utils/sendEmailToUser';
 
 dotenv.config();
 
