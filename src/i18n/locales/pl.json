@@ -68,7 +68,7 @@
     },
 
     "next": {
-      "description": "Framework React do aplikacji gotowych do produkcji. Next.js zapewnia wysoką wydajność dzięki renderowaniu po stronie serwera, generowaniu statycznemu i inteligentnemu dzieleniu kodu — idealny dla nowoczesnych, zoptymalizowanych pod SEO produktów webowych."
+      "description": "Next.js to gotowy na produkcję framework React. Renderowanie serwerowe i statyczna generacja gwarantują najwyższą szybkość nowoczesnych aplikacji."
     },
     "express": {
       "description": "Minimalistyczny i elastyczny framework dla backendu Node.js. Express umożliwia szybkie tworzenie API, zachowując pełną kontrolę nad architekturą i wydajnością."
