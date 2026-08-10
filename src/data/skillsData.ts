@@ -18,11 +18,8 @@ import figmaIcon from '../assets/icons/skills/figma.svg';
 
 import nextIcon from '../assets/icons/skills/next.svg';
 import expressIcon from '../assets/icons/skills/express.svg';
-import postgresqlIcon from '../assets/icons/skills/postgresql.svg';
 
 import i18nextIcon from '../assets/icons/skills/i18next.svg';
-import rhfIcon from '../assets/icons/skills/rhf.svg';
-import graphqlIcon from '../assets/icons/skills/graphql.svg';
 
 export interface SkillsData {
   id: string;
@@ -118,26 +115,8 @@ export const skillsData: SkillsData[] = [
   },
   {
     id: uuidv4(),
-    title: 'PostgreSQL',
-    icon: postgresqlIcon,
-    description: 'skills.postgresql.description',
-  },
-  {
-    id: uuidv4(),
     title: 'i18next',
     icon: i18nextIcon,
     description: 'skills.i18next.description',
-  },
-  {
-    id: uuidv4(),
-    title: 'React Hook Form',
-    icon: rhfIcon,
-    description: 'skills.rhf.description',
-  },
-  {
-    id: uuidv4(),
-    title: 'GraphQL',
-    icon: graphqlIcon,
-    description: 'skills.graphql.description',
   },
 ];

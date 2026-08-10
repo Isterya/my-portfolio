@@ -73,18 +73,8 @@
     "express": {
       "description": "The minimalist powerhouse for Node.js backend development. Express provides a flexible, unopinionated framework that enables rapid API creation while maintaining full control over architecture and performance."
     },
-    "postgresql": {
-      "description": "The most advanced open-source relational database. PostgreSQL combines rock-solid reliability with cutting-edge features, delivering exceptional performance for complex queries and data integrity."
-    },
-
     "i18next": {
       "description": " The gold standard for internationalization. i18next transforms applications into global experiences, seamlessly managing multiple languages and cultures with robust translation workflows and dynamic content loading."
-    },
-    "rhf": {
-      "description": "Effortless form management with maximum performance. React Hook Form minimizes re-renders while providing powerful validation, intuitive APIs, and exceptional developer experience for complex form scenarios."
-    },
-    "graphql": {
-      "description": "A revolutionary approach to API design. GraphQL eliminates over-fetching and under-fetching, providing clients with precisely the data they need through a single, powerful, and self-documenting endpoint."
     }
   },
 
