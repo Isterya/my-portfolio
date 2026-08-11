@@ -23,14 +23,14 @@ export const portfolioData: PortfolioData[] = [
     title: 'Uber',
     background: firstBg,
     description: 'portfolio.uber.description',
-    link: 'https://uber.isterya.dev/',
+    link: 'https://uber-tau-jade.vercel.app/',
   },
   {
     id: uuidv4(),
     title: 'Diary',
     background: secondBg,
     description: 'portfolio.diary.description',
-    link: 'https://diary.isterya.dev/',
+    link: 'https://school-diary-virid.vercel.app/',
   },
 
   {
@@ -38,14 +38,14 @@ export const portfolioData: PortfolioData[] = [
     title: 'Art',
     background: thirdBg,
     description: 'portfolio.art.description',
-    link: 'https://art.isterya.dev/',
+    link: 'https://picture-art-two.vercel.app/',
   },
   {
     id: uuidv4(),
     title: 'Marvel',
     background: fourthBg,
     description: 'portfolio.marvel.description',
-    link: 'https://marvel.isterya.dev/',
+    link: 'https://marvel-chi-eight.vercel.app/',
   },
 
   {
@@ -53,13 +53,13 @@ export const portfolioData: PortfolioData[] = [
     title: 'Coffee Shop',
     background: fifthBg,
     description: 'portfolio.coffee.description',
-    link: 'https://coffee.isterya.dev/',
+    link: 'https://coffee-two-gilt.vercel.app/',
   },
   {
     id: uuidv4(),
     title: 'Irvas',
     background: sixthBg,
     description: 'portfolio.irvas.description',
-    link: 'https://irvas.isterya.dev/',
+    link: 'https://irvas-pied.vercel.app/',
   },
 ];
