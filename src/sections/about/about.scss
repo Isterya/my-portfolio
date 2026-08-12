@@ -112,6 +112,8 @@
       max-height: 606px;
       width: auto;
       user-select: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
 
       @include respond(xl) {
         height: 500px;
