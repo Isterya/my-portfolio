@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useLastUpdated } from '@/hooks/useLastUpdated';
+import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
 import { privacyPolicySections } from '@/data/tocData';
 import { seoPolicy } from '@/data/seoData';
@@ -11,7 +11,7 @@ import './privacyPolicyPage.scss';
 const PrivacyPolicyPage = () => {
   const { t } = useTranslation();
 
-  const updatedDate = useLastUpdated('privacyPolicy');
+  const updatedDate = useLegalRevisionDate('privacyPolicy');
 
   return (
     <>
