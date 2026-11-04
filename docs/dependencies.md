@@ -27,7 +27,7 @@
 
 ## Безопасность
 
-- Фронтенд, `npm audit fix` в пределах semver: `react-router` / `react-router-dom` 7.5.3 → 7.18.5
+- Фронтенд, `npm audit fix` в пределах semver: `react-router` / `react-router-dom` 7.6.0 → 7.18.5
   (open redirect через `<Link>`, XSS и др.). `npm audit --omit=dev` — **0 уязвимостей**.
 - Остаются предупреждения только в dev-инструментах, которые не попадают в сборку: внутренние пакеты
   Vitest 3 (`@vitest/mocker`, `tinypool`) исправлены лишь в Vitest 5, а `minimatch` в

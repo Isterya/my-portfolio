@@ -552,8 +552,8 @@ Lighthouse 13.6, медиана 3 прогонов; axe-core после полн
 
 #### SEC-4. Уязвимые и лишние зависимости · P1
 
-- **Проблема.** Фронтенд: `react-router` 7.5 — пакет advisories (часть касается только SSR, но open
-  redirect через `<Link>` актуален и для SPA); `uuid` < 11.1.1. Сервер: `express` 4.18 тянет
+- **Проблема.** Фронтенд: `react-router` 7.6.0 — пакет advisories (часть касается только SSR, но
+  open redirect через `<Link>` актуален и для SPA); `uuid` < 11.1.1. Сервер: `express` 4.18 тянет
   уязвимые `path-to-regexp`, `body-parser`, `qs`, `send`, `cookie`; `nodemailer` и `node-fetch`
   установлены, но не используются (Brevo вызывается через глобальный `fetch`).
 - **Как исправить.** `npm audit fix` в пределах semver, удалить неиспользуемое, `express.json()`
