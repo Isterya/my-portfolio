@@ -1,13 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import firstBg from '../assets/img/works/portf-work-1.jpg';
-import secondBg from '../assets/img/works/portf-work-2.jpg';
+import firstBg from '../assets/img/works/portf-work-1.webp';
+import secondBg from '../assets/img/works/portf-work-2.webp';
 
-import thirdBg from '../assets/img/works/portf-work-3.jpg';
-import fourthBg from '../assets/img/works/portf-work-4.jpg';
+import thirdBg from '../assets/img/works/portf-work-3.webp';
+import fourthBg from '../assets/img/works/portf-work-4.webp';
 
-import fifthBg from '../assets/img/works/portf-work-5.jpg';
-import sixthBg from '../assets/img/works/portf-work-6.jpg';
+import fifthBg from '../assets/img/works/portf-work-5.webp';
+import sixthBg from '../assets/img/works/portf-work-6.webp';
 
 export interface PortfolioData {
   id: string;

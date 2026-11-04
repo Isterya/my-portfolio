@@ -8,8 +8,8 @@ import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 import PriceCard from '@/components/priceCard/PriceCard';
 import { priceData } from '@/data/priceData';
 
-import firstAbstract from '@/assets/img/skills/abstract-figure-1.png';
-import thirdAbstract from '@/assets/img/skills/abstract-figure-3.png';
+import firstAbstract from '@/assets/img/skills/abstract-figure-1.webp';
+import thirdAbstract from '@/assets/img/skills/abstract-figure-3.webp';
 
 import './price.scss';
 

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 import { getAge } from '@/utils/getAge';
 
-import character from '@/assets/img/about/about-character.png';
+import character from '@/assets/img/about/about-character.webp';
 
 import './about.scss';
 
