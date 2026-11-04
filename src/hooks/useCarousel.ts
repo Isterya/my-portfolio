@@ -1,5 +1,22 @@
 import { useEffect, useRef } from 'react';
 
+/** How many times the cards are repeated in the track to make the loop endless. */
+export const MARQUEE_COPIES = 3;
+
+/**
+ * Distance after which the track looks exactly the same again: from the first card to its copy.
+ * `scrollWidth / copies` is shorter by a third of a gap (there is no gap after the last card),
+ * which made the strip skip ~11 px forward on every loop.
+ */
+const getLoopWidth = (track: HTMLElement) => {
+  const first = track.children[0] as HTMLElement | undefined;
+  const firstCopy = track.children[track.children.length / MARQUEE_COPIES] as
+    | HTMLElement
+    | undefined;
+
+  return first && firstCopy ? firstCopy.offsetLeft - first.offsetLeft : 0;
+};
+
 export const useCarousel = (
   ref: React.RefObject<HTMLDivElement | null>,
   speed: number = 1.5,
@@ -30,8 +47,10 @@ export const useCarousel = (
         currentSpeed.current += (targetSpeed.current - currentSpeed.current) * 0.08;
         scrollPos.current += currentSpeed.current;
 
-        if (scrollPos.current >= track.scrollWidth / 3) {
-          scrollPos.current = 0;
+        const loopWidth = getLoopWidth(track);
+
+        if (loopWidth > 0 && scrollPos.current >= loopWidth) {
+          scrollPos.current -= loopWidth;
         }
 
         track.style.transform = `translateX(-${scrollPos.current}px)`;
