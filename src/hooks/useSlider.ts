@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-type Breakpoint = {
-  max: number;
-  items: number;
-};
+import {
+  SlidesBreakpoint,
+  getItemsPerPage,
+  getPageCount,
+  getPageOf,
+  wrapPage,
+} from '@/utils/pagination';
 
 type UseSliderProps = {
   dataLength: number;
   itemsPerSlideDefault: number;
-  breakpoints: Breakpoint[];
+  breakpoints: SlidesBreakpoint[];
   intervalTime?: number;
 };
 
@@ -19,15 +22,18 @@ export const useSlider = ({
   intervalTime = 5000,
 }: UseSliderProps) => {
   const [itemsPerSlide, setItemsPerSlide] = useState(itemsPerSlideDefault);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Index of the first visible item. Pages are derived from it, so a breakpoint change keeps that
+  // item on screen instead of jumping to an unrelated slide.
+  const [firstIndex, setFirstIndex] = useState(0);
 
   const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const updateItemsPerSlide = useCallback(() => {
-    const width = window.innerWidth;
-    const matched = breakpoints.find(({ max }) => width <= max);
+  const pageCount = getPageCount(dataLength, itemsPerSlide);
+  const currentPage = getPageOf(firstIndex, itemsPerSlide);
+  const currentIndex = currentPage * itemsPerSlide;
 
-    setItemsPerSlide(matched ? matched.items : itemsPerSlideDefault);
+  const updateItemsPerSlide = useCallback(() => {
+    setItemsPerSlide(getItemsPerPage(window.innerWidth, breakpoints, itemsPerSlideDefault));
   }, [breakpoints, itemsPerSlideDefault]);
 
   useEffect(() => {
@@ -36,13 +42,21 @@ export const useSlider = ({
     return () => window.removeEventListener('resize', updateItemsPerSlide);
   }, [updateItemsPerSlide]);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + itemsPerSlide) % dataLength);
-  }, [itemsPerSlide, dataLength]);
+  const goToPage = useCallback(
+    (page: number) => setFirstIndex(wrapPage(page, pageCount) * itemsPerSlide),
+    [pageCount, itemsPerSlide],
+  );
 
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - itemsPerSlide + dataLength) % dataLength);
-  }, [itemsPerSlide, dataLength]);
+  const shiftPage = useCallback(
+    (delta: number) =>
+      setFirstIndex(
+        (prev) => wrapPage(getPageOf(prev, itemsPerSlide) + delta, pageCount) * itemsPerSlide,
+      ),
+    [pageCount, itemsPerSlide],
+  );
+
+  const nextSlide = useCallback(() => shiftPage(1), [shiftPage]);
+  const prevSlide = useCallback(() => shiftPage(-1), [shiftPage]);
 
   const stopAutoSlide = useCallback(() => {
     if (autoSlideRef.current) clearInterval(autoSlideRef.current);
@@ -61,9 +75,11 @@ export const useSlider = ({
   return {
     itemsPerSlide,
     currentIndex,
+    currentPage,
+    pageCount,
     nextSlide,
     prevSlide,
-    setCurrentIndex,
+    goToPage,
     stopAutoSlide,
     startAutoSlide,
   };

@@ -19,9 +19,11 @@ const SkillsSlider = () => {
   const {
     itemsPerSlide,
     currentIndex,
+    currentPage,
+    pageCount,
     nextSlide,
     prevSlide,
-    setCurrentIndex,
+    goToPage,
     stopAutoSlide,
     startAutoSlide,
   } = useSlider({
@@ -32,8 +34,6 @@ const SkillsSlider = () => {
       { max: 1024, items: 2 },
     ],
   });
-
-  const totalSlides = useMemo(() => Math.ceil(skillsData.length / itemsPerSlide), [itemsPerSlide]);
 
   const visibleSkills = useMemo(() => {
     const end = currentIndex + itemsPerSlide;
@@ -82,17 +82,15 @@ const SkillsSlider = () => {
 
       {!isTouchDevice && (
         <div className="skills-slider__controls">
-          {Array.from({ length: totalSlides }).map((_, i) => (
+          {Array.from({ length: pageCount }).map((_, i) => (
             <div
               role="button"
               aria-label={`Go to slide ${i + 1}`}
               tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
+              onKeyDown={(e) => e.key === 'Enter' && goToPage(i)}
               key={i}
-              className={`skills-slider__dot ${
-                Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
-              }`}
-              onClick={() => setCurrentIndex(i * itemsPerSlide)}
+              className={`skills-slider__dot ${currentPage === i ? 'active' : ''}`}
+              onClick={() => goToPage(i)}
             ></div>
           ))}
         </div>
