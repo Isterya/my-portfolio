@@ -4,6 +4,8 @@ import instagramIcon from '../assets/icons/socials/instagram-white.svg';
 import githubIcon from '../assets/icons/socials/github-white.svg';
 import linkedinIcon from '@/assets/icons/socials/linkedin-white.svg';
 
+import { SITE_URL } from '@/config/site';
+
 export interface SocialLinks {
   icon: string;
   alt: string;
@@ -41,5 +43,5 @@ export const navLinks: string[] = [
 
 export const contactInfo: ContactInfo[] = [
   { text: 'by.connectme@gmail.com', href: 'mailto:by.connectme@gmail.com' },
-  { text: 'www.isterya.dev', href: 'http://www.isterya.dev' },
+  { text: 'www.isterya.dev', href: SITE_URL },
 ];

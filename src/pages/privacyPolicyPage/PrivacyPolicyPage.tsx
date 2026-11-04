@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
+import { SITE_URL } from '@/config/site';
 import { privacyPolicySections } from '@/data/tocData';
 import { seoPolicy } from '@/data/seoData';
 import SEO from '@/components/SEO';
@@ -26,7 +27,7 @@ const PrivacyPolicyPage = () => {
 
           <p>
             {t('privacy.intro1.start')}
-            <a href="http://www.isterya.dev" target="_blank" rel="noopener noreferrer">
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
               {t('privacy.intro1.site')}
             </a>
             {t('privacy.intro1.end')}
