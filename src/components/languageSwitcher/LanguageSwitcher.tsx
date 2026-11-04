@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import i18n from '@/i18n';
+
+import { AppLanguage, LANGUAGES, toAppLanguage } from '@/i18n/languages';
 
 import chevron from '@/assets/icons/chevron.svg';
 
 import './languageSwitcher.scss';
 
-type Language = 'English' | 'Русский' | 'Polski';
-
-const languages: Language[] = ['English', 'Русский', 'Polski'];
-
 const LanguageSwitcher = () => {
+  const { i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedLang, setSelectedLang] = useState<Language>('English');
+
+  const activeLanguage = toAppLanguage(i18n.resolvedLanguage);
+  const activeLabel = LANGUAGES.find(({ code }) => code === activeLanguage)?.label;
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-  const handleSelect = (lang: Language) => {
-    setSelectedLang(lang);
-
-    i18n.changeLanguage(lang === 'Русский' ? 'ru' : lang === 'Polski' ? 'pl' : 'en');
+  const handleSelect = (language: AppLanguage) => {
+    i18n.changeLanguage(language);
     setIsOpen(false);
   };
 
@@ -34,20 +34,6 @@ const LanguageSwitcher = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    const handleLanguageChanged = (lng: string) => {
-      document.documentElement.setAttribute('data-lang', lng);
-      setSelectedLang(lng === 'ru' ? 'Русский' : lng === 'pl' ? 'Polski' : 'English');
-    };
-
-    i18n.on('languageChanged', handleLanguageChanged);
-
-    handleLanguageChanged(i18n.language);
-
-    return () => {
-      i18n.off('languageChanged', handleLanguageChanged);
-    };
-  }, []);
   return (
     <div className="lang-switcher">
       <motion.button
@@ -55,7 +41,7 @@ const LanguageSwitcher = () => {
         onClick={toggleDropdown}
         whileTap={{ scale: 0.95 }}
       >
-        <span>{selectedLang}</span>
+        <span>{activeLabel}</span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
           <img src={chevron} alt="chevron" />
         </motion.div>
@@ -74,19 +60,19 @@ const LanguageSwitcher = () => {
               visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
             }}
           >
-            {languages.map((lang) => (
+            {LANGUAGES.map(({ code, label }) => (
               <motion.li
-                key={lang}
+                key={code}
                 variants={{
                   hidden: { opacity: 0, y: -5 },
                   visible: { opacity: 1, y: 0 },
                 }}
               >
                 <button
-                  className={`lang-switcher__item ${selectedLang === lang ? 'active' : ''}`}
-                  onClick={() => handleSelect(lang)}
+                  className={`lang-switcher__item ${activeLanguage === code ? 'active' : ''}`}
+                  onClick={() => handleSelect(code)}
                 >
-                  {lang}
+                  {label}
                 </button>
               </motion.li>
             ))}
