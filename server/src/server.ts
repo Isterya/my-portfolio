@@ -51,23 +51,24 @@ app.post(
 
     const { email } = parsed.data;
 
-    const results = await Promise.allSettled([sendToTelegram(email), sendEmailToUser(email)]);
-
-    const allOk = results.every((r) => r.status === 'fulfilled');
-
-    if (!allOk) {
-      const failed = results
-        .map((r, i) => (r.status === 'rejected' ? (i === 0 ? 'Telegram' : 'Email') : null))
-        .filter(Boolean);
-
-      console.log(`❌ Failed: ${failed.join(', ')}`, results);
-      return res.status(500).json({
-        success: false,
-        error: `Error sending to: ${failed.join(', ')}`,
-      });
+    // The Telegram notification to the owner is the lead itself: without it the request failed,
+    // and the visitor must not receive a "thanks, I'll get back to you" email.
+    try {
+      await sendToTelegram(email);
+    } catch (err) {
+      console.error('❌ Lead was not delivered to Telegram', err);
+      return res.status(502).json({ success: false, error: 'Failed to deliver the request' });
     }
 
-    res.status(200).json({ success: true, message: 'Email sent successfully' });
+    // The confirmation to the visitor is a courtesy: a typo in their address must not turn a
+    // delivered lead into an error (and a duplicate resubmission).
+    try {
+      await sendEmailToUser(email);
+    } catch (err) {
+      console.error('⚠️ Lead delivered, but the confirmation email failed', err);
+    }
+
+    return res.status(200).json({ success: true, message: 'Request received' });
   }),
 );
 
