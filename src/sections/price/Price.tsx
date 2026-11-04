@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useRef } from 'react';
 
-import { useCarousel } from '@/hooks/useCarousel';
+import { MARQUEE_COPIES, useCarousel } from '@/hooks/useCarousel';
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 
 import PriceCard from '@/components/priceCard/PriceCard';
@@ -22,7 +22,9 @@ const Price = () => {
 
   useCarousel(trackRef, 1.5, isTouchDevice);
 
-  const renderedData = isTouchDevice ? [...priceData] : [...priceData, ...priceData, ...priceData];
+  const renderedData = isTouchDevice
+    ? priceData
+    : Array.from({ length: MARQUEE_COPIES }, () => priceData).flat();
 
   return (
     <section id="price" className="price">
