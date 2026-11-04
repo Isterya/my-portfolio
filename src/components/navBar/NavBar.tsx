@@ -143,7 +143,7 @@ const NavBar = () => {
 
             <div className="navbar-logo">
               <a href="#home">
-                <img src={logo} alt="Logotype" />
+                <img src={logo} alt={t('a11y.home')} />
               </a>
             </div>
 

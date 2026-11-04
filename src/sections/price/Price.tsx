@@ -68,7 +68,7 @@ const Price = () => {
       <img
         className="price__first-abstract"
         src={firstAbstract}
-        alt="First abstract figure"
+        alt=""
         width={594}
         height={601}
         loading="lazy"
@@ -77,7 +77,7 @@ const Price = () => {
       <img
         className="price__third-abstract"
         src={thirdAbstract}
-        alt="Third abstract figure"
+        alt=""
         width={873}
         height={828}
         loading="lazy"

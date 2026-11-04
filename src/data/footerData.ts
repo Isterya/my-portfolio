@@ -8,7 +8,8 @@ import { SITE_URL } from '@/config/site';
 
 export interface SocialLinks {
   icon: string;
-  alt: string;
+  /** Network name, used as the accessible name of the icon-only link. */
+  label: string;
   href: string;
 }
 
@@ -20,17 +21,17 @@ export interface ContactInfo {
 export const socialLinks: SocialLinks[] = [
   {
     icon: facebookIcon,
-    alt: 'facebook',
+    label: 'Facebook',
     href: 'https://www.facebook.com/bohdan.one.bro',
   },
-  { icon: telegramIcon, alt: 'telegram', href: 'https://t.me/perfectn1ght' },
+  { icon: telegramIcon, label: 'Telegram', href: 'https://t.me/perfectn1ght' },
   {
     icon: instagramIcon,
-    alt: 'instagram',
+    label: 'Instagram',
     href: 'https://www.instagram.com/dad.isterya/',
   },
-  { icon: githubIcon, alt: 'github', href: 'https://github.com/Isterya' },
-  { icon: linkedinIcon, alt: 'linkedIn', href: 'https://www.linkedin.com/in/bohdan-yevsieiev/' },
+  { icon: githubIcon, label: 'GitHub', href: 'https://github.com/Isterya' },
+  { icon: linkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/bohdan-yevsieiev/' },
 ];
 
 export const navLinks: string[] = [

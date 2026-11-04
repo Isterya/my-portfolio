@@ -43,7 +43,7 @@ const LanguageSwitcher = () => {
       >
         <span>{activeLabel}</span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
-          <img src={chevron} alt="chevron" />
+          <img src={chevron} alt="" />
         </motion.div>
       </motion.button>
 

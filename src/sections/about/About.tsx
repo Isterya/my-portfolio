@@ -43,7 +43,7 @@ const About = () => {
             <img
               className="about-character__img"
               src={character}
-              alt="A mascot character"
+              alt=""
               width={409}
               height={606}
               loading="lazy"

@@ -77,7 +77,7 @@ const PortfolioSlider = () => {
           onClick={handlePrev}
           aria-label="Previous slide"
         >
-          <img src={arrowLeft} alt="prev" />
+          <img src={arrowLeft} alt="" />
         </button>
 
         <button
@@ -85,7 +85,7 @@ const PortfolioSlider = () => {
           onClick={handleNext}
           aria-label="Next slide"
         >
-          <img src={arrowRight} alt="next" />
+          <img src={arrowRight} alt="" />
         </button>
       </div>
 
