@@ -214,11 +214,15 @@
     "success": "Thank you! We’ll be in touch soon.",
     "error": {
       "validation": "Please enter a valid email and accept the privacy policy",
-      "smthWrong": "Something went wrong. Please try again."
+      "smthWrong": "Something went wrong. Please try again.",
+      "network": "No connection. Check your internet and try again.",
+      "timeout": "The server didn’t respond in time. Please try again or message me on Telegram.",
+      "rateLimit": "Too many attempts. Please wait a minute and try again."
     },
 
     "placeholder": "Enter Email Address",
     "loading": "Sending...",
+    "slow": "Waking up the server — this can take up to a minute…",
     "sendBtn": "Send",
 
     "privacyPolicy": {
