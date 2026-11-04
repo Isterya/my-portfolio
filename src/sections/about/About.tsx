@@ -40,7 +40,15 @@ const About = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <img className="about-character__img" src={character} alt="A mascot character" />
+            <img
+              className="about-character__img"
+              src={character}
+              alt="A mascot character"
+              width={409}
+              height={606}
+              loading="lazy"
+              decoding="async"
+            />
           </motion.div>
 
           <motion.div

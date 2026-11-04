@@ -71,7 +71,7 @@ const PortfolioSlider = () => {
               <PortfolioCard
                 key={card.id}
                 title={card.title}
-                background={card.background}
+                image={card.image}
                 description={t(card.description)}
                 link={card.link}
               />

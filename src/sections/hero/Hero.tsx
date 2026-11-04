@@ -76,7 +76,14 @@ const Hero = () => {
         </div>
 
         <div className="hero-character">
-          <motion.img className="hero-character__img" src={character} alt="A mascot character" />
+          <motion.img
+            className="hero-character__img"
+            src={character}
+            alt="A mascot character"
+            width={597}
+            height={616}
+            {...{ fetchpriority: 'high' }}
+          />
 
           <div className="hero-links">
             <motion.a
