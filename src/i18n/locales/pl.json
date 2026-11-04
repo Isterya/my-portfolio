@@ -220,6 +220,7 @@
       "rateLimit": "Zbyt wiele prób. Odczekaj minutę i spróbuj ponownie."
     },
 
+    "emailLabel": "Adres e-mail",
     "placeholder": "Wprowadź adres e-mail",
     "loading": "Wysyłanie...",
     "slow": "Serwer się uruchamia — to może potrwać do minuty…",

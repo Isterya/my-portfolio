@@ -30,6 +30,9 @@ const Contact = () => {
   const isInvalid = error && (!email || !agreed);
   const isValidEmail = /\S+@\S+\.\S+/.test(email);
 
+  const hasError = Boolean(error);
+  const statusId = 'contact-status';
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -94,13 +97,20 @@ const Contact = () => {
           </h2>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <label htmlFor="contact-email" className="visually-hidden">
+              {t('contact.emailLabel')}
+            </label>
             <div className={`contact-email ${isInvalid ? 'invalid' : ''}`}>
               <input
+                id="contact-email"
                 type="email"
+                autoComplete="email"
                 className="contact-email__input"
                 placeholder={t('contact.placeholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                aria-invalid={hasError && (!email || !isValidEmail)}
+                aria-describedby={hasError ? statusId : undefined}
                 required
               />
               <button disabled={loading} type="submit" className="contact-email__btn">
@@ -114,6 +124,8 @@ const Contact = () => {
                   checked={agreed}
                   onChange={(e) => setAgreed(e.target.checked)}
                   type="checkbox"
+                  aria-invalid={hasError && !agreed}
+                  aria-describedby={hasError ? statusId : undefined}
                   required
                 />
                 <span className="checkmark" />
@@ -124,7 +136,7 @@ const Contact = () => {
               </label>
             </div>
 
-            <div aria-live="polite">
+            <div id={statusId} aria-live="polite">
               {isSlow && <p className="form-message">{t('contact.slow')}</p>}
               {error && <p className="form-message error">{error}</p>}
               {success && <p className="form-message success">{t('contact.success')}</p>}
