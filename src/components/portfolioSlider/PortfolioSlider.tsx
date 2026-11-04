@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
-import PortfolioCard from '../portfolioCard/PorfolioCard';
+import PortfolioCard from '../portfolioCard/PortfolioCard';
 import { portfolioData } from '@/data/portfolioData';
 
 import arrowLeft from '@/assets/icons/arrow-left.svg';
