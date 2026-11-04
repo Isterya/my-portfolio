@@ -51,3 +51,13 @@ export const sendEmail = async (email: string): Promise<void> => {
     throw new SendEmailError(errorCodeFromStatus(response.status));
   }
 };
+
+/**
+ * Starts the API instance in the background (Render's free tier sleeps after inactivity), so the
+ * form answers quickly when the visitor submits it. Failures do not matter here.
+ */
+export const wakeUpApi = () => {
+  if (!API_URL) return;
+
+  fetch(`${API_URL}/health`, { cache: 'no-store' }).catch(() => {});
+};

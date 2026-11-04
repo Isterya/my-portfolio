@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-import { SendEmailError, SendEmailErrorCode, sendEmail } from '@/services/sendEmail';
+import { SendEmailError, SendEmailErrorCode, sendEmail, wakeUpApi } from '@/services/sendEmail';
 
 import './contact.scss';
 
@@ -19,6 +20,14 @@ const SLOW_REQUEST_HINT_DELAY_MS = 5000;
 
 const Contact = () => {
   const { t } = useTranslation();
+
+  // Wake the API up while the visitor is still a screen or so away from the form.
+  const sectionRef = useRef<HTMLElement>(null);
+  const isNearForm = useInView(sectionRef, { once: true, margin: '0px 0px 800px 0px' });
+
+  useEffect(() => {
+    if (isNearForm) wakeUpApi();
+  }, [isNearForm]);
 
   const [email, setEmail] = useState('');
   const [agreed, setAgreed] = useState(false);
@@ -89,7 +98,7 @@ const Contact = () => {
   }, [email, agreed]);
 
   return (
-    <section id="contact" className="contact" aria-labelledby="contact-title">
+    <section id="contact" className="contact" aria-labelledby="contact-title" ref={sectionRef}>
       <div className="container">
         <div className="contact-wrapper">
           <h2 id="contact-title" className="contact-header">
