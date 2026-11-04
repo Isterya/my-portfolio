@@ -13,11 +13,9 @@
     "preview": "vite preview",
     "test": "vitest run"
   },
-  "eslint": {
-    "configFile": "eslint.config.ts"
-  },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "eslint --max-warnings=0",
       "prettier --write"
     ],
     "*.{scss,css}": [
