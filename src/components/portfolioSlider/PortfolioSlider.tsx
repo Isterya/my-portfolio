@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useSlider } from '@/hooks/useSlider';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -19,9 +19,11 @@ const PortfolioSlider = () => {
   const {
     itemsPerSlide,
     currentIndex,
+    currentPage,
+    pageCount,
     nextSlide,
     prevSlide,
-    setCurrentIndex,
+    goToPage,
     stopAutoSlide,
     startAutoSlide,
   } = useSlider({
@@ -29,11 +31,6 @@ const PortfolioSlider = () => {
     itemsPerSlideDefault: 2,
     breakpoints: [{ max: 1024, items: 1 }],
   });
-
-  const totalSlides = useMemo(
-    () => Math.ceil(portfolioData.length / itemsPerSlide),
-    [itemsPerSlide],
-  );
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
@@ -97,13 +94,11 @@ const PortfolioSlider = () => {
       </div>
 
       <div className="portfolio-slider__controls">
-        {Array.from({ length: totalSlides }).map((_, i) => (
+        {Array.from({ length: pageCount }).map((_, i) => (
           <div
             key={i}
-            className={`portfolio-slider__dot ${
-              Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
-            }`}
-            onClick={() => setCurrentIndex(i * itemsPerSlide)}
+            className={`portfolio-slider__dot ${currentPage === i ? 'active' : ''}`}
+            onClick={() => goToPage(i)}
           ></div>
         ))}
       </div>
