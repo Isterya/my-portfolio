@@ -21,10 +21,13 @@ app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10kb' }));
 
+// Clients parse every answer as JSON, including 429; also expose the standard RateLimit headers.
 const limiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 5,
-  message: 'Too many requests, please try again later.',
+  limit: 5,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  message: { success: false, error: 'Too many requests, please try again later.' },
 });
 app.use('/send-email', limiter);
 
@@ -68,7 +71,8 @@ app.post(
   }),
 );
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+// Express recognises error handlers by their four parameters, so `_next` must stay.
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.log('❌ Unexpected error', err);
   res.status(500).json({ success: false, error: 'Server error' });
 });
