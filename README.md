@@ -1,7 +1,7 @@
 # Isterya | Production-Ready Personal Portfolio
 
-> A high-performance, fully responsive, and multilingual portfolio ecosystem built with React 18, TypeScript, and Vite.
-> Engineered from scratch with production-level standards, clean architecture, and strict quality control.
+> A fast, accessible and multilingual (EN · PL · RU) portfolio built with React 18, TypeScript and
+> Vite, with a small Node.js API behind the contact form.
 
 ---
 
@@ -11,61 +11,95 @@
 
 ---
 
-## Architecture & Engineering Highlights
+## Engineering Highlights
 
-This project serves as a demonstration of production-grade frontend engineering applied to a solo product. Key architectural pillars include:
-
-- **Strict Type Safety:** 100% TypeScript implementation with no `any` types.
-- **Performance Optimization:** Asset optimization, code-splitting via React Router v7, and lightweight animations via Framer Motion.
-- **Code Quality Pipeline:** Automated pre-commit hooks (Husky + Lint-staged) enforcing strict formatting and code standards before any push.
-- **Enterprise Tooling:** Complete linting ecosystem (ESLint, Stylelint for SCSS Modules, and Prettier).
+- **Measured performance.** Lighthouse 99 on desktop and 84 on mobile (lab run of the production
+  build, median of three). Raster images are WebP sized for display (3.4 MB → 472 KB), offscreen
+  images load lazily with reserved space, hashed assets are cached as immutable, and fonts are
+  preconnected and trimmed to the weights in use.
+- **Accessibility.** Keyboard-operable menu, sliders and language switcher with focus management;
+  labelled landmarks and controls in the active language; visible focus rings;
+  `prefers-reduced-motion` support; carousels pause off screen, on focus and in background tabs.
+  axe-core reports no violations on the legal and 404 pages.
+- **Internationalisation.** i18next with browser locales normalised to the supported languages
+  (`ru-RU` → `ru`), `<html lang>` kept in sync, translated ARIA labels and error messages.
+- **SEO & sharing.** Static Open Graph / Twitter tags for crawlers that do not run JavaScript,
+  per-route meta through react-helmet-async, `robots.txt`, `sitemap.xml`, `noindex` on the 404 page.
+- **Reliable contact flow.** Typed request errors with localized messages, timeouts, an API warm-up
+  before the visitor reaches the form and a honeypot field. The API treats the Telegram notification
+  as the critical channel, sends the confirmation email best-effort, ignores duplicates, caps
+  outgoing emails, answers rate limits with JSON and supports a CORS allowlist.
+- **Quality pipeline.** Strict TypeScript without `any`, ESLint 9 + Stylelint + Prettier, Husky +
+  lint-staged (ESLint, Prettier and Stylelint on every commit) and Vitest unit tests.
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-- **Core:** React 18 / TypeScript / Vite
-- **Routing & SEO:** React Router v7 / React Helmet Async
-- **Animations:** Framer Motion (including a custom-built dynamic portfolio slider)
-- **Localization:** i18next & react-i18next (Full context-aware switching for EN, PL, RU)
+
+- **Core:** React 18 / TypeScript / Vite 6 / SCSS
+- **Routing & SEO:** React Router 7 / React Helmet Async
+- **Animations:** Framer Motion and CSS
+- **Localization:** i18next & react-i18next (EN, PL, RU)
 
 ### Backend Services
-- **Runtime:** Node.js (Express)
-- **Integrations:** Telegram Bot API (Real-time form delivery) + Nodemailer (Failover email infrastructure)
+
+- **Runtime:** Node.js (Express 4, zod, helmet, express-rate-limit)
+- **Integrations:** Telegram Bot API (lead delivery) + Brevo API (confirmation email to the visitor)
+- **Hosting:** Vercel (site), Render (API)
 
 ### Quality Assurance & Tooling
-- **Linters:** ESLint / Stylelint + SCSS Lint / Prettier
-- **Git Hooks:** Husky / Lint-staged
-- **Configuration:** Custom Vite path aliases for absolute import clean-code separation
+
+- **Linters:** ESLint (flat config) / Stylelint (SCSS) / Prettier
+- **Tests:** Vitest
+- **Git Hooks:** Husky / lint-staged
 
 ---
 
-## Key Ecosystem Features
+## Documentation
 
-- **Deep Multilingualism:** Dynamic translation engine covering three locales (EN, PL, RU).
-- **Dual-Channel Contact System:** Instant lead capturing via Telegram bot webhook API with an automated Node.js email failover.
-- **Granular SEO:** Per-page meta-tag injection, semantic HTML layout, and optimized Core Web Vitals.
-- **Legal Compliance:** Custom-tailored Privacy Policy and Terms of Use complying with modern data security expectations.
+Project notes (in Russian):
+
+- [`docs/v2-review.md`](docs/v2-review.md) — audit with measurements and the status of every finding
+- [`docs/design.md`](docs/design.md) — design directions and animation guidelines
+- [`docs/minigame.md`](docs/minigame.md) — evaluation of a mini-game for the 404 page
+- [`docs/dependencies.md`](docs/dependencies.md) — why each dependency was added or removed
 
 ---
 
 ## Development & Scripts
 
-*Note: This repository represents a proprietary personal brand asset. The scripts below are documented exclusively for local environment auditing.*
+_Note: This repository represents a proprietary personal brand asset. The scripts below are
+documented exclusively for local environment auditing._
 
 ```bash
-npm run dev         # Spin up isolated development server
-npm run build       # Execute production-grade compilation & bundling
-npm run lint        # Trigger deep static analysis check (ESLint + Stylelint)
+npm run dev         # Development server
+npm run build       # Type-check and production build
+npm run lint        # ESLint + Stylelint
+npm test            # Unit tests (Vitest)
 ```
 
-📄 Intellectual Property & License
+Environment variables:
+
+- **Site:** `VITE_API_URL` — base URL of the contact API.
+- **API (`server/`):** `TELEGRAM_TOKEN`, `CHAT_ID`, `EMAIL_USER`, `BREVO_API_KEY`, `PORT`, and
+  optionally `ALLOWED_ORIGINS` (comma-separated site origins allowed to call the API from a
+  browser).
+
+---
+
+## 📄 Intellectual Property & License
+
 All rights reserved © Isterya, 2025-2026.
 
-This source code is public strictly for evaluation, educational review, and architectural audit purposes. Copying, redistributing, or mirroring the visual layout, branding, asset suite, or proprietary logic for commercial or personal production use without explicit written permission is strictly prohibited.
+This source code is public strictly for evaluation, educational review, and architectural audit
+purposes. Copying, redistributing, or mirroring the visual layout, branding, asset suite, or
+proprietary logic for commercial or personal production use without explicit written permission is
+strictly prohibited.
 
-Author
+## Author
+
 Bohdan Yevsieiev – @Isterya
 
 Independent Frontend Developer based in Poland.
