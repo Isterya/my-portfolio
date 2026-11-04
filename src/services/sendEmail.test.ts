@@ -37,6 +37,15 @@ describe('sendEmail', () => {
     );
   });
 
+  it('adds the honeypot value only when the hidden field was filled', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response('{}', { status: 200 }));
+    vi.stubGlobal('fetch', fetchMock);
+    const { sendEmail } = await loadSendEmail();
+
+    await sendEmail('bot@example.com', 'ACME');
+    expect(fetchMock.mock.calls[0][1].body).toBe('{"email":"bot@example.com","company":"ACME"}');
+  });
+
   it.each([
     [429, 'rateLimit'],
     [400, 'validation'],
