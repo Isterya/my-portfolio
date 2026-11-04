@@ -30,6 +30,7 @@ const Contact = () => {
   }, [isNearForm]);
 
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isSlow, setIsSlow] = useState(false);
@@ -56,7 +57,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      await sendEmail(email);
+      await sendEmail(email, honeypot);
 
       setSuccess(true);
       setEmail('');
@@ -125,6 +126,20 @@ const Contact = () => {
               <button disabled={loading} type="submit" className="contact-email__btn">
                 {loading ? t('contact.loading') : t('contact.sendBtn')}
               </button>
+            </div>
+
+            {/* Anti-spam trap: invisible and unreachable for people, filled in by bots. Neutral
+                name and id so browser autofill never treats it as a "company" field. */}
+            <div className="visually-hidden" aria-hidden="true">
+              <input
+                id="contact-hp"
+                name="contact-hp"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
             </div>
 
             <div className="contact-agreement">

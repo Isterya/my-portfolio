@@ -21,7 +21,10 @@ const errorCodeFromStatus = (status: number): SendEmailErrorCode => {
   return 'server';
 };
 
-export const sendEmail = async (email: string): Promise<void> => {
+/**
+ * @param honeypot Value of the hidden anti-spam field; people leave it empty, bots fill it in.
+ */
+export const sendEmail = async (email: string, honeypot = ''): Promise<void> => {
   if (!API_URL) {
     console.error('VITE_API_URL is not configured, the contact form cannot reach the API.');
     throw new SendEmailError('server');
@@ -36,7 +39,7 @@ export const sendEmail = async (email: string): Promise<void> => {
     response = await fetch(`${API_URL}/send-email`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify(honeypot ? { email, company: honeypot } : { email }),
       signal: controller.signal,
     });
   } catch (error) {
