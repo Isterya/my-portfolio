@@ -68,13 +68,13 @@ const About = () => {
 
             <motion.div className="about-text__stats" variants={fadeInUp}>
               <div className="about-text__stats-projects">
-                <h3>8+</h3>
+                <p className="about-text__stats-value">8+</p>
                 <p>{t('about.projects')}</p>
               </div>
               <div className="about-text__stats-experience">
-                <h3>
+                <p className="about-text__stats-value">
                   {years}+ {t('about.years')}
-                </h3>
+                </p>
                 <p>{t('about.experience')}</p>
               </div>
             </motion.div>
