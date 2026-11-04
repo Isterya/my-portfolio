@@ -4,7 +4,7 @@ import instagramIcon from '../assets/icons/socials/instagram-white.svg';
 import githubIcon from '../assets/icons/socials/github-white.svg';
 import linkedinIcon from '@/assets/icons/socials/linkedin-white.svg';
 
-import { SITE_URL } from '@/config/site';
+import { CONTACT_EMAIL, SITE_URL, TELEGRAM_URL } from '@/config/site';
 
 export interface SocialLinks {
   icon: string;
@@ -24,7 +24,7 @@ export const socialLinks: SocialLinks[] = [
     label: 'Facebook',
     href: 'https://www.facebook.com/bohdan.one.bro',
   },
-  { icon: telegramIcon, label: 'Telegram', href: 'https://t.me/perfectn1ght' },
+  { icon: telegramIcon, label: 'Telegram', href: TELEGRAM_URL },
   {
     icon: instagramIcon,
     label: 'Instagram',
@@ -49,6 +49,6 @@ export const navLinks: FooterNavLink[] = [
 ];
 
 export const contactInfo: ContactInfo[] = [
-  { text: 'by.connectme@gmail.com', href: 'mailto:by.connectme@gmail.com' },
+  { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
   { text: 'www.isterya.dev', href: SITE_URL },
 ];
