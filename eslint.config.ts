@@ -19,7 +19,6 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
-        // project: './tsconfig.eslint.json',
       },
     },
     plugins: {
