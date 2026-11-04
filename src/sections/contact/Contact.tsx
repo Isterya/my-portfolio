@@ -3,9 +3,19 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { sendEmail } from '@/services/sendEmail';
+import { SendEmailError, SendEmailErrorCode, sendEmail } from '@/services/sendEmail';
 
 import './contact.scss';
+
+const ERROR_MESSAGE_KEYS: Record<SendEmailErrorCode, string> = {
+  network: 'contact.error.network',
+  timeout: 'contact.error.timeout',
+  rateLimit: 'contact.error.rateLimit',
+  validation: 'contact.error.validation',
+  server: 'contact.error.smthWrong',
+};
+
+const SLOW_REQUEST_HINT_DELAY_MS = 5000;
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -13,6 +23,7 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isSlow, setIsSlow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
@@ -38,12 +49,25 @@ const Contact = () => {
       setSuccess(true);
       setEmail('');
       setAgreed(false);
-    } catch (err: any) {
-      setError(err.message || t('contact.error.smthWrong'));
+    } catch (err) {
+      const code = err instanceof SendEmailError ? err.code : 'server';
+
+      setError(t(ERROR_MESSAGE_KEYS[code]));
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!loading) return;
+
+    const timer = setTimeout(() => setIsSlow(true), SLOW_REQUEST_HINT_DELAY_MS);
+
+    return () => {
+      clearTimeout(timer);
+      setIsSlow(false);
+    };
+  }, [loading]);
 
   useEffect(() => {
     if (success) {
@@ -101,6 +125,7 @@ const Contact = () => {
             </div>
 
             <div aria-live="polite">
+              {isSlow && <p className="form-message">{t('contact.slow')}</p>}
               {error && <p className="form-message error">{error}</p>}
               {success && <p className="form-message success">{t('contact.success')}</p>}
             </div>

@@ -214,11 +214,15 @@
     "success": "Dziękuję! Skontaktujemy się wkrótce.",
     "error": {
       "validation": "Wprowadź poprawny adres e-mail i zaakceptuj politykę prywatności",
-      "smthWrong": "Coś poszło nie tak. Spróbuj ponownie."
+      "smthWrong": "Coś poszło nie tak. Spróbuj ponownie.",
+      "network": "Brak połączenia. Sprawdź internet i spróbuj ponownie.",
+      "timeout": "Serwer nie odpowiedział w porę. Spróbuj ponownie lub napisz do mnie na Telegramie.",
+      "rateLimit": "Zbyt wiele prób. Odczekaj minutę i spróbuj ponownie."
     },
 
     "placeholder": "Wprowadź adres e-mail",
     "loading": "Wysyłanie...",
+    "slow": "Serwer się uruchamia — to może potrwać do minuty…",
     "sendBtn": "Wyślij",
 
     "privacyPolicy": {
