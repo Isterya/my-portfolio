@@ -70,7 +70,7 @@ const Footer = ({ simplified }: FooterProps) => {
               {!simplified && (
                 <>
                   <nav className="footer-nav">
-                    <h4 className="footer-title">{t('footer.titles.nav')}</h4>
+                    <h3 className="footer-title">{t('footer.titles.nav')}</h3>
                     <ul className="footer-nav__list">
                       {navLinks.map((link) => (
                         <li key={link} className="footer-nav__item">
@@ -83,7 +83,7 @@ const Footer = ({ simplified }: FooterProps) => {
               )}
 
               <div className="footer-contact">
-                <h4 className="footer-title">{t('footer.titles.contact')}</h4>
+                <h3 className="footer-title">{t('footer.titles.contact')}</h3>
                 <ul className="footer-contact__list">
                   {contactInfo.map(({ text, href }) => (
                     <li key={href} className="footer-contact__item">
@@ -94,7 +94,7 @@ const Footer = ({ simplified }: FooterProps) => {
               </div>
 
               <div className="footer-lang">
-                <h4 className="footer-title">{t('footer.titles.lang')}</h4>
+                <h3 className="footer-title">{t('footer.titles.lang')}</h3>
                 <LanguageSwitcher />
               </div>
             </div>
@@ -103,7 +103,7 @@ const Footer = ({ simplified }: FooterProps) => {
               {!simplified && (
                 <>
                   <nav className="footer-nav">
-                    <h4 className="footer-title">{t('footer.titles.nav')}</h4>
+                    <h3 className="footer-title">{t('footer.titles.nav')}</h3>
                     <ul className="footer-nav__list">
                       {navLinks.map((link) => (
                         <li key={link} className="footer-nav__item">
@@ -116,7 +116,7 @@ const Footer = ({ simplified }: FooterProps) => {
               )}
 
               <div className="footer-contact">
-                <h4 className="footer-title">{t('footer.titles.contact')}</h4>
+                <h3 className="footer-title">{t('footer.titles.contact')}</h3>
                 <ul className="footer-contact__list">
                   {contactInfo.map(({ text, href }) => (
                     <li key={href} className="footer-contact__item">
@@ -127,7 +127,7 @@ const Footer = ({ simplified }: FooterProps) => {
               </div>
 
               <div className="footer-lang">
-                <h4 className="footer-title">{t('footer.titles.lang')}</h4>
+                <h3 className="footer-title">{t('footer.titles.lang')}</h3>
                 <LanguageSwitcher />
               </div>
             </>

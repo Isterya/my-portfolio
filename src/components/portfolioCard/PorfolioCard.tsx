@@ -28,7 +28,9 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, image, description
 
       <div className="portfolio-card__overlay">
         <div className="portfolio-card__overlay-content">
-          <h3 className="portfolio-card__overlay-title">{title}</h3>
+          <h3 className="portfolio-card__overlay-title" aria-hidden="true">
+            {title}
+          </h3>
           <p className="portfolio-card__description">{description}</p>
         </div>
       </div>

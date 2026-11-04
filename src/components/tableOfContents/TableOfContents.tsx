@@ -13,7 +13,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
 
   return (
     <nav className="toc" aria-label="Table of contents">
-      <h4>{t('tableOfContents.title')}</h4>
+      <h2 className="toc__title">{t('tableOfContents.title')}</h2>
       <ul>
         {sections.map((section) => (
           <li key={section.id}>
