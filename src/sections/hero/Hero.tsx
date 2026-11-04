@@ -28,6 +28,7 @@ const Hero = () => {
             className="hero-quote"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             role="note"
             aria-label="Motivational quote"
@@ -47,6 +48,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
               <h1 className="hero-header__main-title" aria-label="I’m Bohdan, Web Developer">
@@ -60,6 +62,7 @@ const Hero = () => {
             className="hero-experience"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             role="note"
             aria-label="Experience rating"
