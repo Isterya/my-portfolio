@@ -33,8 +33,17 @@ const NavBar = () => {
   const burgerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLElement>(null);
 
+  // Lock page scrolling under the open menu and restore the previous value afterwards.
   useEffect(() => {
-    document.documentElement.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    if (!isMenuOpen) return;
+
+    const html = document.documentElement;
+    const previousOverflow = html.style.overflow;
+    html.style.overflow = 'hidden';
+
+    return () => {
+      html.style.overflow = previousOverflow;
+    };
   }, [isMenuOpen]);
 
   // While the full-screen menu is open: Escape closes it and returns focus to the menu button, and
@@ -74,7 +83,10 @@ const NavBar = () => {
   useEffect(() => {
     sectionsRef.current = Array.from(document.querySelectorAll<HTMLElement>('section'));
 
-    const handleScroll = () => {
+    let frame = 0;
+
+    const updateActiveSection = () => {
+      frame = 0;
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > SCROLL_THRESHOLD);
 
@@ -92,8 +104,16 @@ const NavBar = () => {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Scroll events can fire several times per frame; measure at most once per frame.
+    const handleScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateActiveSection);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
