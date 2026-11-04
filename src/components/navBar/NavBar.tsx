@@ -30,18 +30,46 @@ const NavBar = () => {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const sectionsRef = useRef<HTMLElement[]>([]);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     document.documentElement.style.overflow = isMenuOpen ? 'hidden' : 'auto';
   }, [isMenuOpen]);
 
+  // While the full-screen menu is open: Escape closes it and returns focus to the menu button, and
+  // Tab cycles between the button and the menu links instead of the page hidden underneath.
   useEffect(() => {
+    if (!isMenuOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMenuOpen(false);
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        burgerRef.current?.focus();
+        return;
+      }
+
+      if (e.key !== 'Tab' || !mobileMenuRef.current) return;
+
+      const focusable = [
+        burgerRef.current,
+        ...mobileMenuRef.current.querySelectorAll<HTMLElement>('a[href]'),
+      ].filter((el): el is HTMLElement => Boolean(el));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     sectionsRef.current = Array.from(document.querySelectorAll<HTMLElement>('section'));
@@ -73,9 +101,13 @@ const NavBar = () => {
       {/* Burger btn */}
       {isMobile && (
         <button
+          ref={burgerRef}
+          type="button"
           className={`burger ${isMenuOpen ? 'open' : ''}`}
           onClick={toggleMenu}
-          aria-label="Toggle menu"
+          aria-label={t('a11y.menu')}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span></span>
           <span></span>
@@ -85,8 +117,11 @@ const NavBar = () => {
       {/* Mobile Nav */}
       <AnimatePresence>
         {isMobile && isMenuOpen && (
-          <motion.div
+          <motion.nav
+            ref={mobileMenuRef}
+            id="mobile-menu"
             className="mobile-menu"
+            aria-label={t('a11y.mainNav')}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -104,7 +139,7 @@ const NavBar = () => {
                 },
               }}
             >
-              {SECTIONS.map((section, _) => (
+              {SECTIONS.map((section) => (
                 <motion.li
                   key={section}
                   variants={{
@@ -120,7 +155,7 @@ const NavBar = () => {
                 </motion.li>
               ))}
             </motion.ul>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
 

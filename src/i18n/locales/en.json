@@ -433,6 +433,8 @@
   },
 
   "a11y": {
+    "menu": "Menu",
+    "mainNav": "Main navigation",
     "goToSlide": "Go to slide {{number}}",
     "nextSlide": "Next slide",
     "prevSlide": "Previous slide",

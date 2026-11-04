@@ -433,6 +433,8 @@
   },
 
   "a11y": {
+    "menu": "Menu",
+    "mainNav": "Nawigacja główna",
     "goToSlide": "Przejdź do slajdu {{number}}",
     "nextSlide": "Następny slajd",
     "prevSlide": "Poprzedni slajd",
