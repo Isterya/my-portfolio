@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
+import { SITE_URL } from '@/config/site';
 import SEO from '@/components/SEO';
 import { seoTerms } from '@/data/seoData';
 import TableOfContents from '@/components/tableOfContents/TableOfContents';
@@ -28,7 +29,7 @@ const UserTermsPage = () => {
 
           <p>
             {t('terms.intro.start')}
-            <a href="http://www.isterya.dev" target="_blank" rel="noopener noreferrer">
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
               {t('terms.intro.site')}
             </a>
             {t('terms.intro.end')}
