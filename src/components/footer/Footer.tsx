@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Link, NavLink } from 'react-router-dom';
 
+import { TELEGRAM_URL } from '@/config/site';
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 
@@ -28,7 +29,7 @@ const Footer = ({ simplified }: FooterProps) => {
               <h2 className="footer-telegram__header">{t('footer.telegram.connect')}</h2>
               <a
                 className="footer-telegram__link"
-                href="https://t.me/perfectn1ght"
+                href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
-import { SITE_URL } from '@/config/site';
+import { CONTACT_EMAIL, SITE_URL } from '@/config/site';
 import SEO from '@/components/SEO';
 import { seoTerms } from '@/data/seoData';
 import TableOfContents from '@/components/tableOfContents/TableOfContents';
@@ -71,7 +71,7 @@ const UserTermsPage = () => {
           <p>{t('terms.contactText')}</p>
 
           <p>
-            <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </div>
       </div>
