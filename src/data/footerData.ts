@@ -34,12 +34,18 @@ export const socialLinks: SocialLinks[] = [
   { icon: linkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/bohdan-yevsieiev/' },
 ];
 
-export const navLinks: string[] = [
-  'footer.navigation.home',
-  'footer.navigation.skills',
-  'footer.navigation.experience',
-  'footer.navigation.portfolio',
-  'footer.navigation.price',
+export interface FooterNavLink {
+  /** Id of the home page section the link scrolls to. */
+  id: string;
+  labelKey: string;
+}
+
+export const navLinks: FooterNavLink[] = [
+  { id: 'home', labelKey: 'footer.navigation.home' },
+  { id: 'skills', labelKey: 'footer.navigation.skills' },
+  { id: 'experience', labelKey: 'footer.navigation.experience' },
+  { id: 'portfolio', labelKey: 'footer.navigation.portfolio' },
+  { id: 'price', labelKey: 'footer.navigation.price' },
 ];
 
 export const contactInfo: ContactInfo[] = [
