@@ -433,6 +433,9 @@
   },
 
   "a11y": {
+    "goToSlide": "Przejdź do slajdu {{number}}",
+    "nextSlide": "Następny slajd",
+    "prevSlide": "Poprzedni slajd",
     "home": "Isterya — strona główna",
     "openProject": "Otwórz projekt {{title}} (w nowej karcie)"
   }

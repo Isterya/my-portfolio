@@ -79,15 +79,14 @@ const SkillsSlider = () => {
       {!isTouchDevice && (
         <div className="skills-slider__controls">
           {Array.from({ length: pageCount }).map((_, i) => (
-            <div
-              role="button"
-              aria-label={`Go to slide ${i + 1}`}
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && goToPage(i)}
+            <button
+              type="button"
               key={i}
               className={`skills-slider__dot ${currentPage === i ? 'active' : ''}`}
+              aria-label={t('a11y.goToSlide', { number: i + 1 })}
+              aria-current={currentPage === i ? 'true' : undefined}
               onClick={() => goToPage(i)}
-            ></div>
+            />
           ))}
         </div>
       )}
