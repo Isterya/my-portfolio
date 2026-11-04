@@ -51,6 +51,12 @@ const emailSchema = z.object({
 
 const RECEIVED = { success: true, message: 'Request received' } as const;
 
+// Cheap endpoint for Render's health check and for the site to wake the free instance up before
+// the visitor submits the form.
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({ status: 'ok' });
+});
+
 const asyncHandler =
   (fn: (req: Request, res: Response, next: NextFunction) => Promise<Response | undefined>) =>
   (req: Request, res: Response, next: NextFunction) =>
