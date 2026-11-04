@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import './portfolioCard.scss';
 
 interface PortfolioCardProps {
@@ -8,6 +10,8 @@ interface PortfolioCardProps {
 }
 
 const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, image, description, link }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="portfolio-card">
       <img
@@ -29,8 +33,15 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, image, description
         </div>
       </div>
 
-      <a href={link} target="_blank" rel="noopener noreferrer" className="portfolio-card__icon">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="portfolio-card__icon"
+        aria-label={t('a11y.openProject', { title })}
+      >
         <svg
+          aria-hidden="true"
           className="portfolio-card__icon-svg"
           width="26"
           height="23"
