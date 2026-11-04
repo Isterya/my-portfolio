@@ -429,5 +429,9 @@
     "lost": "Zgubiłeś się",
     "description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
     "home": "Strona główna"
+  },
+
+  "a11y": {
+    "openProject": "Otwórz projekt {{title}} (w nowej karcie)"
   }
 }
