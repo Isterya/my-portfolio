@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useInView, useReducedMotion } from 'framer-motion';
 
 import { MARQUEE_COPIES, useCarousel } from '@/hooks/useCarousel';
+import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 
 import PriceCard from '@/components/priceCard/PriceCard';
@@ -32,6 +33,8 @@ const Price = () => {
   const renderedData = isMarquee
     ? Array.from({ length: MARQUEE_COPIES }, () => priceData).flat()
     : priceData;
+
+  useRevealOnScroll(trackRef, { resetKey: renderedData.length });
 
   return (
     <section id="price" className="price" aria-labelledby="price-title">
