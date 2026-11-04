@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import firstBg from '../assets/img/works/portf-work-1.webp';
 import secondBg from '../assets/img/works/portf-work-2.webp';
 
@@ -19,14 +17,14 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData[] = [
   {
-    id: uuidv4(),
+    id: 'uber',
     title: 'Uber',
     image: firstBg,
     description: 'portfolio.uber.description',
     link: 'https://uber-tau-jade.vercel.app/',
   },
   {
-    id: uuidv4(),
+    id: 'diary',
     title: 'Diary',
     image: secondBg,
     description: 'portfolio.diary.description',
@@ -34,14 +32,14 @@ export const portfolioData: PortfolioData[] = [
   },
 
   {
-    id: uuidv4(),
+    id: 'art',
     title: 'Art',
     image: thirdBg,
     description: 'portfolio.art.description',
     link: 'https://picture-art-two.vercel.app/',
   },
   {
-    id: uuidv4(),
+    id: 'marvel',
     title: 'Marvel',
     image: fourthBg,
     description: 'portfolio.marvel.description',
@@ -49,14 +47,14 @@ export const portfolioData: PortfolioData[] = [
   },
 
   {
-    id: uuidv4(),
+    id: 'coffee',
     title: 'Coffee Shop',
     image: fifthBg,
     description: 'portfolio.coffee.description',
     link: 'https://coffee-two-gilt.vercel.app/',
   },
   {
-    id: uuidv4(),
+    id: 'irvas',
     title: 'Irvas',
     image: sixthBg,
     description: 'portfolio.irvas.description',
