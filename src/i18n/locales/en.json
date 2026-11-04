@@ -433,6 +433,7 @@
   },
 
   "a11y": {
+    "changeLanguage": "change language",
     "menu": "Menu",
     "mainNav": "Main navigation",
     "goToSlide": "Go to slide {{number}}",

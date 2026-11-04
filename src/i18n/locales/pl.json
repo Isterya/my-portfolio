@@ -433,6 +433,7 @@
   },
 
   "a11y": {
+    "changeLanguage": "zmień język",
     "menu": "Menu",
     "mainNav": "Nawigacja główna",
     "goToSlide": "Przejdź do slajdu {{number}}",
