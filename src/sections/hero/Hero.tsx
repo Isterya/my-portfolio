@@ -21,7 +21,7 @@ const Hero = () => {
   const years = getYearsOfExperience();
 
   return (
-    <section id="home" className="hero" role="region" aria-label="Hero section">
+    <section id="home" className="hero" aria-labelledby="hero-title">
       <div className="container">
         <div className="hero-wrapper">
           <motion.div
@@ -30,8 +30,6 @@ const Hero = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            role="note"
-            aria-label="Motivational quote"
           >
             <img
               className="hero-quote__img"
@@ -51,7 +49,7 @@ const Hero = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="hero-header__main-title" aria-label="I’m Bohdan, Web Developer">
+              <h1 id="hero-title" className="hero-header__main-title">
                 {t('hero.introStart')} <span>{t('hero.introName')}</span>, <br />{' '}
                 {t('hero.introEnd')}
               </h1>
@@ -64,8 +62,6 @@ const Hero = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            role="note"
-            aria-label="Experience rating"
           >
             <img className="hero-experience__img" src={stars} alt="5-star experience rating" />
 

@@ -86,10 +86,10 @@ const Contact = () => {
   }, [email, agreed]);
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact" aria-labelledby="contact-title">
       <div className="container">
         <div className="contact-wrapper">
-          <h2 className="contact-header">
+          <h2 id="contact-title" className="contact-header">
             {t('contact.title.before')} <span>{t('contact.title.highlight')}</span>
           </h2>
 
