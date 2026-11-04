@@ -37,7 +37,7 @@ const Footer = ({ simplified }: FooterProps) => {
                 rel="noopener noreferrer"
               >
                 {t('footer.telegram.link')}
-                <img src={ArrowUp} alt="Arrow for the link" />
+                <img src={ArrowUp} alt="" />
               </a>
             </div>
 
@@ -49,16 +49,16 @@ const Footer = ({ simplified }: FooterProps) => {
           <div className="footer-social">
             <div className="footer-social__logo">
               <Link to="/">
-                <img src={logo} alt="isterya logo" />
+                <img src={logo} alt={t('a11y.home')} />
               </Link>
             </div>
             <p className="footer-social__descr">{t('footer.social')}</p>
 
             <ul className="footer-social__links">
-              {socialLinks.map(({ icon, alt, href }) => (
-                <li key={alt} className="footer-social__item">
+              {socialLinks.map(({ icon, label, href }) => (
+                <li key={label} className="footer-social__item">
                   <a href={href} target="_blank" rel="noopener noreferrer">
-                    <img src={icon} alt={`Link to ${alt}`} />
+                    <img src={icon} alt={label} />
                   </a>
                 </li>
               ))}

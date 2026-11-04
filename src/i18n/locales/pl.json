@@ -432,6 +432,7 @@
   },
 
   "a11y": {
+    "home": "Isterya — strona główna",
     "openProject": "Otwórz projekt {{title}} (w nowej karcie)"
   }
 }

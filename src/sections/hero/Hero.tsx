@@ -31,11 +31,7 @@ const Hero = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <img
-              className="hero-quote__img"
-              src={quote}
-              alt="Quote decoration in the form of quotation marks"
-            />
+            <img className="hero-quote__img" src={quote} alt="" />
 
             <p className="hero-quote__text">{t('hero.quote')}</p>
           </motion.div>
@@ -63,7 +59,7 @@ const Hero = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <img className="hero-experience__img" src={stars} alt="5-star experience rating" />
+            <img className="hero-experience__img" src={stars} alt="" />
 
             <div>
               <div className="hero-experience__years">
@@ -78,7 +74,7 @@ const Hero = () => {
           <motion.img
             className="hero-character__img"
             src={character}
-            alt="A mascot character"
+            alt=""
             width={597}
             height={616}
             {...{ fetchpriority: 'high' }}
@@ -97,7 +93,7 @@ const Hero = () => {
               onMouseEnter={() => setActiveLink('portfolio')}
             >
               {t('hero.linkPortfolio')}
-              <img src={arrowUp} alt="Go to Portfolio" />
+              <img src={arrowUp} alt="" />
             </motion.a>
 
             <motion.a
@@ -112,7 +108,7 @@ const Hero = () => {
               onMouseEnter={() => setActiveLink('about')}
             >
               {t('hero.linkAbout')}
-              <img src={arrowUp} alt="Go to About" />
+              <img src={arrowUp} alt="" />
             </motion.a>
           </div>
         </div>

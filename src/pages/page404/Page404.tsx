@@ -59,7 +59,7 @@ const Page404 = () => {
             <motion.img
               className="page404-img"
               src={errorImg}
-              alt="Boy with a magnifying glass"
+              alt=""
               variants={float}
               custom={3}
               animate="animate"
@@ -68,6 +68,7 @@ const Page404 = () => {
             <motion.div variants={fadeUp} custom={4}>
               <Link to={'/'} className="page404-back">
                 <svg
+                  aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"

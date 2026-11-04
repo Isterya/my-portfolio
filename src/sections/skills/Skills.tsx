@@ -27,7 +27,7 @@ const Skills = () => {
       <img
         className="skills__first-abstract"
         src={firstAbstract}
-        alt="First abstract figure"
+        alt=""
         width={594}
         height={601}
         loading="lazy"
@@ -36,7 +36,7 @@ const Skills = () => {
       <img
         className="skills__second-abstract"
         src={secondAbstract}
-        alt="Second abstract figure"
+        alt=""
         width={261}
         height={261}
         loading="lazy"
@@ -45,7 +45,7 @@ const Skills = () => {
       <img
         className="skills__third-abstract"
         src={thirdAbstract}
-        alt="Third abstract figure"
+        alt=""
         width={873}
         height={828}
         loading="lazy"
