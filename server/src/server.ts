@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
@@ -20,7 +19,7 @@ app.set('trust proxy', 1);
 app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(express.json({ limit: '10kb' }));
 
 const limiter = rateLimit({
   windowMs: 60 * 1000,
