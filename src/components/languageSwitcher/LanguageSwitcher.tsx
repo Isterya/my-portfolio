@@ -70,6 +70,7 @@ const LanguageSwitcher = () => {
               >
                 <button
                   className={`lang-switcher__item ${activeLanguage === code ? 'active' : ''}`}
+                  lang={code}
                   onClick={() => handleSelect(code)}
                 >
                   {label}
