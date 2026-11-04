@@ -75,7 +75,7 @@ const PortfolioSlider = () => {
         <button
           className="portfolio-slider__arrow portfolio-slider__arrow--left"
           onClick={handlePrev}
-          aria-label="Previous slide"
+          aria-label={t('a11y.prevSlide')}
         >
           <img src={arrowLeft} alt="" />
         </button>
@@ -83,7 +83,7 @@ const PortfolioSlider = () => {
         <button
           className="portfolio-slider__arrow portfolio-slider__arrow--right"
           onClick={handleNext}
-          aria-label="Next slide"
+          aria-label={t('a11y.nextSlide')}
         >
           <img src={arrowRight} alt="" />
         </button>
@@ -91,11 +91,14 @@ const PortfolioSlider = () => {
 
       <div className="portfolio-slider__controls">
         {Array.from({ length: pageCount }).map((_, i) => (
-          <div
+          <button
+            type="button"
             key={i}
             className={`portfolio-slider__dot ${currentPage === i ? 'active' : ''}`}
+            aria-label={t('a11y.goToSlide', { number: i + 1 })}
+            aria-current={currentPage === i ? 'true' : undefined}
             onClick={() => goToPage(i)}
-          ></div>
+          />
         ))}
       </div>
     </div>

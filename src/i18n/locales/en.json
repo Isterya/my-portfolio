@@ -433,6 +433,9 @@
   },
 
   "a11y": {
+    "goToSlide": "Go to slide {{number}}",
+    "nextSlide": "Next slide",
+    "prevSlide": "Previous slide",
     "home": "Isterya — home page",
     "openProject": "Open {{title}} (opens in a new tab)"
   }
