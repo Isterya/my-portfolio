@@ -227,6 +227,11 @@ a {
   color: inherit;
 }
 
+// Width/height attributes reserve space while images load; keep the aspect ratio when CSS limits the width.
+img {
+  height: auto;
+}
+
 p {
   margin: 0;
   padding: 0;

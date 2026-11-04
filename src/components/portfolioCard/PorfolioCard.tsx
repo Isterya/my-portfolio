@@ -2,22 +2,24 @@ import './portfolioCard.scss';
 
 interface PortfolioCardProps {
   title: string;
-  background: string;
+  image: string;
   description: string;
   link: string;
 }
 
-const PortfolioCard: React.FC<PortfolioCardProps> = ({
-  title,
-  background,
-  description,
-  link,
-}) => {
+const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, image, description, link }) => {
   return (
-    <div
-      className="portfolio-card"
-      style={{ backgroundImage: `url(${background})` }}
-    >
+    <div className="portfolio-card">
+      <img
+        className="portfolio-card__image"
+        src={image}
+        alt=""
+        width={633}
+        height={371}
+        loading="lazy"
+        decoding="async"
+      />
+
       <h3 className="portfolio-card__title">{title}</h3>
 
       <div className="portfolio-card__overlay">
@@ -27,12 +29,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         </div>
       </div>
 
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="portfolio-card__icon"
-      >
+      <a href={link} target="_blank" rel="noopener noreferrer" className="portfolio-card__icon">
         <svg
           className="portfolio-card__icon-svg"
           width="26"

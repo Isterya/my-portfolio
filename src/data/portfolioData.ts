@@ -12,7 +12,7 @@ import sixthBg from '../assets/img/works/portf-work-6.webp';
 export interface PortfolioData {
   id: string;
   title: string;
-  background: string;
+  image: string;
   description: string;
   link: string;
 }
@@ -21,14 +21,14 @@ export const portfolioData: PortfolioData[] = [
   {
     id: uuidv4(),
     title: 'Uber',
-    background: firstBg,
+    image: firstBg,
     description: 'portfolio.uber.description',
     link: 'https://uber-tau-jade.vercel.app/',
   },
   {
     id: uuidv4(),
     title: 'Diary',
-    background: secondBg,
+    image: secondBg,
     description: 'portfolio.diary.description',
     link: 'https://school-diary-virid.vercel.app/',
   },
@@ -36,14 +36,14 @@ export const portfolioData: PortfolioData[] = [
   {
     id: uuidv4(),
     title: 'Art',
-    background: thirdBg,
+    image: thirdBg,
     description: 'portfolio.art.description',
     link: 'https://picture-art-two.vercel.app/',
   },
   {
     id: uuidv4(),
     title: 'Marvel',
-    background: fourthBg,
+    image: fourthBg,
     description: 'portfolio.marvel.description',
     link: 'https://marvel-chi-eight.vercel.app/',
   },
@@ -51,14 +51,14 @@ export const portfolioData: PortfolioData[] = [
   {
     id: uuidv4(),
     title: 'Coffee Shop',
-    background: fifthBg,
+    image: fifthBg,
     description: 'portfolio.coffee.description',
     link: 'https://coffee-two-gilt.vercel.app/',
   },
   {
     id: uuidv4(),
     title: 'Irvas',
-    background: sixthBg,
+    image: sixthBg,
     description: 'portfolio.irvas.description',
     link: 'https://irvas-pied.vercel.app/',
   },
