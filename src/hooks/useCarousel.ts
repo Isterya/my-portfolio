@@ -17,10 +17,17 @@ const getLoopWidth = (track: HTMLElement) => {
   return first && firstCopy ? firstCopy.offsetLeft - first.offsetLeft : 0;
 };
 
+type UseCarouselOptions = {
+  speed?: number;
+  /** No marquee at all (touch layouts, reduced motion): the track is reset to its start. */
+  disabled?: boolean;
+  /** Temporarily stop the loop (e.g. while off screen) and resume from the same position. */
+  paused?: boolean;
+};
+
 export const useCarousel = (
   ref: React.RefObject<HTMLDivElement | null>,
-  speed: number = 1.5,
-  disableAnimation: boolean = false,
+  { speed = 1.5, disabled = false, paused = false }: UseCarouselOptions = {},
 ) => {
   const animationRef = useRef<number | null>(null);
   const scrollPos = useRef<number>(0);
@@ -29,7 +36,18 @@ export const useCarousel = (
 
   useEffect(() => {
     const track = ref.current;
-    if (!track || disableAnimation) return;
+    if (!track) return;
+
+    if (disabled) {
+      scrollPos.current = 0;
+      track.style.transform = '';
+      return;
+    }
+
+    if (paused) return;
+
+    // Hover events are not tracked while paused, so read the current hover state on (re)start.
+    targetSpeed.current = track.matches(':hover') ? 0 : speed;
 
     const handleMouseEnter = () => {
       targetSpeed.current = 0;
@@ -66,7 +84,7 @@ export const useCarousel = (
       track.removeEventListener('mouseleave', handleMouseLeave);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [ref, speed, disableAnimation]);
+  }, [ref, speed, disabled, paused]);
 
   useEffect(() => {
     const cards = document.querySelectorAll('.price-card');

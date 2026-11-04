@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useRef } from 'react';
+import { useInView, useReducedMotion } from 'framer-motion';
 
 import { MARQUEE_COPIES, useCarousel } from '@/hooks/useCarousel';
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
@@ -16,15 +17,21 @@ import './price.scss';
 const Price = () => {
   const { t } = useTranslation();
 
+  const carouselRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
   const isTouchDevice = useIsTouchDevice(1024);
+  const prefersReducedMotion = useReducedMotion();
+  const isCarouselInView = useInView(carouselRef);
 
-  useCarousel(trackRef, 1.5, isTouchDevice);
+  // Touch layouts scroll natively; with "reduce motion" the cards do not drift either.
+  const isMarquee = !isTouchDevice && !prefersReducedMotion;
 
-  const renderedData = isTouchDevice
-    ? priceData
-    : Array.from({ length: MARQUEE_COPIES }, () => priceData).flat();
+  useCarousel(trackRef, { disabled: !isMarquee, paused: !isCarouselInView });
+
+  const renderedData = isMarquee
+    ? Array.from({ length: MARQUEE_COPIES }, () => priceData).flat()
+    : priceData;
 
   return (
     <section id="price" className="price">
@@ -41,7 +48,10 @@ const Price = () => {
         </div>
       </div>
 
-      <div className={`price-carousel${isTouchDevice ? ' touch' : ''}`}>
+      <div
+        className={`price-carousel${isMarquee ? '' : ' price-carousel--static'}`}
+        ref={carouselRef}
+      >
         <div className="price-carousel__track" ref={trackRef}>
           {renderedData.map((price, i) => (
             <PriceCard
