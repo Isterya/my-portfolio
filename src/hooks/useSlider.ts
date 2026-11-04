@@ -11,6 +11,7 @@ import {
 type UseSliderProps = {
   dataLength: number;
   itemsPerSlideDefault: number;
+  /** Keep the array referentially stable (module constant): it is an effect dependency. */
   breakpoints: SlidesBreakpoint[];
   intervalTime?: number;
 };
@@ -21,7 +22,13 @@ export const useSlider = ({
   breakpoints,
   intervalTime = 5000,
 }: UseSliderProps) => {
-  const [itemsPerSlide, setItemsPerSlide] = useState(itemsPerSlideDefault);
+  // Read the viewport during the first render: starting from the default and correcting it in an
+  // effect rendered three cards on phones for a frame and shifted the layout (CLS).
+  const [itemsPerSlide, setItemsPerSlide] = useState(() =>
+    typeof window === 'undefined'
+      ? itemsPerSlideDefault
+      : getItemsPerPage(window.innerWidth, breakpoints, itemsPerSlideDefault),
+  );
   // Index of the first visible item. Pages are derived from it, so a breakpoint change keeps that
   // item on screen instead of jumping to an unrelated slide.
   const [firstIndex, setFirstIndex] = useState(0);
