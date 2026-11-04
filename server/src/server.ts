@@ -17,7 +17,18 @@ const PORT = process.env.PORT || 5000;
 
 app.set('trust proxy', 1);
 
-app.use(cors());
+// Comma-separated list of site origins allowed to call the API from a browser, e.g.
+// ALLOWED_ORIGINS=https://isterya.dev,https://www.isterya.dev. Unset keeps the old open policy.
+const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+if (allowedOrigins.length === 0) {
+  console.warn('⚠️ ALLOWED_ORIGINS is not set: any website can call this API from a browser.');
+}
+
+app.use(cors(allowedOrigins.length > 0 ? { origin: allowedOrigins } : undefined));
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10kb' }));
