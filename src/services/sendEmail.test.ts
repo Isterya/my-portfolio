@@ -89,4 +89,13 @@ describe('sendEmail', () => {
     await expectErrorCode(sendEmail('client@example.com'), 'server');
     expect(fetchMock).not.toHaveBeenCalled();
   });
+
+  it('wakes the API through the health endpoint and ignores failures', async () => {
+    const fetchMock = vi.fn().mockRejectedValue(new TypeError('Failed to fetch'));
+    vi.stubGlobal('fetch', fetchMock);
+    const { wakeUpApi } = await loadSendEmail();
+
+    expect(() => wakeUpApi()).not.toThrow();
+    expect(fetchMock).toHaveBeenCalledWith('https://api.test/health', { cache: 'no-store' });
+  });
 });
