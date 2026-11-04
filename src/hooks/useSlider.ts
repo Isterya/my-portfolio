@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import {
   SlidesBreakpoint,
@@ -13,15 +13,9 @@ type UseSliderProps = {
   itemsPerSlideDefault: number;
   /** Keep the array referentially stable (module constant): it is an effect dependency. */
   breakpoints: SlidesBreakpoint[];
-  intervalTime?: number;
 };
 
-export const useSlider = ({
-  dataLength,
-  itemsPerSlideDefault,
-  breakpoints,
-  intervalTime = 5000,
-}: UseSliderProps) => {
+export const useSlider = ({ dataLength, itemsPerSlideDefault, breakpoints }: UseSliderProps) => {
   // Read the viewport during the first render: starting from the default and correcting it in an
   // effect rendered three cards on phones for a frame and shifted the layout (CLS).
   const [itemsPerSlide, setItemsPerSlide] = useState(() =>
@@ -32,8 +26,6 @@ export const useSlider = ({
   // Index of the first visible item. Pages are derived from it, so a breakpoint change keeps that
   // item on screen instead of jumping to an unrelated slide.
   const [firstIndex, setFirstIndex] = useState(0);
-
-  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const pageCount = getPageCount(dataLength, itemsPerSlide);
   const currentPage = getPageOf(firstIndex, itemsPerSlide);
@@ -65,20 +57,6 @@ export const useSlider = ({
   const nextSlide = useCallback(() => shiftPage(1), [shiftPage]);
   const prevSlide = useCallback(() => shiftPage(-1), [shiftPage]);
 
-  const stopAutoSlide = useCallback(() => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-  }, []);
-
-  const startAutoSlide = useCallback(() => {
-    stopAutoSlide();
-    autoSlideRef.current = setInterval(nextSlide, intervalTime);
-  }, [nextSlide, stopAutoSlide, intervalTime]);
-
-  useEffect(() => {
-    startAutoSlide();
-    return stopAutoSlide;
-  }, [startAutoSlide, stopAutoSlide]);
-
   return {
     itemsPerSlide,
     currentIndex,
@@ -87,7 +65,5 @@ export const useSlider = ({
     nextSlide,
     prevSlide,
     goToPage,
-    stopAutoSlide,
-    startAutoSlide,
   };
 };

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useMemo } from 'react';
 import { useSlider } from '@/hooks/useSlider';
+import { useAutoplay } from '@/hooks/useAutoplay';
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,21 +22,14 @@ const SkillsSlider = () => {
 
   const isTouchDevice = useIsTouchDevice(640);
 
-  const {
-    itemsPerSlide,
-    currentIndex,
-    currentPage,
-    pageCount,
-    nextSlide,
-    prevSlide,
-    goToPage,
-    stopAutoSlide,
-    startAutoSlide,
-  } = useSlider({
-    dataLength: skillsData.length,
-    itemsPerSlideDefault: 3,
-    breakpoints: SLIDES_BREAKPOINTS,
-  });
+  const { itemsPerSlide, currentIndex, currentPage, pageCount, nextSlide, prevSlide, goToPage } =
+    useSlider({
+      dataLength: skillsData.length,
+      itemsPerSlideDefault: 3,
+      breakpoints: SLIDES_BREAKPOINTS,
+    });
+
+  const autoplay = useAutoplay<HTMLDivElement>(nextSlide, { resetKey: currentPage });
 
   const visibleSkills = useMemo(() => {
     const end = currentIndex + itemsPerSlide;
@@ -46,7 +40,7 @@ const SkillsSlider = () => {
   }, [currentIndex, itemsPerSlide]);
 
   return (
-    <div className="skills-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
+    <div className="skills-slider" ref={autoplay.ref} {...autoplay.handlers}>
       <div className="skills-slider__wrapper">
         <AnimatePresence mode="wait">
           <motion.div
@@ -59,9 +53,9 @@ const SkillsSlider = () => {
             drag={isTouchDevice ? 'x' : false}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
-            onDragStart={stopAutoSlide}
+            onDragStart={() => autoplay.setIsDragging(true)}
             onDragEnd={(_, info) => {
-              startAutoSlide();
+              autoplay.setIsDragging(false);
 
               if (info.offset.x < -50) {
                 nextSlide();

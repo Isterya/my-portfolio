@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useSlider } from '@/hooks/useSlider';
+import { useAutoplay } from '@/hooks/useAutoplay';
 import { useState } from 'react';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,21 +19,14 @@ const SLIDES_BREAKPOINTS = [{ max: 1024, items: 1 }];
 const PortfolioSlider = () => {
   const { t } = useTranslation();
 
-  const {
-    itemsPerSlide,
-    currentIndex,
-    currentPage,
-    pageCount,
-    nextSlide,
-    prevSlide,
-    goToPage,
-    stopAutoSlide,
-    startAutoSlide,
-  } = useSlider({
-    dataLength: portfolioData.length,
-    itemsPerSlideDefault: 2,
-    breakpoints: SLIDES_BREAKPOINTS,
-  });
+  const { itemsPerSlide, currentIndex, currentPage, pageCount, nextSlide, prevSlide, goToPage } =
+    useSlider({
+      dataLength: portfolioData.length,
+      itemsPerSlideDefault: 2,
+      breakpoints: SLIDES_BREAKPOINTS,
+    });
+
+  const autoplay = useAutoplay<HTMLDivElement>(nextSlide, { resetKey: currentPage });
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
@@ -47,7 +41,7 @@ const PortfolioSlider = () => {
   };
 
   return (
-    <div className="portfolio-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
+    <div className="portfolio-slider" ref={autoplay.ref} {...autoplay.handlers}>
       <div className="portfolio-slider__wrapper">
         <AnimatePresence mode="wait">
           <motion.div
