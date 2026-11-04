@@ -162,7 +162,10 @@ const NavBar = () => {
       {/* Desktop Nav */}
       {!isMobile && (
         <motion.div initial="hidden" animate="visible" variants={menuVariants}>
-          <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+          <nav
+            className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}
+            aria-label={t('a11y.mainNav')}
+          >
             <ul className="navbar-list navbar-list--left">
               {SECTIONS.slice(0, 3).map((section) => (
                 <li key={section}>
