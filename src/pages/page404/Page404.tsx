@@ -41,7 +41,7 @@ const Page404 = () => {
     <>
       <SEO {...seo404} />
 
-      <div className="page404">
+      <main className="page404">
         <div className="container">
           <motion.div className="page404-wrapper" initial="hidden" animate="visible">
             <motion.h1 className="page404-header" variants={fadeUp} custom={0}>
@@ -99,7 +99,7 @@ const Page404 = () => {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </main>
     </>
   );
 };

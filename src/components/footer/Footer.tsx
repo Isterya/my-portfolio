@@ -69,8 +69,10 @@ const Footer = ({ simplified }: FooterProps) => {
             <div className="footer-columns">
               {!simplified && (
                 <>
-                  <nav className="footer-nav">
-                    <h3 className="footer-title">{t('footer.titles.nav')}</h3>
+                  <nav className="footer-nav" aria-labelledby="footer-nav-title">
+                    <h3 id="footer-nav-title" className="footer-title">
+                      {t('footer.titles.nav')}
+                    </h3>
                     <ul className="footer-nav__list">
                       {navLinks.map((link) => (
                         <li key={link} className="footer-nav__item">
@@ -102,8 +104,10 @@ const Footer = ({ simplified }: FooterProps) => {
             <>
               {!simplified && (
                 <>
-                  <nav className="footer-nav">
-                    <h3 className="footer-title">{t('footer.titles.nav')}</h3>
+                  <nav className="footer-nav" aria-labelledby="footer-nav-title">
+                    <h3 id="footer-nav-title" className="footer-title">
+                      {t('footer.titles.nav')}
+                    </h3>
                     <ul className="footer-nav__list">
                       {navLinks.map((link) => (
                         <li key={link} className="footer-nav__item">

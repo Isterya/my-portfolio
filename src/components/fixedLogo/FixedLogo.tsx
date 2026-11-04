@@ -11,11 +11,11 @@ const FixedLogo = ({ visible }: { visible: boolean }) => {
   if (!visible) return null;
 
   return (
-    <div className="fixed-logo">
+    <header className="fixed-logo">
       <Link to="/">
         <img src={logo} alt={t('a11y.home')} />
       </Link>
-    </div>
+    </header>
   );
 };
 
