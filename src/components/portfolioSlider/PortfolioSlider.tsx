@@ -13,6 +13,8 @@ import arrowRight from '@/assets/icons/arrow-right.svg';
 
 import './portfolioSlider.scss';
 
+const SLIDES_BREAKPOINTS = [{ max: 1024, items: 1 }];
+
 const PortfolioSlider = () => {
   const { t } = useTranslation();
 
@@ -29,7 +31,7 @@ const PortfolioSlider = () => {
   } = useSlider({
     dataLength: portfolioData.length,
     itemsPerSlideDefault: 2,
-    breakpoints: [{ max: 1024, items: 1 }],
+    breakpoints: SLIDES_BREAKPOINTS,
   });
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');

@@ -11,6 +11,11 @@ import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';
 
+const SLIDES_BREAKPOINTS = [
+  { max: 640, items: 1 },
+  { max: 1024, items: 2 },
+];
+
 const SkillsSlider = () => {
   const { t } = useTranslation();
 
@@ -29,10 +34,7 @@ const SkillsSlider = () => {
   } = useSlider({
     dataLength: skillsData.length,
     itemsPerSlideDefault: 3,
-    breakpoints: [
-      { max: 640, items: 1 },
-      { max: 1024, items: 2 },
-    ],
+    breakpoints: SLIDES_BREAKPOINTS,
   });
 
   const visibleSkills = useMemo(() => {
