@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export const sendToTelegram = async (email: string): Promise<void> => {
   const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
   const CHAT_ID = process.env.CHAT_ID;
