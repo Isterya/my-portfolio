@@ -8,10 +8,10 @@ const Portfolio = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="portfolio" className="portfolio" role="region" aria-label="Portfolio section">
+    <section id="portfolio" className="portfolio" aria-labelledby="portfolio-title">
       <div className="container">
         <div className="portfolio-header">
-          <h2>
+          <h2 id="portfolio-title">
             {t('portfolio.title.before')} <span>{t('portfolio.title.highlight')}</span>
           </h2>
         </div>

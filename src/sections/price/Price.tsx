@@ -34,12 +34,12 @@ const Price = () => {
     : priceData;
 
   return (
-    <section id="price" className="price">
+    <section id="price" className="price" aria-labelledby="price-title">
       <div className="container">
         <div className="price-wrapper">
           <div className="price-header">
             <div className="price-header__content">
-              <h2 className="price-header__title">
+              <h2 id="price-title" className="price-header__title">
                 {t('price.title.before')} <span>{t('price.title.highlight')}</span>
               </h2>
               <p className="price-header__descr">{t('price.description')}</p>

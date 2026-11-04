@@ -30,7 +30,7 @@ const About = () => {
   const age = getAge(new Date('2007-09-06'));
 
   return (
-    <section id="about" className="about" role="region" aria-label="About me section">
+    <section id="about" className="about" aria-labelledby="about-title">
       <div className="container">
         <div className="about-wrapper">
           <motion.div
@@ -58,7 +58,7 @@ const About = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <motion.h2 className="about-text__header" variants={fadeInUp}>
+            <motion.h2 id="about-title" className="about-text__header" variants={fadeInUp}>
               {t('about.title.before')} <span>{t('about.title.highlight')}</span>?
             </motion.h2>
 
@@ -79,7 +79,7 @@ const About = () => {
               </div>
             </motion.div>
 
-            <a className="about-text__hire" href="#contact" aria-label="Scroll to contact section">
+            <a className="about-text__hire" href="#contact">
               {t('about.hire')}
             </a>
           </motion.div>

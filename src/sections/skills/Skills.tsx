@@ -12,10 +12,10 @@ const Skills = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className="skills" aria-labelledby="skills-title">
       <div className="container">
         <div className="skills-header">
-          <h2 className="skills-header__title">
+          <h2 id="skills-title" className="skills-header__title">
             {t('skills.title.before')} <span>{t('skills.title.highlight')}</span>
           </h2>
           <p className="skills-header__descr">{t('skills.description')}</p>

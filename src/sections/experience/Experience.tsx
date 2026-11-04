@@ -38,14 +38,9 @@ const Experience = () => {
   const isMobile = useIsTouchDevice(1024);
 
   return (
-    <section
-      id="experience"
-      className="experience"
-      role="region"
-      aria-label="My experience section"
-    >
+    <section id="experience" className="experience" aria-labelledby="experience-title">
       <div className="container">
-        <h2 className="experience-header">
+        <h2 id="experience-title" className="experience-header">
           {t('experience.title.before')} <span>{t('experience.title.highlight')}</span>
         </h2>
 
