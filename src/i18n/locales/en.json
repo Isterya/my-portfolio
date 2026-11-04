@@ -220,6 +220,7 @@
       "rateLimit": "Too many attempts. Please wait a minute and try again."
     },
 
+    "emailLabel": "Email address",
     "placeholder": "Enter Email Address",
     "loading": "Sending...",
     "slow": "Waking up the server — this can take up to a minute…",
