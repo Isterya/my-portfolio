@@ -1,10 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import SEO from '@/components/SEO';
 import { seo404 } from '@/data/seoData';
+import { toAppLanguage } from '@/i18n/languages';
+import { WAY_HOME_STRINGS } from '@/features/wayHome/strings';
 
 import errorImg from '@/assets/img/error/error-404.svg';
 
@@ -34,8 +37,25 @@ const float = {
   },
 };
 
+// The maze is a separate chunk, requested only when the visitor asks to play (and prefetched on
+// hover or focus of the button), so it costs nothing to the 404 page or the rest of the site.
+const loadWayHomeGame = () => import('@/features/wayHome/WayHomeGame');
+const WayHomeGame = lazy(loadWayHomeGame);
+
 const Page404 = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const language = toAppLanguage(i18n.resolvedLanguage);
+  const gameStrings = WAY_HOME_STRINGS[language];
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const playButtonRef = useRef<HTMLButtonElement>(null);
+  const hasPlayedRef = useRef(false);
+
+  useEffect(() => {
+    if (isPlaying) hasPlayedRef.current = true;
+    else if (hasPlayedRef.current) playButtonRef.current?.focus();
+  }, [isPlaying]);
 
   return (
     <>
@@ -56,14 +76,20 @@ const Page404 = () => {
               {t('error.description')}
             </motion.p>
 
-            <motion.img
-              className="page404-img"
-              src={errorImg}
-              alt=""
-              variants={float}
-              custom={3}
-              animate="animate"
-            />
+            {isPlaying ? (
+              <Suspense fallback={<p className="page404-game-loading">{gameStrings.loading}</p>}>
+                <WayHomeGame language={language} onClose={() => setIsPlaying(false)} />
+              </Suspense>
+            ) : (
+              <motion.img
+                className="page404-img"
+                src={errorImg}
+                alt=""
+                variants={float}
+                custom={3}
+                animate="animate"
+              />
+            )}
 
             <motion.div variants={fadeUp} custom={4}>
               <Link to={'/'} className="page404-back">
@@ -97,6 +123,21 @@ const Page404 = () => {
                 {t('error.home')}
               </Link>
             </motion.div>
+
+            {!isPlaying && (
+              <motion.div variants={fadeUp} custom={5}>
+                <button
+                  ref={playButtonRef}
+                  type="button"
+                  className="page404-play"
+                  onClick={() => setIsPlaying(true)}
+                  onPointerEnter={() => void loadWayHomeGame()}
+                  onFocus={() => void loadWayHomeGame()}
+                >
+                  {gameStrings.play}
+                </button>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </main>
