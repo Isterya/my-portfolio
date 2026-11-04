@@ -354,6 +354,18 @@
       &:hover {
         transform: translateY(-2px);
       }
+
+      // Invisible hit area around the 14-20px icon (WCAG 2.5.8 target size), half the gap on each
+      // side so neighbouring links do not overlap. Layout and look are unchanged.
+      a {
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          inset: -5px;
+        }
+      }
     }
   }
 
