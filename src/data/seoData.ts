@@ -3,8 +3,10 @@ import { absoluteUrl } from '@/config/site';
 export interface SeoData {
   title: string;
   description: string;
-  url: string;
+  /** Canonical URL; omitted for pages that must not be indexed. */
+  url?: string;
   image?: string;
+  noIndex?: boolean;
 }
 
 export const seoHome: SeoData = {
@@ -35,5 +37,5 @@ export const seo404: SeoData = {
   title: '404 Not Found',
   description:
     'The page you’re looking for isn’t here. It might have been moved, renamed, or never existed. Let’s bring you back to something awesome.',
-  url: absoluteUrl('/'),
+  noIndex: true,
 };
