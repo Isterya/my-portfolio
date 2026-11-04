@@ -28,7 +28,7 @@ export const sendEmail = async (email: string): Promise<void> => {
   }
 
   const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
   let response: Response;
 
@@ -42,7 +42,7 @@ export const sendEmail = async (email: string): Promise<void> => {
   } catch (error) {
     throw new SendEmailError(controller.signal.aborted ? 'timeout' : 'network', { cause: error });
   } finally {
-    window.clearTimeout(timeoutId);
+    clearTimeout(timeoutId);
   }
 
   // The body is not needed on success, and error bodies are not guaranteed to be JSON

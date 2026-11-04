@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --ext .ts,.tsx --fix && stylelint \"**/*.{scss,css}\" --fix",
     "format": "prettier --write .",
     "prepare": "husky",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
   "eslint": {
     "configFile": "eslint.config.ts"
@@ -68,6 +69,7 @@
     "tsx": "^4.19.3",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.2"
+    "vite": "^6.3.2",
+    "vitest": "^3.2.7"
   }
 }
