@@ -4,6 +4,9 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
+  {
+    ignores: ['dist/', 'server/dist/', 'coverage/'],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

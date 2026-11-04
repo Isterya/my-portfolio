@@ -2,6 +2,7 @@ module.exports = {
   customSyntax: 'postcss-scss',
   plugins: ['stylelint-scss', 'stylelint-order'],
   extends: ['stylelint-config-standard-scss'],
+  ignoreFiles: ['dist/**', 'server/dist/**', 'coverage/**'],
   rules: {
     'order/properties-order': null,
     'selector-class-pattern': null,
