@@ -51,6 +51,12 @@ const Price = () => {
       <div
         className={`price-carousel${isMarquee ? '' : ' price-carousel--static'}`}
         ref={carouselRef}
+        // When the row scrolls natively it must be reachable and scrollable from the keyboard.
+        {...(!isMarquee && {
+          tabIndex: 0,
+          role: 'region',
+          'aria-label': t('a11y.priceList'),
+        })}
       >
         <div className="price-carousel__track" ref={trackRef}>
           {renderedData.map((price, i) => (
@@ -60,6 +66,7 @@ const Price = () => {
               icon={price.icon}
               price={price.price}
               description={t(price.description)}
+              isDuplicate={i >= priceData.length}
             />
           ))}
         </div>
