@@ -2,8 +2,6 @@ import { useTranslation } from 'react-i18next';
 
 import { Link, NavLink } from 'react-router-dom';
 
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
-
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 
@@ -20,8 +18,6 @@ const Footer = ({ simplified }: FooterProps) => {
   const { t } = useTranslation();
 
   const currentYear = new Date().getFullYear();
-
-  const isSmallDevice = useIsTouchDevice(1024);
 
   return (
     <footer className="footer">
@@ -65,77 +61,40 @@ const Footer = ({ simplified }: FooterProps) => {
             </ul>
           </div>
 
-          {isSmallDevice ? (
-            <div className="footer-columns">
-              {!simplified && (
-                <>
-                  <nav className="footer-nav" aria-labelledby="footer-nav-title">
-                    <h3 id="footer-nav-title" className="footer-title">
-                      {t('footer.titles.nav')}
-                    </h3>
-                    <ul className="footer-nav__list">
-                      {navLinks.map((link) => (
-                        <li key={link} className="footer-nav__item">
-                          <a href={`#${link.replace('footer.navigation.', '')}`}>{t(link)}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                </>
-              )}
-
-              <div className="footer-contact">
-                <h3 className="footer-title">{t('footer.titles.contact')}</h3>
-                <ul className="footer-contact__list">
-                  {contactInfo.map(({ text, href }) => (
-                    <li key={href} className="footer-contact__item">
-                      <a href={href}>{text}</a>
+          {/* One markup for every width: on desktop the wrapper uses display: contents, so the
+              columns lay out as items of .footer-wrapper; from 1024px down they form their own row. */}
+          <div className="footer-columns">
+            {!simplified && (
+              <nav className="footer-nav" aria-labelledby="footer-nav-title">
+                <h3 id="footer-nav-title" className="footer-title">
+                  {t('footer.titles.nav')}
+                </h3>
+                <ul className="footer-nav__list">
+                  {navLinks.map(({ id, labelKey }) => (
+                    <li key={id} className="footer-nav__item">
+                      <a href={`#${id}`}>{t(labelKey)}</a>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
+            )}
 
-              <div className="footer-lang">
-                <h3 className="footer-title">{t('footer.titles.lang')}</h3>
-                <LanguageSwitcher />
-              </div>
+            <div className="footer-contact">
+              <h3 className="footer-title">{t('footer.titles.contact')}</h3>
+              <ul className="footer-contact__list">
+                {contactInfo.map(({ text, href }) => (
+                  <li key={href} className="footer-contact__item">
+                    <a href={href}>{text}</a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ) : (
-            <>
-              {!simplified && (
-                <>
-                  <nav className="footer-nav" aria-labelledby="footer-nav-title">
-                    <h3 id="footer-nav-title" className="footer-title">
-                      {t('footer.titles.nav')}
-                    </h3>
-                    <ul className="footer-nav__list">
-                      {navLinks.map((link) => (
-                        <li key={link} className="footer-nav__item">
-                          <a href={`#${link.replace('footer.navigation.', '')}`}>{t(link)}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                </>
-              )}
 
-              <div className="footer-contact">
-                <h3 className="footer-title">{t('footer.titles.contact')}</h3>
-                <ul className="footer-contact__list">
-                  {contactInfo.map(({ text, href }) => (
-                    <li key={href} className="footer-contact__item">
-                      <a href={href}>{text}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="footer-lang">
-                <h3 className="footer-title">{t('footer.titles.lang')}</h3>
-                <LanguageSwitcher />
-              </div>
-            </>
-          )}
+            <div className="footer-lang">
+              <h3 className="footer-title">{t('footer.titles.lang')}</h3>
+              <LanguageSwitcher />
+            </div>
+          </div>
         </div>
 
         <div className="footer-divider" />

@@ -568,8 +568,13 @@
   }
 
   &-columns {
-    display: flex;
-    justify-content: space-between;
+    // Desktop: transparent wrapper, its columns are flex items of .footer-wrapper.
+    display: contents;
+
+    @include respond(lg) {
+      display: flex;
+      justify-content: space-between;
+    }
 
     @include respond(xs) {
       flex-direction: column;
