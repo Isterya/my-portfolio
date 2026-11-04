@@ -8,6 +8,7 @@ import { z } from 'zod';
 
 import { sendToTelegram } from './utils/sendToTelegram';
 import sendEmailToUser from './utils/sendEmailToUser';
+import { rememberDelivery, takeConfirmationQuota, wasRecentlyDelivered } from './utils/abuseGuard';
 
 dotenv.config();
 
@@ -33,7 +34,11 @@ app.use('/send-email', limiter);
 
 const emailSchema = z.object({
   email: z.string().email(),
+  // Honeypot: a field people never see; automated form fillers do fill it.
+  company: z.string().max(200).optional(),
 });
+
+const RECEIVED = { success: true, message: 'Request received' } as const;
 
 const asyncHandler =
   (fn: (req: Request, res: Response, next: NextFunction) => Promise<Response | undefined>) =>
@@ -49,7 +54,16 @@ app.post(
       return res.status(400).json({ success: false, error: 'Invalid email format' });
     }
 
-    const { email } = parsed.data;
+    const { email, company } = parsed.data;
+
+    // Bots get the same answer as people, so they cannot tell they were filtered out.
+    if (company) {
+      return res.status(200).json(RECEIVED);
+    }
+
+    if (wasRecentlyDelivered(email)) {
+      return res.status(200).json(RECEIVED);
+    }
 
     // The Telegram notification to the owner is the lead itself: without it the request failed,
     // and the visitor must not receive a "thanks, I'll get back to you" email.
@@ -60,15 +74,21 @@ app.post(
       return res.status(502).json({ success: false, error: 'Failed to deliver the request' });
     }
 
+    rememberDelivery(email);
+
     // The confirmation to the visitor is a courtesy: a typo in their address must not turn a
     // delivered lead into an error (and a duplicate resubmission).
-    try {
-      await sendEmailToUser(email);
-    } catch (err) {
-      console.error('⚠️ Lead delivered, but the confirmation email failed', err);
+    if (!takeConfirmationQuota()) {
+      console.warn('⚠️ Hourly confirmation email quota reached, skipping the confirmation');
+    } else {
+      try {
+        await sendEmailToUser(email);
+      } catch (err) {
+        console.error('⚠️ Lead delivered, but the confirmation email failed', err);
+      }
     }
 
-    return res.status(200).json({ success: true, message: 'Request received' });
+    return res.status(200).json(RECEIVED);
   }),
 );
 
