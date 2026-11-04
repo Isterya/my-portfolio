@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
-import { useLastUpdated } from '@/hooks/useLastUpdated';
+import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
 import SEO from '@/components/SEO';
 import { seoTerms } from '@/data/seoData';
@@ -13,7 +13,7 @@ import './userTermsPage.scss';
 const UserTermsPage = () => {
   const { t } = useTranslation();
 
-  const updatedDate = useLastUpdated('termsOfUse');
+  const updatedDate = useLegalRevisionDate('termsOfUse');
 
   return (
     <>

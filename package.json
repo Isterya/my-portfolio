@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate:dates && tsc -p tsconfig.typecheck.json && vite build",
+    "build": "tsc -p tsconfig.typecheck.json && vite build",
     "lint": "eslint . --ext .ts,.tsx && stylelint \"**/*.{scss,css}\"",
     "lint:fix": "eslint . --ext .ts,.tsx --fix && stylelint \"**/*.{scss,css}\" --fix",
     "format": "prettier --write .",
     "prepare": "husky",
-    "preview": "vite preview",
-    "generate:dates": "tsx src/scripts/generateLastUpdated.ts"
+    "preview": "vite preview"
   },
   "eslint": {
     "configFile": "eslint.config.ts"
