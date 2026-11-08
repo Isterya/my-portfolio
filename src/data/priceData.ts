@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import landingIcon from '../assets/icons/price/landing.svg';
 import infoIcon from '../assets/icons/price/informational.svg';
 import commerceIcon from '../assets/icons/price/e-commerce.svg';
@@ -17,42 +15,42 @@ export interface PriceData {
 
 export const priceData: PriceData[] = [
   {
-    id: uuidv4(),
+    id: 'landing',
     title: 'price.priceCards.landing.title',
     icon: landingIcon,
-    price: 120,
+    price: 350,
     description: 'price.priceCards.landing.description',
   },
   {
-    id: uuidv4(),
+    id: 'info',
     title: 'price.priceCards.info.title',
     icon: infoIcon,
-    price: 225,
+    price: 500,
     description: 'price.priceCards.info.description',
   },
   {
-    id: uuidv4(),
+    id: 'ecommerce',
     title: 'price.priceCards.ecommerce.title',
     icon: commerceIcon,
-    price: 275,
+    price: 1000,
     description: 'price.priceCards.ecommerce.description',
   },
   {
-    id: uuidv4(),
+    id: 'webapp',
     title: 'price.priceCards.webapp.title',
     icon: webAppIcon,
-    price: 450,
+    price: 1200,
     description: 'price.priceCards.webapp.description',
   },
   {
-    id: uuidv4(),
+    id: 'corporate',
     title: 'price.priceCards.corporate.title',
     icon: corporateIcon,
-    price: 350,
+    price: 800,
     description: 'price.priceCards.corporate.description',
   },
   {
-    id: uuidv4(),
+    id: 'custom',
     title: 'price.priceCards.custom.title',
     icon: customIcon,
     price: 'price.negotiable',

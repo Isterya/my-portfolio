@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export const sendToTelegram = async (email: string): Promise<void> => {
   const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
   const CHAT_ID = process.env.CHAT_ID;
@@ -12,11 +10,16 @@ export const sendToTelegram = async (email: string): Promise<void> => {
   const telegramAPI = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
 
   try {
-    await fetch(telegramAPI, {
+    const response = await fetch(telegramAPI, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: CHAT_ID, text: message }),
     });
+
+    if (!response.ok) {
+      const details = await response.text();
+      throw new Error(`Telegram API error ${response.status}: ${details}`);
+    }
   } catch (err) {
     console.error('❌ Telegram error:', err);
     throw err;

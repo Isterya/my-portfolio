@@ -1,42 +1,24 @@
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import react from 'eslint-plugin-react';
+import eslintReact from '@eslint-react/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
-export default [
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
+export default defineConfig([
   {
-    files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        // project: './tsconfig.eslint.json',
-      },
-    },
-    plugins: {
-      react,
-      'react-hooks': reactHooks,
-    },
+    ignores: ['dist/', 'server/dist/', 'coverage/'],
+  },
+  js.configs.recommended,
+  tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      eslintReact.configs['recommended-typescript'],
+      eslintReact.configs['disable-conflict-eslint-plugin-react-hooks'],
+      reactHooks.configs.flat.recommended,
+    ],
     rules: {
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
-      'react/jsx-uses-react': 'off',
-      'react/jsx-uses-vars': 'warn',
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
     },
   },
   {
@@ -55,4 +37,4 @@ export default [
       '@typescript-eslint/no-require-imports': 'off',
     },
   },
-];
+]);

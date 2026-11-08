@@ -12,8 +12,10 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
   const { t } = useTranslation();
 
   return (
-    <nav className="toc" aria-label="Table of contents">
-      <h4>{t('tableOfContents.title')}</h4>
+    <nav className="toc" aria-labelledby="toc-title">
+      <h2 id="toc-title" className="toc__title">
+        {t('tableOfContents.title')}
+      </h2>
       <ul>
         {sections.map((section) => (
           <li key={section.id}>

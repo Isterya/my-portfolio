@@ -28,7 +28,7 @@
     font-weight: 600;
     font-size: 64px;
     line-height: 64px;
-    color: #344054;
+    color: $text-secondary;
 
     @include respond(xl) {
       font-size: 56px;
@@ -78,7 +78,7 @@
       font-weight: 600;
       font-size: 35px;
       line-height: 35px;
-      color: #344054;
+      color: $text-secondary;
 
       @include respond(xl) {
         font-size: 30px;
@@ -123,7 +123,7 @@
       font-weight: 400;
       font-size: 24px;
       line-height: 24px;
-      color: #98a2b3;
+      color: $text-muted;
 
       @include respond(md) {
         font-size: 18px;
@@ -146,7 +146,7 @@
       font-weight: 500;
       font-size: 20px;
       line-height: 30px;
-      color: #98a2b3;
+      color: $text-muted;
 
       @include respond(xl) {
         font-size: 16px;
@@ -253,7 +253,7 @@
   }
 
   &__link {
-    color: #ff7f00;
+    color: $accent;
     transition: color 0.2s ease;
 
     &:hover {
@@ -285,8 +285,8 @@
   height: 100%;
   background: repeating-linear-gradient(
     to bottom,
-    #344054,
-    #344054 8px,
+    $text-secondary,
+    $text-secondary 8px,
     transparent 8px,
     transparent 16px
   );
@@ -299,7 +299,7 @@
   transform: translate(-50%, -50%);
   width: 48px;
   height: 48px;
-  border: 2px dashed #1d2939;
+  border: 2px dashed $dark-blue;
   border-radius: 48px;
   background: white;
   z-index: 1;
@@ -312,7 +312,7 @@
 
   &.dark {
     .timeline-point-inner {
-      background-color: #1d2939;
+      background-color: $dark-blue;
     }
   }
 

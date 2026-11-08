@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useLastUpdated } from '@/hooks/useLastUpdated';
+import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
+import { CONTACT_EMAIL, SITE_HOST, SITE_URL } from '@/config/site';
 import { privacyPolicySections } from '@/data/tocData';
 import { seoPolicy } from '@/data/seoData';
 import SEO from '@/components/SEO';
@@ -11,7 +12,7 @@ import './privacyPolicyPage.scss';
 const PrivacyPolicyPage = () => {
   const { t } = useTranslation();
 
-  const updatedDate = useLastUpdated('privacyPolicy');
+  const updatedDate = useLegalRevisionDate('privacyPolicy');
 
   return (
     <>
@@ -26,8 +27,8 @@ const PrivacyPolicyPage = () => {
 
           <p>
             {t('privacy.intro1.start')}
-            <a href="http://www.isterya.dev" target="_blank" rel="noopener noreferrer">
-              {t('privacy.intro1.site')}
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
+              {SITE_HOST}
             </a>
             {t('privacy.intro1.end')}
           </p>
@@ -37,8 +38,7 @@ const PrivacyPolicyPage = () => {
           <h3 id="who">{t('privacy.whoTitle')}</h3>
           <p>{t('privacy.whoText1')}</p>
           <p>
-            {t('privacy.whoText2')}{' '}
-            <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
+            {t('privacy.whoText2')} <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
 
           <h3 id="data">{t('privacy.dataTitle')}</h3>
@@ -85,8 +85,7 @@ const PrivacyPolicyPage = () => {
             <li>{t('privacy.rightsList.complaint')}</li>
           </ul>
           <p>
-            {t('privacy.rightsText2')}{' '}
-            <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
+            {t('privacy.rightsText2')} <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
 
           <h3 id="retention">{t('privacy.retentionTitle')}</h3>
@@ -95,6 +94,7 @@ const PrivacyPolicyPage = () => {
             <li>{t('privacy.retentionList.services')}</li>
             <li>{t('privacy.retentionList.legal')}</li>
           </ul>
+          <p>{t('privacy.retentionText2')}</p>
 
           <h3 id="security">{t('privacy.securityTitle')}</h3>
           <p>{t('privacy.securityText')}</p>
@@ -111,8 +111,7 @@ const PrivacyPolicyPage = () => {
           <h3 id="contact">{t('privacy.contactTitle')}</h3>
           <p>{t('privacy.contactText1')}</p>
           <p>
-            {t('privacy.contactText2')}{' '}
-            <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
+            {t('privacy.contactText2')} <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </div>
       </div>

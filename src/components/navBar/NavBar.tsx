@@ -1,8 +1,8 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'motion/react';
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+import { useMaxWidth } from '@/hooks/useMaxWidth';
 
 import logo from '@/assets/icons/logo.svg';
 
@@ -25,28 +25,65 @@ const NavBar = () => {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useIsTouchDevice(768);
+  const isMobile = useMaxWidth(768);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const sectionsRef = useRef<HTMLElement[]>([]);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    document.documentElement.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    if (!isMenuOpen) return;
+
+    const html = document.documentElement;
+    const previousOverflow = html.style.overflow;
+    html.style.overflow = 'hidden';
+
+    return () => {
+      html.style.overflow = previousOverflow;
+    };
   }, [isMenuOpen]);
 
   useEffect(() => {
+    if (!isMenuOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMenuOpen(false);
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        burgerRef.current?.focus();
+        return;
+      }
+
+      if (e.key !== 'Tab' || !mobileMenuRef.current) return;
+
+      const focusable = [
+        burgerRef.current,
+        ...mobileMenuRef.current.querySelectorAll<HTMLElement>('a[href]'),
+      ].filter((el): el is HTMLElement => Boolean(el));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     sectionsRef.current = Array.from(document.querySelectorAll<HTMLElement>('section'));
 
-    const handleScroll = () => {
+    let frame = 0;
+
+    const updateActiveSection = () => {
+      frame = 0;
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > SCROLL_THRESHOLD);
 
@@ -64,8 +101,15 @@ const NavBar = () => {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateActiveSection);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -73,9 +117,13 @@ const NavBar = () => {
       {/* Burger btn */}
       {isMobile && (
         <button
+          ref={burgerRef}
+          type="button"
           className={`burger ${isMenuOpen ? 'open' : ''}`}
           onClick={toggleMenu}
-          aria-label="Toggle menu"
+          aria-label={t('a11y.menu')}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span></span>
           <span></span>
@@ -85,14 +133,17 @@ const NavBar = () => {
       {/* Mobile Nav */}
       <AnimatePresence>
         {isMobile && isMenuOpen && (
-          <motion.div
+          <m.nav
+            ref={mobileMenuRef}
+            id="mobile-menu"
             className="mobile-menu"
+            aria-label={t('a11y.mainNav')}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <motion.ul
+            <m.ul
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -104,8 +155,8 @@ const NavBar = () => {
                 },
               }}
             >
-              {SECTIONS.map((section, _) => (
-                <motion.li
+              {SECTIONS.map((section) => (
+                <m.li
                   key={section}
                   variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -117,17 +168,20 @@ const NavBar = () => {
                   <a href={`#${section}`} onClick={() => setIsMenuOpen(false)}>
                     {t(`navBar.${section}`)}
                   </a>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.nav>
         )}
       </AnimatePresence>
 
       {/* Desktop Nav */}
       {!isMobile && (
-        <motion.div initial="hidden" animate="visible" variants={menuVariants}>
-          <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+        <m.div initial="hidden" animate="visible" variants={menuVariants}>
+          <nav
+            className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}
+            aria-label={t('a11y.mainNav')}
+          >
             <ul className="navbar-list navbar-list--left">
               {SECTIONS.slice(0, 3).map((section) => (
                 <li key={section}>
@@ -143,7 +197,7 @@ const NavBar = () => {
 
             <div className="navbar-logo">
               <a href="#home">
-                <img src={logo} alt="Logotype" />
+                <img src={logo} alt={t('a11y.home')} />
               </a>
             </div>
 
@@ -160,7 +214,7 @@ const NavBar = () => {
               ))}
             </ul>
           </nav>
-        </motion.div>
+        </m.div>
       )}
     </>
   );

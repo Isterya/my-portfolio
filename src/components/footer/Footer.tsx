@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router';
 
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
-
+import { TELEGRAM_URL } from '@/config/site';
 import { socialLinks, navLinks, contactInfo } from '../../data/footerData';
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 
@@ -16,12 +15,10 @@ type FooterProps = {
   simplified: boolean;
 };
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 const Footer = ({ simplified }: FooterProps) => {
   const { t } = useTranslation();
-
-  const currentYear = new Date().getFullYear();
-
-  const isSmallDevice = useIsTouchDevice(1024);
 
   return (
     <footer className="footer">
@@ -32,12 +29,12 @@ const Footer = ({ simplified }: FooterProps) => {
               <h2 className="footer-telegram__header">{t('footer.telegram.connect')}</h2>
               <a
                 className="footer-telegram__link"
-                href="https://t.me/perfectn1ght"
+                href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {t('footer.telegram.link')}
-                <img src={ArrowUp} alt="Arrow for the link" />
+                <img src={ArrowUp} alt="" />
               </a>
             </div>
 
@@ -49,96 +46,61 @@ const Footer = ({ simplified }: FooterProps) => {
           <div className="footer-social">
             <div className="footer-social__logo">
               <Link to="/">
-                <img src={logo} alt="isterya logo" />
+                <img src={logo} alt={t('a11y.home')} />
               </Link>
             </div>
             <p className="footer-social__descr">{t('footer.social')}</p>
 
             <ul className="footer-social__links">
-              {socialLinks.map(({ icon, alt, href }) => (
-                <li key={alt} className="footer-social__item">
+              {socialLinks.map(({ icon, label, href }) => (
+                <li key={label} className="footer-social__item">
                   <a href={href} target="_blank" rel="noopener noreferrer">
-                    <img src={icon} alt={`Link to ${alt}`} />
+                    <img src={icon} alt={label} />
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {isSmallDevice ? (
-            <div className="footer-columns">
-              {!simplified && (
-                <>
-                  <nav className="footer-nav">
-                    <h4 className="footer-title">{t('footer.titles.nav')}</h4>
-                    <ul className="footer-nav__list">
-                      {navLinks.map((link) => (
-                        <li key={link} className="footer-nav__item">
-                          <a href={`#${link.replace('footer.navigation.', '')}`}>{t(link)}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                </>
-              )}
-
-              <div className="footer-contact">
-                <h4 className="footer-title">{t('footer.titles.contact')}</h4>
-                <ul className="footer-contact__list">
-                  {contactInfo.map(({ text, href }) => (
-                    <li key={href} className="footer-contact__item">
-                      <a href={href}>{text}</a>
+          <div className="footer-columns">
+            {!simplified && (
+              <nav className="footer-nav" aria-labelledby="footer-nav-title">
+                <h3 id="footer-nav-title" className="footer-title">
+                  {t('footer.titles.nav')}
+                </h3>
+                <ul className="footer-nav__list">
+                  {navLinks.map(({ id, labelKey }) => (
+                    <li key={id} className="footer-nav__item">
+                      <a href={`#${id}`}>{t(labelKey)}</a>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
+            )}
 
-              <div className="footer-lang">
-                <h4 className="footer-title">{t('footer.titles.lang')}</h4>
-                <LanguageSwitcher />
-              </div>
+            <div className="footer-contact">
+              <h3 className="footer-title">{t('footer.titles.contact')}</h3>
+              <ul className="footer-contact__list">
+                {contactInfo.map(({ text, href }) => (
+                  <li key={href} className="footer-contact__item">
+                    <a href={href}>{text}</a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ) : (
-            <>
-              {!simplified && (
-                <>
-                  <nav className="footer-nav">
-                    <h4 className="footer-title">{t('footer.titles.nav')}</h4>
-                    <ul className="footer-nav__list">
-                      {navLinks.map((link) => (
-                        <li key={link} className="footer-nav__item">
-                          <a href={`#${link.replace('footer.navigation.', '')}`}>{t(link)}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                </>
-              )}
 
-              <div className="footer-contact">
-                <h4 className="footer-title">{t('footer.titles.contact')}</h4>
-                <ul className="footer-contact__list">
-                  {contactInfo.map(({ text, href }) => (
-                    <li key={href} className="footer-contact__item">
-                      <a href={href}>{text}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="footer-lang">
-                <h4 className="footer-title">{t('footer.titles.lang')}</h4>
-                <LanguageSwitcher />
-              </div>
-            </>
-          )}
+            <div className="footer-lang">
+              <h3 className="footer-title">{t('footer.titles.lang')}</h3>
+              <LanguageSwitcher />
+            </div>
+          </div>
         </div>
 
         <div className="footer-divider" />
 
         <div className="footer-rights">
           <p>
-            {t('footer.rights.copyright')} 2025-{currentYear} {t('footer.rights.name')}
+            {t('footer.rights.copyright')} 2025-{CURRENT_YEAR} {t('footer.rights.name')}
           </p>
 
           <p>

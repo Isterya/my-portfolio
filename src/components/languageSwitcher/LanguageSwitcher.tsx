@@ -1,69 +1,77 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import i18n from '@/i18n';
+import { FocusEvent, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { m, AnimatePresence } from 'motion/react';
+
+import { AppLanguage, LANGUAGES, toAppLanguage } from '@/i18n/languages';
 
 import chevron from '@/assets/icons/chevron.svg';
 
 import './languageSwitcher.scss';
 
-type Language = 'English' | 'Русский' | 'Polski';
-
-const languages: Language[] = ['English', 'Русский', 'Polski'];
-
 const LanguageSwitcher = () => {
+  const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedLang, setSelectedLang] = useState<Language>('English');
+
+  const rootRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const activeLanguage = toAppLanguage(i18n.resolvedLanguage);
+  const activeLabel = LANGUAGES.find(({ code }) => code === activeLanguage)?.label;
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-  const handleSelect = (lang: Language) => {
-    setSelectedLang(lang);
-
-    i18n.changeLanguage(lang === 'Русский' ? 'ru' : lang === 'Polski' ? 'pl' : 'en');
+  const handleSelect = (language: AppLanguage) => {
+    i18n.changeLanguage(language);
     setIsOpen(false);
+    toggleRef.current?.focus();
   };
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleClickOutside = (e: MouseEvent) => {
-      if (!(e.target as HTMLElement).closest('.lang-switcher')) {
-        setIsOpen(false);
-      }
+      if (!rootRef.current?.contains(e.target as Node)) setIsOpen(false);
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setIsOpen(false);
+      toggleRef.current?.focus();
     };
 
     document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    const handleLanguageChanged = (lng: string) => {
-      document.documentElement.setAttribute('data-lang', lng);
-      setSelectedLang(lng === 'ru' ? 'Русский' : lng === 'pl' ? 'Polski' : 'English');
-    };
-
-    i18n.on('languageChanged', handleLanguageChanged);
-
-    handleLanguageChanged(i18n.language);
-
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      i18n.off('languageChanged', handleLanguageChanged);
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isOpen]);
+
+  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setIsOpen(false);
+  };
+
   return (
-    <div className="lang-switcher">
-      <motion.button
+    <div className="lang-switcher" ref={rootRef} onBlur={handleBlur}>
+      <m.button
+        ref={toggleRef}
+        type="button"
         className="lang-switcher__toggle"
         onClick={toggleDropdown}
         whileTap={{ scale: 0.95 }}
+        aria-expanded={isOpen}
+        aria-label={`${activeLabel} — ${t('a11y.changeLanguage')}`}
       >
-        <span>{selectedLang}</span>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
-          <img src={chevron} alt="chevron" />
-        </motion.div>
-      </motion.button>
+        <span>{activeLabel}</span>
+        <m.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
+          <img src={chevron} alt="" />
+        </m.div>
+      </m.button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.ul
+          <m.ul
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             className="lang-switcher__dropdown"
             initial="hidden"
@@ -74,23 +82,26 @@ const LanguageSwitcher = () => {
               visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
             }}
           >
-            {languages.map((lang) => (
-              <motion.li
-                key={lang}
+            {LANGUAGES.map(({ code, label }) => (
+              <m.li
+                key={code}
                 variants={{
                   hidden: { opacity: 0, y: -5 },
                   visible: { opacity: 1, y: 0 },
                 }}
               >
                 <button
-                  className={`lang-switcher__item ${selectedLang === lang ? 'active' : ''}`}
-                  onClick={() => handleSelect(lang)}
+                  type="button"
+                  className={`lang-switcher__item ${activeLanguage === code ? 'active' : ''}`}
+                  lang={code}
+                  aria-current={activeLanguage === code ? 'true' : undefined}
+                  onClick={() => handleSelect(code)}
                 >
-                  {lang}
+                  {label}
                 </button>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ul>
+          </m.ul>
         )}
       </AnimatePresence>
     </div>

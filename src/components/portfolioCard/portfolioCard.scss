@@ -3,8 +3,6 @@
   width: 633px;
   height: 371px;
   border-radius: 20px;
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
   transition: transform 0.3s ease;
 
@@ -39,6 +37,16 @@
 
   &:hover {
     transform: scale(1.02);
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
   }
 
   &__title {
@@ -234,7 +242,7 @@
     right: 10px;
     width: 64px;
     height: 64px;
-    border: 1px solid #fd853a;
+    border: 1px solid $accent-soft;
     border-radius: 60px;
     z-index: 4;
     display: flex;
@@ -287,7 +295,7 @@
     }
 
     &:hover {
-      background: #fd853a;
+      background: $accent-soft;
 
       .portfolio-card__icon-path {
         fill: #fffaf5;
@@ -295,7 +303,7 @@
     }
 
     .portfolio-card__icon-path {
-      fill: #fd853a;
+      fill: $accent-soft;
       transition: fill 0.3s ease;
     }
   }

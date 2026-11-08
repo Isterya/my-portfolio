@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'motion/react';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 
@@ -9,7 +9,7 @@ import quote from '@/assets/icons/hero/quote.svg';
 import stars from '@/assets/icons/hero/stars.svg';
 import arrowUp from '@/assets/icons/hero/arrow-up.svg';
 
-import character from '@/assets/img/hero/hero-character.png';
+import character from '@/assets/img/hero/hero-character.webp';
 
 import './hero.scss';
 
@@ -21,65 +21,67 @@ const Hero = () => {
   const years = getYearsOfExperience();
 
   return (
-    <section id="home" className="hero" role="region" aria-label="Hero section">
+    <section id="home" className="hero" aria-labelledby="hero-title">
       <div className="container">
         <div className="hero-wrapper">
-          <motion.div
+          <m.div
             className="hero-quote"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            role="note"
-            aria-label="Motivational quote"
           >
-            <img
-              className="hero-quote__img"
-              src={quote}
-              alt="Quote decoration in the form of quotation marks"
-            />
+            <img className="hero-quote__img" src={quote} alt="" />
 
             <p className="hero-quote__text">{t('hero.quote')}</p>
-          </motion.div>
+          </m.div>
 
           <div className="hero-header">
             <div className="hero-header__subtitle">{t('hero.hello')}</div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="hero-header__main-title" aria-label="I’m Bohdan, Web Developer">
+              <h1 id="hero-title" className="hero-header__main-title">
                 {t('hero.introStart')} <span>{t('hero.introName')}</span>, <br />{' '}
                 {t('hero.introEnd')}
               </h1>
-            </motion.div>
+            </m.div>
           </div>
 
-          <motion.div
+          <m.div
             className="hero-experience"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            role="note"
-            aria-label="Experience rating"
           >
-            <img className="hero-experience__img" src={stars} alt="5-star experience rating" />
+            <img className="hero-experience__img" src={stars} alt="" />
 
             <div>
               <div className="hero-experience__years">
-                {years} {t('hero.years')}
+                {years} {t('hero.years', { count: years })}
               </div>
               <div className="hero-experience__descr">{t('hero.experience')}</div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="hero-character">
-          <motion.img className="hero-character__img" src={character} alt="A mascot character" />
+          <m.img
+            className="hero-character__img"
+            src={character}
+            alt=""
+            width={597}
+            height={616}
+            fetchPriority="high"
+          />
 
           <div className="hero-links">
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.03,
                 transition: { type: 'spring', stiffness: 300 },
@@ -91,10 +93,10 @@ const Hero = () => {
               onMouseEnter={() => setActiveLink('portfolio')}
             >
               {t('hero.linkPortfolio')}
-              <img src={arrowUp} alt="Go to Portfolio" />
-            </motion.a>
+              <img src={arrowUp} alt="" />
+            </m.a>
 
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.03,
                 transition: { type: 'spring', stiffness: 300 },
@@ -106,8 +108,8 @@ const Hero = () => {
               onMouseEnter={() => setActiveLink('about')}
             >
               {t('hero.linkAbout')}
-              <img src={arrowUp} alt="Go to About" />
-            </motion.a>
+              <img src={arrowUp} alt="" />
+            </m.a>
           </div>
         </div>
       </div>

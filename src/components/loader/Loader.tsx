@@ -1,21 +1,18 @@
-import { motion } from 'framer-motion';
+import { m } from 'motion/react';
 import { ClipLoader } from 'react-spinners';
 
 import './loader.scss';
 
 const Loader = () => {
   return (
-    <motion.div
+    <m.div
       className="loader-overlay"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <ClipLoader
-        color="#ff7f00"
-        size={50}
-      />
-    </motion.div>
+      <ClipLoader color="#ff7f00" size={50} />
+    </m.div>
   );
 };
 

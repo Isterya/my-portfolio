@@ -1,64 +1,62 @@
-import { v4 as uuidv4 } from 'uuid';
+import firstBg from '../assets/img/works/portf-work-1.webp';
+import secondBg from '../assets/img/works/portf-work-2.webp';
 
-import firstBg from '../assets/img/works/portf-work-1.jpg';
-import secondBg from '../assets/img/works/portf-work-2.jpg';
+import thirdBg from '../assets/img/works/portf-work-3.webp';
+import fourthBg from '../assets/img/works/portf-work-4.webp';
 
-import thirdBg from '../assets/img/works/portf-work-3.jpg';
-import fourthBg from '../assets/img/works/portf-work-4.jpg';
-
-import fifthBg from '../assets/img/works/portf-work-5.jpg';
-import sixthBg from '../assets/img/works/portf-work-6.jpg';
+import fifthBg from '../assets/img/works/portf-work-5.webp';
+import sixthBg from '../assets/img/works/portf-work-6.webp';
 
 export interface PortfolioData {
   id: string;
   title: string;
-  background: string;
+  image: string;
   description: string;
   link: string;
 }
 
 export const portfolioData: PortfolioData[] = [
   {
-    id: uuidv4(),
+    id: 'uber',
     title: 'Uber',
-    background: firstBg,
+    image: firstBg,
     description: 'portfolio.uber.description',
     link: 'https://uber-tau-jade.vercel.app/',
   },
   {
-    id: uuidv4(),
+    id: 'diary',
     title: 'Diary',
-    background: secondBg,
+    image: secondBg,
     description: 'portfolio.diary.description',
     link: 'https://school-diary-virid.vercel.app/',
   },
 
   {
-    id: uuidv4(),
+    id: 'art',
     title: 'Art',
-    background: thirdBg,
+    image: thirdBg,
     description: 'portfolio.art.description',
     link: 'https://picture-art-two.vercel.app/',
   },
   {
-    id: uuidv4(),
+    id: 'marvel',
     title: 'Marvel',
-    background: fourthBg,
+    image: fourthBg,
     description: 'portfolio.marvel.description',
     link: 'https://marvel-chi-eight.vercel.app/',
   },
 
   {
-    id: uuidv4(),
+    id: 'coffee',
     title: 'Coffee Shop',
-    background: fifthBg,
+    image: fifthBg,
     description: 'portfolio.coffee.description',
     link: 'https://coffee-two-gilt.vercel.app/',
   },
   {
-    id: uuidv4(),
+    id: 'irvas',
     title: 'Irvas',
-    background: sixthBg,
+    image: sixthBg,
     description: 'portfolio.irvas.description',
     link: 'https://irvas-pied.vercel.app/',
   },

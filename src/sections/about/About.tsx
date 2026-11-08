@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next';
 
-import { motion } from 'framer-motion';
+import { m, type Variants } from 'motion/react';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 import { getAge } from '@/utils/getAge';
 
-import character from '@/assets/img/about/about-character.png';
+import character from '@/assets/img/about/about-character.webp';
 
 import './about.scss';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -18,63 +18,73 @@ const containerVariants = {
   },
 };
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
+
+const BIRTH_DATE = new Date(2007, 8, 6);
 
 const About = () => {
   const { t } = useTranslation();
 
   const years = getYearsOfExperience();
-  const age = getAge(new Date('2007-09-06'));
+  const age = getAge(BIRTH_DATE);
 
   return (
-    <section id="about" className="about" role="region" aria-label="About me section">
+    <section id="about" className="about" aria-labelledby="about-title">
       <div className="container">
         <div className="about-wrapper">
-          <motion.div
+          <m.div
             className="about-character"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <img className="about-character__img" src={character} alt="A mascot character" />
-          </motion.div>
+            <img
+              className="about-character__img"
+              src={character}
+              alt=""
+              width={409}
+              height={606}
+              loading="lazy"
+              decoding="async"
+            />
+          </m.div>
 
-          <motion.div
+          <m.div
             className="about-text"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <motion.h2 className="about-text__header" variants={fadeInUp}>
+            <m.h2 id="about-title" className="about-text__header" variants={fadeInUp}>
               {t('about.title.before')} <span>{t('about.title.highlight')}</span>?
-            </motion.h2>
+            </m.h2>
 
-            <motion.p className="about-text__descr" variants={fadeInUp}>
+            <m.p className="about-text__descr" variants={fadeInUp}>
               {t('about.description', { age })}
-            </motion.p>
+            </m.p>
 
-            <motion.div className="about-text__stats" variants={fadeInUp}>
+            <m.div className="about-text__stats" variants={fadeInUp}>
               <div className="about-text__stats-projects">
-                <h3>8+</h3>
+                <p className="about-text__stats-value">8+</p>
                 <p>{t('about.projects')}</p>
               </div>
               <div className="about-text__stats-experience">
-                <h3>
+                <p className="about-text__stats-value">
                   {years}+ {t('about.years')}
-                </h3>
+                </p>
                 <p>{t('about.experience')}</p>
               </div>
-            </motion.div>
+            </m.div>
 
-            <a className="about-text__hire" href="#contact" aria-label="Scroll to contact section">
+            <a className="about-text__hire" href="#contact">
               {t('about.hire')}
             </a>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

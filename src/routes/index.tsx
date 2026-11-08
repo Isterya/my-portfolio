@@ -1,9 +1,9 @@
 import { lazy } from 'react';
-import { RouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router';
 
 import PageLayout from '@/layouts/PageLayout';
+import HomePage from '@/pages/HomePage';
 
-const HomePage = lazy(() => import('@/pages/HomePage'));
 const PrivacyPolicyPage = lazy(() => import('@/pages/privacyPolicyPage/PrivacyPolicyPage'));
 const UserTermsPage = lazy(() => import('@/pages/userTermsPage/UserTermsPage'));
 const Page404 = lazy(() => import('@/pages/page404/Page404'));

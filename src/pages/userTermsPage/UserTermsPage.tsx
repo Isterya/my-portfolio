@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import { useTranslation } from 'react-i18next';
-import { useLastUpdated } from '@/hooks/useLastUpdated';
+import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
+import { CONTACT_EMAIL, SITE_HOST, SITE_URL } from '@/config/site';
 import SEO from '@/components/SEO';
 import { seoTerms } from '@/data/seoData';
 import TableOfContents from '@/components/tableOfContents/TableOfContents';
@@ -13,7 +14,7 @@ import './userTermsPage.scss';
 const UserTermsPage = () => {
   const { t } = useTranslation();
 
-  const updatedDate = useLastUpdated('termsOfUse');
+  const updatedDate = useLegalRevisionDate('termsOfUse');
 
   return (
     <>
@@ -28,8 +29,8 @@ const UserTermsPage = () => {
 
           <p>
             {t('terms.intro.start')}
-            <a href="http://www.isterya.dev" target="_blank" rel="noopener noreferrer">
-              {t('terms.intro.site')}
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
+              {SITE_HOST}
             </a>
             {t('terms.intro.end')}
           </p>
@@ -70,7 +71,7 @@ const UserTermsPage = () => {
           <p>{t('terms.contactText')}</p>
 
           <p>
-            <a href="mailto:by.connectme@gmail.com">by.connectme@gmail.com</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </div>
       </div>

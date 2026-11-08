@@ -83,12 +83,12 @@
       left: 0;
       width: 0;
       height: 2px;
-      background-color: #ff7f00;
+      background-color: $accent;
       transition: width 0.3s ease;
     }
 
     &:hover {
-      color: #ff7f00;
+      color: $accent;
 
       svg {
         transform: translateX(5px);
@@ -98,5 +98,38 @@
         width: 100%;
       }
     }
+  }
+
+  &-play {
+    margin-top: 28px;
+    padding: 10px 20px;
+    border: 2px solid $accent;
+    border-radius: 999px;
+    background: transparent;
+    color: $ink;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      background: $ink;
+      border-color: $ink;
+      color: #fff;
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgb(255 127 0 / 40%);
+      outline-offset: 2px;
+    }
+  }
+
+  &-game-loading {
+    min-height: 200px;
+    margin-bottom: 40px;
+    color: #666;
   }
 }

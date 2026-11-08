@@ -4,9 +4,11 @@ import instagramIcon from '../assets/icons/socials/instagram-white.svg';
 import githubIcon from '../assets/icons/socials/github-white.svg';
 import linkedinIcon from '@/assets/icons/socials/linkedin-white.svg';
 
+import { CONTACT_EMAIL, SITE_HOST, SITE_URL, TELEGRAM_URL } from '@/config/site';
+
 export interface SocialLinks {
   icon: string;
-  alt: string;
+  label: string;
   href: string;
 }
 
@@ -18,28 +20,33 @@ export interface ContactInfo {
 export const socialLinks: SocialLinks[] = [
   {
     icon: facebookIcon,
-    alt: 'facebook',
+    label: 'Facebook',
     href: 'https://www.facebook.com/bohdan.one.bro',
   },
-  { icon: telegramIcon, alt: 'telegram', href: 'https://t.me/perfectn1ght' },
+  { icon: telegramIcon, label: 'Telegram', href: TELEGRAM_URL },
   {
     icon: instagramIcon,
-    alt: 'instagram',
+    label: 'Instagram',
     href: 'https://www.instagram.com/dad.isterya/',
   },
-  { icon: githubIcon, alt: 'github', href: 'https://github.com/Isterya' },
-  { icon: linkedinIcon, alt: 'linkedIn', href: 'https://www.linkedin.com/in/bohdan-yevsieiev/' },
+  { icon: githubIcon, label: 'GitHub', href: 'https://github.com/Isterya' },
+  { icon: linkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/bohdan-yevsieiev/' },
 ];
 
-export const navLinks: string[] = [
-  'footer.navigation.home',
-  'footer.navigation.skills',
-  'footer.navigation.experience',
-  'footer.navigation.portfolio',
-  'footer.navigation.price',
+export interface FooterNavLink {
+  id: string;
+  labelKey: string;
+}
+
+export const navLinks: FooterNavLink[] = [
+  { id: 'home', labelKey: 'footer.navigation.home' },
+  { id: 'skills', labelKey: 'footer.navigation.skills' },
+  { id: 'experience', labelKey: 'footer.navigation.experience' },
+  { id: 'portfolio', labelKey: 'footer.navigation.portfolio' },
+  { id: 'price', labelKey: 'footer.navigation.price' },
 ];
 
 export const contactInfo: ContactInfo[] = [
-  { text: 'by.connectme@gmail.com', href: 'mailto:by.connectme@gmail.com' },
-  { text: 'www.isterya.dev', href: 'http://www.isterya.dev' },
+  { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+  { text: SITE_HOST, href: SITE_URL },
 ];

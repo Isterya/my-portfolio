@@ -34,7 +34,7 @@
       font-size: 64px;
       line-height: 96px;
       text-align: center;
-      color: #344054;
+      color: $text-secondary;
 
       @include respond(xl) {
         font-size: 56px;

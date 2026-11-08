@@ -1,25 +1,50 @@
 import { useEffect, useRef } from 'react';
 
+export const MARQUEE_COPIES = 3;
+
+const getLoopWidth = (track: HTMLElement) => {
+  const first = track.children[0] as HTMLElement | undefined;
+  const firstCopy = track.children[track.children.length / MARQUEE_COPIES] as
+    HTMLElement | undefined;
+
+  return first && firstCopy ? firstCopy.offsetLeft - first.offsetLeft : 0;
+};
+
+type UseCarouselOptions = {
+  speed?: number;
+  disabled?: boolean;
+  paused?: boolean;
+};
+
 export const useCarousel = (
   ref: React.RefObject<HTMLDivElement | null>,
-  speed: number = 1.5,
-  disableAnimation: boolean = false,
+  { speed = 1.5, disabled = false, paused = false }: UseCarouselOptions = {},
 ) => {
   const animationRef = useRef<number | null>(null);
-  const scrollPos = useRef<number>(0);
-  const currentSpeed = useRef<number>(speed);
-  const targetSpeed = useRef<number>(speed);
+  const scrollPosRef = useRef<number>(0);
+  const currentSpeedRef = useRef<number>(speed);
+  const targetSpeedRef = useRef<number>(speed);
 
   useEffect(() => {
     const track = ref.current;
-    if (!track || disableAnimation) return;
+    if (!track) return;
+
+    if (disabled) {
+      scrollPosRef.current = 0;
+      track.style.transform = '';
+      return;
+    }
+
+    if (paused) return;
+
+    targetSpeedRef.current = track.matches(':hover') ? 0 : speed;
 
     const handleMouseEnter = () => {
-      targetSpeed.current = 0;
+      targetSpeedRef.current = 0;
     };
 
     const handleMouseLeave = () => {
-      targetSpeed.current = speed;
+      targetSpeedRef.current = speed;
     };
 
     track.addEventListener('mouseenter', handleMouseEnter);
@@ -27,14 +52,16 @@ export const useCarousel = (
 
     const animate = () => {
       if (track) {
-        currentSpeed.current += (targetSpeed.current - currentSpeed.current) * 0.08;
-        scrollPos.current += currentSpeed.current;
+        currentSpeedRef.current += (targetSpeedRef.current - currentSpeedRef.current) * 0.08;
+        scrollPosRef.current += currentSpeedRef.current;
 
-        if (scrollPos.current >= track.scrollWidth / 3) {
-          scrollPos.current = 0;
+        const loopWidth = getLoopWidth(track);
+
+        if (loopWidth > 0 && scrollPosRef.current >= loopWidth) {
+          scrollPosRef.current -= loopWidth;
         }
 
-        track.style.transform = `translateX(-${scrollPos.current}px)`;
+        track.style.transform = `translateX(-${scrollPosRef.current}px)`;
       }
 
       animationRef.current = requestAnimationFrame(animate);
@@ -47,24 +74,5 @@ export const useCarousel = (
       track.removeEventListener('mouseleave', handleMouseLeave);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [ref, speed, disableAnimation]);
-
-  useEffect(() => {
-    const cards = document.querySelectorAll('.price-card');
-    if (!cards.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    cards.forEach((card) => observer.observe(card));
-    return () => cards.forEach((card) => observer.unobserve(card));
-  }, []);
+  }, [ref, speed, disabled, paused]);
 };

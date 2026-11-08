@@ -2,38 +2,38 @@ import { useTranslation } from 'react-i18next';
 
 import { useMemo } from 'react';
 import { useSlider } from '@/hooks/useSlider';
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+import { useAutoplay } from '@/hooks/useAutoplay';
+import { useMaxWidth } from '@/hooks/useMaxWidth';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'motion/react';
 
 import { skillsData } from '@/data/skillsData';
 import SkillCard from '../skillCard/SkillCard';
 
 import './skillsSlider.scss';
 
+const SLIDES_BREAKPOINTS = [
+  { max: 640, items: 1 },
+  { max: 1024, items: 2 },
+];
+
 const SkillsSlider = () => {
   const { t } = useTranslation();
 
-  const isTouchDevice = useIsTouchDevice(640);
+  const isNarrowScreen = useMaxWidth(640);
+
+  const { itemsPerSlide, currentIndex, currentPage, pageCount, nextSlide, prevSlide, goToPage } =
+    useSlider({
+      dataLength: skillsData.length,
+      itemsPerSlideDefault: 3,
+      breakpoints: SLIDES_BREAKPOINTS,
+    });
 
   const {
-    itemsPerSlide,
-    currentIndex,
-    nextSlide,
-    prevSlide,
-    setCurrentIndex,
-    stopAutoSlide,
-    startAutoSlide,
-  } = useSlider({
-    dataLength: skillsData.length,
-    itemsPerSlideDefault: 3,
-    breakpoints: [
-      { max: 640, items: 1 },
-      { max: 1024, items: 2 },
-    ],
-  });
-
-  const totalSlides = useMemo(() => Math.ceil(skillsData.length / itemsPerSlide), [itemsPerSlide]);
+    ref: autoplayRef,
+    handlers: autoplayHandlers,
+    setIsDragging,
+  } = useAutoplay<HTMLDivElement>(nextSlide, { resetKey: currentPage });
 
   const visibleSkills = useMemo(() => {
     const end = currentIndex + itemsPerSlide;
@@ -44,22 +44,22 @@ const SkillsSlider = () => {
   }, [currentIndex, itemsPerSlide]);
 
   return (
-    <div className="skills-slider" onMouseEnter={stopAutoSlide} onMouseLeave={startAutoSlide}>
+    <div className="skills-slider" ref={autoplayRef} {...autoplayHandlers}>
       <div className="skills-slider__wrapper">
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={currentIndex}
             className="skills-slider__inner"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
-            drag={isTouchDevice ? 'x' : false}
+            drag={isNarrowScreen ? 'x' : false}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
-            onDragStart={stopAutoSlide}
+            onDragStart={() => setIsDragging(true)}
             onDragEnd={(_, info) => {
-              startAutoSlide();
+              setIsDragging(false);
 
               if (info.offset.x < -50) {
                 nextSlide();
@@ -76,24 +76,21 @@ const SkillsSlider = () => {
                 description={t(skill.description)}
               />
             ))}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
 
-      {!isTouchDevice && (
+      {!isNarrowScreen && (
         <div className="skills-slider__controls">
-          {Array.from({ length: totalSlides }).map((_, i) => (
-            <div
-              role="button"
-              aria-label={`Go to slide ${i + 1}`}
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(i * itemsPerSlide)}
-              key={i}
-              className={`skills-slider__dot ${
-                Math.floor(currentIndex / itemsPerSlide) === i ? 'active' : ''
-              }`}
-              onClick={() => setCurrentIndex(i * itemsPerSlide)}
-            ></div>
+          {Array.from({ length: pageCount }, (_, page) => page).map((page) => (
+            <button
+              type="button"
+              key={page}
+              className={`skills-slider__dot ${currentPage === page ? 'active' : ''}`}
+              aria-label={t('a11y.goToSlide', { number: page + 1 })}
+              aria-current={currentPage === page ? 'true' : undefined}
+              onClick={() => goToPage(page)}
+            />
           ))}
         </div>
       )}

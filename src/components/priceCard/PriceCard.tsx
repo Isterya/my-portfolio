@@ -7,15 +7,22 @@ interface PriceCardProps {
   icon: string;
   price: number | string;
   description: string;
+  isDuplicate?: boolean;
 }
 
-const PriceCard: React.FC<PriceCardProps> = ({ title, icon, price, description }) => {
+const PriceCard: React.FC<PriceCardProps> = ({
+  title,
+  icon,
+  price,
+  description,
+  isDuplicate = false,
+}) => {
   const { t } = useTranslation();
 
   return (
-    <div className="price-card">
+    <div className="price-card" aria-hidden={isDuplicate || undefined}>
       <div className="price-card__header">
-        <img src={icon} alt="Icon for price card" className="price-card__icon" />
+        <img src={icon} alt="" className="price-card__icon" loading="lazy" decoding="async" />
 
         <div className="price-card__text">
           <h3 className="price-card__title">{title}</h3>

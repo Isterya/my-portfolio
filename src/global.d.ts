@@ -1,16 +1,13 @@
 /// <reference types="vite/client" />
 
-declare module '*.svg' {
-  const content: string;
-  export default content;
+interface ViteTypeOptions {
+  strictImportMetaEnv: unknown;
 }
 
-declare module '*.png' {
-  const value: string;
-  export default value;
+interface ImportMetaEnv {
+  readonly VITE_API_URL?: string;
 }
 
-declare module '*.jpg' {
-  const value: string;
-  export default value;
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }

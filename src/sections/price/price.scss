@@ -4,7 +4,7 @@
   min-height: 863px;
   padding: 116px 0 181px;
   border-radius: 50px;
-  background: url('../../assets/img/main-bg.jpg') no-repeat center / cover;
+  background: url('../../assets/img/main-bg.webp') no-repeat center / cover;
   overflow: hidden;
 
   @include respond(xl) {
@@ -61,7 +61,7 @@
       font-weight: 600;
       font-size: 48px;
       line-height: 72px;
-      color: #fcfcfd;
+      color: $surface-light;
 
       @include respond(xl) {
         font-size: 40px;
@@ -247,17 +247,19 @@
     z-index: 1;
     position: relative;
     -webkit-mask-image: linear-gradient(
-            to right,
-            transparent 0,
-            black 10px,
-            black calc(100% - 10px),
-            transparent 100%);
+      to right,
+      transparent 0,
+      black 10px,
+      black calc(100% - 10px),
+      transparent 100%
+    );
     mask-image: linear-gradient(
-            to right,
-            transparent 0,
-            black 10px,
-            black calc(100% - 10px),
-            transparent 100%);
+      to right,
+      transparent 0,
+      black 10px,
+      black calc(100% - 10px),
+      transparent 100%
+    );
 
     @include respond(xl) {
       margin-top: 64px;
@@ -273,6 +275,10 @@
 
     @include respond(xs) {
       margin-top: 16px;
+    }
+
+    &--static {
+      overflow-x: auto;
     }
 
     &__track {

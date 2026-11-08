@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import htmlIcon from '../assets/icons/skills/html.svg';
 import cssIcon from '../assets/icons/skills/css.svg';
 import jsIcon from '../assets/icons/skills/js.svg';
@@ -30,91 +28,91 @@ export interface SkillsData {
 
 export const skillsData: SkillsData[] = [
   {
-    id: uuidv4(),
+    id: 'html',
     title: 'HTML5',
     icon: htmlIcon,
     description: 'skills.html.description',
   },
   {
-    id: uuidv4(),
+    id: 'css',
     title: 'CSS3',
     icon: cssIcon,
     description: 'skills.css.description',
   },
   {
-    id: uuidv4(),
+    id: 'javascript',
     title: 'JavaScript',
     icon: jsIcon,
     description: 'skills.javascript.description',
   },
   {
-    id: uuidv4(),
+    id: 'typescript',
     title: 'TypeScript',
     icon: tsIcon,
     description: 'skills.typescript.description',
   },
   {
-    id: uuidv4(),
+    id: 'jquery',
     title: 'jQuery',
     icon: jqueryIcon,
     description: 'skills.jquery.description',
   },
   {
-    id: uuidv4(),
+    id: 'sass',
     title: 'SASS / SCSS',
     icon: sassIcon,
     description: 'skills.sass.description',
   },
   {
-    id: uuidv4(),
+    id: 'bootstrap',
     title: 'Bootstrap 5',
     icon: bootstrapIcon,
     description: 'skills.bootstrap.description',
   },
   {
-    id: uuidv4(),
+    id: 'git',
     title: 'Git',
     icon: gitIcon,
     description: 'skills.git.description',
   },
   {
-    id: uuidv4(),
+    id: 'react',
     title: 'React',
     icon: reactIcon,
     description: 'skills.react.description',
   },
   {
-    id: uuidv4(),
+    id: 'redux',
     title: 'Redux',
     icon: reduxIcon,
     description: 'skills.redux.description',
   },
   {
-    id: uuidv4(),
+    id: 'tailwind',
     title: 'Tailwind CSS',
     icon: tailwindIcon,
     description: 'skills.tailwind.description',
   },
   {
-    id: uuidv4(),
+    id: 'figma',
     title: 'Figma',
     icon: figmaIcon,
     description: 'skills.figma.description',
   },
   {
-    id: uuidv4(),
+    id: 'next',
     title: 'Next.js',
     icon: nextIcon,
     description: 'skills.next.description',
   },
   {
-    id: uuidv4(),
+    id: 'express',
     title: 'Express.js',
     icon: expressIcon,
     description: 'skills.express.description',
   },
   {
-    id: uuidv4(),
+    id: 'i18next',
     title: 'i18next',
     icon: i18nextIcon,
     description: 'skills.i18next.description',

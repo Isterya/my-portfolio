@@ -160,7 +160,7 @@
       font-weight: 600;
       font-size: 64px;
       line-height: 64px;
-      color: #344054;
+      color: $text-secondary;
 
       @include respond(xl) {
         font-size: 56px;
@@ -198,7 +198,7 @@
       font-weight: 400;
       font-size: 19px;
       line-height: 29px;
-      color: #98a2b3;
+      color: $text-muted;
 
       @include respond(xl) {
         margin-top: 25px;
@@ -287,11 +287,11 @@
           max-width: 160px;
         }
 
-        h3 {
+        .about-text__stats-value {
           font-weight: 500;
           font-size: 36px;
           line-height: 54px;
-          color: #1d2939;
+          color: $dark-blue;
 
           @include respond(lg) {
             font-size: 30px;
