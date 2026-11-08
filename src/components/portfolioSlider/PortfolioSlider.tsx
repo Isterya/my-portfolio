@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 
 import { useSlider } from '@/hooks/useSlider';
 import { useAutoplay } from '@/hooks/useAutoplay';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import { m, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence, type Variants } from 'motion/react';
 
 import PortfolioCard from '../portfolioCard/PortfolioCard';
 import { portfolioData } from '@/data/portfolioData';
@@ -16,6 +16,22 @@ import './portfolioSlider.scss';
 
 const SLIDES_BREAKPOINTS = [{ max: 1024, items: 1 }];
 
+type SlideDirection = 'next' | 'prev';
+
+const slideVariants: Variants = {
+  enter: (direction: SlideDirection) => ({
+    opacity: 0,
+    x: direction === 'next' ? 100 : -100,
+    scale: 0.95,
+  }),
+  center: { opacity: 1, x: 0, scale: 1 },
+  exit: (direction: SlideDirection) => ({
+    opacity: 0,
+    x: direction === 'next' ? -100 : 100,
+    scale: 0.95,
+  }),
+};
+
 const PortfolioSlider = () => {
   const { t } = useTranslation();
 
@@ -26,11 +42,19 @@ const PortfolioSlider = () => {
       breakpoints: SLIDES_BREAKPOINTS,
     });
 
-  const { ref: autoplayRef, handlers: autoplayHandlers } = useAutoplay<HTMLDivElement>(nextSlide, {
-    resetKey: currentPage,
-  });
+  const [direction, setDirection] = useState<SlideDirection>('next');
 
-  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+  const autoAdvance = useCallback(() => {
+    setDirection('next');
+    nextSlide();
+  }, [nextSlide]);
+
+  const { ref: autoplayRef, handlers: autoplayHandlers } = useAutoplay<HTMLDivElement>(
+    autoAdvance,
+    {
+      resetKey: currentPage,
+    },
+  );
 
   const handlePrev = () => {
     setDirection('prev');
@@ -45,21 +69,15 @@ const PortfolioSlider = () => {
   return (
     <div className="portfolio-slider" ref={autoplayRef} {...autoplayHandlers}>
       <div className="portfolio-slider__wrapper">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" custom={direction}>
           <m.div
             key={currentIndex}
             className="portfolio-slider__inner"
-            initial={{
-              opacity: 0,
-              x: direction === 'next' ? 100 : -100,
-              scale: 0.95,
-            }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{
-              opacity: 0,
-              x: direction === 'next' ? -100 : 100,
-              scale: 0.95,
-            }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
             {portfolioData.slice(currentIndex, currentIndex + itemsPerSlide).map((card) => (
@@ -99,7 +117,10 @@ const PortfolioSlider = () => {
             className={`portfolio-slider__dot ${currentPage === page ? 'active' : ''}`}
             aria-label={t('a11y.goToSlide', { number: page + 1 })}
             aria-current={currentPage === page ? 'true' : undefined}
-            onClick={() => goToPage(page)}
+            onClick={() => {
+              setDirection(page > currentPage ? 'next' : 'prev');
+              goToPage(page);
+            }}
           />
         ))}
       </div>
