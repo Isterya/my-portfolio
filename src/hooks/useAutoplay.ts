@@ -1,5 +1,5 @@
 import { FocusEvent, PointerEvent, useEffect, useRef, useState } from 'react';
-import { useInView, useReducedMotion } from 'framer-motion';
+import { useInView, useReducedMotion } from 'motion/react';
 
 type UseAutoplayOptions = {
   delay?: number;

@@ -1,6 +1,6 @@
 import { KeyboardEvent, PointerEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
-import { useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'motion/react';
 
 import type { AppLanguage } from '@/i18n/languages';
 

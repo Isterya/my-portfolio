@@ -4,7 +4,7 @@ import { useSlider } from '@/hooks/useSlider';
 import { useAutoplay } from '@/hooks/useAutoplay';
 import { useState } from 'react';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 import PortfolioCard from '../portfolioCard/PortfolioCard';
 import { portfolioData } from '@/data/portfolioData';

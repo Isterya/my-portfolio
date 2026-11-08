@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
+import { useInView } from 'motion/react';
 import { Link } from 'react-router';
 
 import { SendEmailError, SendEmailErrorCode, sendEmail, wakeUpApi } from '@/services/sendEmail';

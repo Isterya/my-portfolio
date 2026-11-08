@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 

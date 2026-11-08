@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
-import { MotionConfig } from 'framer-motion';
+import { MotionConfig } from 'motion/react';
 import { Suspense } from 'react';
 
 import ScrollToTop from './components/common/ScrollToTop';

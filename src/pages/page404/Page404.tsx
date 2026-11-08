@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'motion/react';
 
 import SEO from '@/components/SEO';
 import { seo404 } from '@/data/seoData';
@@ -13,7 +13,7 @@ import errorImg from '@/assets/img/error/error-404.svg';
 
 import './page404.scss';
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i = 0) => ({
     opacity: 1,
@@ -26,7 +26,7 @@ const fadeUp = {
   }),
 };
 
-const float = {
+const float: Variants = {
   animate: {
     y: [0, -8, 0],
     transition: {

@@ -1,6 +1,6 @@
 import { FocusEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 import { AppLanguage, LANGUAGES, toAppLanguage } from '@/i18n/languages';
 

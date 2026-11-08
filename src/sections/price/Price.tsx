@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useRef } from 'react';
-import { useInView, useReducedMotion } from 'framer-motion';
+import { useInView, useReducedMotion } from 'motion/react';
 
 import { MARQUEE_COPIES, useCarousel } from '@/hooks/useCarousel';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';

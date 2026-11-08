@@ -5,7 +5,7 @@ import { useSlider } from '@/hooks/useSlider';
 import { useAutoplay } from '@/hooks/useAutoplay';
 import { useMaxWidth } from '@/hooks/useMaxWidth';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 import { skillsData } from '@/data/skillsData';
 import SkillCard from '../skillCard/SkillCard';

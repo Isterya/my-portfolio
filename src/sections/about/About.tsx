@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'motion/react';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 import { getAge } from '@/utils/getAge';
@@ -9,7 +9,7 @@ import character from '@/assets/img/about/about-character.webp';
 
 import './about.scss';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -18,7 +18,7 @@ const containerVariants = {
   },
 };
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };

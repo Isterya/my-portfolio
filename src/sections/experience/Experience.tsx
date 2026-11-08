@@ -1,5 +1,5 @@
 import { useTranslation, Trans } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'motion/react';
 
 import { useMaxWidth } from '@/hooks/useMaxWidth';
 import {
@@ -13,7 +13,7 @@ import './experience.scss';
 
 const circlePositions = [0, 180, 375, 620];
 
-const lineVariant = {
+const lineVariant: Variants = {
   hidden: { scaleY: 0, opacity: 0 },
   visible: {
     scaleY: 1,
@@ -22,7 +22,7 @@ const lineVariant = {
   },
 };
 
-const pointVariant = {
+const pointVariant: Variants = {
   hidden: { scale: 0, opacity: 0 },
   visible: (i: number) => ({
     scale: 1,
