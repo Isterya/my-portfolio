@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { LazyMotion, MotionConfig } from 'motion/react';
 import { Suspense } from 'react';
 
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 import ScrollToTop from './components/common/ScrollToTop';
 import AppRoutes from './routes/AppRoutes';
 import Loader from './components/loader/Loader';
@@ -16,9 +17,11 @@ function App() {
         <MotionConfig reducedMotion="user">
           <BrowserRouter>
             <ScrollToTop />
-            <Suspense fallback={<Loader />}>
-              <AppRoutes />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <AppRoutes />
+              </Suspense>
+            </ErrorBoundary>
           </BrowserRouter>
         </MotionConfig>
       </LazyMotion>

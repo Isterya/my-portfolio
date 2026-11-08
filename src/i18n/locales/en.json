@@ -440,5 +440,12 @@
     "prevSlide": "Previous slide",
     "home": "Isterya — home page",
     "openProject": "Open {{title}} (opens in a new tab)"
+  },
+
+  "errorFallback": {
+    "title": "Something went wrong",
+    "text": "The page failed to load. Reloading usually helps.",
+    "reload": "Reload the page",
+    "home": "Go to the home page"
   }
 }

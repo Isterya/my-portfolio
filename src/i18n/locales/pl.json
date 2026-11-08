@@ -440,5 +440,12 @@
     "prevSlide": "Poprzedni slajd",
     "home": "Isterya — strona główna",
     "openProject": "Otwórz projekt {{title}} (w nowej karcie)"
+  },
+
+  "errorFallback": {
+    "title": "Coś poszło nie tak",
+    "text": "Strona się nie załadowała. Zwykle pomaga odświeżenie.",
+    "reload": "Odśwież stronę",
+    "home": "Strona główna"
   }
 }
