@@ -11,10 +11,7 @@ const Loader = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <ClipLoader
-        color="#ff7f00"
-        size={50}
-      />
+      <ClipLoader color="#ff7f00" size={50} />
     </motion.div>
   );
 };

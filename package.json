@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .ts,.tsx && stylelint \"**/*.{scss,css}\"",
     "lint:fix": "eslint . --ext .ts,.tsx --fix && stylelint \"**/*.{scss,css}\" --fix",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepare": "husky",
     "preview": "vite preview",
     "test": "vitest run"
@@ -19,7 +20,11 @@
       "prettier --write"
     ],
     "*.{scss,css}": [
-      "stylelint --fix"
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{js,cjs,mjs,json,md,html,yml,yaml}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
