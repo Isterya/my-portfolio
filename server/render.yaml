@@ -1,11 +1,12 @@
 services:
   - type: web
     name: isterya-backend
-    env: node
+    runtime: node
+    rootDir: server
     region: oregon
     plan: free
 
-    buildCommand: npm install && npm run build
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /health
 
