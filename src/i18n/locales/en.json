@@ -14,7 +14,8 @@
     "introName": "Bohdan",
     "introEnd": "Web Developer",
     "quote": "Relentless ambition, resilience, and reliability—this is who I am.",
-    "years": "Years",
+    "years_one": "Year",
+    "years_other": "Years",
     "experience": "Experience",
     "linkPortfolio": "Portfolio",
     "linkAbout": "About me"
@@ -126,7 +127,7 @@
   "about": {
     "title": {
       "before": "Why",
-      "highlight": "Hire me"
+      "highlight": "Hire Me"
     },
 
     "description": "At {{age}}, I’ve already gained over three years of experience crafting dynamic web applications, mastering modern frontend technologies, and building a deep understanding of software architecture. I bring strong technical expertise, sharp problem-solving, and a keen eye for UI/UX to every project I work on.",
@@ -166,7 +167,7 @@
   "price": {
     "title": {
       "before": "My",
-      "highlight": "Price"
+      "highlight": "Prices"
     },
 
     "description": "Whether you need a sleek landing page, a powerful web application, or a full-scale eCommerce platform, I deliver modern, high-performance websites built with cutting-edge technologies. Choose a service that fits your goals, and let’s create something exceptional together.",

@@ -63,7 +63,7 @@ const Hero = () => {
 
             <div>
               <div className="hero-experience__years">
-                {years} {t('hero.years')}
+                {years} {t('hero.years', { count: years })}
               </div>
               <div className="hero-experience__descr">{t('hero.experience')}</div>
             </div>

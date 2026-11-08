@@ -14,8 +14,11 @@
     "introName": "Bohdan",
     "introEnd": "Web Developer",
     "quote": "Niezłomna ambicja, odporność i niezawodność — to jestem ja.",
-    "years": "Lata",
-    "experience": "Doświadczenia",
+    "years_one": "rok",
+    "years_few": "lata",
+    "years_many": "lat",
+    "years_other": "roku",
+    "experience": "doświadczenia",
     "linkPortfolio": "Portfolio",
     "linkAbout": "O mnie"
   },
@@ -23,7 +26,7 @@
   "skills": {
     "title": {
       "before": "Moje",
-      "highlight": "Umiejętności"
+      "highlight": "umiejętności"
     },
     "description": "W tej sekcji opowiem o kluczowych umiejętnościach i technologiach, których używam w swojej pracy. Stanowią one fundament moich projektów i pozwalają tworzyć wysokiej jakości rozwiązania.",
 
@@ -81,7 +84,7 @@
   "experience": {
     "title": {
       "before": "Moje",
-      "highlight": "Doświadczenie"
+      "highlight": "doświadczenie"
     },
 
     "dataLeft": {
@@ -132,7 +135,7 @@
     "description": "W wieku {{age}} lat mam już ponad trzy lata doświadczenia w tworzeniu dynamicznych aplikacji internetowych, znajomośc nowoczesnych technologii frontendowych oraz głębokie zrozumienie architektury oprogramowania. Do każdego projektu wnoszę nie tylko wiedzę techniczną i umiejętność rozwiązywania problemów, ale także wyjątkowe wyczucie UI/UX.",
 
     "projects": "Zrealizowane projekty",
-    "years": "Lata",
+    "years": "lat",
     "experience": "Udokumentowane doświadczenie",
     "hire": "Zatrudnij mnie"
   },
@@ -140,7 +143,7 @@
   "portfolio": {
     "title": {
       "before": "Przyjrzyjmy się mojemu",
-      "highlight": "Portfolio"
+      "highlight": "portfolio"
     },
 
     "uber": {
@@ -166,7 +169,7 @@
   "price": {
     "title": {
       "before": "Moje",
-      "highlight": "Ceny"
+      "highlight": "ceny"
     },
 
     "description": "Potrzebujesz eleganckiego landing page'a, zaawansowanej aplikacji webowej lub pełnej platformy eCommerce? Tworzę nowoczesne, wydajne strony internetowe oparte na najnowszych technologiach. Wybierz usługę dopasowaną do swoich celów i stwórzmy razem coś wyjątkowego.",
@@ -307,23 +310,23 @@
     "aboutTitle": "O tej stronie",
     "aboutText": "To jest osobista strona portfolio prowadzona przez niezależnego freelancera, programistę stron internetowych z siedzibą w Polsce. Strona ma na celu zaprezentowanie pracy, opisanie oferowanych usług i umożliwienie kontaktu.",
 
-    "servicesTitle": "Usługi i Komunikacja",
+    "servicesTitle": "Usługi i komunikacja",
     "servicesText1": "Ta strona nie oferuje produktów do bezpośredniej sprzedaży. Wszelkie usługi (takie jak tworzenie stron docelowych, e-commerce lub rozwiązania na zamówienie) są omawiane indywidualnie drogą mailową po nawiązaniu kontaktu przez użytkownika.",
     "servicesText2": "Przesyłając swój e-mail przez formularz kontaktowy, zgadzasz się na kontakt w celach związanych z usługami.",
 
-    "intellectualTitle": "Własność Intelektualna",
+    "intellectualTitle": "Własność intelektualna",
     "intellectualText": "Wszystkie treści na tej stronie (tekst, kod, obrazy, branding) należą do Isterya | Web Developer, o ile nie wskazano inaczej. Zabrania się kopiowania, powielania lub ponownego wykorzystywania jakiejkolwiek części bez pisemnej zgody.",
 
-    "limitationsTitle": "Ograniczenia Użytkowania",
+    "limitationsTitle": "Ograniczenia użytkowania",
     "limitationsText": "Zgadzasz się nie nadużywać strony, nie podejmować prób nieautoryzowanego dostępu ani działań zakłócających lub szkodzących stronie lub jej użytkownikom.",
 
-    "thirdPartyTitle": "Linki do Stron Trzecich",
+    "thirdPartyTitle": "Linki do stron trzecich",
     "thirdPartyText": "Strona może zawierać linki do stron internetowych osób trzecich. Nie ponoszę odpowiedzialności za ich treści, polityki prywatności ani warunki użytkowania. Korzystasz z nich na własne ryzyko.",
 
-    "disclaimerTitle": "Wyłączenie Odpowiedzialności",
+    "disclaimerTitle": "Wyłączenie odpowiedzialności",
     "disclaimerText": "Strona jest udostępniana „tak jak jest”. Dokładam wszelkich starań, aby była funkcjonalna i dokładna, ale nie gwarantuję działania bez błędów ani nieprzerwanego dostępu. Nie ponoszę odpowiedzialności za jakiekolwiek straty lub szkody związane z korzystaniem z tej strony.",
 
-    "ageTitle": "Wymóg Wiekowy",
+    "ageTitle": "Wymóg wiekowy",
     "ageText": "Musisz mieć co najmniej 18 lat, aby korzystać z tej strony lub kontaktować się ze mną w sprawie usług.",
 
     "privacyTitle": "Prywatność",
@@ -333,7 +336,7 @@
       "end": ", która wyjaśnia, jak przetwarzam dane osobowe."
     },
 
-    "changesTitle": "Zmiany w Regulaminie",
+    "changesTitle": "Zmiany w regulaminie",
     "changesText": "Warunki mogą być od czasu do czasu aktualizowane. Znaczące zmiany będą odnotowane na tej stronie. Dalsze korzystanie z serwisu oznacza akceptację zmian.",
 
     "contactTitle": "Kontakt",
@@ -341,7 +344,7 @@
   },
 
   "privacy": {
-    "title": "Polityka Prywatności",
+    "title": "Polityka prywatności",
     "lastUpdated": "Ostatnia aktualizacja: {{date}}",
 
     "intro1": {
@@ -350,11 +353,11 @@
     },
     "intro2": "Korzystając z tej strony lub kontaktując się ze mną, akceptujesz niniejszą Politykę Prywatności.",
 
-    "whoTitle": "Kim Jestem",
+    "whoTitle": "Kim jestem",
     "whoText1": "Isterya | Web Developer to działalność prowadzona przez osobę fizyczną (niezarejestrowaną firmę) z siedzibą w Polsce, świadczącą usługi programowania stron internetowych na zasadzie freelancingu lub kontraktów.",
     "whoText2": "Kontakt:",
 
-    "dataTitle": "Jakie Dane Osobowe Zbieram",
+    "dataTitle": "Jakie dane osobowe zbieram",
     "dataText1": "W zależności od sposobu interakcji ze stroną mogę zbierać następujące dane:",
     "dataList": {
       "email": "Adres e-mail (jeśli się ze mną skontaktujesz)",
@@ -363,7 +366,7 @@
     },
     "dataText2": "Nie wymagane jest tworzenie konta ani przechowywanie haseł.",
 
-    "usageTitle": "Jak Wykorzystuję Twoje Dane",
+    "usageTitle": "Jak wykorzystuję Twoje dane",
     "usageText1": "Twoje dane wykorzystuję wyłącznie, gdy jest to konieczne:",
     "usageList": {
       "respond": "Aby odpowiedzieć na zapytania lub świadczyć usługi",
@@ -377,11 +380,11 @@
     "cookiesText1": "Ta strona używa podstawowych plików cookies i narzędzi analitycznych (np. Google Analytics), aby analizować ruch i ulepszać doświadczenie użytkownika.",
     "cookiesText2": "Możesz kontrolować preferencje dotyczące cookies w ustawieniach przeglądarki.",
 
-    "sharingTitle": "Udostępnianie Danych",
+    "sharingTitle": "Udostępnianie danych",
     "sharingText1": "Twoje dane mogą być udostępniane wyłącznie zaufanym narzędziom stron trzecich (np. dostawcom usług e-mail lub platformom analitycznym), tylko w celu świadczenia usług.",
     "sharingText2": "Nie udostępniam Twoich danych do celów marketingowych ani profilowania.",
 
-    "legalTitle": "Podstawa Prawna (Zgodność z RODO)",
+    "legalTitle": "Podstawa prawna (zgodność z RODO)",
     "legalText1": "Jeśli znajdujesz się na terenie Europejskiego Obszaru Gospodarczego (EOG), przetwarzam Twoje dane na następujących podstawach prawnych:",
     "legalList": {
       "consent": "Twoja zgoda (np. przesłanie formularza kontaktowego)",
@@ -389,7 +392,7 @@
       "obligations": "Zobowiązania prawne (np. wystawienie faktury)"
     },
 
-    "rightsTitle": "Twoje Prawa",
+    "rightsTitle": "Twoje prawa",
     "rightsText1": "Masz prawo do:",
     "rightsList": {
       "access": "Dostępu, aktualizacji lub usunięcia swoich danych osobowych",
@@ -399,7 +402,7 @@
     },
     "rightsText2": "Aby skorzystać ze swoich praw, napisz na adres e-mail:",
 
-    "retentionTitle": "Okres Przechowywania Danych",
+    "retentionTitle": "Okres przechowywania danych",
     "retentionText1": "Przechowuję Twoje dane tylko przez czas niezbędny do:",
     "retentionList": {
       "services": "Świadczenia usług lub komunikacji",
@@ -409,13 +412,13 @@
     "securityTitle": "Bezpieczeństwo",
     "securityText": "Stosuję standardowe środki bezpieczeństwa w celu ochrony Twoich danych, jednak pamiętaj, że żadna metoda przesyłania lub przechowywania danych w Internecie nie jest całkowicie bezpieczna.",
 
-    "childrenTitle": "Prywatność Dzieci",
+    "childrenTitle": "Prywatność dzieci",
     "childrenText": "Ta strona nie jest przeznaczona dla dzieci poniżej 13 roku życia. Nie zbieram świadomie danych osobowych od osób poniżej 13 lat.",
 
-    "linksTitle": "Linki do Innych Stron",
+    "linksTitle": "Linki do innych stron",
     "linksText": "Ta strona może zawierać linki do innych witryn. Nie odpowiadam za ich politykę prywatności. Zapoznaj się z ich zasadami osobno.",
 
-    "changesTitle": "Zmiany w Polityce",
+    "changesTitle": "Zmiany w polityce",
     "changesText": "Polityka Prywatności może być od czasu do czasu aktualizowana. Najnowsza wersja zawsze będzie dostępna na tej stronie z datą aktualizacji na górze.",
 
     "contactTitle": "Kontakt",
