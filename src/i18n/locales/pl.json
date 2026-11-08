@@ -272,7 +272,7 @@
       "who": "Kim jestem",
       "data": "Jakie dane osobowe zbieram",
       "usage": "Jak wykorzystuję Twoje dane",
-      "cookies": "Pliki cookie i analityka",
+      "cookies": "Pliki cookies i pamięć lokalna",
       "sharing": "Udostępnianie danych",
       "legal": "Podstawa prawna (RODO)",
       "rights": "Twoje prawa",
@@ -361,7 +361,7 @@
     "dataText1": "W zależności od sposobu interakcji ze stroną mogę zbierać następujące dane:",
     "dataList": {
       "email": "Adres e-mail (jeśli się ze mną skontaktujesz)",
-      "usage": "Dane dotyczące użytkowania (za pomocą plików cookies i narzędzi analitycznych)",
+      "usage": "Dane techniczne, które przeglądarka wysyła automatycznie (adres IP, typ przeglądarki)",
       "project": "Informacje związane z projektem (jeśli poprosisz o wycenę lub omówisz usługę)"
     },
     "dataText2": "Nie wymagane jest tworzenie konta ani przechowywanie haseł.",
@@ -371,17 +371,17 @@
     "usageList": {
       "respond": "Aby odpowiedzieć na zapytania lub świadczyć usługi",
       "manage": "Aby zarządzać wycenami lub umowami freelancerskimi",
-      "improve": "Aby ulepszać działanie strony (analiza danych)",
+      "improve": "Aby chronić formularz kontaktowy przed spamem",
       "legal": "Aby spełnić obowiązki prawne"
     },
     "usageText2": "Nigdy nie sprzedaję ani nie wynajmuję Twoich danych.",
 
-    "cookiesTitle": "Pliki Cookies i Analityka",
-    "cookiesText1": "Ta strona używa podstawowych plików cookies i narzędzi analitycznych (np. Google Analytics), aby analizować ruch i ulepszać doświadczenie użytkownika.",
-    "cookiesText2": "Możesz kontrolować preferencje dotyczące cookies w ustawieniach przeglądarki.",
+    "cookiesTitle": "Pliki cookies i pamięć lokalna",
+    "cookiesText1": "Ta strona nie używa plików cookies ani narzędzi analitycznych.",
+    "cookiesText2": "Przeglądarka zapamiętuje tylko wybrany język (i Twój rekord w minigrze na stronie 404). Te dane zostają na Twoim urządzeniu i możesz je usunąć w ustawieniach przeglądarki.",
 
     "sharingTitle": "Udostępnianie danych",
-    "sharingText1": "Twoje dane mogą być udostępniane wyłącznie zaufanym narzędziom stron trzecich (np. dostawcom usług e-mail lub platformom analitycznym), tylko w celu świadczenia usług.",
+    "sharingText1": "Twoje dane trafiają tylko do usług, na których działa strona: Vercel i Render (hosting), Telegram (przez niego dociera do mnie Twoje zgłoszenie) i Brevo (e-mail z potwierdzeniem).",
     "sharingText2": "Nie udostępniam Twoich danych do celów marketingowych ani profilowania.",
 
     "legalTitle": "Podstawa prawna (zgodność z RODO)",
@@ -408,6 +408,7 @@
       "services": "Świadczenia usług lub komunikacji",
       "legal": "Spełniania obowiązków prawnych (np. rozliczenia podatkowe)"
     },
+    "retentionText2": "Serwer formularza przechowuje Twój e-mail przez 10 minut, aby odfiltrować powtórne zgłoszenia, a potem go zapomina.",
 
     "securityTitle": "Bezpieczeństwo",
     "securityText": "Stosuję standardowe środki bezpieczeństwa w celu ochrony Twoich danych, jednak pamiętaj, że żadna metoda przesyłania lub przechowywania danych w Internecie nie jest całkowicie bezpieczna.",

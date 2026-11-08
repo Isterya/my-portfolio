@@ -94,6 +94,7 @@ const PrivacyPolicyPage = () => {
             <li>{t('privacy.retentionList.services')}</li>
             <li>{t('privacy.retentionList.legal')}</li>
           </ul>
+          <p>{t('privacy.retentionText2')}</p>
 
           <h3 id="security">{t('privacy.securityTitle')}</h3>
           <p>{t('privacy.securityText')}</p>

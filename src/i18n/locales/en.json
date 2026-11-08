@@ -270,7 +270,7 @@
       "who": "Who I Am",
       "data": "What Personal Data I Collect",
       "usage": "How I Use Your Data",
-      "cookies": "Cookies and Analytics",
+      "cookies": "Cookies and Local Storage",
       "sharing": "Data Sharing",
       "legal": "Legal Basis (GDPR)",
       "rights": "Your Rights",
@@ -359,7 +359,7 @@
     "dataText1": "Depending on how you interact with the site, I may collect the following:",
     "dataList": {
       "email": "Email address (if you contact me)",
-      "usage": "Usage data (via cookies and analytics tools)",
+      "usage": "Technical data your browser sends automatically (IP address, browser type)",
       "project": "Project-related info (if you request a quote or discuss a service)"
     },
     "dataText2": "I do not require account creation or store passwords.",
@@ -369,17 +369,17 @@
     "usageList": {
       "respond": "To respond to inquiries or provide services",
       "manage": "To manage quotes or freelance agreements",
-      "improve": "To improve the website experience (analytics)",
+      "improve": "To protect the contact form from spam",
       "legal": "To comply with legal obligations"
     },
     "usageText2": "I do not sell or rent your data. Ever.",
 
-    "cookiesTitle": "Cookies and Analytics",
-    "cookiesText1": "This website uses basic cookies and analytics tools (like Google Analytics) to understand traffic and improve user experience.",
-    "cookiesText2": "You can control cookie preferences in your browser settings.",
+    "cookiesTitle": "Cookies and Local Storage",
+    "cookiesText1": "This website does not use cookies or analytics tools.",
+    "cookiesText2": "Your browser only remembers your chosen language (and your best level in the 404 mini-game). This stays on your device, and you can clear it in your browser settings.",
 
     "sharingTitle": "Data Sharing",
-    "sharingText1": "Your data may be shared only with trusted third-party tools (e.g. email providers or analytics platforms), solely to operate the service.",
+    "sharingText1": "Your data is shared only with the tools this site runs on: Vercel and Render (hosting), Telegram (how your request reaches me) and Brevo (the confirmation email).",
     "sharingText2": "I do not share your data for marketing or profiling purposes.",
 
     "legalTitle": "Legal Basis (GDPR Compliance)",
@@ -406,6 +406,7 @@
       "services": "Providing services or communication",
       "legal": "Complying with legal obligations (e.g. tax reporting)"
     },
+    "retentionText2": "The contact form server keeps your email for 10 minutes to skip duplicate requests, then forgets it.",
 
     "securityTitle": "Security",
     "securityText": "I implement industry-standard security measures to safeguard your data; however, please note that no online transmission or storage method is entirely secure.",
