@@ -2,9 +2,9 @@ import { defineConfig, type HtmlTagDescriptor, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-import { SITE_URL, absoluteUrl } from './src/config/site';
-import { legalRevisions } from './src/data/legalRevisions';
-import { seoHome } from './src/data/seoData';
+import { SITE_URL, absoluteUrl } from './src/config/site.ts';
+import { legalRevisions } from './src/data/legalRevisions.ts';
+import { seoHome } from './src/data/seoData.ts';
 
 const OG_IMAGE_SIZE = { width: 1200, height: 629 };
 
@@ -86,9 +86,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@': path.resolve(import.meta.dirname, 'src'),
+      '@components': path.resolve(import.meta.dirname, 'src/components'),
+      '@styles': path.resolve(import.meta.dirname, 'src/styles'),
     },
   },
 });
