@@ -1,4 +1,4 @@
-import { useRoutes } from 'react-router-dom';
+import { useRoutes } from 'react-router';
 import { routes } from './index';
 
 export default function AppRoutes() {

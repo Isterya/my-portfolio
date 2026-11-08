@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 
 import SEO from '@/components/SEO';

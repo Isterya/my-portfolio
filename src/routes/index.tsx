@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { RouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router';
 
 import PageLayout from '@/layouts/PageLayout';
 import HomePage from '@/pages/HomePage';
