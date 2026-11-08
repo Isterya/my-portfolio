@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 
@@ -24,7 +24,7 @@ const Hero = () => {
     <section id="home" className="hero" aria-labelledby="hero-title">
       <div className="container">
         <div className="hero-wrapper">
-          <motion.div
+          <m.div
             className="hero-quote"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,12 +34,12 @@ const Hero = () => {
             <img className="hero-quote__img" src={quote} alt="" />
 
             <p className="hero-quote__text">{t('hero.quote')}</p>
-          </motion.div>
+          </m.div>
 
           <div className="hero-header">
             <div className="hero-header__subtitle">{t('hero.hello')}</div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -49,10 +49,10 @@ const Hero = () => {
                 {t('hero.introStart')} <span>{t('hero.introName')}</span>, <br />{' '}
                 {t('hero.introEnd')}
               </h1>
-            </motion.div>
+            </m.div>
           </div>
 
-          <motion.div
+          <m.div
             className="hero-experience"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,11 +67,11 @@ const Hero = () => {
               </div>
               <div className="hero-experience__descr">{t('hero.experience')}</div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="hero-character">
-          <motion.img
+          <m.img
             className="hero-character__img"
             src={character}
             alt=""
@@ -81,7 +81,7 @@ const Hero = () => {
           />
 
           <div className="hero-links">
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.03,
                 transition: { type: 'spring', stiffness: 300 },
@@ -94,9 +94,9 @@ const Hero = () => {
             >
               {t('hero.linkPortfolio')}
               <img src={arrowUp} alt="" />
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.03,
                 transition: { type: 'spring', stiffness: 300 },
@@ -109,7 +109,7 @@ const Hero = () => {
             >
               {t('hero.linkAbout')}
               <img src={arrowUp} alt="" />
-            </motion.a>
+            </m.a>
           </div>
         </div>
       </div>

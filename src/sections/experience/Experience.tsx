@@ -1,5 +1,5 @@
 import { useTranslation, Trans } from 'react-i18next';
-import { motion, type Variants } from 'motion/react';
+import { m, type Variants } from 'motion/react';
 
 import { useMaxWidth } from '@/hooks/useMaxWidth';
 import {
@@ -62,7 +62,7 @@ const ExperienceItem = ({ item, side, isSingleColumn = false }: ExperienceItemPr
   const isSecondary = isSingleColumn && side === 'right';
 
   return (
-    <motion.div
+    <m.div
       className="experience__text"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ const ExperienceItem = ({ item, side, isSingleColumn = false }: ExperienceItemPr
           )}
         </div>
       )}
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -120,7 +120,7 @@ const Experience = () => {
               </div>
 
               <div className="experience__timeline">
-                <motion.div
+                <m.div
                   className="timeline-line-horizontal"
                   variants={lineVariant}
                   initial="hidden"
@@ -133,7 +133,7 @@ const Experience = () => {
                     className={`timeline-point ${i % 2 === 0 ? 'primary' : 'dark'}`}
                     style={{ top: `${top}px` }}
                   >
-                    <motion.div
+                    <m.div
                       className="timeline-point-inner"
                       variants={pointVariant}
                       initial="hidden"

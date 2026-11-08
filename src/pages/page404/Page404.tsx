@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
-import { motion, type Variants } from 'motion/react';
+import { m, type Variants } from 'motion/react';
 
 import SEO from '@/components/SEO';
 import { seo404 } from '@/data/seoData';
@@ -61,25 +61,25 @@ const Page404 = () => {
 
       <main className="page404">
         <div className="container">
-          <motion.div className="page404-wrapper" initial="hidden" animate="visible">
-            <motion.h1 className="page404-header" variants={fadeUp} custom={0}>
+          <m.div className="page404-wrapper" initial="hidden" animate="visible">
+            <m.h1 className="page404-header" variants={fadeUp} custom={0}>
               {t('error.oops')}
-            </motion.h1>
+            </m.h1>
 
-            <motion.h2 className="page404-subheader" variants={fadeUp} custom={1}>
+            <m.h2 className="page404-subheader" variants={fadeUp} custom={1}>
               {t('error.lost')}
-            </motion.h2>
+            </m.h2>
 
-            <motion.p className="page404-desc" variants={fadeUp} custom={2}>
+            <m.p className="page404-desc" variants={fadeUp} custom={2}>
               {t('error.description')}
-            </motion.p>
+            </m.p>
 
             {isPlaying ? (
               <Suspense fallback={<p className="page404-game-loading">{gameStrings.loading}</p>}>
                 <WayHomeGame language={language} onClose={() => setIsPlaying(false)} />
               </Suspense>
             ) : (
-              <motion.img
+              <m.img
                 className="page404-img"
                 src={errorImg}
                 alt=""
@@ -89,7 +89,7 @@ const Page404 = () => {
               />
             )}
 
-            <motion.div variants={fadeUp} custom={4}>
+            <m.div variants={fadeUp} custom={4}>
               <Link to={'/'} className="page404-back">
                 <svg
                   aria-hidden="true"
@@ -120,10 +120,10 @@ const Page404 = () => {
                 </svg>
                 {t('error.home')}
               </Link>
-            </motion.div>
+            </m.div>
 
             {!isPlaying && (
-              <motion.div variants={fadeUp} custom={5}>
+              <m.div variants={fadeUp} custom={5}>
                 <button
                   ref={playButtonRef}
                   type="button"
@@ -134,9 +134,9 @@ const Page404 = () => {
                 >
                   {gameStrings.play}
                 </button>
-              </motion.div>
+              </m.div>
             )}
-          </motion.div>
+          </m.div>
         </div>
       </main>
     </>

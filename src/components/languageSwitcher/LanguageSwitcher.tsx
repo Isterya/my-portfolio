@@ -1,6 +1,6 @@
 import { FocusEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence } from 'motion/react';
 
 import { AppLanguage, LANGUAGES, toAppLanguage } from '@/i18n/languages';
 
@@ -54,7 +54,7 @@ const LanguageSwitcher = () => {
 
   return (
     <div className="lang-switcher" ref={rootRef} onBlur={handleBlur}>
-      <motion.button
+      <m.button
         ref={toggleRef}
         type="button"
         className="lang-switcher__toggle"
@@ -64,14 +64,14 @@ const LanguageSwitcher = () => {
         aria-label={`${activeLabel} — ${t('a11y.changeLanguage')}`}
       >
         <span>{activeLabel}</span>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
+        <m.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
           <img src={chevron} alt="" />
-        </motion.div>
-      </motion.button>
+        </m.div>
+      </m.button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.ul
+          <m.ul
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             className="lang-switcher__dropdown"
             initial="hidden"
@@ -83,7 +83,7 @@ const LanguageSwitcher = () => {
             }}
           >
             {LANGUAGES.map(({ code, label }) => (
-              <motion.li
+              <m.li
                 key={code}
                 variants={{
                   hidden: { opacity: 0, y: -5 },
@@ -99,9 +99,9 @@ const LanguageSwitcher = () => {
                 >
                   {label}
                 </button>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ul>
+          </m.ul>
         )}
       </AnimatePresence>
     </div>

@@ -4,7 +4,7 @@ import { useSlider } from '@/hooks/useSlider';
 import { useAutoplay } from '@/hooks/useAutoplay';
 import { useState } from 'react';
 
-import { motion, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence } from 'motion/react';
 
 import PortfolioCard from '../portfolioCard/PortfolioCard';
 import { portfolioData } from '@/data/portfolioData';
@@ -46,7 +46,7 @@ const PortfolioSlider = () => {
     <div className="portfolio-slider" ref={autoplayRef} {...autoplayHandlers}>
       <div className="portfolio-slider__wrapper">
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={currentIndex}
             className="portfolio-slider__inner"
             initial={{
@@ -71,7 +71,7 @@ const PortfolioSlider = () => {
                 link={card.link}
               />
             ))}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
 
         <button

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence } from 'motion/react';
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -133,7 +133,7 @@ const NavBar = () => {
       {/* Mobile Nav */}
       <AnimatePresence>
         {isMobile && isMenuOpen && (
-          <motion.nav
+          <m.nav
             ref={mobileMenuRef}
             id="mobile-menu"
             className="mobile-menu"
@@ -143,7 +143,7 @@ const NavBar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <motion.ul
+            <m.ul
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -156,7 +156,7 @@ const NavBar = () => {
               }}
             >
               {SECTIONS.map((section) => (
-                <motion.li
+                <m.li
                   key={section}
                   variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -168,16 +168,16 @@ const NavBar = () => {
                   <a href={`#${section}`} onClick={() => setIsMenuOpen(false)}>
                     {t(`navBar.${section}`)}
                   </a>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.nav>
+            </m.ul>
+          </m.nav>
         )}
       </AnimatePresence>
 
       {/* Desktop Nav */}
       {!isMobile && (
-        <motion.div initial="hidden" animate="visible" variants={menuVariants}>
+        <m.div initial="hidden" animate="visible" variants={menuVariants}>
           <nav
             className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}
             aria-label={t('a11y.mainNav')}
@@ -214,7 +214,7 @@ const NavBar = () => {
               ))}
             </ul>
           </nav>
-        </motion.div>
+        </m.div>
       )}
     </>
   );

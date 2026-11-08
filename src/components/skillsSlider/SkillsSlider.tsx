@@ -5,7 +5,7 @@ import { useSlider } from '@/hooks/useSlider';
 import { useAutoplay } from '@/hooks/useAutoplay';
 import { useMaxWidth } from '@/hooks/useMaxWidth';
 
-import { motion, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence } from 'motion/react';
 
 import { skillsData } from '@/data/skillsData';
 import SkillCard from '../skillCard/SkillCard';
@@ -47,7 +47,7 @@ const SkillsSlider = () => {
     <div className="skills-slider" ref={autoplayRef} {...autoplayHandlers}>
       <div className="skills-slider__wrapper">
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={currentIndex}
             className="skills-slider__inner"
             initial={{ opacity: 0, x: 50 }}
@@ -76,7 +76,7 @@ const SkillsSlider = () => {
                 description={t(skill.description)}
               />
             ))}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
 
