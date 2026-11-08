@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+import { useMaxWidth } from '@/hooks/useMaxWidth';
 
 import logo from '@/assets/icons/logo.svg';
 
@@ -25,7 +25,7 @@ const NavBar = () => {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useIsTouchDevice(768);
+  const isMobile = useMaxWidth(768);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 

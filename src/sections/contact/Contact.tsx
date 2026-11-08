@@ -91,12 +91,6 @@ const Contact = () => {
     }
   }, [success]);
 
-  useEffect(() => {
-    if (email || agreed) {
-      setError('');
-    }
-  }, [email, agreed]);
-
   return (
     <section id="contact" className="contact" aria-labelledby="contact-title" ref={sectionRef}>
       <div className="container">
@@ -117,7 +111,10 @@ const Contact = () => {
                 className="contact-email__input"
                 placeholder={t('contact.placeholder')}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError('');
+                }}
                 aria-invalid={hasError && (!email || !isValidEmail)}
                 aria-describedby={hasError ? statusId : undefined}
                 required
@@ -143,7 +140,10 @@ const Contact = () => {
               <label className="checkbox-container">
                 <input
                   checked={agreed}
-                  onChange={(e) => setAgreed(e.target.checked)}
+                  onChange={(e) => {
+                    setAgreed(e.target.checked);
+                    setError('');
+                  }}
                   type="checkbox"
                   aria-invalid={hasError && !agreed}
                   aria-describedby={hasError ? statusId : undefined}

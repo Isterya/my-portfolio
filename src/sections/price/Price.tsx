@@ -5,7 +5,7 @@ import { useInView, useReducedMotion } from 'framer-motion';
 
 import { MARQUEE_COPIES, useCarousel } from '@/hooks/useCarousel';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+import { useMaxWidth } from '@/hooks/useMaxWidth';
 
 import PriceCard from '@/components/priceCard/PriceCard';
 import { priceData } from '@/data/priceData';
@@ -21,17 +21,19 @@ const Price = () => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
-  const isTouchDevice = useIsTouchDevice(1024);
+  const isNarrowScreen = useMaxWidth(1024);
   const prefersReducedMotion = useReducedMotion();
   const isCarouselInView = useInView(carouselRef);
 
-  const isMarquee = !isTouchDevice && !prefersReducedMotion;
+  const isMarquee = !isNarrowScreen && !prefersReducedMotion;
 
   useCarousel(trackRef, { disabled: !isMarquee, paused: !isCarouselInView });
 
   const renderedData = isMarquee
-    ? Array.from({ length: MARQUEE_COPIES }, () => priceData).flat()
-    : priceData;
+    ? Array.from({ length: MARQUEE_COPIES }, (_, copy) =>
+        priceData.map((price) => ({ ...price, key: `${price.id}-${copy}`, isDuplicate: copy > 0 })),
+      ).flat()
+    : priceData.map((price) => ({ ...price, key: `${price.id}`, isDuplicate: false }));
 
   useRevealOnScroll(trackRef, { resetKey: renderedData.length });
 
@@ -60,14 +62,14 @@ const Price = () => {
         })}
       >
         <div className="price-carousel__track" ref={trackRef}>
-          {renderedData.map((price, i) => (
+          {renderedData.map((price) => (
             <PriceCard
-              key={`${price.id}-${i}`}
+              key={price.key}
               title={t(price.title)}
               icon={price.icon}
               price={price.price}
               description={t(price.description)}
-              isDuplicate={i >= priceData.length}
+              isDuplicate={price.isDuplicate}
             />
           ))}
         </div>

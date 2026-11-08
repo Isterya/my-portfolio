@@ -189,14 +189,16 @@ const WayHomeGame = ({ language, onClose }: WayHomeGameProps) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const observer = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
+    const observer = new ResizeObserver(([entry]) => {
+      const measuredWidth = entry.contentRect.width;
+      setWidth(measuredWidth);
+      if (measuredWidth > 0) {
+        setLevel((current) => current ?? createLevel(1, measuredWidth));
+      }
+    });
     observer.observe(canvas);
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (width > 0 && !level) setLevel(createLevel(1, width));
-  }, [width, level]);
 
   useEffect(() => {
     const canvas = canvasRef.current;

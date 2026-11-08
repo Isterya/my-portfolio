@@ -15,10 +15,10 @@ type FooterProps = {
   simplified: boolean;
 };
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 const Footer = ({ simplified }: FooterProps) => {
   const { t } = useTranslation();
-
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
@@ -100,7 +100,7 @@ const Footer = ({ simplified }: FooterProps) => {
 
         <div className="footer-rights">
           <p>
-            {t('footer.rights.copyright')} 2025-{currentYear} {t('footer.rights.name')}
+            {t('footer.rights.copyright')} 2025-{CURRENT_YEAR} {t('footer.rights.name')}
           </p>
 
           <p>

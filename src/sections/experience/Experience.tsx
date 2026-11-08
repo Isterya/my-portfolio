@@ -1,7 +1,7 @@
 import { useTranslation, Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
+import { useMaxWidth } from '@/hooks/useMaxWidth';
 import {
   ExperienceDataItem,
   ExperienceSide,
@@ -39,7 +39,13 @@ const mergedData = dataLeft.flatMap((leftItem, i) => [
 const certificateLinkComponents = Object.fromEntries(
   certificateLinks.map((href, i) => [
     `link${i + 1}`,
-    <a href={href} className="experience__link" target="_blank" rel="noopener noreferrer" />,
+    <a
+      key={href}
+      href={href}
+      className="experience__link"
+      target="_blank"
+      rel="noopener noreferrer"
+    />,
   ]),
 );
 
@@ -91,7 +97,7 @@ const ExperienceItem = ({ item, side, isSingleColumn = false }: ExperienceItemPr
 
 const Experience = () => {
   const { t } = useTranslation();
-  const isMobile = useIsTouchDevice(1024);
+  const isMobile = useMaxWidth(1024);
 
   return (
     <section id="experience" className="experience" aria-labelledby="experience-title">
@@ -123,7 +129,7 @@ const Experience = () => {
                 />
                 {circlePositions.map((top, i) => (
                   <div
-                    key={i}
+                    key={top}
                     className={`timeline-point ${i % 2 === 0 ? 'primary' : 'dark'}`}
                     style={{ top: `${top}px` }}
                   >

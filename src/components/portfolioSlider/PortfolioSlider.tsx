@@ -26,7 +26,9 @@ const PortfolioSlider = () => {
       breakpoints: SLIDES_BREAKPOINTS,
     });
 
-  const autoplay = useAutoplay<HTMLDivElement>(nextSlide, { resetKey: currentPage });
+  const { ref: autoplayRef, handlers: autoplayHandlers } = useAutoplay<HTMLDivElement>(nextSlide, {
+    resetKey: currentPage,
+  });
 
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
@@ -41,7 +43,7 @@ const PortfolioSlider = () => {
   };
 
   return (
-    <div className="portfolio-slider" ref={autoplay.ref} {...autoplay.handlers}>
+    <div className="portfolio-slider" ref={autoplayRef} {...autoplayHandlers}>
       <div className="portfolio-slider__wrapper">
         <AnimatePresence mode="wait">
           <motion.div
@@ -90,14 +92,14 @@ const PortfolioSlider = () => {
       </div>
 
       <div className="portfolio-slider__controls">
-        {Array.from({ length: pageCount }).map((_, i) => (
+        {Array.from({ length: pageCount }, (_, page) => page).map((page) => (
           <button
             type="button"
-            key={i}
-            className={`portfolio-slider__dot ${currentPage === i ? 'active' : ''}`}
-            aria-label={t('a11y.goToSlide', { number: i + 1 })}
-            aria-current={currentPage === i ? 'true' : undefined}
-            onClick={() => goToPage(i)}
+            key={page}
+            className={`portfolio-slider__dot ${currentPage === page ? 'active' : ''}`}
+            aria-label={t('a11y.goToSlide', { number: page + 1 })}
+            aria-current={currentPage === page ? 'true' : undefined}
+            onClick={() => goToPage(page)}
           />
         ))}
       </div>

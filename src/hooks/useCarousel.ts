@@ -22,30 +22,30 @@ export const useCarousel = (
   { speed = 1.5, disabled = false, paused = false }: UseCarouselOptions = {},
 ) => {
   const animationRef = useRef<number | null>(null);
-  const scrollPos = useRef<number>(0);
-  const currentSpeed = useRef<number>(speed);
-  const targetSpeed = useRef<number>(speed);
+  const scrollPosRef = useRef<number>(0);
+  const currentSpeedRef = useRef<number>(speed);
+  const targetSpeedRef = useRef<number>(speed);
 
   useEffect(() => {
     const track = ref.current;
     if (!track) return;
 
     if (disabled) {
-      scrollPos.current = 0;
+      scrollPosRef.current = 0;
       track.style.transform = '';
       return;
     }
 
     if (paused) return;
 
-    targetSpeed.current = track.matches(':hover') ? 0 : speed;
+    targetSpeedRef.current = track.matches(':hover') ? 0 : speed;
 
     const handleMouseEnter = () => {
-      targetSpeed.current = 0;
+      targetSpeedRef.current = 0;
     };
 
     const handleMouseLeave = () => {
-      targetSpeed.current = speed;
+      targetSpeedRef.current = speed;
     };
 
     track.addEventListener('mouseenter', handleMouseEnter);
@@ -53,16 +53,16 @@ export const useCarousel = (
 
     const animate = () => {
       if (track) {
-        currentSpeed.current += (targetSpeed.current - currentSpeed.current) * 0.08;
-        scrollPos.current += currentSpeed.current;
+        currentSpeedRef.current += (targetSpeedRef.current - currentSpeedRef.current) * 0.08;
+        scrollPosRef.current += currentSpeedRef.current;
 
         const loopWidth = getLoopWidth(track);
 
-        if (loopWidth > 0 && scrollPos.current >= loopWidth) {
-          scrollPos.current -= loopWidth;
+        if (loopWidth > 0 && scrollPosRef.current >= loopWidth) {
+          scrollPosRef.current -= loopWidth;
         }
 
-        track.style.transform = `translateX(-${scrollPos.current}px)`;
+        track.style.transform = `translateX(-${scrollPosRef.current}px)`;
       }
 
       animationRef.current = requestAnimationFrame(animate);

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState, useSyncExternalStore } from 'react';
 
 import {
   SlidesBreakpoint,
@@ -8,6 +8,11 @@ import {
   wrapPage,
 } from '@/utils/pagination';
 
+const subscribeToResize = (onResize: () => void) => {
+  window.addEventListener('resize', onResize);
+  return () => window.removeEventListener('resize', onResize);
+};
+
 type UseSliderProps = {
   dataLength: number;
   itemsPerSlideDefault: number;
@@ -15,26 +20,16 @@ type UseSliderProps = {
 };
 
 export const useSlider = ({ dataLength, itemsPerSlideDefault, breakpoints }: UseSliderProps) => {
-  const [itemsPerSlide, setItemsPerSlide] = useState(() =>
-    typeof window === 'undefined'
-      ? itemsPerSlideDefault
-      : getItemsPerPage(window.innerWidth, breakpoints, itemsPerSlideDefault),
+  const itemsPerSlide = useSyncExternalStore(
+    subscribeToResize,
+    () => getItemsPerPage(window.innerWidth, breakpoints, itemsPerSlideDefault),
+    () => itemsPerSlideDefault,
   );
   const [firstIndex, setFirstIndex] = useState(0);
 
   const pageCount = getPageCount(dataLength, itemsPerSlide);
   const currentPage = getPageOf(firstIndex, itemsPerSlide);
   const currentIndex = currentPage * itemsPerSlide;
-
-  const updateItemsPerSlide = useCallback(() => {
-    setItemsPerSlide(getItemsPerPage(window.innerWidth, breakpoints, itemsPerSlideDefault));
-  }, [breakpoints, itemsPerSlideDefault]);
-
-  useEffect(() => {
-    updateItemsPerSlide();
-    window.addEventListener('resize', updateItemsPerSlide);
-    return () => window.removeEventListener('resize', updateItemsPerSlide);
-  }, [updateItemsPerSlide]);
 
   const goToPage = useCallback(
     (page: number) => setFirstIndex(wrapPage(page, pageCount) * itemsPerSlide),
