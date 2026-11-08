@@ -3,6 +3,7 @@ import App from './App.tsx';
 
 import './i18n';
 
+import './styles/fonts';
 import './styles/style.scss';
 
 const STALE_CHUNK_RELOAD_KEY = 'stale-chunk-reload-at';
