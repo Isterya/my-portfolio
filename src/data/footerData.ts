@@ -8,7 +8,6 @@ import { CONTACT_EMAIL, SITE_URL, TELEGRAM_URL } from '@/config/site';
 
 export interface SocialLinks {
   icon: string;
-  /** Network name, used as the accessible name of the icon-only link. */
   label: string;
   href: string;
 }
@@ -35,7 +34,6 @@ export const socialLinks: SocialLinks[] = [
 ];
 
 export interface FooterNavLink {
-  /** Id of the home page section the link scrolls to. */
   id: string;
   labelKey: string;
 }

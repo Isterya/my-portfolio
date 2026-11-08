@@ -24,12 +24,9 @@ const LanguageSwitcher = () => {
   const handleSelect = (language: AppLanguage) => {
     i18n.changeLanguage(language);
     setIsOpen(false);
-    // The option is about to unmount; keep keyboard focus on the toggle instead of losing it.
     toggleRef.current?.focus();
   };
 
-  // Close on a click outside this switcher (a ref, not a class selector, so several instances can
-  // coexist) and on Escape, returning focus to the toggle.
   useEffect(() => {
     if (!isOpen) return;
 

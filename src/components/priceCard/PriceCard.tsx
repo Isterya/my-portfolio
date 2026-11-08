@@ -7,7 +7,6 @@ interface PriceCardProps {
   icon: string;
   price: number | string;
   description: string;
-  /** A visual duplicate in the endless marquee: hidden from assistive technology. */
   isDuplicate?: boolean;
 }
 

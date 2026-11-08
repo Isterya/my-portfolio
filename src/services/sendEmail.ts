@@ -1,6 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
-// The API runs on Render's free tier, which needs up to a minute to wake up after idling.
 const REQUEST_TIMEOUT_MS = 60_000;
 
 export type SendEmailErrorCode = 'network' | 'timeout' | 'rateLimit' | 'validation' | 'server';
@@ -21,9 +20,6 @@ const errorCodeFromStatus = (status: number): SendEmailErrorCode => {
   return 'server';
 };
 
-/**
- * @param honeypot Value of the hidden anti-spam field; people leave it empty, bots fill it in.
- */
 export const sendEmail = async (email: string, honeypot = ''): Promise<void> => {
   if (!API_URL) {
     console.error('VITE_API_URL is not configured, the contact form cannot reach the API.');
@@ -48,17 +44,11 @@ export const sendEmail = async (email: string, honeypot = ''): Promise<void> => 
     clearTimeout(timeoutId);
   }
 
-  // The body is not needed on success, and error bodies are not guaranteed to be JSON
-  // (rate limiter, proxies, cold-start pages), so the status code is the source of truth.
   if (!response.ok) {
     throw new SendEmailError(errorCodeFromStatus(response.status));
   }
 };
 
-/**
- * Starts the API instance in the background (Render's free tier sleeps after inactivity), so the
- * form answers quickly when the visitor submits it. Failures do not matter here.
- */
 export const wakeUpApi = () => {
   if (!API_URL) return;
 

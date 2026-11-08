@@ -17,8 +17,6 @@ const PORT = process.env.PORT || 5000;
 
 app.set('trust proxy', 1);
 
-// Comma-separated list of site origins allowed to call the API from a browser, e.g.
-// ALLOWED_ORIGINS=https://isterya.dev,https://www.isterya.dev. Unset keeps the old open policy.
 const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '')
   .split(',')
   .map((origin) => origin.trim())
@@ -33,7 +31,6 @@ app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10kb' }));
 
-// Clients parse every answer as JSON, including 429; also expose the standard RateLimit headers.
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   limit: 5,
@@ -45,14 +42,11 @@ app.use('/send-email', limiter);
 
 const emailSchema = z.object({
   email: z.string().email(),
-  // Honeypot: a field people never see; automated form fillers do fill it.
   company: z.string().max(200).optional(),
 });
 
 const RECEIVED = { success: true, message: 'Request received' } as const;
 
-// Cheap endpoint for Render's health check and for the site to wake the free instance up before
-// the visitor submits the form.
 app.get('/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok' });
 });
@@ -73,7 +67,6 @@ app.post(
 
     const { email, company } = parsed.data;
 
-    // Bots get the same answer as people, so they cannot tell they were filtered out.
     if (company) {
       return res.status(200).json(RECEIVED);
     }
@@ -82,8 +75,6 @@ app.post(
       return res.status(200).json(RECEIVED);
     }
 
-    // The Telegram notification to the owner is the lead itself: without it the request failed,
-    // and the visitor must not receive a "thanks, I'll get back to you" email.
     try {
       await sendToTelegram(email);
     } catch (err) {
@@ -93,8 +84,6 @@ app.post(
 
     rememberDelivery(email);
 
-    // The confirmation to the visitor is a courtesy: a typo in their address must not turn a
-    // delivered lead into an error (and a duplicate resubmission).
     if (!takeConfirmationQuota()) {
       console.warn('⚠️ Hourly confirmation email quota reached, skipping the confirmation');
     } else {
@@ -109,7 +98,6 @@ app.post(
   }),
 );
 
-// Express recognises error handlers by their four parameters, so `_next` must stay.
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.log('❌ Unexpected error', err);
   res.status(500).json({ success: false, error: 'Server error' });

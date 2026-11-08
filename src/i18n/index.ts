@@ -11,7 +11,6 @@ import pl from './locales/pl.json';
 const syncDocumentLanguage = (language: string) => {
   const appLanguage = toAppLanguage(i18n.resolvedLanguage ?? language);
 
-  // `lang` drives screen reader pronunciation and hyphenation; `data-lang` drives per-language CSS.
   document.documentElement.lang = appLanguage;
   document.documentElement.setAttribute('data-lang', appLanguage);
 };
@@ -32,7 +31,6 @@ i18n
     load: 'languageOnly',
     fallbackLng: DEFAULT_LANGUAGE,
     detection: {
-      // Browsers report region-specific tags (ru-RU, pl-PL, en-US); store and use the base language.
       convertDetectedLanguage: (language: string) => language.split('-')[0],
     },
     interpolation: {

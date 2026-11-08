@@ -10,7 +10,6 @@ export const DEFAULT_LANGUAGE: AppLanguage = 'en';
 
 export const SUPPORTED_LANGUAGES: AppLanguage[] = LANGUAGES.map(({ code }) => code);
 
-/** Maps any BCP 47 tag (`ru-RU`, `pl`, `de-DE`) to a language the site is translated into. */
 export const toAppLanguage = (language?: string): AppLanguage => {
   const base = language?.split('-')[0];
 

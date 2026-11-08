@@ -25,7 +25,6 @@ const Price = () => {
   const prefersReducedMotion = useReducedMotion();
   const isCarouselInView = useInView(carouselRef);
 
-  // Touch layouts scroll natively; with "reduce motion" the cards do not drift either.
   const isMarquee = !isTouchDevice && !prefersReducedMotion;
 
   useCarousel(trackRef, { disabled: !isMarquee, paused: !isCarouselInView });
@@ -54,7 +53,6 @@ const Price = () => {
       <div
         className={`price-carousel${isMarquee ? '' : ' price-carousel--static'}`}
         ref={carouselRef}
-        // When the row scrolls natively it must be reachable and scrollable from the keyboard.
         {...(!isMarquee && {
           tabIndex: 0,
           role: 'region',

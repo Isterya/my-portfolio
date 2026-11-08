@@ -37,8 +37,6 @@ const float = {
   },
 };
 
-// The maze is a separate chunk, requested only when the visitor asks to play (and prefetched on
-// hover or focus of the button), so it costs nothing to the 404 page or the rest of the site.
 const loadWayHomeGame = () => import('@/features/wayHome/WayHomeGame');
 const WayHomeGame = lazy(loadWayHomeGame);
 

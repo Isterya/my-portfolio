@@ -21,7 +21,6 @@ const SLOW_REQUEST_HINT_DELAY_MS = 5000;
 const Contact = () => {
   const { t } = useTranslation();
 
-  // Wake the API up while the visitor is still a screen or so away from the form.
   const sectionRef = useRef<HTMLElement>(null);
   const isNearForm = useInView(sectionRef, { once: true, margin: '0px 0px 800px 0px' });
 
@@ -128,8 +127,6 @@ const Contact = () => {
               </button>
             </div>
 
-            {/* Anti-spam trap: invisible and unreachable for people, filled in by bots. Neutral
-                name and id so browser autofill never treats it as a "company" field. */}
             <div className="visually-hidden" aria-hidden="true">
               <input
                 id="contact-hp"

@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { SendEmailErrorCode } from './sendEmail';
 
-// API_URL is read when the module loads, so every test imports a fresh copy after stubbing env.
 const loadSendEmail = async (apiUrl = 'https://api.test') => {
   vi.stubEnv('VITE_API_URL', apiUrl);
   vi.resetModules();
@@ -52,7 +51,6 @@ describe('sendEmail', () => {
     [500, 'server'],
     [502, 'server'],
   ] as const)('maps HTTP %i to the "%s" error without parsing the body', async (status, code) => {
-    // Plain-text bodies (rate limiter, gateways) used to crash JSON parsing.
     vi.stubGlobal(
       'fetch',
       vi.fn().mockResolvedValue(new Response('Too many requests', { status })),

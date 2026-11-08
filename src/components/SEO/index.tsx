@@ -2,8 +2,6 @@ import { Helmet } from 'react-helmet-async';
 
 import { SeoData } from '@/data/seoData';
 
-// index.html ships the home page values of these tags with data-rh="true", so crawlers that do not
-// run JavaScript still get them, and Helmet replaces them instead of adding duplicates.
 const SEO = ({ title, description, url, image, noIndex }: SeoData) => (
   <Helmet>
     <title>{title}</title>

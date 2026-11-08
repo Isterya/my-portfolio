@@ -2,14 +2,9 @@ import { RefObject, useEffect } from 'react';
 
 type UseRevealOnScrollOptions = {
   threshold?: number;
-  /** Re-observe when it changes, e.g. the number of rendered children. */
   resetKey?: unknown;
 };
 
-/**
- * Adds the `visible` class to each child of the container the first time it scrolls into view;
- * the reveal itself is a CSS transition on that class.
- */
 export const useRevealOnScroll = (
   ref: RefObject<HTMLElement | null>,
   { threshold = 0.3, resetKey }: UseRevealOnScrollOptions = {},

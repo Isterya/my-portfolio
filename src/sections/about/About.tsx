@@ -23,8 +23,6 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
-// 6 September 2007 in local time. An ISO string ('2007-09-06') is parsed as UTC midnight, which is
-// still 5 September west of Greenwich, so the age there changed a day early.
 const BIRTH_DATE = new Date(2007, 8, 6);
 
 const About = () => {

@@ -3,7 +3,6 @@ import { absoluteUrl } from '@/config/site';
 export interface SeoData {
   title: string;
   description: string;
-  /** Canonical URL; omitted for pages that must not be indexed. */
   url?: string;
   image?: string;
   noIndex?: boolean;

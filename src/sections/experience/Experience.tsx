@@ -31,7 +31,6 @@ const pointVariant = {
   }),
 };
 
-// Single-column layout: left (where/when) and right (what) entries alternate.
 const mergedData = dataLeft.flatMap((leftItem, i) => [
   { ...leftItem, side: 'left' as const },
   ...(dataRight[i] ? [{ ...dataRight[i], side: 'right' as const }] : []),
@@ -47,7 +46,6 @@ const certificateLinkComponents = Object.fromEntries(
 type ExperienceItemProps = {
   item: ExperienceDataItem;
   side: ExperienceSide;
-  /** In the single-column layout right-side titles are visually secondary. */
   isSingleColumn?: boolean;
 };
 

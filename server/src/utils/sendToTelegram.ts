@@ -16,7 +16,6 @@ export const sendToTelegram = async (email: string): Promise<void> => {
       body: JSON.stringify({ chat_id: CHAT_ID, text: message }),
     });
 
-    // fetch only rejects on network errors; a revoked token or a wrong chat id is a 4xx response.
     if (!response.ok) {
       const details = await response.text();
       throw new Error(`Telegram API error ${response.status}: ${details}`);

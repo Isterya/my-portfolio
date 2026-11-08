@@ -7,7 +7,7 @@ describe('getAge', () => {
     vi.useRealTimers();
   });
 
-  const birthDate = new Date(2007, 8, 6); // 6 September 2007, local time
+  const birthDate = new Date(2007, 8, 6);
 
   it('does not count the current year before the birthday', () => {
     vi.useFakeTimers({ now: new Date(2026, 8, 5) });

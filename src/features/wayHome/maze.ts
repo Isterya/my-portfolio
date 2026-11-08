@@ -1,5 +1,3 @@
-// Pure maze logic for the "Way home" mini-game: generation, moves and the shortest path.
-
 export type Direction = 'up' | 'right' | 'down' | 'left';
 
 export type Cell = { x: number; y: number };
@@ -7,7 +5,6 @@ export type Cell = { x: number; y: number };
 export type Maze = {
   cols: number;
   rows: number;
-  /** Bit mask of open sides per cell, index = y * cols + x. */
   passages: Uint8Array;
 };
 
@@ -27,7 +24,6 @@ const DELTA: Record<Direction, Cell> = {
   left: { x: -1, y: 0 },
 };
 
-/** Small seeded PRNG (mulberry32): the same seed always builds the same maze. */
 export const createRandom = (seed: number) => {
   let state = seed >>> 0;
 
@@ -50,10 +46,6 @@ export const step = ({ x, y }: Cell, direction: Direction): Cell => ({
   y: y + DELTA[direction].y,
 });
 
-/**
- * "Perfect" maze (exactly one path between any two cells) built with an iterative depth-first
- * search (recursive backtracker): long winding corridors, no stack overflow on large grids.
- */
 export const generateMaze = (cols: number, rows: number, random: () => number): Maze => {
   const maze: Maze = { cols, rows, passages: new Uint8Array(cols * rows) };
   const visited = new Uint8Array(cols * rows);
@@ -90,7 +82,6 @@ export const canMove = (maze: Maze, cell: Cell, direction: Direction) =>
 export const openDirections = (maze: Maze, cell: Cell) =>
   DIRECTIONS.filter((direction) => canMove(maze, cell, direction));
 
-/** Number of moves on the shortest path (breadth-first search), or -1 if unreachable. */
 export const shortestPathLength = (maze: Maze, from: Cell, to: Cell) => {
   const distance = new Int32Array(maze.cols * maze.rows).fill(-1);
   const queue: Cell[] = [from];
@@ -112,7 +103,6 @@ export const shortestPathLength = (maze: Maze, from: Cell, to: Cell) => {
   return -1;
 };
 
-/** Grid size for a level: wider screens and later levels get more cells. */
 export const getMazeSize = (availableWidth: number, level: number) => {
   const baseCols = Math.max(6, Math.min(12, Math.floor(availableWidth / 40)));
   const cols = Math.min(baseCols + (level - 1) * 2, 20);

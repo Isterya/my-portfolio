@@ -11,7 +11,6 @@ describe('pagination', () => {
   });
 
   it('keeps pages aligned when the item count is not a multiple of the page size', () => {
-    // 15 skills, 2 per page: the old `(index + 2) % 15` produced 14 -> 1 -> 3 after one loop.
     const perPage = 2;
     const pageCount = getPageCount(15, perPage);
     const firstIndexes: number[] = [];
@@ -31,7 +30,6 @@ describe('pagination', () => {
   });
 
   it('keeps the first visible item on screen when the page size changes', () => {
-    // Items 6-8 were visible with 3 per page; with 2 per page item 6 starts page 3.
     expect(getPageOf(6, 2)).toBe(3);
     expect(getPageOf(7, 2)).toBe(3);
   });

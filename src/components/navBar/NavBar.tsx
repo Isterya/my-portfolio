@@ -33,7 +33,6 @@ const NavBar = () => {
   const burgerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLElement>(null);
 
-  // Lock page scrolling under the open menu and restore the previous value afterwards.
   useEffect(() => {
     if (!isMenuOpen) return;
 
@@ -46,8 +45,6 @@ const NavBar = () => {
     };
   }, [isMenuOpen]);
 
-  // While the full-screen menu is open: Escape closes it and returns focus to the menu button, and
-  // Tab cycles between the button and the menu links instead of the page hidden underneath.
   useEffect(() => {
     if (!isMenuOpen) return;
 
@@ -104,7 +101,6 @@ const NavBar = () => {
       setActiveSection(currentSection);
     };
 
-    // Scroll events can fire several times per frame; measure at most once per frame.
     const handleScroll = () => {
       if (!frame) frame = requestAnimationFrame(updateActiveSection);
     };

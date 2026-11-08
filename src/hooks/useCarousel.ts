@@ -1,13 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-/** How many times the cards are repeated in the track to make the loop endless. */
 export const MARQUEE_COPIES = 3;
 
-/**
- * Distance after which the track looks exactly the same again: from the first card to its copy.
- * `scrollWidth / copies` is shorter by a third of a gap (there is no gap after the last card),
- * which made the strip skip ~11 px forward on every loop.
- */
 const getLoopWidth = (track: HTMLElement) => {
   const first = track.children[0] as HTMLElement | undefined;
   const firstCopy = track.children[track.children.length / MARQUEE_COPIES] as
@@ -19,9 +13,7 @@ const getLoopWidth = (track: HTMLElement) => {
 
 type UseCarouselOptions = {
   speed?: number;
-  /** No marquee at all (touch layouts, reduced motion): the track is reset to its start. */
   disabled?: boolean;
-  /** Temporarily stop the loop (e.g. while off screen) and resume from the same position. */
   paused?: boolean;
 };
 
@@ -46,7 +38,6 @@ export const useCarousel = (
 
     if (paused) return;
 
-    // Hover events are not tracked while paused, so read the current hover state on (re)start.
     targetSpeed.current = track.matches(':hover') ? 0 : speed;
 
     const handleMouseEnter = () => {

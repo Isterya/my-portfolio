@@ -161,7 +161,6 @@
       padding: 6px;
     }
 
-    // The input itself has no outline; ring the whole pill like the Send button's focus style.
     &:has(.contact-email__input:focus-visible) {
       outline: 3px solid rgb(255 127 0 / 40%);
       outline-offset: 2px;

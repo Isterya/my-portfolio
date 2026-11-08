@@ -62,8 +62,6 @@ const Footer = ({ simplified }: FooterProps) => {
             </ul>
           </div>
 
-          {/* One markup for every width: on desktop the wrapper uses display: contents, so the
-              columns lay out as items of .footer-wrapper; from 1024px down they form their own row. */}
           <div className="footer-columns">
             {!simplified && (
               <nav className="footer-nav" aria-labelledby="footer-nav-title">

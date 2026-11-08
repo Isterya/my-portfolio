@@ -227,12 +227,10 @@ a {
   color: inherit;
 }
 
-// Width/height attributes reserve space while images load; keep the aspect ratio when CSS limits the width.
 img {
   height: auto;
 }
 
-// Hidden on screen, still read by screen readers (e.g. form labels replaced by placeholders visually).
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -245,8 +243,6 @@ img {
   border: 0;
 }
 
-// Respect the OS "reduce motion" setting: infinite decorative loops stop on their final (resting)
-// keyframe and transitions become instant. JS-driven motion is handled by MotionConfig and the hooks.
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

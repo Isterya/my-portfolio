@@ -277,7 +277,6 @@
       margin-top: 16px;
     }
 
-    // No marquee (touch layouts, reduced motion): let visitors scroll the cards themselves.
     &--static {
       overflow-x: auto;
     }

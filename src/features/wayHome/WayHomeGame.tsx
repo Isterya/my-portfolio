@@ -66,11 +66,12 @@ const readBestLevel = () => {
   }
 };
 
-const writeBestLevel = (level: number) => {
+const writeBestLevel = (level: number): boolean => {
   try {
     localStorage.setItem(BEST_LEVEL_KEY, String(level));
+    return true;
   } catch {
-    // Storage can be unavailable (private mode, blocked cookies): the record lasts for this visit.
+    return false;
   }
 };
 
@@ -85,7 +86,6 @@ const createLevel = (number: number, width: number): Level => {
 const cellKey = ({ x, y }: Cell) => `${x},${y}`;
 const isSameCell = (a: Cell, b: Cell) => a.x === b.x && a.y === b.y;
 
-/** Draws the whole board; the player may sit between cells while a move is animated. */
 const drawBoard = (canvas: HTMLCanvasElement, level: Level, player: Point, trail: Set<string>) => {
   const context = canvas.getContext('2d');
   if (!context) return;
@@ -107,7 +107,6 @@ const drawBoard = (canvas: HTMLCanvasElement, level: Level, player: Point, trail
 
   const center = (value: number) => (value + 0.5) * cell;
 
-  // Visited cells: the glowing dots of the brand mascot, left behind as a trail.
   context.fillStyle = 'rgba(255, 127, 0, 0.35)';
   trail.forEach((key) => {
     const [x, y] = key.split(',').map(Number);
@@ -116,7 +115,6 @@ const drawBoard = (canvas: HTMLCanvasElement, level: Level, player: Point, trail
     context.fill();
   });
 
-  // Goal: a small house.
   const gx = center(level.goal.x);
   const gy = center(level.goal.y);
   const r = cell * 0.3;
@@ -132,7 +130,6 @@ const drawBoard = (canvas: HTMLCanvasElement, level: Level, player: Point, trail
   context.closePath();
   context.fill();
 
-  // Walls: every cell draws its top and left sides; the outer right and bottom edges close the box.
   context.strokeStyle = 'rgba(255, 255, 255, 0.8)';
   context.lineWidth = wall;
   context.lineCap = 'round';
@@ -154,7 +151,6 @@ const drawBoard = (canvas: HTMLCanvasElement, level: Level, player: Point, trail
   context.lineTo(0, rows * cell);
   context.stroke();
 
-  // Player: a glowing orange dot.
   context.save();
   context.shadowColor = 'rgba(255, 127, 0, 0.9)';
   context.shadowBlur = cell * 0.6;
@@ -202,7 +198,6 @@ const WayHomeGame = ({ language, onClose }: WayHomeGameProps) => {
     if (width > 0 && !level) setLevel(createLevel(1, width));
   }, [width, level]);
 
-  // Draw on state changes only; a requestAnimationFrame loop runs just for the move animation.
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !level || width === 0) return;
@@ -244,7 +239,6 @@ const WayHomeGame = ({ language, onClose }: WayHomeGameProps) => {
     if (isWon) nextButtonRef.current?.focus();
   }, [isWon]);
 
-  /** One step, or with `slide` a run along a straight corridor up to the next junction. */
   const move = useCallback(
     (direction: Direction, slide = false) => {
       if (!level || isWon) return;

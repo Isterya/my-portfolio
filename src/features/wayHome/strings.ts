@@ -2,8 +2,6 @@ import type { AppLanguage } from '@/i18n/languages';
 
 import type { Direction } from './maze';
 
-// The game's copy ships with the lazily loaded 404 page instead of the shared locale files,
-// so it adds nothing to the main bundle.
 type WayHomeStrings = {
   play: string;
   loading: string;

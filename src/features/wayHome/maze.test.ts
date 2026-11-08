@@ -16,7 +16,7 @@ const countPassages = (maze: ReturnType<typeof generateMaze>) => {
   for (let y = 0; y < maze.rows; y++) {
     for (let x = 0; x < maze.cols; x++) open += openDirections(maze, { x, y }).length;
   }
-  return open / 2; // every passage is stored on both of its cells
+  return open / 2;
 };
 
 describe('maze', () => {
@@ -33,7 +33,6 @@ describe('maze', () => {
     const maze = generateMaze(14, 9, createRandom(seed));
     const goal = { x: maze.cols - 1, y: maze.rows - 1 };
 
-    // A spanning tree over n cells has exactly n - 1 edges.
     expect(countPassages(maze)).toBe(maze.cols * maze.rows - 1);
     for (let y = 0; y < maze.rows; y++) {
       for (let x = 0; x < maze.cols; x++) {

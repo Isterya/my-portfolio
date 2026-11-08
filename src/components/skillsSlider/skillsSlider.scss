@@ -78,8 +78,6 @@
       background: $main-color;
     }
 
-    // Invisible hit area around the 15px dot (WCAG 2.5.8 target size), sized to the gap between
-    // dots so neighbouring areas do not overlap. Layout and look are unchanged.
     &::before {
       content: '';
       position: absolute;

@@ -3,15 +3,9 @@ import { useInView, useReducedMotion } from 'framer-motion';
 
 type UseAutoplayOptions = {
   delay?: number;
-  /** Restarts the countdown when it changes, e.g. the current page after manual navigation. */
   resetKey?: unknown;
 };
 
-/**
- * Advances a carousel on a timer only while nobody could be disturbed by it (WCAG 2.2.2): the
- * carousel is on screen, the tab is visible, the mouse is not over it, focus is not inside it,
- * it is not being dragged and the user has not asked the OS to reduce motion.
- */
 export const useAutoplay = <T extends HTMLElement>(
   advance: () => void,
   { delay = 5000, resetKey }: UseAutoplayOptions = {},
@@ -51,7 +45,6 @@ export const useAutoplay = <T extends HTMLElement>(
   }, [isPlaying, advance, delay, resetKey]);
 
   const handlers = {
-    // Touch taps also fire pointerenter; only a hovering mouse should hold the carousel.
     onPointerEnter: (event: PointerEvent<T>) => {
       if (event.pointerType === 'mouse') setIsHovered(true);
     },

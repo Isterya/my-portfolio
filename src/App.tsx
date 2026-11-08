@@ -10,7 +10,6 @@ import Loader from './components/loader/Loader';
 function App() {
   return (
     <HelmetProvider>
-      {/* With "reduce motion" enabled, framer-motion skips transform/layout animations. */}
       <MotionConfig reducedMotion="user">
         <BrowserRouter>
           <ScrollToTop />
