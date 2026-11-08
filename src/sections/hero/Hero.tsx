@@ -77,7 +77,7 @@ const Hero = () => {
             alt=""
             width={597}
             height={616}
-            {...{ fetchpriority: 'high' }}
+            fetchPriority="high"
           />
 
           <div className="hero-links">
