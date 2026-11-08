@@ -48,7 +48,7 @@
       font-weight: 600;
       font-size: 64px;
       line-height: 96px;
-      color: #fcfcfd;
+      color: $surface-light;
 
       @include respond(xl) {
         font-size: 48px;
@@ -274,7 +274,7 @@
     &__descr {
       font-weight: 400;
       font-size: 20px;
-      color: #fcfcfd;
+      color: $surface-light;
 
       @include respond(xl) {
         font-size: 18px;
@@ -402,7 +402,7 @@
     &__item {
       font-weight: 400;
       font-size: 16px;
-      color: #fcfcfd;
+      color: $surface-light;
       transition: color 0.3s ease;
 
       @include respond(xl) {
@@ -426,7 +426,7 @@
       }
 
       &:hover {
-        color: #fd853a;
+        color: $accent-soft;
       }
     }
   }
@@ -466,7 +466,7 @@
     &__item {
       font-weight: 400;
       font-size: 16px;
-      color: #fcfcfd;
+      color: $surface-light;
       transition: color 0.3s ease;
 
       @include respond(xl) {
@@ -490,7 +490,7 @@
       }
 
       &:hover {
-        color: #fd853a;
+        color: $accent-soft;
       }
     }
   }
@@ -571,7 +571,7 @@
         transition: color 0.3s ease;
 
         &:hover {
-          color: #fd853a;
+          color: $accent-soft;
         }
       }
     }
@@ -596,7 +596,7 @@
   &-title {
     font-weight: 600;
     font-size: 20px;
-    color: #fd853a;
+    color: $accent-soft;
 
     @include respond(xl) {
       font-size: 18px;

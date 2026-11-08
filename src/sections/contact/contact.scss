@@ -58,7 +58,7 @@
     line-height: 85px;
     letter-spacing: -0.01em;
     text-align: center;
-    color: #344054;
+    color: $text-secondary;
 
     @include respond(xl) {
       font-size: 48px;
@@ -206,7 +206,7 @@
       }
 
       &::placeholder {
-        color: #98a2b3;
+        color: $text-muted;
       }
     }
 
@@ -214,7 +214,7 @@
       border: 1px solid transparent;
       border-radius: 60px;
       padding: 20px 40px;
-      background: #ff7f00;
+      background: $accent;
       color: #fff;
       cursor: pointer;
       font-weight: 500;
@@ -251,8 +251,8 @@
 
       &:hover {
         background: #fff;
-        color: #ff7f00;
-        border-color: #ff7f00;
+        color: $accent;
+        border-color: $accent;
       }
 
       &:active {
@@ -346,7 +346,7 @@
   &-agreement {
     font-weight: 500;
     font-size: 14px;
-    color: #344054;
+    color: $text-secondary;
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -414,7 +414,7 @@
         height: 18px;
         border-radius: 4px;
         background-color: #fff;
-        border: 2px solid #ff7f00;
+        border: 2px solid $accent;
         position: relative;
         transition: all 0.2s ease;
 
@@ -440,7 +440,7 @@
           top: 0;
           width: 6px;
           height: 12px;
-          border: solid #ff7f00;
+          border: solid $accent;
           border-width: 0 2px 2px 0;
           transform: rotate(45deg);
           opacity: 0;
@@ -487,7 +487,7 @@
         }
 
         a {
-          color: #ff7f00;
+          color: $accent;
           transition: color 0.2s ease;
 
           &:hover {

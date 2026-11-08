@@ -111,7 +111,7 @@
 
       &.active {
         border: 1px solid transparent;
-        background: #ff7f00;
+        background: $accent;
         transition:
           background 0.2s ease,
           color 0.2s ease,

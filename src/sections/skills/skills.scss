@@ -60,7 +60,7 @@
       font-weight: 600;
       font-size: 48px;
       line-height: 48px;
-      color: #fcfcfd;
+      color: $surface-light;
 
       @include respond(xl) {
         font-size: 36px;

@@ -38,9 +38,9 @@
 
   &__button {
     padding: 10px 24px;
-    border: 2px solid #ff7f00;
+    border: 2px solid $accent;
     border-radius: 999px;
-    background: #ff7f00;
+    background: $accent;
     color: #fff;
     font: inherit;
     font-weight: 500;
@@ -51,7 +51,7 @@
 
     &:hover {
       background: transparent;
-      color: #171717;
+      color: $ink;
     }
   }
 
@@ -64,14 +64,14 @@
       border-color 0.3s ease;
 
     &:hover {
-      color: #ff7f00;
-      border-color: #ff7f00;
+      color: $accent;
+      border-color: $accent;
     }
   }
 
   &__button:focus-visible,
   &__link:focus-visible {
-    outline: 2px solid #ff7f00;
+    outline: 2px solid $accent;
     outline-offset: 4px;
   }
 }

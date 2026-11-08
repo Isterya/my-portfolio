@@ -1,7 +1,7 @@
 .policy {
   padding: 80px 0;
   background-color: #fff;
-  color: #1d2939;
+  color: $dark-blue;
 
   @include respond(lg) {
     padding: 60px 0;

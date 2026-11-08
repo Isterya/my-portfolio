@@ -83,12 +83,12 @@
       left: 0;
       width: 0;
       height: 2px;
-      background-color: #ff7f00;
+      background-color: $accent;
       transition: width 0.3s ease;
     }
 
     &:hover {
-      color: #ff7f00;
+      color: $accent;
 
       svg {
         transform: translateX(5px);
@@ -103,10 +103,10 @@
   &-play {
     margin-top: 28px;
     padding: 10px 20px;
-    border: 2px solid #ff7f00;
+    border: 2px solid $accent;
     border-radius: 999px;
     background: transparent;
-    color: #171717;
+    color: $ink;
     font: inherit;
     font-size: 15px;
     font-weight: 500;
@@ -116,8 +116,8 @@
       color 0.3s ease;
 
     &:hover {
-      background: #171717;
-      border-color: #171717;
+      background: $ink;
+      border-color: $ink;
       color: #fff;
     }
 
