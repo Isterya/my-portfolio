@@ -1,16 +1,17 @@
 /// <reference types="vite/client" />
 
-declare module '*.svg' {
-  const content: string;
-  export default content;
+// Asset imports (*.svg, *.webp and the rest) are already typed by vite/client.
+
+interface ViteTypeOptions {
+  // Without this every import.meta.env.* is `any`: a misspelled or undeclared variable compiles.
+  strictImportMetaEnv: unknown;
 }
 
-declare module '*.png' {
-  const value: string;
-  export default value;
+interface ImportMetaEnv {
+  /** Base URL of the contact API (server/), without a trailing slash. */
+  readonly VITE_API_URL?: string;
 }
 
-declare module '*.jpg' {
-  const value: string;
-  export default value;
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
