@@ -5,8 +5,7 @@ export const MARQUEE_COPIES = 3;
 const getLoopWidth = (track: HTMLElement) => {
   const first = track.children[0] as HTMLElement | undefined;
   const firstCopy = track.children[track.children.length / MARQUEE_COPIES] as
-    | HTMLElement
-    | undefined;
+    HTMLElement | undefined;
 
   return first && firstCopy ? firstCopy.offsetLeft - first.offsetLeft : 0;
 };

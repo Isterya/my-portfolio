@@ -121,7 +121,7 @@
 
   a {
     color: #5865f2;
-    word-break: break-word;
+    overflow-wrap: anywhere;
 
     &:hover {
       text-decoration: underline;
