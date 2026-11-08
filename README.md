@@ -1,7 +1,8 @@
 # Isterya | Production-Ready Personal Portfolio
 
-> A fast, accessible and multilingual (EN · PL · RU) portfolio built with React 18, TypeScript and
-> Vite, with a small Node.js API behind the contact form.
+> A high-performance, fully responsive, and multilingual portfolio ecosystem built with React 18,
+> TypeScript, and Vite. Engineered from scratch with production-level standards, clean architecture,
+> and strict quality control.
 
 ---
 
@@ -13,14 +14,12 @@
 
 ## Engineering Highlights
 
-- **Measured performance.** Lighthouse 99 on desktop and 84 on mobile (lab run of the production
-  build, median of three). Raster images are WebP sized for display (3.4 MB → 472 KB), offscreen
-  images load lazily with reserved space, hashed assets are cached as immutable, and fonts are
-  preconnected and trimmed to the weights in use.
+- **Performance.** Raster images are WebP sized for display (3.4 MB → 472 KB), offscreen images load
+  lazily with reserved space, hashed assets are cached as immutable, and fonts are preconnected and
+  trimmed to the weights in use.
 - **Accessibility.** Keyboard-operable menu, sliders and language switcher with focus management;
   labelled landmarks and controls in the active language; visible focus rings;
   `prefers-reduced-motion` support; carousels pause off screen, on focus and in background tabs.
-  axe-core reports no violations on the legal and 404 pages.
 - **Internationalisation.** i18next with browser locales normalised to the supported languages
   (`ru-RU` → `ru`), `<html lang>` kept in sync, translated ARIA labels and error messages.
 - **SEO & sharing.** Static Open Graph / Twitter tags for crawlers that do not run JavaScript,
@@ -54,17 +53,6 @@
 - **Linters:** ESLint (flat config) / Stylelint (SCSS) / Prettier
 - **Tests:** Vitest
 - **Git Hooks:** Husky / lint-staged
-
----
-
-## Documentation
-
-Project notes (in Russian):
-
-- [`docs/v2-review.md`](docs/v2-review.md) — audit with measurements and the status of every finding
-- [`docs/design.md`](docs/design.md) — design directions and animation guidelines
-- [`docs/minigame.md`](docs/minigame.md) — evaluation of a mini-game for the 404 page
-- [`docs/dependencies.md`](docs/dependencies.md) — why each dependency was added or removed
 
 ---
 
