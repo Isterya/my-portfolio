@@ -1,6 +1,6 @@
 # Isterya | Production-Ready Personal Portfolio
 
-> A high-performance, fully responsive, and multilingual portfolio ecosystem built with React 18,
+> A high-performance, fully responsive, and multilingual portfolio ecosystem built with React 19,
 > TypeScript, and Vite. Engineered from scratch with production-level standards, clean architecture,
 > and strict quality control.
 
@@ -28,8 +28,9 @@
   before the visitor reaches the form and a honeypot field. The API treats the Telegram notification
   as the critical channel, sends the confirmation email best-effort, ignores duplicates, caps
   outgoing emails, answers rate limits with JSON and supports a CORS allowlist.
-- **Quality pipeline.** Strict TypeScript without `any`, ESLint 9 + Stylelint + Prettier, Husky +
-  lint-staged (ESLint, Prettier and Stylelint on every commit) and Vitest unit tests.
+- **Quality pipeline.** Strict TypeScript without `any`, ESLint 10 + Stylelint + Prettier, Husky +
+  lint-staged (ESLint, Prettier and Stylelint on every commit), Vitest unit tests for the site and
+  the API, and CI that checks formatting, lint, tests and both builds.
 
 ---
 
@@ -37,21 +38,21 @@
 
 ### Frontend
 
-- **Core:** React 18 / TypeScript / Vite 6 / SCSS
-- **Routing & SEO:** React Router 7 / React Helmet Async
-- **Animations:** Framer Motion and CSS
+- **Core:** React 19 / TypeScript / Vite 8 / SCSS
+- **Routing & SEO:** React Router 8 / React Helmet Async
+- **Animations:** Motion (lazily loaded features) and CSS
 - **Localization:** i18next & react-i18next (EN, PL, RU)
 
 ### Backend Services
 
-- **Runtime:** Node.js (Express 4, zod, helmet, express-rate-limit)
+- **Runtime:** Node.js (Express 5, zod, helmet, express-rate-limit)
 - **Integrations:** Telegram Bot API (lead delivery) + Brevo API (confirmation email to the visitor)
 - **Hosting:** Vercel (site), Render (API)
 
 ### Quality Assurance & Tooling
 
 - **Linters:** ESLint (flat config) / Stylelint (SCSS) / Prettier
-- **Tests:** Vitest
+- **Tests:** Vitest (site and API)
 - **Git Hooks:** Husky / lint-staged
 
 ---
@@ -61,11 +62,14 @@
 _Note: This repository represents a proprietary personal brand asset. The scripts below are
 documented exclusively for local environment auditing._
 
+Requires Node.js 22.13 or newer.
+
 ```bash
-npm run dev         # Development server
-npm run build       # Type-check and production build
-npm run lint        # ESLint + Stylelint
-npm test            # Unit tests (Vitest)
+npm run dev           # Development server
+npm run build         # Type-check and production build
+npm run lint          # ESLint + Stylelint
+npm run format:check  # Prettier
+npm test              # Unit tests (Vitest)
 ```
 
 Environment variables:
