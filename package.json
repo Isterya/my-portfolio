@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.typecheck.json && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint . --max-warnings=0 && stylelint \"**/*.{scss,css}\"",
     "lint:fix": "eslint . --fix && stylelint \"**/*.{scss,css}\" --fix",
     "format": "prettier --write .",

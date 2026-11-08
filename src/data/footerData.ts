@@ -4,7 +4,7 @@ import instagramIcon from '../assets/icons/socials/instagram-white.svg';
 import githubIcon from '../assets/icons/socials/github-white.svg';
 import linkedinIcon from '@/assets/icons/socials/linkedin-white.svg';
 
-import { CONTACT_EMAIL, SITE_URL, TELEGRAM_URL } from '@/config/site';
+import { CONTACT_EMAIL, SITE_HOST, SITE_URL, TELEGRAM_URL } from '@/config/site';
 
 export interface SocialLinks {
   icon: string;
@@ -48,5 +48,5 @@ export const navLinks: FooterNavLink[] = [
 
 export const contactInfo: ContactInfo[] = [
   { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-  { text: 'www.isterya.dev', href: SITE_URL },
+  { text: SITE_HOST, href: SITE_URL },
 ];

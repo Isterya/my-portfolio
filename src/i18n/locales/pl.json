@@ -301,7 +301,6 @@
 
     "intro": {
       "start": "Witamy na stronie Isterya | Web Developer. Korzystając z tej strony internetowej (",
-      "site": "www.isterya.dev",
       "end": "), akceptujesz poniższe warunki. Jeśli nie zgadzasz się z jakąkolwiek częścią, prosimy nie korzystać ze strony."
     },
 
@@ -347,7 +346,6 @@
 
     "intro1": {
       "start": "Niniejsza Polityka Prywatności wyjaśnia, w jaki sposób Twoje dane osobowe są zbierane, wykorzystywane i chronione podczas odwiedzania strony ",
-      "site": "www.isterya.dev",
       "end": " lub kontaktu z Isterya | Web Developer — osobą świadczącą usługi tworzenia stron internetowych (takie jak landing page, sklepy internetowe oraz rozwiązania na zamówienie)."
     },
     "intro2": "Korzystając z tej strony lub kontaktując się ze mną, akceptujesz niniejszą Politykę Prywatności.",

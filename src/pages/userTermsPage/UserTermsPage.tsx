@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
-import { CONTACT_EMAIL, SITE_URL } from '@/config/site';
+import { CONTACT_EMAIL, SITE_HOST, SITE_URL } from '@/config/site';
 import SEO from '@/components/SEO';
 import { seoTerms } from '@/data/seoData';
 import TableOfContents from '@/components/tableOfContents/TableOfContents';
@@ -30,7 +30,7 @@ const UserTermsPage = () => {
           <p>
             {t('terms.intro.start')}
             <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
-              {t('terms.intro.site')}
+              {SITE_HOST}
             </a>
             {t('terms.intro.end')}
           </p>

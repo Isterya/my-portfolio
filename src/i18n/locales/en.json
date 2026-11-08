@@ -301,7 +301,6 @@
 
     "intro": {
       "start": "Welcome to Isterya | Web Developer. By using this website (",
-      "site": "www.isterya.dev",
       "end": "), you agree to the following terms and conditions. If you do not agree with any part, please do not use the website."
     },
 
@@ -347,7 +346,6 @@
 
     "intro1": {
       "start": "This Privacy Policy explains how your personal data is collected, used, and protected when you visit ",
-      "site": "www.isterya.dev",
       "end": " or interact with Isterya | Web Developer — an individual offering web development services (such as landing pages, e-commerce sites, and custom solutions)."
     },
     "intro2": "By using this website or contacting me via provided channels, you agree to this Privacy Policy.",

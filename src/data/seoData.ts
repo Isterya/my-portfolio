@@ -1,4 +1,4 @@
-import { absoluteUrl } from '@/config/site';
+import { absoluteUrl } from '../config/site';
 
 export interface SeoData {
   title: string;

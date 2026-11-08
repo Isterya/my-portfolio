@@ -8,7 +8,7 @@
 
 ## Live Application
 
-> **[Explore Live Demo](https://my-portfolio-git-main-isteryas-projects.vercel.app/)**
+> **[Explore Live Demo](https://isterya.vercel.app/)**
 
 ---
 

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useLegalRevisionDate } from '@/hooks/useLegalRevisionDate';
 
-import { CONTACT_EMAIL, SITE_URL } from '@/config/site';
+import { CONTACT_EMAIL, SITE_HOST, SITE_URL } from '@/config/site';
 import { privacyPolicySections } from '@/data/tocData';
 import { seoPolicy } from '@/data/seoData';
 import SEO from '@/components/SEO';
@@ -28,7 +28,7 @@ const PrivacyPolicyPage = () => {
           <p>
             {t('privacy.intro1.start')}
             <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
-              {t('privacy.intro1.site')}
+              {SITE_HOST}
             </a>
             {t('privacy.intro1.end')}
           </p>
