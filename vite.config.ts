@@ -7,7 +7,7 @@ import { SITE_URL, absoluteUrl } from './src/config/site.ts';
 import { legalRevisions } from './src/data/legalRevisions.ts';
 import { seoHome } from './src/data/seoData.ts';
 
-const OG_IMAGE_SIZE = { width: 1200, height: 629 };
+const OG_IMAGE_SIZE = { width: 1200, height: 630 };
 
 const meta = (attrs: Record<string, string>, managedByHelmet = true): HtmlTagDescriptor => ({
   tag: 'meta',
