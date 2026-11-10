@@ -17,12 +17,12 @@
       margin-bottom: 8px;
 
       a {
-        color: #5865f2;
+        color: $text-body;
         text-decoration: none;
-        transition: 0.2s;
+        transition: color 0.2s ease;
 
         &:hover {
-          text-decoration: underline;
+          color: $accent;
         }
       }
     }
