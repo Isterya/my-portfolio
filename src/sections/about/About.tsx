@@ -5,6 +5,7 @@ import { m, type Variants } from 'motion/react';
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 import { getAge } from '@/utils/getAge';
 
+import arrowUp from '@/assets/icons/hero/arrow-up.svg';
 import character from '@/assets/img/about/about-character.webp';
 
 import './about.scss';
@@ -81,9 +82,12 @@ const About = () => {
               </div>
             </m.div>
 
-            <a className="about-text__hire" href="#contact">
+            <m.a className="about-text__hire" href="#contact" variants={fadeInUp}>
               {t('about.hire')}
-            </a>
+              <span className="about-text__hire-icon">
+                <img src={arrowUp} alt="" />
+              </span>
+            </m.a>
           </m.div>
         </div>
       </div>

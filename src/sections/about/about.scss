@@ -1,190 +1,46 @@
 .about {
-  border-radius: 50px;
-  padding: 103px 0;
-  width: 100%;
-  min-height: 888px;
-  background: #f2f4f7;
-
-  @include respond(xl) {
-    padding: 70px 0;
-    min-height: 700px;
-    border-radius: 35px;
-  }
-
-  @include respond(lg) {
-    padding: 50px 0;
-    min-height: auto;
-    border-radius: 25px;
-  }
-
-  @include respond(md) {
-    padding: 40px 0;
-    border-radius: 20px;
-  }
-
-  @include respond(sm) {
-    padding: 25px 0;
-    border-radius: 15px;
-  }
-
-  @include respond(xs) {
-    padding: 20px 0;
-    border-radius: 10px;
-  }
+  padding: fluid(72px, 120px) 0 fluid(52px, 100px);
+  border-radius: fluid(24px, 50px);
+  background: $surface-soft;
 
   &-wrapper {
-    padding: 63px 0 82px 41px;
-    display: flex;
-    gap: 150px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto minmax(0, 696px);
     align-items: center;
-
-    @include respond(xl) {
-      padding: 63px 0 82px;
-      gap: 80px;
-    }
-
-    @include respond(lg) {
-      flex-direction: column;
-      gap: 60px;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    @include respond(md) {
-      gap: 40px;
-      padding: 35px 16px;
-    }
-
-    @include respond(sm) {
-      gap: 30px;
-      padding: 25px 12px;
-    }
-
-    @include respond(xs) {
-      gap: 20px;
-      padding: 20px 10px;
-    }
+    justify-content: center;
+    gap: fluid(28px, 150px);
   }
 
   &-character {
-    margin-top: 126px;
     position: relative;
-    border-radius: 110px;
+    width: fluid(190px, 409px);
+    aspect-ratio: 409 / 474;
+    margin-top: fluid(44px, 132px);
+    border-radius: 27% / 23%;
     background: $warm;
-    height: 474px;
-    width: 409px;
-    aspect-ratio: 1 / 1.15;
-    overflow: visible;
-
-    @include respond(xl) {
-      width: 337px;
-      height: 415px;
-    }
-
-    @include respond(lg) {
-      margin-top: 0;
-      width: 280px;
-      height: auto;
-    }
-
-    @include respond(md) {
-      width: 240px;
-      border-radius: 80px;
-    }
-
-    @include respond(sm) {
-      width: 180px;
-      border-radius: 60px;
-    }
-
-    @include respond(xs) {
-      width: 150px;
-      border-radius: 50px;
-    }
 
     &__img {
       position: absolute;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      width: 100%;
       height: auto;
-      max-height: 606px;
-      width: auto;
       user-select: none;
       pointer-events: none;
       -webkit-user-drag: none;
-
-      @include respond(xl) {
-        height: 500px;
-      }
-
-      @include respond(lg) {
-        max-height: 415px;
-      }
-
-      @include respond(md) {
-        max-height: 356px;
-      }
-
-      @include respond(sm) {
-        max-height: 269px;
-      }
-
-      @include respond(xs) {
-        max-height: 223px;
-      }
     }
   }
 
   &-text {
     display: flex;
     flex-direction: column;
-    width: 696px;
-
-    @include respond(xl) {
-      width: 100%;
-      max-width: 480px;
-    }
-
-    @include respond(lg) {
-      max-width: 520px;
-      align-items: center;
-    }
-
-    @include respond(md) {
-      max-width: 100%;
-    }
+    align-items: flex-start;
 
     &__header {
       font-weight: 600;
-      font-size: 64px;
-      line-height: 64px;
+      font-size: fluid(30px, 64px);
+      line-height: 1.08;
       color: $text-secondary;
-
-      @include respond(xl) {
-        font-size: 56px;
-      }
-
-      @include respond(lg) {
-        font-size: 42px;
-        line-height: 48px;
-      }
-
-      @include respond(md) {
-        font-size: 36px;
-        line-height: 42px;
-      }
-
-      @include respond(sm) {
-        font-size: 28px;
-        line-height: 32px;
-      }
-
-      @include respond(xs) {
-        font-size: 22px;
-        line-height: 28px;
-      }
 
       span {
         background: $main-color;
@@ -194,216 +50,100 @@
     }
 
     &__descr {
-      margin-top: 47px;
-      font-weight: 400;
-      font-size: 19px;
-      line-height: 29px;
-      color: $text-muted;
-
-      @include respond(xl) {
-        margin-top: 25px;
-        font-size: 16px;
-      }
-
-      @include respond(lg) {
-        margin-top: 20px;
-        font-size: 15px;
-        line-height: 24px;
-      }
-
-      @include respond(md) {
-        margin-top: 16px;
-        font-size: 14px;
-        line-height: 22px;
-      }
-
-      @include respond(sm) {
-        margin-top: 12px;
-        font-size: 13px;
-        line-height: 20px;
-      }
-
-      @include respond(xs) {
-        margin-top: 10px;
-        font-size: 12px;
-        line-height: 18px;
-      }
+      margin-top: fluid(16px, 40px);
+      font-size: fluid(15px, 19px);
+      line-height: 1.6;
+      color: $text-body;
     }
 
     &__stats {
-      display: flex;
-      margin-top: 35px;
-      gap: 10px;
-
-      @include respond(xl) {
-        margin-top: 25px;
-      }
-
-      @include respond(lg) {
-        align-items: center;
-        gap: 25px;
-        margin-top: 20px;
-      }
-
-      @include respond(md) {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        margin-top: 16px;
-      }
-
-      @include respond(sm) {
-        gap: 16px;
-        margin-top: 14px;
-      }
-
-      @include respond(xs) {
-        gap: 12px;
-        margin-top: 12px;
-        flex-direction: column;
-      }
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: fluid(20px, 56px);
+      margin-top: fluid(22px, 36px);
 
       &-projects,
       &-experience {
-        width: 343px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 4px;
 
-        @include respond(lg) {
-          width: 100%;
-          max-width: 280px;
-        }
-
-        @include respond(md) {
-          max-width: 240px;
-        }
-
-        @include respond(sm) {
-          max-width: 200px;
-        }
-
-        @include respond(xs) {
-          max-width: 160px;
+        p {
+          font-size: fluid(14px, 19px);
+          line-height: 1.4;
+          color: $text-subtle;
         }
 
         .about-text__stats-value {
-          font-weight: 500;
-          font-size: 36px;
-          line-height: 54px;
+          font-weight: 600;
+          font-size: fluid(28px, 44px);
+          line-height: 1.15;
           color: $dark-blue;
-
-          @include respond(lg) {
-            font-size: 30px;
-            line-height: 42px;
-          }
-
-          @include respond(md) {
-            font-size: 26px;
-            line-height: 36px;
-          }
-
-          @include respond(sm) {
-            font-size: 22px;
-            line-height: 32px;
-          }
-
-          @include respond(xs) {
-            font-size: 20px;
-            line-height: 28px;
-          }
         }
+      }
 
-        p {
-          font-weight: 400;
-          font-size: 20px;
-          line-height: 30px;
-          color: #667085;
-
-          @include respond(lg) {
-            font-size: 17px;
-            line-height: 26px;
-          }
-
-          @include respond(md) {
-            font-size: 15px;
-            line-height: 22px;
-          }
-
-          @include respond(sm) {
-            font-size: 14px;
-            line-height: 20px;
-          }
-
-          @include respond(xs) {
-            font-size: 12px;
-            line-height: 18px;
-          }
-        }
+      &-experience {
+        padding-left: fluid(20px, 56px);
+        border-left: 1px solid #d0d5dd;
       }
     }
 
     &__hire {
-      margin-top: 35px;
-      border: 1px solid #151515;
-      border-radius: 32px;
-      display: flex;
-      justify-content: center;
+      display: inline-flex;
       align-items: center;
-      padding: 20px 30px;
-      min-width: 220px;
-      max-width: 320px;
-      font-weight: 600;
-      font-size: 32px;
-      line-height: 48px;
-      text-align: center;
-      color: #151515;
-      transition: all 0.3s ease;
+      gap: fluid(14px, 20px);
+      margin-top: fluid(26px, 40px);
+      padding: 8px 8px 8px fluid(22px, 32px);
+      border-radius: $radius-pill;
+      background: $ink;
+      font-weight: 500;
+      font-size: fluid(17px, 24px);
+      line-height: 1.3;
+      color: #fff;
+      transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
 
-      @include respond(xl) {
-        margin-top: 25px;
-      }
-
-      @include respond(lg) {
-        font-size: 24px;
-        line-height: 36px;
-        padding: 16px 24px;
-        margin-top: 25px;
-      }
-
-      @include respond(md) {
-        font-size: 20px;
-        line-height: 30px;
-        padding: 14px 20px;
-        margin-top: 20px;
-      }
-
-      @include respond(sm) {
-        font-size: 18px;
-        line-height: 28px;
-        padding: 12px 16px;
-        margin-top: 16px;
-        min-width: 180px;
-        max-width: 240px;
-      }
-
-      @include respond(xs) {
-        font-size: 16px;
-        line-height: 24px;
-        padding: 10px 14px;
-        margin-top: 14px;
-        min-width: 150px;
-        max-width: 200px;
-      }
-
-      &:hover {
-        background: #151515;
-        color: #fff;
+      @include hover {
+        background: #000;
+        box-shadow: 0 12px 30px rgb(255 127 0 / 28%);
       }
 
       &:active {
         transform: scale(0.98);
       }
+
+      &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fluid(40px, 54px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: $main-color-horizontal;
+
+        img {
+          width: 62%;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      &:hover &-icon img {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  @include respond(md) {
+    &-wrapper {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+    }
+
+    &-text {
+      align-items: center;
+      text-align: center;
     }
   }
 }
