@@ -42,12 +42,6 @@ textarea {
 }
 
 html[data-lang='ru'] {
-  .skills__second-abstract {
-    @include respond(xl) {
-      top: 133px;
-    }
-  }
-
   .experience__text-subtitle {
     @include respond(xl) {
       font-size: 21px;
@@ -118,12 +112,6 @@ html[data-lang='ru'] {
 }
 
 html[data-lang='pl'] {
-  .skills__second-abstract {
-    @include respond(xl) {
-      top: 165px;
-    }
-  }
-
   .footer-telegram {
     &__header {
       @include respond(lg) {

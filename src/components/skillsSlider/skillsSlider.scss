@@ -1,90 +1,79 @@
 .skills-slider {
-  margin-top: 101px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @include respond(xl) {
-    margin-top: 75px;
-  }
-
-  @include respond(lg) {
-    margin-top: 50px;
-  }
-
-  @include respond(md) {
-    margin-top: 35px;
-  }
-
-  @include respond(sm) {
-    margin-top: 15px;
-  }
-
-  @include respond(xs) {
-    margin-top: 10px;
-  }
-
-  &__wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-  }
+  margin-top: fluid(28px, 72px);
 
   &__inner {
+    display: grid;
+    grid-template-columns: repeat(var(--skills-per-slide), minmax(0, 1fr));
+    gap: fluid(14px, 25px);
+    touch-action: pan-y;
+  }
+
+  &__rail {
+    --tech-size: #{fluid(37px, 54px)};
+    --tech-gap: #{fluid(7px, 12px)};
+
     display: flex;
-    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--tech-gap);
+    margin: fluid(22px, 36px) auto 0;
+    list-style: none;
 
     @include respond(lg) {
-      gap: 20px;
-    }
-
-    @include respond(md) {
-      gap: 15px;
+      max-width: calc(8 * var(--tech-size) + 7 * var(--tech-gap));
     }
   }
 
-  &__controls {
-    margin-top: 39px;
-    display: flex;
-    gap: 11px;
-
-    @include respond(lg) {
-      margin-top: 30px;
-      gap: 8px;
-    }
-
-    @include respond(md) {
-      margin-top: 21px;
-    }
-  }
-
-  &__dot {
+  &__tech {
     position: relative;
-    padding: 0;
-    border: 0;
-    border-radius: 21px;
-    width: 15px;
-    height: 15px;
-    background: #e4e7ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tech-size);
+    border: 1px solid $glass-border;
+    background: rgb(23 23 23 / 42%);
+    backdrop-filter: blur(10px);
+    aspect-ratio: 1;
+    border-radius: 50%;
     cursor: pointer;
     transition:
-      background 0.3s ease,
-      width 0.3s ease;
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s $ease-out;
 
-    &.active {
-      width: 60px;
-      background: $main-color;
+    img {
+      width: 48%;
+      height: 48%;
+      object-fit: contain;
+      opacity: 0.7;
+      filter: grayscale(0.5);
+      transition:
+        opacity 0.3s ease,
+        filter 0.3s ease;
     }
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -5px;
+    @include hover {
+      transform: translateY(-3px);
 
-      @include respond(lg) {
-        inset: -5px -4px;
+      img {
+        opacity: 1;
+        filter: none;
+      }
+    }
+
+    &:focus-visible {
+      outline-color: #fff;
+    }
+
+    &.active {
+      border-color: $accent;
+      background-color: rgb(255 127 0 / 18%);
+      box-shadow: $ember-glow;
+
+      img {
+        opacity: 1;
+        filter: none;
       }
     }
   }

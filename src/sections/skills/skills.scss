@@ -1,129 +1,43 @@
 @use '@/styles/animations' as *;
 
 .skills {
-  padding: 116px 0 9px;
-  min-height: 878px;
-  width: 100%;
-  border-radius: 50px;
   position: relative;
   overflow: hidden;
+  padding: fluid(88px, 116px) 0 fluid(32px, 52px);
+  border-radius: fluid(24px, 50px);
   background: url('../../assets/img/main-bg.webp') no-repeat center / cover;
 
-  @include respond(xl) {
-    padding: 80px 0 9px;
-    min-height: 691px;
-    border-radius: 35px;
-  }
-
-  @include respond(lg) {
-    padding: 60px 0 9px;
-    min-height: 620px;
-    border-radius: 25px;
-  }
-
-  @include respond(md) {
-    padding: 50px 0 9px;
-    min-height: 550px;
-    border-radius: 20px;
-  }
-
-  @include respond(sm) {
-    padding: 30px 0 15px;
-    min-height: 450px;
-    border-radius: 15px;
-  }
-
-  @include respond(xs) {
-    padding: 20px 0 10px;
-    min-height: 400px;
-    border-radius: 10px;
+  .container {
+    position: relative;
+    z-index: 1;
   }
 
   &-header {
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
-
-    @include respond(lg) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    @include respond(sm) {
-      gap: 15px;
-    }
-
-    @include respond(xs) {
-      gap: 10px;
-    }
+    justify-content: space-between;
+    gap: 16px 40px;
 
     &__title {
+      flex-shrink: 0;
       font-weight: 600;
-      font-size: 48px;
-      line-height: 48px;
+      font-size: fluid(30px, 48px);
+      line-height: 1.1;
       color: $surface-light;
-
-      @include respond(xl) {
-        font-size: 36px;
-        line-height: 40px;
-      }
-
-      @include respond(lg) {
-        font-size: 28px;
-        line-height: 34px;
-      }
-
-      @include respond(md) {
-        font-size: 24px;
-        line-height: 30px;
-      }
-
-      @include respond(sm) {
-        font-size: 20px;
-        line-height: 26px;
-      }
-
-      @include respond(xs) {
-        font-size: 18px;
-        line-height: 24px;
-      }
 
       span {
         background: $main-color;
         background-clip: text;
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
 
     &__descr {
-      width: 576px;
-      font-weight: 400;
-      font-size: 20px;
+      max-width: 576px;
+      font-size: fluid(15px, 20px);
+      line-height: 1.5;
       letter-spacing: -0.01em;
       color: #fff;
-
-      @include respond(xl) {
-        font-size: 16px;
-      }
-
-      @include respond(lg) {
-        width: 100%;
-        font-size: 14px;
-      }
-
-      @include respond(md) {
-        font-size: 13px;
-      }
-
-      @include respond(sm) {
-        font-size: 12px;
-      }
-
-      @include respond(xs) {
-        font-size: 11px;
-      }
     }
   }
 
@@ -131,112 +45,42 @@
   &__second-abstract,
   &__third-abstract {
     position: absolute;
-    z-index: 0;
+    height: auto;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
   }
 
   &__first-abstract {
-    left: -184px;
-    top: 50px;
+    left: fluid(-70px, -190px);
+    top: fluid(260px, 230px);
+    width: fluid(170px, 432px);
     animation: rotateSlow 60s linear infinite;
-    max-width: 432px;
-
-    @include respond(xl) {
-      max-width: 345px;
-    }
-
-    @include respond(lg) {
-      max-width: 300px;
-      left: -120px;
-      top: 120px;
-    }
-
-    @include respond(md) {
-      max-width: 250px;
-      left: -100px;
-    }
-
-    @include respond(sm) {
-      max-width: 180px;
-      left: -70px;
-      top: 80px;
-    }
-
-    @include respond(xs) {
-      max-width: 140px;
-      left: -50px;
-      top: 125px;
-    }
   }
 
   &__second-abstract {
-    top: 71px;
-    left: 527px;
+    top: fluid(4px, 60px);
+    left: 37%;
+    width: fluid(70px, 180px);
     animation: floatUpDown 12s ease-in-out infinite;
-    max-width: 191px;
-
-    @include respond(xl) {
-      left: 220px;
-      max-width: 160px;
-    }
-
-    @include respond(lg) {
-      left: 180px;
-      max-width: 130px;
-      top: 5px;
-    }
-
-    @include respond(md) {
-      left: 140px;
-      max-width: 110px;
-      top: 0;
-    }
-
-    @include respond(sm) {
-      left: 130px;
-      max-width: 90px;
-    }
-
-    @include respond(xs) {
-      left: 100px;
-      max-width: 70px;
-    }
   }
 
   &__third-abstract {
-    bottom: -191px;
-    right: -387px;
+    right: fluid(-150px, -387px);
+    bottom: fluid(-150px, -191px);
+    width: fluid(300px, 873px);
     animation: rotateSlow 180s linear infinite;
-    max-width: 873px;
+  }
 
-    @include respond(xl) {
-      max-width: 700px;
+  @include respond(md) {
+    &-header {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    @include respond(lg) {
-      max-width: 550px;
-      right: -250px;
-      bottom: -230px;
-    }
-
-    @include respond(md) {
-      max-width: 450px;
-      right: -200px;
-      bottom: -165px;
-    }
-
-    @include respond(sm) {
-      max-width: 350px;
-      right: -150px;
-      bottom: -130px;
-    }
-
-    @include respond(xs) {
-      max-width: 280px;
-      right: -100px;
-      bottom: -100px;
+    &__second-abstract {
+      left: auto;
+      right: 8%;
     }
   }
 }
