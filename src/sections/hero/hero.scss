@@ -249,8 +249,13 @@ $stack-below: 900px;
       margin-top: 22px;
     }
 
+    .container {
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 24px;
+    }
+
     &-quote {
-      max-width: min(300px, 52%);
+      max-width: 300px;
     }
 
     &-character {
