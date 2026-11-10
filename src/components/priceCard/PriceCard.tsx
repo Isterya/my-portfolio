@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
+import arrowUp from '@/assets/icons/hero/arrow-up.svg';
+
 import './priceCard.scss';
 
 interface PriceCardProps {
@@ -7,35 +9,52 @@ interface PriceCardProps {
   icon: string;
   price: number | string;
   description: string;
-  isDuplicate?: boolean;
 }
 
-const PriceCard: React.FC<PriceCardProps> = ({
-  title,
-  icon,
-  price,
-  description,
-  isDuplicate = false,
-}) => {
+const PriceCard: React.FC<PriceCardProps> = ({ title, icon, price, description }) => {
   const { t } = useTranslation();
 
-  return (
-    <div className="price-card" aria-hidden={isDuplicate || undefined}>
-      <div className="price-card__header">
-        <img src={icon} alt="" className="price-card__icon" loading="lazy" decoding="async" />
+  const hasFixedPrice = typeof price === 'number';
 
-        <div className="price-card__text">
-          <h3 className="price-card__title">{title}</h3>
-          <p className="price-card__cost">
-            {typeof price === 'number'
-              ? `${t('price.from')} $${price}`
-              : `${t('price.negotiable.before')} ${t('price.negotiable.after')}`}
-          </p>
-        </div>
-      </div>
+  const content = (
+    <>
+      <img
+        src={icon}
+        alt=""
+        className="price-card__icon"
+        width={56}
+        height={56}
+        loading="lazy"
+        decoding="async"
+      />
+
+      <h3 className="price-card__title">{title}</h3>
+
+      {hasFixedPrice ? (
+        <p className="price-card__cost">
+          {t('price.from')} <strong className="price-card__amount">${price}</strong>
+        </p>
+      ) : (
+        <p className="price-card__cost">
+          {t('price.negotiable.before')} {t('price.negotiable.after')}
+          <span className="price-card__arrow">
+            <img src={arrowUp} alt="" />
+          </span>
+        </p>
+      )}
 
       <p className="price-card__descr">{description}</p>
-    </div>
+    </>
+  );
+
+  if (hasFixedPrice) {
+    return <article className="price-card">{content}</article>;
+  }
+
+  return (
+    <a className="price-card price-card--custom" href="#contact">
+      {content}
+    </a>
   );
 };
 
