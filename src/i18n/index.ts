@@ -12,7 +12,6 @@ const syncDocumentLanguage = (language: string) => {
   const appLanguage = toAppLanguage(i18n.resolvedLanguage ?? language);
 
   document.documentElement.lang = appLanguage;
-  document.documentElement.setAttribute('data-lang', appLanguage);
 };
 
 i18n.on('languageChanged', syncDocumentLanguage);

@@ -1,159 +1,67 @@
 .lang-switcher {
   position: relative;
-  font-family: inherit;
 
   &__toggle {
+    @include glass(12px);
+
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 10px 18px;
-    min-height: 42px;
-    background: rgb(255 255 255 / 6%);
-    border: 1px solid rgb(255 255 255 / 20%);
-    border-radius: 14px;
-    color: $surface-light;
-    font-size: 15px;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: $radius-pill;
     font-weight: 500;
+    font-size: 15px;
+    color: $surface-light;
     cursor: pointer;
-    backdrop-filter: blur(12px);
-    box-shadow:
-      inset 0 0 0 0 rgb(255 255 255 / 0%),
-      0 2px 6px rgb(0 0 0 / 20%);
     transition:
-      background 0.25s ease,
-      border 0.25s ease,
-      transform 0.2s ease;
+      background-color 0.25s ease,
+      border-color 0.25s ease;
 
-    @include respond(xl) {
-      padding: 8px 16px;
-      font-size: 14px;
-      gap: 12px;
-    }
-
-    @include respond(lg) {
-      padding: 7px 14px;
-      font-size: 13px;
-      gap: 10px;
-    }
-
-    @include respond(md) {
-      padding: 6px 12px;
-      font-size: 12px;
-      gap: 8px;
-    }
-
-    @include respond(sm) {
-      padding: 5px 10px;
-      font-size: 11px;
-      gap: 6px;
-    }
-
-    @include respond(xs) {
-      padding: 4px 8px;
-      font-size: 10px;
-      gap: 5px;
-    }
-
-    &:hover {
+    @include hover {
+      border-color: rgb(255 255 255 / 30%);
       background: rgb(255 255 255 / 10%);
-      border: 1px solid rgb(255 255 255 / 30%);
-      transform: translateY(-1px);
     }
 
     img {
       width: 12px;
       height: 12px;
-      transition: transform 0.3s ease;
       opacity: 0.9;
-
-      @include respond(lg) {
-        width: 11px;
-        height: 11px;
-      }
-
-      @include respond(md) {
-        width: 10px;
-        height: 10px;
-      }
-
-      @include respond(sm) {
-        width: 9px;
-        height: 9px;
-      }
-
-      @include respond(xs) {
-        width: 8px;
-        height: 8px;
-      }
     }
   }
 
   &__dropdown {
     position: absolute;
-    bottom: calc(100% + 6px);
-    right: 0;
+    bottom: calc(100% + 8px);
+    left: 0;
     z-index: 10;
-    padding: 8px;
-    width: 100%;
-    min-width: 100px;
-    background: rgb(255 255 255 / 5%);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
-    backdrop-filter: blur(8px);
-    border-radius: 10px;
-    border: 1px solid rgb(255 255 255 / 15%);
-    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    @include respond(md) {
-      min-width: 85px;
-      padding: 6px;
-    }
-
-    @include respond(sm) {
-      min-width: 70px;
-      padding: 5px;
-    }
-
-    @include respond(xs) {
-      min-width: 60px;
-      padding: 4px;
-    }
+    gap: 2px;
+    min-width: 100%;
+    padding: 6px;
+    border: 1px solid $glass-border;
+    border-radius: 16px;
+    background: rgb(39 39 39 / 92%);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(12px);
+    list-style: none;
   }
 
   &__item {
+    width: 100%;
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 10px;
     background: transparent;
-    color: $surface-light;
-    font-size: 14px;
-    padding: 10px 18px;
-    border-radius: 6px;
-    border: none;
+    font-size: 15px;
     text-align: left;
+    white-space: nowrap;
+    color: $surface-light;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background-color 0.2s ease;
 
-    @include respond(lg) {
-      font-size: 13px;
-      padding: 8px 16px;
-    }
-
-    @include respond(md) {
-      font-size: 12px;
-      padding: 7px 14px;
-    }
-
-    @include respond(sm) {
-      font-size: 11px;
-      padding: 6px 12px;
-    }
-
-    @include respond(xs) {
-      font-size: 10px;
-      padding: 5px 10px;
-    }
-
-    &:hover {
+    @include hover {
       background: rgb(255 255 255 / 12%);
     }
 

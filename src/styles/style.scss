@@ -41,31 +41,6 @@ textarea {
   outline-offset: 3px;
 }
 
-html[data-lang='pl'] {
-  .footer-telegram {
-    &__header {
-      @include respond(lg) {
-        font-size: 33px;
-      }
-
-      @include respond(md) {
-        font-size: 28px;
-        line-height: 40px;
-      }
-
-      @include respond(sm) {
-        font-size: 22px;
-        line-height: 32px;
-      }
-
-      @include respond(xs) {
-        font-size: 18px;
-        line-height: 28px;
-      }
-    }
-  }
-}
-
 ul,
 li,
 dl {
