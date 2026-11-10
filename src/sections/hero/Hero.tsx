@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { useState } from 'react';
-import { m } from 'motion/react';
+import { PointerEvent, useState } from 'react';
+import { m, useMotionValue, useReducedMotion, useSpring, useTransform } from 'motion/react';
 
 import { getYearsOfExperience } from '@/utils/getYearOfExperience';
 
@@ -20,6 +20,9 @@ const HERO_LINKS = [
 
 type HeroLink = (typeof HERO_LINKS)[number]['id'];
 
+const FIGURE_SHIFT = 12;
+const FIGURE_SPRING = { stiffness: 70, damping: 20 };
+
 const Hero = () => {
   const { t } = useTranslation();
 
@@ -27,8 +30,28 @@ const Hero = () => {
 
   const years = getYearsOfExperience();
 
+  const prefersReducedMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const figureX = useSpring(
+    useTransform(pointerX, [-1, 1], [-FIGURE_SHIFT, FIGURE_SHIFT]),
+    FIGURE_SPRING,
+  );
+
+  const handlePointerMove = (e: PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== 'mouse' || prefersReducedMotion) return;
+
+    const { left, width } = e.currentTarget.getBoundingClientRect();
+    pointerX.set(((e.clientX - left) / width) * 2 - 1);
+  };
+
   return (
-    <section id="home" className="hero" aria-labelledby="hero-title">
+    <section
+      id="home"
+      className="hero"
+      aria-labelledby="hero-title"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={() => pointerX.set(0)}
+    >
       <div className="container">
         <div className="hero-wrapper">
           <m.div
@@ -85,6 +108,7 @@ const Hero = () => {
             width={597}
             height={616}
             fetchPriority="high"
+            style={{ x: figureX }}
           />
 
           <div className="hero-links">
