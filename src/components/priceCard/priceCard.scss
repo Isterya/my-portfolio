@@ -61,6 +61,12 @@
   }
 
   &--custom {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'icon cost arrow'
+      'title title title'
+      'descr descr descr';
+    column-gap: 12px;
     border-color: rgb(255 127 0 / 55%);
     background:
       linear-gradient(140deg, rgb(255 127 0 / 24%), rgb(255 127 0 / 5%) 70%), rgb(23 23 23 / 55%);
@@ -79,13 +85,12 @@
   }
 
   &--custom &__cost {
-    align-items: center;
-    gap: 12px;
     font-weight: 500;
     color: $warm;
   }
 
   &__arrow {
+    grid-area: arrow;
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -104,5 +109,49 @@
   &--custom:hover &__arrow img,
   &--custom:focus-visible &__arrow img {
     transform: rotate(45deg);
+  }
+
+  @include respond(sm) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'icon title cost'
+      'descr descr descr';
+    column-gap: 12px;
+    padding: 16px;
+
+    &__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    &__title {
+      margin-top: 0;
+      font-size: 17px;
+    }
+
+    &__amount {
+      font-size: 22px;
+    }
+
+    &__descr {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    &--custom {
+      grid-template-areas:
+        'icon title arrow'
+        'cost cost cost'
+        'descr descr descr';
+    }
+
+    &--custom &__cost {
+      justify-content: flex-start;
+      margin-top: 10px;
+    }
+
+    &--custom &__descr {
+      margin-top: 4px;
+    }
   }
 }

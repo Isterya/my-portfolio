@@ -35,12 +35,14 @@ const PriceCard: React.FC<PriceCardProps> = ({ title, icon, price, description }
           {t('price.from')} <strong className="price-card__amount">${price}</strong>
         </p>
       ) : (
-        <p className="price-card__cost">
-          {t('price.negotiable.before')} {t('price.negotiable.after')}
+        <>
+          <p className="price-card__cost">
+            {t('price.negotiable.before')} {t('price.negotiable.after')}
+          </p>
           <span className="price-card__arrow">
             <img src={arrowUp} alt="" />
           </span>
-        </p>
+        </>
       )}
 
       <p className="price-card__descr">{description}</p>
