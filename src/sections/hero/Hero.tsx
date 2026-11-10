@@ -13,10 +13,17 @@ import character from '@/assets/img/hero/hero-character.webp';
 
 import './hero.scss';
 
+const HERO_LINKS = [
+  { id: 'portfolio', labelKey: 'hero.linkPortfolio' },
+  { id: 'about', labelKey: 'hero.linkAbout' },
+] as const;
+
+type HeroLink = (typeof HERO_LINKS)[number]['id'];
+
 const Hero = () => {
   const { t } = useTranslation();
 
-  const [activeLink, setActiveLink] = useState<'portfolio' | 'about'>('portfolio');
+  const [activeLink, setActiveLink] = useState<HeroLink>('portfolio');
 
   const years = getYearsOfExperience();
 
@@ -81,35 +88,33 @@ const Hero = () => {
           />
 
           <div className="hero-links">
-            <m.a
-              whileHover={{
-                scale: 1.03,
-                transition: { type: 'spring', stiffness: 300 },
-              }}
-              href="#portfolio"
-              className={`hero-links__link ${
-                activeLink === 'portfolio' ? 'hero-links__link--active' : ''
-              }`}
-              onMouseEnter={() => setActiveLink('portfolio')}
-            >
-              {t('hero.linkPortfolio')}
-              <img src={arrowUp} alt="" />
-            </m.a>
+            {HERO_LINKS.map(({ id, labelKey }) => {
+              const isActive = activeLink === id;
 
-            <m.a
-              whileHover={{
-                scale: 1.03,
-                transition: { type: 'spring', stiffness: 300 },
-              }}
-              href="#about"
-              className={`hero-links__link ${
-                activeLink === 'about' ? 'hero-links__link--active' : ''
-              }`}
-              onMouseEnter={() => setActiveLink('about')}
-            >
-              {t('hero.linkAbout')}
-              <img src={arrowUp} alt="" />
-            </m.a>
+              return (
+                <m.a
+                  key={id}
+                  whileHover={{
+                    scale: 1.03,
+                    transition: { type: 'spring', stiffness: 300 },
+                  }}
+                  href={`#${id}`}
+                  className={`hero-links__link ${isActive ? 'hero-links__link--active' : ''}`}
+                  onMouseEnter={() => setActiveLink(id)}
+                  onFocus={() => setActiveLink(id)}
+                >
+                  {isActive && (
+                    <m.span
+                      className="hero-links__marker"
+                      layoutId="hero-links-marker"
+                      transition={{ type: 'spring', stiffness: 380, damping: 34 }}
+                    />
+                  )}
+                  <span className="hero-links__label">{t(labelKey)}</span>
+                  <img className="hero-links__icon" src={arrowUp} alt="" />
+                </m.a>
+              );
+            })}
           </div>
         </div>
       </div>
