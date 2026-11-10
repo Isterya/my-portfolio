@@ -41,22 +41,6 @@ textarea {
   outline-offset: 3px;
 }
 
-html[data-lang='ru'] {
-  .contact-wrapper {
-    @include respond(md) {
-      max-width: 440px;
-    }
-
-    @include respond(sm) {
-      max-width: 90vw;
-    }
-
-    @include respond(xs) {
-      max-width: 85vw;
-    }
-  }
-}
-
 html[data-lang='pl'] {
   .footer-telegram {
     &__header {
