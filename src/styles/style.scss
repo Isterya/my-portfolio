@@ -55,14 +55,6 @@ html[data-lang='ru'] {
       max-width: 85vw;
     }
   }
-
-  .portfolio-card {
-    &__description {
-      @include respond(sm) {
-        font-size: 9px;
-      }
-    }
-  }
 }
 
 html[data-lang='pl'] {

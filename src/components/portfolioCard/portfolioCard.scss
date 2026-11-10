@@ -1,42 +1,20 @@
 .portfolio-card {
   position: relative;
-  width: 633px;
-  height: 371px;
-  border-radius: 20px;
+  aspect-ratio: 633 / 371;
+  border-radius: fluid(18px, 24px);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s $ease-out;
 
-  @include respond('2xl') {
-    width: 580px;
-  }
-
-  @include respond(xl) {
-    width: 450px;
-    height: 300px;
-  }
-
-  @include respond(lg) {
-    width: 550px;
-    height: 371px;
-  }
-
-  @include respond(md) {
-    width: 480px;
-    height: 330px;
-  }
-
-  @include respond(sm) {
-    width: 400px;
-    height: 250px;
-  }
-
-  @include respond(xs) {
-    width: 265px;
-    height: 220px;
-  }
-
-  &:hover {
+  @include hover {
     transform: scale(1.02);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(to top, rgb(0 0 0 / 70%), transparent);
+    pointer-events: none;
   }
 
   &__image {
@@ -49,252 +27,109 @@
     pointer-events: none;
   }
 
+  &__title,
+  &__overlay-title {
+    font-weight: 700;
+    font-size: fluid(30px, 60px);
+    line-height: 1.2;
+    color: #fffaf5;
+  }
+
   &__title {
     position: absolute;
-    bottom: 0;
-    left: 20px;
-    font-weight: 700;
-    font-size: 70px;
-    line-height: 105px;
-    color: #fffaf5;
+    left: fluid(18px, 28px);
+    bottom: fluid(12px, 18px);
     z-index: 1;
     transition: opacity 0.2s ease 0.1s;
-
-    @include respond(xl) {
-      font-size: 52px;
-      line-height: 78px;
-    }
-
-    @include respond(lg) {
-      font-size: 60px;
-      line-height: 95px;
-    }
-
-    @include respond(md) {
-      font-size: 52px;
-      line-height: 78px;
-    }
-
-    @include respond(sm) {
-      font-size: 47px;
-      line-height: 73px;
-    }
-
-    @include respond(xs) {
-      bottom: 10px;
-      font-size: 30px;
-      line-height: 42px;
-    }
-
-    .portfolio-card:hover & {
-      opacity: 0;
-    }
   }
 
   &__overlay {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 593px;
-    height: 196px;
-    padding: 0 24px 20px;
-    border-radius: 24px;
-    background: rgb(0 0 0 / 30%);
+    inset: auto fluid(10px, 20px) fluid(10px, 20px);
+    z-index: 2;
+    padding: fluid(10px, 14px) fluid(14px, 24px) fluid(12px, 20px);
+    border-radius: fluid(14px, 24px);
+    background: rgb(0 0 0 / 35%);
     backdrop-filter: blur(25px);
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.4s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     pointer-events: none;
     transition:
       opacity 0.3s ease,
-      transform 0.3s ease;
-
-    @include respond('2xl') {
-      width: 535px;
-    }
-
-    @include respond(xl) {
-      width: 410px;
-      height: 165px;
-      padding: 0 18px 18px;
-    }
-
-    @include respond(lg) {
-      width: 510px;
-      height: 196px;
-      padding: 0 24px 20px;
-    }
-
-    @include respond(md) {
-      width: 445px;
-      height: 165px;
-    }
-
-    @include respond(sm) {
-      width: 360px;
-      height: 145px;
-    }
-
-    @include respond(xs) {
-      width: 266px;
-      height: 120px;
-      padding: 0 16px 14px;
-    }
-
-    .portfolio-card:hover & {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+      transform 0.3s $ease-out;
   }
 
   &__overlay-content {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    max-height: 100%;
     color: #fff;
   }
 
-  &__overlay-title {
-    font-weight: 700;
-    font-size: 70px;
-    line-height: 105px;
-    color: #fffaf5;
+  &__description {
+    font-size: fluid(14px, 16px);
+    line-height: 1.5;
+    color: #ffead5;
+  }
 
-    @include respond(xl) {
-      font-size: 52px;
-      line-height: 78px;
+  &:hover &__title,
+  &:focus-within &__title {
+    opacity: 0;
+  }
+
+  &:hover &__overlay,
+  &:focus-within &__overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (hover: none) {
+    &__title {
+      opacity: 0;
     }
 
-    @include respond(lg) {
-      font-size: 60px;
-      line-height: 95px;
+    &__overlay {
+      opacity: 1;
+      transform: none;
     }
 
-    @include respond(md) {
-      font-size: 52px;
-      line-height: 78px;
-    }
-
-    @include respond(sm) {
-      font-size: 47px;
-      line-height: 73px;
-    }
-
-    @include respond(xs) {
-      font-size: 32px;
-      line-height: 46px;
+    &__overlay-title {
+      font-size: fluid(22px, 34px);
     }
   }
 
-  &__description {
-    font-weight: 400;
-    font-size: 16px;
-    color: #ffead5;
-    line-height: 24px;
-    max-width: 565px;
-
-    @include respond('2xl') {
-      font-size: 14px;
-    }
-
-    @include respond(xl) {
-      font-size: 11px;
-      line-height: 20px;
-      max-width: 410px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    @include respond(lg) {
-      font-size: 13px;
-      line-height: 24px;
-      max-width: 565px;
-    }
-
-    @include respond(md) {
-      font-size: 11px;
-      line-height: 20px;
-      max-width: 410px;
-    }
-
-    @include respond(sm) {
-      font-size: 10px;
-      line-height: 18px;
-      max-width: 400px;
-    }
-
-    @include respond(xs) {
-      display: none;
-    }
+  @include respond(sm) {
+    aspect-ratio: 5 / 4;
   }
 
   &__icon {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 64px;
-    height: 64px;
-    border: 1px solid $accent-soft;
-    border-radius: 60px;
-    z-index: 4;
+    top: fluid(10px, 14px);
+    right: fluid(10px, 14px);
+    z-index: 3;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: background 0.3s ease;
+    justify-content: center;
+    width: fluid(44px, 60px);
+    aspect-ratio: 1;
+    border: 1px solid $accent-soft;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 30%);
+    backdrop-filter: blur(8px);
+    transition: background-color 0.3s ease;
 
-    @include respond(xl) {
-      width: 50px;
-      height: 50px;
-
-      svg {
-        width: 20px;
-        height: 18px;
-      }
+    &-svg {
+      width: 42%;
+      height: auto;
     }
 
-    @include respond(lg) {
-      width: 64px;
-      height: 64px;
+    &-path {
+      fill: $accent-soft;
+      transition: fill 0.3s ease;
     }
 
-    @include respond(md) {
-      width: 50px;
-      height: 50px;
-      top: 8px;
-      right: 8px;
-
-      svg {
-        width: 20px;
-        height: 18px;
-      }
-    }
-
-    @include respond(sm) {
-      width: 44px;
-      height: 44px;
-    }
-
-    @include respond(xs) {
-      width: 36px;
-      height: 36px;
-      top: 6px;
-      right: 6px;
-
-      svg {
-        width: 16px;
-        height: 16px;
-      }
-    }
-
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background: $accent-soft;
 
       .portfolio-card__icon-path {
@@ -302,43 +137,8 @@
       }
     }
 
-    .portfolio-card__icon-path {
-      fill: $accent-soft;
-      transition: fill 0.3s ease;
-    }
-  }
-}
-
-@include respond(xs) {
-  .portfolio-card {
-    &:hover {
-      transform: scale(1.02);
-    }
-
-    .portfolio-card__overlay {
-      opacity: 0 !important;
-      transform: translateY(20px) !important;
-      pointer-events: none !important;
-    }
-
-    .portfolio-card__title {
-      opacity: 1 !important;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgb(0 0 0 / 0%);
-      transition: background 0.3s ease;
-      border-radius: inherit;
-    }
-
-    &:hover::after {
-      background: rgb(0 0 0 / 10%);
+    &:focus-visible {
+      outline-color: #fff;
     }
   }
 }

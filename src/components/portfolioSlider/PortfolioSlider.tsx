@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useSlider } from '@/hooks/useSlider';
 import { useAutoplay } from '@/hooks/useAutoplay';
-import { useCallback, useState } from 'react';
+import { CSSProperties, useCallback, useState } from 'react';
 
 import { m, AnimatePresence, type Variants } from 'motion/react';
 
@@ -15,6 +15,8 @@ import arrowRight from '@/assets/icons/arrow-right.svg';
 import './portfolioSlider.scss';
 
 const SLIDES_BREAKPOINTS = [{ max: 1024, items: 1 }];
+
+const SWIPE_DISTANCE = 50;
 
 type SlideDirection = 'next' | 'prev';
 
@@ -49,12 +51,11 @@ const PortfolioSlider = () => {
     nextSlide();
   }, [nextSlide]);
 
-  const { ref: autoplayRef, handlers: autoplayHandlers } = useAutoplay<HTMLDivElement>(
-    autoAdvance,
-    {
-      resetKey: currentPage,
-    },
-  );
+  const {
+    ref: autoplayRef,
+    handlers: autoplayHandlers,
+    setIsDragging,
+  } = useAutoplay<HTMLDivElement>(autoAdvance, { resetKey: currentPage });
 
   const handlePrev = () => {
     setDirection('prev');
@@ -67,7 +68,12 @@ const PortfolioSlider = () => {
   };
 
   return (
-    <div className="portfolio-slider" ref={autoplayRef} {...autoplayHandlers}>
+    <div
+      className="portfolio-slider"
+      ref={autoplayRef}
+      style={{ '--projects-per-slide': itemsPerSlide } as CSSProperties}
+      {...autoplayHandlers}
+    >
       <div className="portfolio-slider__wrapper">
         <AnimatePresence mode="wait" custom={direction}>
           <m.div
@@ -79,6 +85,19 @@ const PortfolioSlider = () => {
             animate="center"
             exit="exit"
             transition={{ duration: 0.5, ease: 'easeInOut' }}
+            drag={itemsPerSlide === 1 ? 'x' : false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={(_, info) => {
+              setIsDragging(false);
+
+              if (info.offset.x < -SWIPE_DISTANCE) {
+                handleNext();
+              } else if (info.offset.x > SWIPE_DISTANCE) {
+                handlePrev();
+              }
+            }}
           >
             {portfolioData.slice(currentIndex, currentIndex + itemsPerSlide).map((card) => (
               <PortfolioCard
@@ -93,6 +112,7 @@ const PortfolioSlider = () => {
         </AnimatePresence>
 
         <button
+          type="button"
           className="portfolio-slider__arrow portfolio-slider__arrow--left"
           onClick={handlePrev}
           aria-label={t('a11y.prevSlide')}
@@ -101,6 +121,7 @@ const PortfolioSlider = () => {
         </button>
 
         <button
+          type="button"
           className="portfolio-slider__arrow portfolio-slider__arrow--right"
           onClick={handleNext}
           aria-label={t('a11y.nextSlide')}
