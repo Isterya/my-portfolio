@@ -2,7 +2,8 @@ $danger: #d92d20;
 $success: #079455;
 
 .contact {
-  padding: fluid(48px, 100px) 0;
+  padding: fluid(56px, 100px) 0 fluid(48px, 100px);
+  scroll-margin-top: 32px;
 
   &-wrapper {
     max-width: 750px;
