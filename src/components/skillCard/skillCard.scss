@@ -1,5 +1,5 @@
 .skill-card {
-  @include glass(10px);
+  @include glass(14px);
 
   position: relative;
   display: flex;
@@ -8,6 +8,7 @@
   padding: fluid(22px, 32px);
   border-radius: fluid(22px, 30px);
   overflow: hidden;
+  background: rgb(23 23 23 / 40%);
   transition: transform 0.4s $ease-out;
 
   @include hover {
