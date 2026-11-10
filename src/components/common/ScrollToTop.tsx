@@ -8,8 +8,8 @@ export default function ScrollToTop() {
     const id = window.location.hash.slice(1);
     const target = id ? document.getElementById(id) : null;
 
-    if (target) target.scrollIntoView();
-    else window.scrollTo(0, 0);
+    if (target) target.scrollIntoView({ behavior: 'instant' });
+    else window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
 
   return null;

@@ -1,6 +1,5 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
-@use '@/styles/animations' as *;
 
 * {
   margin: 0;
@@ -8,8 +7,38 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
-  font-family: Poppins, 'Inter Variable', sans-serif;
+  font-family: $font-family;
+  color: $ink;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: $accent;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 3px;
 }
 
 html[data-lang='ru'] {
@@ -220,6 +249,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  text-wrap: balance;
 }
 
 a {
@@ -257,26 +287,11 @@ img {
 p {
   margin: 0;
   padding: 0;
+  text-wrap: pretty;
 }
 
 .container {
-  max-width: 1300px;
+  max-width: 1340px;
   margin: 0 auto;
-  padding: 0 20px;
-
-  @include respond(xl) {
-    padding: 0 40px;
-  }
-
-  @include respond(md) {
-    padding: 0 30px;
-  }
-
-  @include respond(sm) {
-    padding: 0 20px;
-  }
-
-  @include respond(xs) {
-    padding: 0 15px;
-  }
+  padding: 0 fluid(20px, 40px, 390px, 1280px);
 }
