@@ -1,40 +1,9 @@
+import { useRef, useState } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
-import { m, type Variants } from 'motion/react';
+import { m, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from 'motion/react';
 
-import { useMaxWidth } from '@/hooks/useMaxWidth';
-import {
-  ExperienceDataItem,
-  ExperienceSide,
-  certificateLinks,
-  dataLeft,
-  dataRight,
-} from '@/data/experienceData';
+import { certificateLinks, experienceStages } from '@/data/experienceData';
 import './experience.scss';
-
-const circlePositions = [0, 180, 375, 620];
-
-const lineVariant: Variants = {
-  hidden: { scaleY: 0, opacity: 0 },
-  visible: {
-    scaleY: 1,
-    opacity: 1,
-    transition: { duration: 0.8, ease: 'easeOut' },
-  },
-};
-
-const pointVariant: Variants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: (i: number) => ({
-    scale: 1,
-    opacity: 1,
-    transition: { delay: i * 0.15, duration: 0.5, ease: 'easeOut' },
-  }),
-};
-
-const mergedData = dataLeft.flatMap((leftItem, i) => [
-  { ...leftItem, side: 'left' as const },
-  ...(dataRight[i] ? [{ ...dataRight[i], side: 'right' as const }] : []),
-]);
 
 const certificateLinkComponents = Object.fromEntries(
   certificateLinks.map((href, i) => [
@@ -49,55 +18,44 @@ const certificateLinkComponents = Object.fromEntries(
   ]),
 );
 
-type ExperienceItemProps = {
-  item: ExperienceDataItem;
-  side: ExperienceSide;
-  isSingleColumn?: boolean;
-};
+const getCenterY = (element: HTMLElement) => {
+  const { top, height } = element.getBoundingClientRect();
 
-const ExperienceItem = ({ item, side, isSingleColumn = false }: ExperienceItemProps) => {
-  const { t } = useTranslation();
-
-  const group = side === 'left' ? 'dataLeft' : 'dataRight';
-  const isSecondary = isSingleColumn && side === 'right';
-
-  return (
-    <m.div
-      className="experience__text"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <div
-        className={`experience__text-title${isSecondary ? ' experience__text-title--secondary' : ''}`}
-      >
-        {t(`experience.${group}.${item.key}.title`)}
-      </div>
-
-      {side === 'left' ? (
-        <div className="experience__text-subtitle">
-          {t(`experience.dataLeft.${item.key}.subtitle`)}
-        </div>
-      ) : (
-        <div className="experience__text-descr">
-          {item.hasLinks ? (
-            <Trans
-              i18nKey={`experience.dataRight.${item.key}.descr`}
-              components={certificateLinkComponents}
-            />
-          ) : (
-            t(`experience.dataRight.${item.key}.descr`)
-          )}
-        </div>
-      )}
-    </m.div>
-  );
+  return top + height / 2;
 };
 
 const Experience = () => {
   const { t } = useTranslation();
-  const isMobile = useMaxWidth(1024);
+  const prefersReducedMotion = useReducedMotion();
+
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const nodesRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const [scrolledPastCount, setScrolledPastCount] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 65%', 'end 65%'],
+  });
+  const lineProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  useMotionValueEvent(lineProgress, 'change', (progress) => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+
+    const { top, height } = timeline.getBoundingClientRect();
+    const lineTipY = top + progress * height;
+
+    setScrolledPastCount(
+      nodesRef.current.filter((node) => node && getCenterY(node) <= lineTipY).length,
+    );
+  });
+
+  const reachedCount = prefersReducedMotion ? experienceStages.length : scrolledPastCount;
 
   return (
     <section id="experience" className="experience" aria-labelledby="experience-title">
@@ -106,52 +64,60 @@ const Experience = () => {
           {t('experience.title.before')} <span>{t('experience.title.highlight')}</span>
         </h2>
 
-        <div className="experience__grid">
-          {isMobile ? (
-            mergedData.map((item) => (
-              <ExperienceItem key={item.key} item={item} side={item.side} isSingleColumn />
-            ))
-          ) : (
-            <>
-              <div className="experience__column experience__column--left">
-                {dataLeft.map((item) => (
-                  <ExperienceItem key={item.key} item={item} side="left" />
-                ))}
-              </div>
+        <div className="experience__timeline" ref={timelineRef}>
+          <div className="experience__line" aria-hidden="true">
+            <m.div
+              className="experience__line-progress"
+              style={{ scaleY: prefersReducedMotion ? 1 : lineProgress }}
+            />
+          </div>
 
-              <div className="experience__timeline">
-                <m.div
-                  className="timeline-line-horizontal"
-                  variants={lineVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                />
-                {circlePositions.map((top, i) => (
-                  <div
-                    key={top}
-                    className={`timeline-point ${i % 2 === 0 ? 'primary' : 'dark'}`}
-                    style={{ top: `${top}px` }}
-                  >
-                    <m.div
-                      className="timeline-point-inner"
-                      variants={pointVariant}
-                      initial="hidden"
-                      whileInView="visible"
-                      custom={i}
-                      viewport={{ once: true }}
-                    />
+          <ol className="experience__list">
+            {experienceStages.map(({ place, details, hasCertificateLinks }, index) => {
+              const isReached = index < reachedCount;
+              const isCurrent = index === reachedCount - 1;
+
+              return (
+                <li
+                  key={place}
+                  className={`experience__stage${isReached ? ' is-reached' : ''}${isCurrent ? ' is-current' : ''}`}
+                >
+                  <div className="experience__place">
+                    <h3 className="experience__place-title">
+                      {t(`experience.dataLeft.${place}.title`)}
+                    </h3>
+                    <p className="experience__place-subtitle">
+                      {t(`experience.dataLeft.${place}.subtitle`)}
+                    </p>
                   </div>
-                ))}
-              </div>
 
-              <div className="experience__column experience__column--right">
-                {dataRight.map((item) => (
-                  <ExperienceItem key={item.key} item={item} side="right" />
-                ))}
-              </div>
-            </>
-          )}
+                  <span
+                    className="experience__node"
+                    aria-hidden="true"
+                    ref={(node) => {
+                      nodesRef.current[index] = node;
+                    }}
+                  />
+
+                  <div className="experience__details">
+                    <h4 className="experience__details-title">
+                      {t(`experience.dataRight.${details}.title`)}
+                    </h4>
+                    <p className="experience__details-descr">
+                      {hasCertificateLinks ? (
+                        <Trans
+                          i18nKey={`experience.dataRight.${details}.descr`}
+                          components={certificateLinkComponents}
+                        />
+                      ) : (
+                        t(`experience.dataRight.${details}.descr`)
+                      )}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </div>
     </section>

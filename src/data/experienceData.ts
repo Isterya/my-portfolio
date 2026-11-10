@@ -1,22 +1,14 @@
-export type ExperienceSide = 'left' | 'right';
-
-export interface ExperienceDataItem {
-  key: string;
-  hasLinks?: boolean;
+export interface ExperienceStage {
+  place: string;
+  details: string;
+  hasCertificateLinks?: boolean;
 }
 
-export const dataLeft: ExperienceDataItem[] = [
-  { key: 'education' },
-  { key: 'college' },
-  { key: 'specialization' },
-  { key: 'work' },
-];
-
-export const dataRight: ExperienceDataItem[] = [
-  { key: 'lyceum' },
-  { key: 'technician' },
-  { key: 'courses', hasLinks: true },
-  { key: 'frontend' },
+export const experienceStages: ExperienceStage[] = [
+  { place: 'education', details: 'lyceum' },
+  { place: 'college', details: 'technician' },
+  { place: 'specialization', details: 'courses', hasCertificateLinks: true },
+  { place: 'work', details: 'frontend' },
 ];
 
 export const certificateLinks = [

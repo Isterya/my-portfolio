@@ -1,333 +1,188 @@
-@use '@/styles/animations' as *;
+@keyframes emberPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgb(255 127 0 / 40%),
+      0 0 18px rgb(255 127 0 / 55%);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 10px rgb(255 127 0 / 0%),
+      0 0 26px rgb(255 127 0 / 65%);
+  }
+}
 
 .experience {
-  padding: 120px 0;
-  min-height: 1120px;
-
-  @include respond(xl) {
-    min-height: auto;
-    padding: 70px 0;
-  }
-
-  @include respond(lg) {
-    padding: 50px 0;
-  }
-
-  @include respond(md) {
-    padding: 40px 0;
-  }
-
-  @include respond(sm) {
-    padding: 30px 0;
-  }
-
-  @include respond(xs) {
-    padding: 20px 0;
-  }
+  padding: fluid(64px, 120px) 0 fluid(56px, 120px);
 
   &-header {
-    text-align: center;
     font-weight: 600;
-    font-size: 64px;
-    line-height: 64px;
+    font-size: fluid(32px, 64px);
+    line-height: 1.1;
+    text-align: center;
     color: $text-secondary;
-
-    @include respond(xl) {
-      font-size: 56px;
-    }
-
-    @include respond(lg) {
-      font-size: 50px;
-    }
-
-    @include respond(md) {
-      font-size: 36px;
-      line-height: 40px;
-    }
-
-    @include respond(sm) {
-      font-size: 28px;
-      line-height: 32px;
-    }
-
-    @include respond(xs) {
-      font-size: 24px;
-      line-height: 28px;
-    }
 
     span {
       background: $main-color;
       background-clip: text;
-      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
 
-  &__text {
-    text-align-last: left;
-    height: auto;
+  &__timeline {
+    --node-size: #{fluid(30px, 48px)};
 
-    @include respond(lg) {
-      padding-bottom: 24px;
-      border-bottom: 1px solid #d0d5dd;
+    position: relative;
+    max-width: 1180px;
+    margin: fluid(36px, 85px) auto 0;
+  }
 
-      &:last-child {
-        border-bottom: none;
-      }
+  &__line {
+    position: absolute;
+    top: calc(var(--node-size) / 2);
+    bottom: 0;
+    left: calc(50% - 1.5px);
+    width: 3px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #d0d5dd,
+      #d0d5dd 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 72px), transparent);
+
+    &-progress {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      background: linear-gradient(180deg, $accent-light 0%, $accent 30%);
+      transform-origin: top;
     }
+  }
+
+  &__list {
+    position: relative;
+    display: grid;
+    gap: fluid(36px, 68px);
+    list-style: none;
+  }
+
+  &__stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--node-size) minmax(0, 1fr);
+    column-gap: fluid(16px, 64px);
+    align-items: start;
+  }
+
+  &__place {
+    padding-top: fluid(2px, 4px);
+    text-align: right;
 
     &-title {
       font-weight: 600;
-      font-size: 35px;
-      line-height: 35px;
+      font-size: fluid(21px, 34px);
+      line-height: 1.15;
       color: $text-secondary;
-
-      @include respond(xl) {
-        font-size: 30px;
-      }
-
-      @include respond(md) {
-        font-size: 24px;
-        line-height: 28px;
-      }
-
-      @include respond(sm) {
-        font-size: 20px;
-        line-height: 24px;
-      }
-
-      @include respond(xs) {
-        font-size: 18px;
-        line-height: 22px;
-      }
-
-      &--secondary {
-        font-size: 26px;
-        color: #475467;
-        font-weight: 500;
-
-        @include respond(md) {
-          font-size: 20px;
-        }
-
-        @include respond(sm) {
-          font-size: 18px;
-        }
-
-        @include respond(xs) {
-          font-size: 16px;
-        }
-      }
     }
 
     &-subtitle {
-      margin-top: 14px;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 24px;
-      color: $text-muted;
+      margin-top: fluid(6px, 12px);
+      font-size: fluid(15px, 21px);
+      line-height: 1.35;
+      color: $text-subtle;
+      text-wrap: balance;
+    }
+  }
 
-      @include respond(md) {
-        font-size: 18px;
-        line-height: 22px;
-      }
+  &__node {
+    position: relative;
+    width: var(--node-size);
+    aspect-ratio: 1;
+    border: 2px dashed #d0d5dd;
+    border-radius: 50%;
+    background: #fff;
+    transition: border-color 0.4s ease;
 
-      @include respond(sm) {
-        font-size: 16px;
-        line-height: 20px;
-      }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      background: $dark-blue;
+      transition:
+        background-color 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+  }
 
-      @include respond(xs) {
-        font-size: 14px;
-        line-height: 18px;
-      }
+  &__stage.is-reached &__node {
+    border-color: $accent;
+
+    &::after {
+      background: $main-color;
+      box-shadow: 0 0 18px rgb(255 127 0 / 55%);
+    }
+  }
+
+  &__stage.is-current &__node::after {
+    animation: emberPulse 2.4s ease-in-out infinite;
+  }
+
+  &__details {
+    padding-top: fluid(3px, 8px);
+
+    &-title {
+      font-weight: 600;
+      font-size: fluid(18px, 26px);
+      line-height: 1.2;
+      color: $text-secondary;
     }
 
     &-descr {
-      margin-top: 14px;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 30px;
-      color: $text-muted;
-
-      @include respond(xl) {
-        font-size: 16px;
-      }
-
-      @include respond(md) {
-        font-size: 14px;
-        line-height: 22px;
-      }
-
-      @include respond(sm) {
-        font-size: 13px;
-        line-height: 20px;
-      }
-
-      @include respond(xs) {
-        font-size: 12px;
-        line-height: 18px;
-      }
-    }
-  }
-
-  &__grid {
-    margin-top: 85px;
-    display: grid;
-    grid-template-columns: 490px 1fr 490px;
-    position: relative;
-
-    @include respond(xl) {
-      grid-template-columns: 400px 1fr 400px;
-    }
-
-    @include respond(lg) {
-      margin-top: 55px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    @include respond(md) {
-      gap: 24px;
-    }
-
-    @include respond(sm) {
-      gap: 16px;
-    }
-
-    @include respond(xs) {
-      gap: 12px;
-    }
-  }
-
-  &__column {
-    display: flex;
-    flex-direction: column;
-
-    &--left .experience__text {
-      margin-bottom: 102px;
-
-      &:last-child {
-        margin-top: 39px;
-
-        @include respond(md) {
-          margin-top: 20px;
-        }
-
-        @include respond(sm) {
-          margin-top: 12px;
-        }
-
-        @include respond(xs) {
-          margin-top: 8px;
-        }
-      }
-
-      @include respond(md) {
-        margin-bottom: 40px;
-      }
-
-      @include respond(sm) {
-        margin-bottom: 24px;
-      }
-
-      @include respond(xs) {
-        margin-bottom: 16px;
-      }
-    }
-
-    &--right .experience__text {
-      margin-bottom: 48px;
-
-      @include respond(md) {
-        margin-bottom: 32px;
-      }
-
-      @include respond(sm) {
-        margin-bottom: 20px;
-      }
-
-      @include respond(xs) {
-        margin-bottom: 12px;
-      }
+      max-width: 520px;
+      margin-top: fluid(6px, 12px);
+      font-size: fluid(15px, 18px);
+      line-height: 1.6;
+      color: $text-body;
     }
   }
 
   &__link {
     color: $accent;
-    transition: color 0.2s ease;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(255 127 0 / 35%);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
 
-    &:hover {
-      color: #e17634;
-    }
-  }
-}
-
-.experience__timeline {
-  position: relative;
-  top: 25px;
-  width: 48px;
-  height: 620px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @include respond(lg) {
-    display: none;
-  }
-}
-
-.timeline-line-horizontal {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 3px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    to bottom,
-    $text-secondary,
-    $text-secondary 8px,
-    transparent 8px,
-    transparent 16px
-  );
-  transform: translateX(-50%);
-}
-
-.timeline-point {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
-  border: 2px dashed $dark-blue;
-  border-radius: 48px;
-  background: white;
-  z-index: 1;
-
-  &.primary {
-    .timeline-point-inner {
-      background: $main-color;
+    @include hover {
+      text-decoration-color: currentcolor;
     }
   }
 
-  &.dark {
-    .timeline-point-inner {
-      background-color: $dark-blue;
+  @include respond(md) {
+    &__line {
+      left: calc(var(--node-size) / 2 - 1.5px);
     }
-  }
 
-  &-inner {
-    width: 36px;
-    height: 36px;
-    background-color: $main-color;
-    border-radius: 50%;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: pulse 2.4s ease-in-out infinite;
+    &__stage {
+      grid-template-columns: var(--node-size) minmax(0, 1fr);
+    }
+
+    &__node {
+      grid-area: 1 / 1 / span 2;
+    }
+
+    &__place {
+      grid-column: 2;
+      text-align: left;
+    }
+
+    &__details {
+      grid-column: 2;
+      padding-top: 12px;
+    }
   }
 }
