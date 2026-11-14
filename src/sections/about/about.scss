@@ -91,9 +91,12 @@
     }
 
     &__hire {
+      position: relative;
+      isolation: isolate;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       width: 100%;
       max-width: fluid(210px, 320px);
       margin-top: fluid(22px, 35px);
@@ -106,17 +109,34 @@
       text-align: center;
       color: #151515;
       transition:
-        background-color 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease;
+        scale 0.3s ease;
 
-      &:hover {
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
         background: #151515;
+        transform: translateY(101%);
+        transition:
+          transform 0.5s $ease-out,
+          border-radius 0.5s $ease-out;
+      }
+
+      &:hover,
+      &:focus-visible {
         color: #fff;
+
+        &::before {
+          border-radius: 0;
+          transform: translateY(0);
+        }
       }
 
       &:active {
-        transform: scale(0.98);
+        scale: 0.98;
       }
     }
   }
