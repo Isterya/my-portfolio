@@ -122,12 +122,12 @@
 
     @include respond(lg) {
       overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
 
       &__track {
         width: max-content;
         padding: 0 fluid(8px, 16px, 390px, 1024px);
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
 
         > * {
           flex: 0 0 auto;
