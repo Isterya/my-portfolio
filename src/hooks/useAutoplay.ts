@@ -1,8 +1,6 @@
 import { FocusEvent, PointerEvent, useEffect, useRef, useState } from 'react';
 import { useInView, useReducedMotion } from 'motion/react';
 
-export const AUTOPLAY_DELAY = 5000;
-
 type UseAutoplayOptions = {
   delay?: number;
   resetKey?: unknown;
@@ -10,7 +8,7 @@ type UseAutoplayOptions = {
 
 export const useAutoplay = <T extends HTMLElement>(
   advance: () => void,
-  { delay = AUTOPLAY_DELAY, resetKey }: UseAutoplayOptions = {},
+  { delay = 5000, resetKey }: UseAutoplayOptions = {},
 ) => {
   const ref = useRef<T>(null);
 
@@ -59,5 +57,5 @@ export const useAutoplay = <T extends HTMLElement>(
     },
   };
 
-  return { ref, handlers, setIsDragging, isPlaying };
+  return { ref, handlers, setIsDragging };
 };

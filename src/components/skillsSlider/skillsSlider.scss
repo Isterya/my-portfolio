@@ -47,9 +47,7 @@
 
     &.active {
       width: 60px;
-      background:
-        $main-color left / 100% 100% no-repeat,
-        $accent-pale;
+      background: $main-color;
     }
 
     &::before {
@@ -57,9 +55,5 @@
       position: absolute;
       inset: -5px;
     }
-  }
-
-  &__controls--playing &__dot.active {
-    animation: sliderProgress var(--autoplay-delay) linear forwards;
   }
 }

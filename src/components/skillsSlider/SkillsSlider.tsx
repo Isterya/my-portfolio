@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { CSSProperties, useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useSlider } from '@/hooks/useSlider';
-import { AUTOPLAY_DELAY, useAutoplay } from '@/hooks/useAutoplay';
+import { useAutoplay } from '@/hooks/useAutoplay';
 import { useMaxWidth } from '@/hooks/useMaxWidth';
 
 import { m, AnimatePresence, type Variants } from 'motion/react';
@@ -69,7 +69,6 @@ const SkillsSlider = () => {
     ref: autoplayRef,
     handlers: autoplayHandlers,
     setIsDragging,
-    isPlaying,
   } = useAutoplay<HTMLDivElement>(autoAdvance, { resetKey: currentPage });
 
   const handlePrev = () => {
@@ -135,10 +134,7 @@ const SkillsSlider = () => {
       </div>
 
       {!isNarrowScreen && (
-        <div
-          className={`skills-slider__controls${isPlaying ? ' skills-slider__controls--playing' : ''}`}
-          style={{ '--autoplay-delay': `${AUTOPLAY_DELAY}ms` } as CSSProperties}
-        >
+        <div className="skills-slider__controls">
           {Array.from({ length: pageCount }, (_, page) => page).map((page) => (
             <button
               type="button"

@@ -22,13 +22,3 @@
     transform: translateY(-15px);
   }
 }
-
-@keyframes sliderProgress {
-  from {
-    background-size: 0% 100%;
-  }
-
-  to {
-    background-size: 100% 100%;
-  }
-}

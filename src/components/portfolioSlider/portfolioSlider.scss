@@ -70,7 +70,7 @@
   &__dot {
     position: relative;
     width: fluid(11px, 15px);
-    height: fluid(11px, 15px);
+    aspect-ratio: 1;
     padding: 0;
     border: 0;
     border-radius: $radius-pill;
@@ -82,9 +82,9 @@
 
     &.active {
       width: fluid(40px, 60px);
-      background:
-        $main-color left / 100% 100% no-repeat,
-        $accent-pale;
+      aspect-ratio: auto;
+      height: fluid(11px, 15px);
+      background: $main-color;
     }
 
     &::before {
@@ -92,10 +92,6 @@
       position: absolute;
       inset: -7px -4px;
     }
-  }
-
-  &__controls--playing &__dot.active {
-    animation: sliderProgress var(--autoplay-delay) linear forwards;
   }
 
   @include respond(lg) {
