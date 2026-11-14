@@ -3,7 +3,7 @@
 .skills {
   position: relative;
   overflow: hidden;
-  padding: fluid(88px, 116px) 0 fluid(32px, 52px);
+  padding: fluid(88px, 116px) 0 fluid(24px, 9px);
   border-radius: fluid(24px, 50px);
   background: url('../../assets/img/main-bg.webp') no-repeat center / cover;
 
@@ -16,13 +16,13 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 16px 40px;
+    gap: 32px;
 
     &__title {
       flex-shrink: 0;
       font-weight: 600;
       font-size: fluid(30px, 48px);
-      line-height: 1.1;
+      line-height: 1;
       color: $surface-light;
 
       span {
@@ -33,9 +33,8 @@
     }
 
     &__descr {
-      max-width: 576px;
+      flex: 0 1 576px;
       font-size: fluid(15px, 20px);
-      line-height: 1.5;
       letter-spacing: -0.01em;
       color: #fff;
     }
@@ -52,35 +51,41 @@
   }
 
   &__first-abstract {
-    left: fluid(-70px, -190px);
-    top: fluid(260px, 230px);
-    width: fluid(170px, 432px);
+    top: fluid(190px, 50px);
+    left: fluid(-60px, -184px);
+    width: fluid(160px, 432px);
     animation: rotateSlow 60s linear infinite;
   }
 
   &__second-abstract {
-    top: fluid(4px, 60px);
-    left: 37%;
-    width: fluid(70px, 180px);
+    top: 71px;
+    left: 527px;
+    width: 191px;
     animation: floatUpDown 12s ease-in-out infinite;
+
+    @include respond(xl) {
+      top: fluid(4px, 20px, 390px, 1280px);
+      left: fluid(110px, 300px, 390px, 1280px);
+      width: fluid(80px, 150px, 390px, 1280px);
+    }
   }
 
   &__third-abstract {
     right: fluid(-150px, -387px);
-    bottom: fluid(-170px, -330px);
+    bottom: fluid(-130px, -191px);
     width: fluid(300px, 873px);
     animation: rotateSlow 180s linear infinite;
   }
 
-  @include respond(md) {
+  @include respond(lg) {
     &-header {
       flex-direction: column;
       align-items: flex-start;
-    }
+      gap: fluid(10px, 20px, 390px, 1024px);
 
-    &__second-abstract {
-      left: auto;
-      right: 8%;
+      &__descr {
+        flex-basis: auto;
+      }
     }
   }
 }

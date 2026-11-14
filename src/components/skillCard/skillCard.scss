@@ -1,33 +1,36 @@
 .skill-card {
-  @include glass(14px);
-
   position: relative;
+  z-index: 3;
   display: flex;
+  flex: 0 1 416px;
   flex-direction: column;
-  min-height: fluid(280px, 440px);
-  padding: fluid(22px, 32px);
-  border-radius: fluid(22px, 30px);
-  overflow: hidden;
-  background: rgb(23 23 23 / 40%);
-  transition: transform 0.4s $ease-out;
+  justify-content: space-between;
+  min-width: 0;
+  aspect-ratio: 416 / 508;
+  padding: fluid(18px, 32px);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: fluid(20px, 30px);
+  overflow: clip;
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
 
   @include hover {
     transform: translateY(-10px);
   }
 
   &__header h3 {
-    margin-bottom: fluid(10px, 16px);
-    font-size: fluid(24px, 32px);
+    margin-bottom: fluid(8px, 16px);
     font-weight: 600;
-    line-height: 1.2;
+    font-size: fluid(22px, 32px);
     color: #fff;
   }
 
   &__description {
-    font-size: fluid(15px, 18px);
     font-weight: 300;
-    line-height: 1.55;
-    color: #e6e6e6;
+    font-size: fluid(15px, 18px);
+    line-height: 1.5;
+    color: #e0e0e0;
     text-shadow: 0 0 4px rgb(0 0 0 / 50%);
   }
 
@@ -36,7 +39,7 @@
     align-items: center;
     justify-content: center;
     align-self: flex-end;
-    width: fluid(68px, 96px);
+    width: fluid(60px, 96px);
     aspect-ratio: 1;
     margin-top: auto;
     border-radius: 50%;

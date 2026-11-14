@@ -1,80 +1,53 @@
 .skills-slider {
-  margin-top: fluid(28px, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: fluid(16px, 101px);
+
+  &__wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
   &__inner {
-    display: grid;
-    grid-template-columns: repeat(var(--skills-per-slide), minmax(0, 1fr));
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
     gap: fluid(14px, 25px);
-    touch-action: pan-y;
+    width: min(1298px, calc(100vw - 40px));
   }
 
-  &__rail {
-    --tech-size: #{fluid(37px, 54px)};
-    --tech-gap: #{fluid(7px, 12px)};
-
+  &__controls {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--tech-gap);
-    margin: fluid(22px, 36px) auto 0;
-    list-style: none;
-
-    @include respond(lg) {
-      max-width: calc(8 * var(--tech-size) + 7 * var(--tech-gap));
-    }
+    gap: fluid(8px, 11px);
+    margin-top: fluid(21px, 39px);
   }
 
-  &__tech {
+  &__dot {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--tech-size);
-    border: 1px solid $glass-border;
-    background: rgb(23 23 23 / 42%);
-    backdrop-filter: blur(10px);
-    aspect-ratio: 1;
-    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    border: 0;
+    border-radius: 21px;
+    background: #e4e7ec;
     cursor: pointer;
     transition:
-      border-color 0.3s ease,
-      background-color 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.3s $ease-out;
-
-    img {
-      width: 48%;
-      height: 48%;
-      object-fit: contain;
-      opacity: 0.7;
-      filter: grayscale(0.5);
-      transition:
-        opacity 0.3s ease,
-        filter 0.3s ease;
-    }
-
-    @include hover {
-      transform: translateY(-3px);
-
-      img {
-        opacity: 1;
-        filter: none;
-      }
-    }
-
-    &:focus-visible {
-      outline-color: #fff;
-    }
+      background 0.3s ease,
+      width 0.3s ease;
 
     &.active {
-      border-color: $accent;
-      background-color: rgb(255 127 0 / 18%);
-      box-shadow: $ember-glow;
+      width: 60px;
+      background: $main-color;
+    }
 
-      img {
-        opacity: 1;
-        filter: none;
-      }
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
     }
   }
 }
