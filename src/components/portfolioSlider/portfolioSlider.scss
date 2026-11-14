@@ -1,196 +1,79 @@
 .portfolio-slider {
+  --arrow-size: #{fluid(44px, 56px)};
+
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  margin-top: fluid(26px, 48px);
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1290px;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(var(--projects-per-slide), minmax(0, 1fr));
+    gap: fluid(14px, 24px);
+    touch-action: pan-y;
+  }
+
+  &__item {
+    min-width: 0;
+  }
 
   &__arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    width: 56px;
-    height: 56px;
-    cursor: pointer;
-    background: none;
-    border: none;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    @include respond(md) {
-      height: 50px;
-      width: 50px;
-    }
-
-    @include respond(sm) {
-      height: 44px;
-      width: 44px;
-    }
-
-    @include respond(xs) {
-      height: 38px;
-      width: 38px;
-    }
+    width: var(--arrow-size);
+    aspect-ratio: 1;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    background: $text-secondary;
+    box-sizing: content-box;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
 
     img {
-      position: relative;
-      z-index: 3;
-      width: 24px;
-      height: 24px;
-
-      @include respond(md) {
-        width: 20px;
-        height: 20px;
-      }
-
-      @include respond(sm) {
-        width: 16px;
-        height: 16px;
-      }
-
-      @include respond(xs) {
-        width: 12px;
-        height: 12px;
-      }
+      width: 43%;
+      height: auto;
     }
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 64px;
-      height: 64px;
-      background: #fff;
-      border-radius: 50%;
-      z-index: 1;
-
-      @include respond(md) {
-        width: 58px;
-        height: 58px;
-      }
-
-      @include respond(sm) {
-        width: 52px;
-        height: 52px;
-      }
-
-      @include respond(xs) {
-        width: 46px;
-        height: 46px;
-      }
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 56px;
-      height: 56px;
-      background: $text-secondary;
-      border-radius: 50%;
-      z-index: 2;
-      transition: background 0.3s ease;
-
-      @include respond(md) {
-        height: 50px;
-        width: 50px;
-      }
-
-      @include respond(sm) {
-        height: 44px;
-        width: 44px;
-      }
-
-      @include respond(xs) {
-        height: 38px;
-        width: 38px;
-      }
-    }
-
-    &:hover::after {
+    @include hover {
       background: $accent;
     }
 
     &--left {
-      left: -45px;
-
-      @include respond('2xl') {
-        left: -35px;
-      }
-
-      @include respond(xl) {
-        left: -30px;
-      }
-
-      @include respond(xs) {
-        left: -20px;
-      }
+      left: calc(var(--arrow-size) / -2 - 4px);
     }
 
     &--right {
-      right: -45px;
-
-      @include respond('2xl') {
-        right: -35px;
-      }
-
-      @include respond(xl) {
-        right: -30px;
-      }
-
-      @include respond(xs) {
-        right: -20px;
-      }
+      right: calc(var(--arrow-size) / -2 - 4px);
     }
-  }
-
-  &__wrapper {
-    margin-top: 48px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    max-width: 100%;
-
-    @include respond(md) {
-      margin-top: 35px;
-    }
-
-    @include respond(sm) {
-      margin-top: 30px;
-    }
-
-    @include respond(xs) {
-      margin-top: 25px;
-    }
-  }
-
-  &__inner {
-    display: flex;
-    gap: 24px;
   }
 
   &__controls {
-    margin-top: 39px;
     display: flex;
-    gap: 11px;
-
-    @include respond(lg) {
-      margin-top: 30px;
-      gap: 8px;
-    }
-
-    @include respond(md) {
-      margin-top: 21px;
-    }
+    align-items: center;
+    gap: fluid(8px, 11px);
+    min-height: var(--arrow-size);
+    margin-top: fluid(14px, 30px);
   }
 
   &__dot {
     position: relative;
+    width: fluid(11px, 15px);
+    height: fluid(11px, 15px);
     padding: 0;
     border: 0;
-    border-radius: 21px;
-    width: 15px;
-    height: 15px;
+    border-radius: $radius-pill;
     background: #e4e7ec;
     cursor: pointer;
     transition:
@@ -198,17 +81,33 @@
       width 0.3s ease;
 
     &.active {
-      width: 60px;
+      width: fluid(40px, 60px);
       background: $main-color;
     }
 
     &::before {
       content: '';
       position: absolute;
-      inset: -5px;
+      inset: -7px -4px;
+    }
+  }
 
-      @include respond(lg) {
-        inset: -5px -4px;
+  @include respond(lg) {
+    &__wrapper {
+      max-width: 720px;
+    }
+
+    &__arrow {
+      top: calc(100% + #{fluid(14px, 30px)});
+      border-width: 0;
+      transform: none;
+
+      &--left {
+        left: 0;
+      }
+
+      &--right {
+        right: 0;
       }
     }
   }

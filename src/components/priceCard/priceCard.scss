@@ -1,58 +1,18 @@
 .price-card {
-  border-radius: 24px;
-  padding: 21px;
-  width: 784px;
-  max-width: 90vw;
-  flex-shrink: 0;
-  height: 264px;
-  backdrop-filter: blur(10px);
-  background: rgb(255 255 255 / 5%);
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  transition: all 0.5s ease;
-
-  @include respond(xl) {
-    width: 640px;
-  }
-
-  @include respond(lg) {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.5s ease;
-    width: 85vw;
-    height: 190px;
-    padding: 18px;
-    gap: 16px;
-    border-radius: 18px;
-
-    &.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @include respond(md) {
-    width: 90vw;
-    height: auto;
-    padding: 16px;
-    gap: 12px;
-    border-radius: 16px;
-  }
-
-  @include respond(sm) {
-    width: 95vw;
-    padding: 12px;
-    gap: 10px;
-    border-radius: 12px;
-  }
-
-  @include respond(xs) {
-    width: 98vw;
-    padding: 10px;
-    gap: 8px;
-    border-radius: 10px;
-  }
+  flex-shrink: 0;
+  gap: fluid(12px, 24px);
+  width: fluid(332px, 784px);
+  max-width: 85vw;
+  min-height: fluid(150px, 264px);
+  padding: fluid(16px, 21px);
+  border-radius: fluid(16px, 24px);
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 
   &:active {
     transform: scale(0.98);
@@ -61,43 +21,13 @@
 
   &__header {
     display: flex;
-    gap: 12px;
-
-    @include respond(lg) {
-      gap: 10px;
-    }
-
-    @include respond(md) {
-      gap: 8px;
-    }
-
-    @include respond(sm) {
-      gap: 6px;
-    }
-
-    @include respond(xs) {
-      gap: 4px;
-    }
+    gap: fluid(8px, 12px);
   }
 
   &__icon {
-    max-width: 55px;
-
-    @include respond(lg) {
-      max-width: 48px;
-    }
-
-    @include respond(md) {
-      max-width: 40px;
-    }
-
-    @include respond(sm) {
-      max-width: 32px;
-    }
-
-    @include respond(xs) {
-      max-width: 28px;
-    }
+    max-width: fluid(36px, 55px);
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   &__text {
@@ -107,84 +37,36 @@
 
   &__title {
     font-weight: 700;
-    font-size: 23px;
-    line-height: 35px;
+    font-size: fluid(18px, 23px);
+    line-height: fluid(27px, 35px);
     color: $surface-light;
-
-    @include respond(lg) {
-      font-size: 20px;
-      line-height: 30px;
-    }
-
-    @include respond(md) {
-      font-size: 18px;
-      line-height: 28px;
-    }
-
-    @include respond(sm) {
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    @include respond(xs) {
-      font-size: 14px;
-      line-height: 20px;
-    }
   }
 
   &__cost {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: fluid(14px, 18px);
+    line-height: 1.5;
     color: $surface-light;
-
-    @include respond(lg) {
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    @include respond(md) {
-      font-size: 14px;
-      line-height: 22px;
-    }
-
-    @include respond(sm) {
-      font-size: 12px;
-      line-height: 18px;
-    }
-
-    @include respond(xs) {
-      font-size: 10px;
-      line-height: 16px;
-    }
   }
 
   &__descr {
-    font-weight: 400;
-    line-height: 30px;
-    font-size: 20px;
+    font-size: fluid(15px, 20px);
+    line-height: 1.5;
     letter-spacing: -0.01em;
     color: #f9fafb;
     text-shadow: 0 0 4px rgb(0 0 0 / 50%);
+  }
 
-    @include respond(lg) {
-      font-size: 16px;
-      line-height: 26px;
+  @include respond(lg) {
+    opacity: 0;
+    transform: translateY(40px);
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    @include respond(md) {
-      font-size: 14px;
-      line-height: 22px;
-    }
-
-    @include respond(sm) {
-      font-size: 12px;
-      line-height: 18px;
-    }
-
-    @include respond(xs) {
-      font-size: 10px;
-      line-height: 16px;
+    &.visible:active {
+      transform: scale(0.98);
     }
   }
 }

@@ -11,6 +11,9 @@ import './navBar.scss';
 const SECTIONS = ['home', 'skills', 'experience', 'portfolio', 'price', 'contact'] as const;
 type Section = (typeof SECTIONS)[number];
 
+const LEFT_SECTIONS = SECTIONS.slice(0, 3);
+const RIGHT_SECTIONS = SECTIONS.slice(3);
+
 const SCROLL_THRESHOLD = 50;
 const SECTION_OFFSET = 100;
 
@@ -19,15 +22,56 @@ const menuVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+const indicatorTransition = { type: 'spring', stiffness: 380, damping: 34 } as const;
+
+type NavListProps = {
+  sections: readonly Section[];
+  activeSection: Section;
+  side: 'left' | 'right';
+};
+
+const NavList = ({ sections, activeSection, side }: NavListProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <ul className={`navbar-list navbar-list--${side}`}>
+      {sections.map((section) => {
+        const isActive = activeSection === section;
+
+        return (
+          <li key={section}>
+            <a
+              className={`navbar-list__item ${isActive ? 'active' : ''}`}
+              href={`#${section}`}
+              aria-current={isActive ? 'location' : undefined}
+            >
+              {isActive && (
+                <m.span
+                  className="navbar-list__indicator"
+                  layoutId="navbar-indicator"
+                  transition={indicatorTransition}
+                />
+              )}
+              <span className="navbar-list__label">{t(`navBar.${section}`)}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
 const NavBar = () => {
   const { t } = useTranslation();
 
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuRequested, setIsMenuRequested] = useState(false);
   const isMobile = useMaxWidth(768);
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const isMenuOpen = isMobile && isMenuRequested;
+
+  const toggleMenu = () => setIsMenuRequested((prev) => !prev);
 
   const sectionsRef = useRef<HTMLElement[]>([]);
   const burgerRef = useRef<HTMLButtonElement>(null);
@@ -50,7 +94,7 @@ const NavBar = () => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setIsMenuOpen(false);
+        setIsMenuRequested(false);
         burgerRef.current?.focus();
         return;
       }
@@ -105,6 +149,8 @@ const NavBar = () => {
       if (!frame) frame = requestAnimationFrame(updateActiveSection);
     };
 
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -112,111 +158,101 @@ const NavBar = () => {
     };
   }, []);
 
-  return (
-    <>
-      {/* Burger btn */}
-      {isMobile && (
-        <button
-          ref={burgerRef}
-          type="button"
-          className={`burger ${isMenuOpen ? 'open' : ''}`}
-          onClick={toggleMenu}
-          aria-label={t('a11y.menu')}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
+  if (isMobile) {
+    return (
+      <>
+        <div
+          className={`navbar-compact ${isScrolled ? 'navbar-compact--scrolled' : ''} ${isMenuOpen ? 'navbar-compact--open' : ''}`}
         >
-          <span></span>
-          <span></span>
-        </button>
-      )}
-
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isMobile && isMenuOpen && (
-          <m.nav
-            ref={mobileMenuRef}
-            id="mobile-menu"
-            className="mobile-menu"
-            aria-label={t('a11y.mainNav')}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+          <a
+            className="navbar-compact__logo"
+            href="#home"
+            onClick={() => setIsMenuRequested(false)}
           >
-            <m.ul
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.05,
-                  },
-                },
-              }}
+            <img src={logo} alt={t('a11y.home')} />
+          </a>
+
+          <button
+            ref={burgerRef}
+            type="button"
+            className={`burger ${isMenuOpen ? 'open' : ''}`}
+            onClick={toggleMenu}
+            aria-label={t('a11y.menu')}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {isMenuOpen && (
+            <m.nav
+              ref={mobileMenuRef}
+              id="mobile-menu"
+              className="mobile-menu"
+              aria-label={t('a11y.mainNav')}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
-              {SECTIONS.map((section) => (
-                <m.li
-                  key={section}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 },
-                    exit: { opacity: 0, y: 10 },
-                  }}
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
-                >
-                  <a href={`#${section}`} onClick={() => setIsMenuOpen(false)}>
-                    {t(`navBar.${section}`)}
-                  </a>
-                </m.li>
-              ))}
-            </m.ul>
-          </m.nav>
-        )}
-      </AnimatePresence>
-
-      {/* Desktop Nav */}
-      {!isMobile && (
-        <m.div initial="hidden" animate="visible" variants={menuVariants}>
-          <nav
-            className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}
-            aria-label={t('a11y.mainNav')}
-          >
-            <ul className="navbar-list navbar-list--left">
-              {SECTIONS.slice(0, 3).map((section) => (
-                <li key={section}>
-                  <a
-                    className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
-                    href={`#${section}`}
+              <m.ul
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.05,
+                    },
+                  },
+                }}
+              >
+                {SECTIONS.map((section) => (
+                  <m.li
+                    key={section}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0 },
+                      exit: { opacity: 0, y: 10 },
+                    }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
                   >
-                    {t(`navBar.${section}`)}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                    <a
+                      className={activeSection === section ? 'active' : undefined}
+                      href={`#${section}`}
+                      aria-current={activeSection === section ? 'location' : undefined}
+                      onClick={() => setIsMenuRequested(false)}
+                    >
+                      {t(`navBar.${section}`)}
+                    </a>
+                  </m.li>
+                ))}
+              </m.ul>
+            </m.nav>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }
 
-            <div className="navbar-logo">
-              <a href="#home">
-                <img src={logo} alt={t('a11y.home')} />
-              </a>
-            </div>
+  return (
+    <m.div initial="hidden" animate="visible" variants={menuVariants}>
+      <nav
+        className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}
+        aria-label={t('a11y.mainNav')}
+      >
+        <NavList sections={LEFT_SECTIONS} activeSection={activeSection} side="left" />
 
-            <ul className="navbar-list navbar-list--right">
-              {SECTIONS.slice(3).map((section) => (
-                <li key={section}>
-                  <a
-                    className={`navbar-list__item ${activeSection === section ? 'active' : ''}`}
-                    href={`#${section}`}
-                  >
-                    {t(`navBar.${section}`)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </m.div>
-      )}
-    </>
+        <a className="navbar-logo" href="#home">
+          <img src={logo} alt={t('a11y.home')} />
+        </a>
+
+        <NavList sections={RIGHT_SECTIONS} activeSection={activeSection} side="right" />
+      </nav>
+    </m.div>
   );
 };
 

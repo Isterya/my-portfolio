@@ -1,39 +1,13 @@
 .price {
   position: relative;
-  width: 100%;
-  min-height: 863px;
-  padding: 116px 0 181px;
-  border-radius: 50px;
-  background: url('../../assets/img/main-bg.webp') no-repeat center / cover;
   overflow: hidden;
+  padding: fluid(88px, 116px) 0 fluid(56px, 181px);
+  border-radius: fluid(24px, 50px);
+  background: url('../../assets/img/main-bg.webp') no-repeat center / cover;
 
-  @include respond(xl) {
-    padding: 96px 0;
-    border-radius: 35px;
-  }
-
-  @include respond(lg) {
-    padding: 76px 0;
-    border-radius: 25px;
-    min-height: 650px;
-  }
-
-  @include respond(md) {
-    padding: 56px 0;
-    min-height: 500px;
-    border-radius: 20px;
-  }
-
-  @include respond(sm) {
-    padding: 40px 0;
-    min-height: 415px;
-    border-radius: 15px;
-  }
-
-  @include respond(xs) {
-    padding: 32px 0;
-    min-height: 350px;
-    border-radius: 10px;
+  .container {
+    position: relative;
+    z-index: 1;
   }
 
   &-wrapper {
@@ -48,211 +22,74 @@
     justify-content: center;
 
     &__content {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       max-width: 700px;
       text-align: center;
-      position: relative;
     }
 
     &__title {
       position: relative;
       font-weight: 600;
-      font-size: 48px;
-      line-height: 72px;
+      font-size: fluid(30px, 48px);
+      line-height: 1.5;
       color: $surface-light;
-
-      @include respond(xl) {
-        font-size: 40px;
-        line-height: 60px;
-      }
-
-      @include respond(lg) {
-        font-size: 32px;
-        line-height: 48px;
-      }
-
-      @include respond(md) {
-        font-size: 28px;
-        line-height: 42px;
-      }
-
-      @include respond(sm) {
-        font-size: 24px;
-        line-height: 36px;
-      }
-
-      @include respond(xs) {
-        font-size: 20px;
-        line-height: 30px;
-      }
 
       span {
         background: $main-color;
         background-clip: text;
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       &::after {
         content: '';
         position: absolute;
-        right: -25px;
         top: 0;
-        width: 27px;
-        height: 28px;
+        right: fluid(-18px, -25px);
+        width: fluid(18px, 27px);
+        aspect-ratio: 27 / 28;
         background: url('../../assets/icons/price/decor.svg') no-repeat center / contain;
-
-        @include respond(lg) {
-          width: 20px;
-          height: 21px;
-        }
-
-        @include respond(md) {
-          width: 16px;
-          height: 16px;
-          right: -15px;
-        }
-
-        @include respond(sm) {
-          width: 12px;
-          height: 12px;
-          right: -10px;
-        }
-
-        @include respond(xs) {
-          width: 8px;
-          height: 8px;
-          right: -6px;
-        }
       }
     }
 
     &__descr {
       position: relative;
-      margin-top: 14px;
-      font-size: 20px;
+      margin-top: fluid(6px, 14px);
+      font-size: fluid(15px, 20px);
+      line-height: 1.5;
       letter-spacing: -0.01em;
-      line-height: 30px;
       color: #f9fafb;
 
-      @include respond(xl) {
-        font-size: 18px;
-        line-height: 28px;
-      }
-
-      @include respond(lg) {
-        font-size: 16px;
-        line-height: 26px;
-      }
-
-      @include respond(md) {
-        font-size: 14px;
-        line-height: 22px;
-      }
-
-      @include respond(sm) {
-        font-size: 12px;
-        line-height: 18px;
-        margin-top: 10px;
-      }
-
-      @include respond(xs) {
-        font-size: 10px;
-        line-height: 16px;
-        margin-top: 8px;
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        left: -15px;
-        bottom: -20px;
-        width: 25px;
-        height: 25px;
-        background: url('../../assets/icons/price/left-star-decor.svg') no-repeat center / contain;
-
-        @include respond(lg) {
-          left: -10px;
-          bottom: 10px;
-          width: 18px;
-          height: 18px;
-        }
-
-        @include respond(md) {
-          width: 14px;
-          height: 14px;
-          left: -8px;
-          bottom: 0;
-        }
-
-        @include respond(sm) {
-          width: 10px;
-          height: 10px;
-          left: -6px;
-          bottom: 0;
-        }
-
-        @include respond(xs) {
-          width: 8px;
-          height: 8px;
-          left: -4px;
-        }
-      }
-
+      &::before,
       &::after {
         content: '';
         position: absolute;
-        right: -75px;
-        top: 20px;
-        width: 25px;
-        height: 25px;
+        width: fluid(14px, 25px);
+        aspect-ratio: 1;
+      }
+
+      &::before {
+        left: fluid(-6px, -15px);
+        bottom: fluid(-18px, -20px);
+        background: url('../../assets/icons/price/left-star-decor.svg') no-repeat center / contain;
+      }
+
+      &::after {
+        top: fluid(-14px, 20px);
+        right: fluid(-4px, -75px);
         background: url('../../assets/icons/price/right-star-decor.svg') no-repeat center / contain;
-
-        @include respond(lg) {
-          right: -15px;
-          top: -20px;
-          width: 18px;
-          height: 18px;
-        }
-
-        @include respond(md) {
-          width: 14px;
-          height: 14px;
-          right: -10px;
-          top: -10px;
-        }
-
-        @include respond(sm) {
-          width: 10px;
-          height: 10px;
-          right: -8px;
-          top: -8px;
-        }
-
-        @include respond(xs) {
-          width: 8px;
-          height: 8px;
-          right: -6px;
-        }
       }
     }
   }
 
   &-carousel {
-    margin-top: 96px;
+    position: relative;
+    z-index: 1;
     overflow: hidden;
     width: 100%;
-    z-index: 1;
-    position: relative;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      black 10px,
-      black calc(100% - 10px),
-      transparent 100%
-    );
+    margin-top: fluid(24px, 96px);
     mask-image: linear-gradient(
       to right,
       transparent 0,
@@ -261,53 +98,41 @@
       transparent 100%
     );
 
-    @include respond(xl) {
-      margin-top: 64px;
+    &__track {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: fluid(12px, 33px);
+      min-width: 200%;
+      will-change: transform;
     }
 
-    @include respond(md) {
-      margin-top: 40px;
-    }
+    &:not(&--static) &__track {
+      cursor: grab;
+      touch-action: pan-y;
 
-    @include respond(sm) {
-      margin-top: 24px;
-    }
-
-    @include respond(xs) {
-      margin-top: 16px;
+      &.dragging {
+        cursor: grabbing;
+        user-select: none;
+      }
     }
 
     &--static {
       overflow-x: auto;
     }
 
-    &__track {
-      display: flex;
-      gap: 33px;
-      will-change: transform;
-      flex-wrap: nowrap;
-      min-width: 200%;
+    @include respond(lg) {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
 
-      @include respond(xl) {
-        gap: 28px;
-      }
+      &__track {
+        width: max-content;
+        padding: 0 fluid(8px, 16px, 390px, 1024px);
 
-      @include respond(md) {
-        gap: 16px;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-
-      @include respond(sm) {
-        gap: 12px;
-        padding-left: 8px;
-        padding-right: 8px;
-      }
-
-      @include respond(xs) {
-        gap: 8px;
-        padding-left: 6px;
-        padding-right: 6px;
+        > * {
+          flex: 0 0 auto;
+          scroll-snap-align: center;
+        }
       }
     }
   }
@@ -315,162 +140,35 @@
   &__first-abstract,
   &__third-abstract {
     position: absolute;
+    height: auto;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
   }
 
   &__first-abstract {
-    left: -184px;
     top: 50px;
+    left: -184px;
+    width: fluid(345px, 432px, 1024px, 1440px);
     animation: rotateSlow 60s linear infinite;
-    max-width: 432px;
-
-    @include respond(xl) {
-      max-width: 345px;
-    }
 
     @include respond(lg) {
-      max-width: 300px;
-      left: -120px;
-      top: 170px;
-    }
-
-    @include respond(md) {
-      max-width: 250px;
-      left: -80px;
-      top: 160px;
+      top: 250px;
+      left: fluid(-90px, -120px, 640px, 1024px);
+      width: fluid(200px, 300px, 640px, 1024px);
     }
 
     @include respond(sm) {
-      max-width: 180px;
-      left: -90px;
-      top: 150px;
-    }
-
-    @include respond(xs) {
-      max-width: 150px;
+      top: -40px;
       left: -65px;
-      top: -50px;
+      width: 150px;
     }
   }
 
   &__third-abstract {
-    bottom: -191px;
-    right: -387px;
+    right: fluid(-110px, -387px);
+    bottom: fluid(-110px, -191px);
+    width: fluid(260px, 873px);
     animation: rotateSlow 180s linear infinite;
-    max-width: 873px;
-
-    @include respond(xl) {
-      max-width: 700px;
-    }
-
-    @include respond(lg) {
-      max-width: 550px;
-      right: -250px;
-      bottom: -230px;
-    }
-
-    @include respond(md) {
-      max-width: 450px;
-      right: -200px;
-      bottom: -165px;
-    }
-
-    @include respond(sm) {
-      max-width: 350px;
-      right: -120px;
-      bottom: -140px;
-    }
-
-    @include respond(xs) {
-      max-width: 230px;
-      right: -105px;
-      bottom: -90px;
-    }
-  }
-}
-
-@include respond(lg) {
-  .price-carousel {
-    overflow-x: auto;
-
-    &__track {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 24px;
-      transform: none !important;
-      width: max-content;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    &__track > * {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-    }
-  }
-}
-
-@include respond(md) {
-  .price-carousel {
-    overflow-x: auto;
-
-    &__track {
-      gap: 16px;
-      transform: none !important;
-      width: max-content;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding-left: 12px;
-      padding-right: 12px;
-    }
-
-    &__track > * {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-    }
-  }
-}
-
-@include respond(sm) {
-  .price-carousel {
-    overflow-x: auto;
-
-    &__track {
-      gap: 12px;
-      width: max-content;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-
-    &__track > * {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-    }
-  }
-}
-
-@include respond(xs) {
-  .price-carousel {
-    overflow-x: auto;
-
-    &__track {
-      gap: 8px;
-      width: max-content;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding-left: 6px;
-      padding-right: 6px;
-    }
-
-    &__track > * {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-    }
   }
 }

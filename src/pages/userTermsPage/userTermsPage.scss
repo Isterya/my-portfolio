@@ -120,11 +120,16 @@
   }
 
   a {
-    color: #5865f2;
+    color: $dark-blue;
+    text-decoration: underline;
+    text-decoration-color: $accent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
     overflow-wrap: anywhere;
+    transition: color 0.2s ease;
 
     &:hover {
-      text-decoration: underline;
+      color: $accent;
     }
   }
 

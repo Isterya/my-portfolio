@@ -35,7 +35,7 @@ const Price = () => {
       ).flat()
     : priceData.map((price) => ({ ...price, key: `${price.id}`, isDuplicate: false }));
 
-  useRevealOnScroll(trackRef, { resetKey: renderedData.length });
+  useRevealOnScroll(trackRef, { resetKey: renderedData.length, threshold: 0.05 });
 
   return (
     <section id="price" className="price" aria-labelledby="price-title">

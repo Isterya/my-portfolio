@@ -1,9 +1,24 @@
 $accent: #ff7f00;
 $accent-soft: #fd853a;
-$main-color: linear-gradient(180deg, #f8ba2b 0%, $accent 70%);
-$dark-blue: #1d2939;
+$accent-light: #f8ba2b;
+$main-color: linear-gradient(180deg, $accent-light 0%, $accent 70%);
+$main-color-horizontal: linear-gradient(90deg, $accent-light 0%, $accent 70%);
 $warm: #feb273;
 $ink: #171717;
+$dark-blue: #1d2939;
 $text-secondary: #344054;
+$text-body: #475467;
+$text-subtle: #667085;
 $text-muted: #98a2b3;
+$line: #eaecf0;
+$surface-soft: #f2f4f7;
 $surface-light: #fcfcfd;
+$charcoal: #272727;
+$glass-fill: rgb(255 255 255 / 6%);
+$glass-border: rgb(255 255 255 / 14%);
+$ember-glow:
+  0 0 0 6px rgb(255 127 0 / 14%),
+  0 0 24px rgb(255 127 0 / 55%);
+$font-family: 'Poppins', 'Montserrat Variable', sans-serif;
+$radius-pill: 999px;
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);

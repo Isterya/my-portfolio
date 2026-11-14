@@ -1,4 +1,6 @@
 @use 'sass:map';
+@use 'sass:math';
+@use 'variables' as *;
 
 $breakpoints: (
   'xs': 480px,
@@ -8,9 +10,37 @@ $breakpoints: (
   'xl': 1280px,
   '2xl': 1536px,
 );
+$fluid-from: 390px;
+$fluid-to: 1440px;
 
 @mixin respond($breakpoint) {
   @media (max-width: map.get($breakpoints, $breakpoint)) {
     @content;
+  }
+}
+
+@function fluid($at-narrow, $at-wide, $from: $fluid-from, $to: $fluid-to) {
+  $slope: math.div($at-wide - $at-narrow, $to - $from);
+  $intercept: $at-narrow - $slope * $from;
+  $preferred: calc(#{$intercept} + #{$slope * 100vw});
+
+  @return clamp(
+    #{math.min($at-narrow, $at-wide)},
+    #{$preferred},
+    #{math.max($at-narrow, $at-wide)}
+  );
+}
+
+@mixin glass($blur: 14px) {
+  background: $glass-fill;
+  border: 1px solid $glass-border;
+  backdrop-filter: blur($blur);
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
   }
 }

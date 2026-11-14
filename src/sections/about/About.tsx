@@ -81,9 +81,9 @@ const About = () => {
               </div>
             </m.div>
 
-            <a className="about-text__hire" href="#contact">
+            <m.a className="about-text__hire" href="#contact" variants={fadeInUp}>
               {t('about.hire')}
-            </a>
+            </m.a>
           </m.div>
         </div>
       </div>
