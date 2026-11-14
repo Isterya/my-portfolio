@@ -1,5 +1,5 @@
 .about {
-  padding: fluid(80px, 120px) 0 fluid(52px, 100px);
+  padding: fluid(80px, 103px) 0 fluid(52px, 103px);
   border-radius: fluid(24px, 50px);
   background: $surface-soft;
 
@@ -9,13 +9,19 @@
     align-items: center;
     justify-content: center;
     gap: fluid(28px, 150px);
+    padding: fluid(4px, 63px) 0 fluid(4px, 82px);
+
+    @media (width >= 1440px) {
+      position: relative;
+      left: 20.5px;
+    }
   }
 
   &-character {
     position: relative;
     width: fluid(190px, 409px);
     aspect-ratio: 409 / 474;
-    margin-top: fluid(44px, 132px);
+    margin-top: fluid(44px, 126px);
     border-radius: 27% / 23%;
     background: $warm;
 
@@ -39,7 +45,7 @@
     &__header {
       font-weight: 600;
       font-size: fluid(30px, 64px);
-      line-height: 1.08;
+      line-height: fluid(34px, 64px);
       color: $text-secondary;
 
       span {
@@ -50,87 +56,67 @@
     }
 
     &__descr {
-      margin-top: fluid(16px, 40px);
+      margin-top: fluid(16px, 47px);
       font-size: fluid(15px, 19px);
-      line-height: 1.6;
+      line-height: fluid(24px, 29px);
       color: $text-body;
     }
 
     &__stats {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      gap: fluid(20px, 56px);
-      margin-top: fluid(22px, 36px);
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      margin-top: fluid(22px, 35px);
 
       &-projects,
       &-experience {
         display: flex;
+        flex: 0 1 343px;
         flex-direction: column;
-        gap: 4px;
+        gap: fluid(4px, 10px);
 
         p {
-          font-size: fluid(14px, 19px);
-          line-height: 1.4;
+          font-size: fluid(14px, 20px);
+          line-height: 1.5;
           color: $text-subtle;
         }
 
         .about-text__stats-value {
-          font-weight: 600;
-          font-size: fluid(28px, 44px);
-          line-height: 1.15;
+          font-weight: 500;
+          font-size: fluid(26px, 36px);
+          line-height: 1.5;
           color: $dark-blue;
         }
-      }
-
-      &-experience {
-        padding-left: fluid(20px, 56px);
-        border-left: 1px solid #d0d5dd;
       }
     }
 
     &__hire {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: fluid(14px, 20px);
-      margin-top: fluid(26px, 40px);
-      padding: 8px 8px 8px fluid(22px, 32px);
-      border-radius: $radius-pill;
-      background: $ink;
-      font-weight: 500;
-      font-size: fluid(17px, 24px);
-      line-height: 1.3;
-      color: #fff;
+      justify-content: center;
+      width: 100%;
+      max-width: fluid(210px, 320px);
+      margin-top: fluid(22px, 35px);
+      padding: fluid(12px, 20px) fluid(16px, 30px);
+      border: 1px solid #151515;
+      border-radius: 32px;
+      font-weight: 600;
+      font-size: fluid(18px, 32px);
+      line-height: 1.5;
+      text-align: center;
+      color: #151515;
       transition:
         background-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.2s ease;
+        color 0.3s ease,
+        transform 0.3s ease;
 
-      @include hover {
-        background: #000;
-        box-shadow: 0 12px 30px rgb(255 127 0 / 28%);
+      &:hover {
+        background: #151515;
+        color: #fff;
       }
 
       &:active {
         transform: scale(0.98);
-      }
-
-      &-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: fluid(40px, 54px);
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background: $main-color-horizontal;
-
-        img {
-          width: 62%;
-          transition: transform 0.3s ease;
-        }
-      }
-
-      &:hover &-icon img {
-        transform: rotate(45deg);
       }
     }
   }
