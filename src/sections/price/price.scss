@@ -3,7 +3,7 @@
 .price {
   position: relative;
   overflow: hidden;
-  padding: fluid(88px, 110px) 0 fluid(56px, 120px);
+  padding: fluid(88px, 116px) 0 fluid(56px, 181px);
   border-radius: fluid(24px, 50px);
   background: url('../../assets/img/main-bg.webp') no-repeat center / cover;
 
@@ -12,19 +12,31 @@
     z-index: 1;
   }
 
-  &-header {
+  &-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
+  }
+
+  &-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 700px;
+      text-align: center;
+    }
 
     &__title {
       position: relative;
       font-weight: 600;
       font-size: fluid(30px, 48px);
-      line-height: 1.2;
+      line-height: 1.5;
       color: $surface-light;
 
       span {
@@ -46,7 +58,7 @@
 
     &__descr {
       position: relative;
-      margin-top: fluid(10px, 14px);
+      margin-top: fluid(6px, 14px);
       font-size: fluid(15px, 20px);
       line-height: 1.5;
       letter-spacing: -0.01em;
@@ -74,19 +86,46 @@
     }
   }
 
-  &-list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: fluid(12px, 20px);
-    margin-top: fluid(32px, 64px);
-    list-style: none;
+  &-carousel {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    margin-top: fluid(24px, 96px);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 10px,
+      black calc(100% - 10px),
+      transparent 100%
+    );
 
-    @include respond(lg) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    &__track {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: fluid(12px, 33px);
+      min-width: 200%;
+      will-change: transform;
     }
 
-    @include respond(sm) {
-      grid-template-columns: minmax(0, 1fr);
+    &--static {
+      overflow-x: auto;
+    }
+
+    @include respond(lg) {
+      overflow-x: auto;
+
+      &__track {
+        width: max-content;
+        padding: 0 fluid(8px, 16px, 390px, 1024px);
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        > * {
+          flex: 0 0 auto;
+          scroll-snap-align: center;
+        }
+      }
     }
   }
 
@@ -100,16 +139,28 @@
   }
 
   &__first-abstract {
-    top: fluid(20px, 50px);
-    left: fluid(-66px, -184px, 768px, 1440px);
-    width: fluid(140px, 432px, 768px, 1440px);
+    top: 50px;
+    left: -184px;
+    width: fluid(345px, 432px, 1024px, 1440px);
     animation: rotateSlow 60s linear infinite;
+
+    @include respond(lg) {
+      top: 250px;
+      left: fluid(-90px, -120px, 640px, 1024px);
+      width: fluid(200px, 300px, 640px, 1024px);
+    }
+
+    @include respond(sm) {
+      top: -40px;
+      left: -65px;
+      width: 150px;
+    }
   }
 
   &__third-abstract {
-    right: fluid(-170px, -470px);
-    bottom: fluid(-180px, -400px);
-    width: fluid(300px, 873px);
+    right: fluid(-110px, -387px);
+    bottom: fluid(-110px, -191px);
+    width: fluid(260px, 873px);
     animation: rotateSlow 180s linear infinite;
   }
 }
