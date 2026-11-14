@@ -26,6 +26,8 @@
 
   &__icon {
     max-width: fluid(36px, 55px);
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   &__text {
