@@ -21,16 +21,30 @@ const SWIPE_DISTANCE = 50;
 type SlideDirection = 'next' | 'prev';
 
 const slideVariants: Variants = {
+  enter: {},
+  center: (direction: SlideDirection) => ({
+    transition: { staggerChildren: 0.08, staggerDirection: direction === 'next' ? 1 : -1 },
+  }),
+  exit: {},
+};
+
+const cardVariants: Variants = {
   enter: (direction: SlideDirection) => ({
     opacity: 0,
     x: direction === 'next' ? 100 : -100,
     scale: 0.95,
   }),
-  center: { opacity: 1, x: 0, scale: 1 },
+  center: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
   exit: (direction: SlideDirection) => ({
     opacity: 0,
-    x: direction === 'next' ? -100 : 100,
+    x: direction === 'next' ? -60 : 60,
     scale: 0.95,
+    transition: { duration: 0.25, ease: 'easeIn' },
   }),
 };
 
@@ -84,7 +98,6 @@ const PortfolioSlider = () => {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
             drag={itemsPerSlide === 1 ? 'x' : false}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -100,13 +113,19 @@ const PortfolioSlider = () => {
             }}
           >
             {portfolioData.slice(currentIndex, currentIndex + itemsPerSlide).map((card) => (
-              <PortfolioCard
+              <m.div
                 key={card.id}
-                title={card.title}
-                image={card.image}
-                description={t(card.description)}
-                link={card.link}
-              />
+                className="portfolio-slider__item"
+                custom={direction}
+                variants={cardVariants}
+              >
+                <PortfolioCard
+                  title={card.title}
+                  image={card.image}
+                  description={t(card.description)}
+                  link={card.link}
+                />
+              </m.div>
             ))}
           </m.div>
         </AnimatePresence>

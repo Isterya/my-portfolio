@@ -20,6 +20,12 @@
     width: min(1298px, calc(100vw - 40px));
   }
 
+  &__item {
+    display: flex;
+    flex: 0 1 416px;
+    min-width: 0;
+  }
+
   &__controls {
     display: flex;
     gap: fluid(8px, 11px);

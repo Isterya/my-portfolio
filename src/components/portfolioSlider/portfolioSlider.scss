@@ -20,6 +20,10 @@
     touch-action: pan-y;
   }
 
+  &__item {
+    min-width: 0;
+  }
+
   &__arrow {
     position: absolute;
     top: 50%;
